@@ -2,98 +2,120 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10D7C480BA
-	for <lists+linux-uvc-devel@lfdr.de>; Mon, 17 Jun 2019 13:32:39 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id B7B0F49F14
+	for <lists+linux-uvc-devel@lfdr.de>; Tue, 18 Jun 2019 13:23:01 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1hcps9-0007Vg-Rk; Mon, 17 Jun 2019 11:32:25 +0000
+	id 1hdCCV-0007Uy-GJ; Tue, 18 Jun 2019 11:22:55 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <kowaraj@gmail.com>) id 1hcps8-0007VF-6l
- for linux-uvc-devel@lists.sourceforge.net; Mon, 17 Jun 2019 11:32:24 +0000
+ (envelope-from <kieran.bingham@ideasonboard.com>) id 1hdCCT-0007Up-Gl
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 18 Jun 2019 11:22:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=To:Date:Message-Id:Subject:Mime-Version:
- Content-Type:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:Cc:References:To:Subject:Reply-To:Sender:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=8w7HoD2x9vdl4CJhnb38APLyACW3d7BYObnAkJKjWUg=; b=fLu1dvsE6qiIddLPtRT0oObx97
- A3tLlF1g1in9Otk91OamX29EyfZ0GYBqhc3ocOvckBXFxms27UV2Dzne7MJ3CfDHwb90Wg/Kd9ptp
- B+Ij4hlVMLTUphpdkKTVu200J4FdfO3jpTt3PKD75Hq30v8PCio8qip6n7eukVDiV+Qw=;
+ bh=SmknH6CzxY7Dn4udvgygA6l/7aJPSjBpQwTs5+fcrlA=; b=Amuni6E/XXk5KbsmTbS6trEy8N
+ 5Cth5XVu38jMIBOVKCIRwClYMi6NTqrKfAxh0v7k0sNMDzyAQIwt09Dq5wSRCfGJgrf+0iV+g9bSC
+ 3WfNYH3uR5DCmkan44r3+P4W2UKxVR23R5w1WZCOQHIyIb16A6A2bqr2wdeZBm41PM/c=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=To:Date:Message-Id:Subject:Mime-Version:Content-Type:From:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=8w7HoD2x9vdl4CJhnb38APLyACW3d7BYObnAkJKjWUg=; b=J
- X1dyXXMpr0bw3bl/LZh6F/9/gJtnkVQH2M9QFHX+aVs9VkjYIhcAH+hYEcYFXNKRdDoPIvDkFhS77
- HBbQXPV5cw04S45U2esPqp8NSVu3dR971fEoFL9IBPhLs/23g482t2SmKayDFcghTTumbDzdGJDG7
- k/zFU9lpvzZD3n0c=;
-Received: from mail-ed1-f49.google.com ([209.85.208.49])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.90_1)
- id 1hcps5-000wMH-EO
- for linux-uvc-devel@lists.sourceforge.net; Mon, 17 Jun 2019 11:32:23 +0000
-Received: by mail-ed1-f49.google.com with SMTP id e3so15623733edr.10
- for <linux-uvc-devel@lists.sourceforge.net>;
- Mon, 17 Jun 2019 04:32:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:mime-version:subject:message-id:date:to;
- bh=8w7HoD2x9vdl4CJhnb38APLyACW3d7BYObnAkJKjWUg=;
- b=qJDGiqGMS18G8pUTS2NPWmSMl4EUDMoQMxEtc0ZSSh3Fwk6PMTHt7sgcaqk7gP8AIQ
- CL5slsyT9rYgjI472br575wbpInHzDxZnUcPYxx4atxwRzH5uKX0WXxV558y/njp1LHk
- N2PqotlMZIDSKGN8c5/wk8bxegcWOi+U3qOoJHqU5wNMVvv7lPECBWLoYsGTHy1e7FWZ
- ygj0ZcxdJrfAhH2boquq3ENS79cUG/GF3S9m5bhaTuXzdWTEWtv3e1T5mJZn2nlu0bmS
- 2gXuDbk58di+Vc7+AbELxjyfIwBg/DRPaA9ssO24nBs0645BLyO0rfe9VV8NjmXm0958
- Ixmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:mime-version:subject:message-id:date:to;
- bh=8w7HoD2x9vdl4CJhnb38APLyACW3d7BYObnAkJKjWUg=;
- b=m8n4MmQiBL/FvbRgWHtBejM+Nor+w1U7My1Zch4TOc3dqF96PkD+q/FGt4hqe9PPTB
- jz0ulZV+2gq8PvXx7EStfqeNiBvIJjkwZeQVdKDUFP9Uzj3bWZg++DIOZzR/Ed23zHVB
- p8NdqDJxm85bBGBWuiaauONB4DIzLlT2FpGcOc/JOxgg2WSncypGBDihMNlVyVRK5SDM
- qLYVeTANDURcQcbBNG9kZ72x/ahWH2IzQbShRafj6F88OyX9rKxSmkJif7/L8Ihu8j9t
- f6z3cHgkIR3PGx7BXxOu50PvDRDXUTRwPJknZ7aQIThBlh85Eht/GwBFRpDLJBiH0rwG
- EI4w==
-X-Gm-Message-State: APjAAAWEsR9h7iGxY0Wm+5vqx4TtVS6le666ONvFIt4fD3PDTaRC5BDB
- QQMLu8xFOMARzo6RLRNmWlUxL+HHVaE=
-X-Google-Smtp-Source: APXvYqwwSRsmwklKXmKmOWnWJGV5qjJ7YGBaioIBxdVU76Rb7hTua7AbMqPqESYSgTiAO2jC4voWAA==
-X-Received: by 2002:a17:906:3756:: with SMTP id
- e22mr14443998ejc.72.1560771134623; 
- Mon, 17 Jun 2019 04:32:14 -0700 (PDT)
-Received: from ams-usba2eth001.dyndns6.cern.ch ([2001:1458:202:6d::101:cdd0])
- by smtp.gmail.com with ESMTPSA id
- m3sm3489897edi.33.2019.06.17.04.32.13
- for <linux-uvc-devel@lists.sourceforge.net>
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 17 Jun 2019 04:32:14 -0700 (PDT)
-From: Andrej Pashnin <kowaraj@gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Message-Id: <65F49C97-C200-4BB1-A051-064575B9B729@gmail.com>
-Date: Mon, 17 Jun 2019 13:33:15 +0200
-To: linux-uvc-devel@lists.sourceforge.net
-X-Mailer: Apple Mail (2.3273)
-X-Spam-Score: 0.9 (/)
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+ Message-ID:From:Cc:References:To:Subject:Reply-To:Sender:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=SmknH6CzxY7Dn4udvgygA6l/7aJPSjBpQwTs5+fcrlA=; b=nUbbC+vZmFiu+60DtJMUGL00Se
+ M75FOThL6ajQ0ZBbKi+Ur98ke2rP6QFmNbWRf/q1ek/Nw4tYAybnKIzI2dH2zqewFSQcOUaIk15Ps
+ DxBfDCuU1iHKHZ9zW6CyVBjjIebRM4bwqGPDC31RJRuwy7q9ejV841PhFVyJFHaKnuRg=;
+Received: from perceval.ideasonboard.com ([213.167.242.64])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ id 1hdCCO-00FHRK-Sz
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 18 Jun 2019 11:22:53 +0000
+Received: from [192.168.0.20]
+ (cpc89242-aztw30-2-0-cust488.18-1.cable.virginm.net [86.31.129.233])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id ABBFDD5;
+ Tue, 18 Jun 2019 13:05:27 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1560855927;
+ bh=tyVMRWx1THgHswr6IsDB2D8ISX0puYJzY06MBvBugrU=;
+ h=Reply-To:Subject:To:References:Cc:From:Date:In-Reply-To:From;
+ b=ZULVuKd7GPNVFiMe5ssrFiS2g5DkSuLnr467C7M16bCmbiQDSVEskQZpcqCkL+R9z
+ FsTYmqTk/FPmdzkYSs8AQUnUwhQnbMGBfREM6QF/yQjSqmPLKD0sPqww1zHk90zy6C
+ 86IcCLjon3QqV7aigtSBa0IRDloeBbYG5d9Q+ywg=
+To: Andrej Pashnin <kowaraj@gmail.com>, linux-uvc-devel@lists.sourceforge.net
+References: <65F49C97-C200-4BB1-A051-064575B9B729@gmail.com>
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
+ mQINBFYE/WYBEACs1PwjMD9rgCu1hlIiUA1AXR4rv2v+BCLUq//vrX5S5bjzxKAryRf0uHat
+ V/zwz6hiDrZuHUACDB7X8OaQcwhLaVlq6byfoBr25+hbZG7G3+5EUl9cQ7dQEdvNj6V6y/SC
+ rRanWfelwQThCHckbobWiQJfK9n7rYNcPMq9B8e9F020LFH7Kj6YmO95ewJGgLm+idg1Kb3C
+ potzWkXc1xmPzcQ1fvQMOfMwdS+4SNw4rY9f07Xb2K99rjMwZVDgESKIzhsDB5GY465sCsiQ
+ cSAZRxqE49RTBq2+EQsbrQpIc8XiffAB8qexh5/QPzCmR4kJgCGeHIXBtgRj+nIkCJPZvZtf
+ Kr2EAbc6tgg6DkAEHJb+1okosV09+0+TXywYvtEop/WUOWQ+zo+Y/OBd+8Ptgt1pDRyOBzL8
+ RXa8ZqRf0Mwg75D+dKntZeJHzPRJyrlfQokngAAs4PaFt6UfS+ypMAF37T6CeDArQC41V3ko
+ lPn1yMsVD0p+6i3DPvA/GPIksDC4owjnzVX9kM8Zc5Cx+XoAN0w5Eqo4t6qEVbuettxx55gq
+ 8K8FieAjgjMSxngo/HST8TpFeqI5nVeq0/lqtBRQKumuIqDg+Bkr4L1V/PSB6XgQcOdhtd36
+ Oe9X9dXB8YSNt7VjOcO7BTmFn/Z8r92mSAfHXpb07YJWJosQOQARAQABtDBLaWVyYW4gQmlu
+ Z2hhbSA8a2llcmFuLmJpbmdoYW1AaWRlYXNvbmJvYXJkLmNvbT6JAkAEEwEKACoCGwMFCwkI
+ BwIGFQgJCgsCBBYCAwECHgECF4ACGQEFAlnDk/gFCQeA/YsACgkQoR5GchCkYf3X5w/9EaZ7
+ cnUcT6dxjxrcmmMnfFPoQA1iQXr/MXQJBjFWfxRUWYzjvUJb2D/FpA8FY7y+vksoJP7pWDL7
+ QTbksdwzagUEk7CU45iLWL/CZ/knYhj1I/+5LSLFmvZ/5Gf5xn2ZCsmg7C0MdW/GbJ8IjWA8
+ /LKJSEYH8tefoiG6+9xSNp1p0Gesu3vhje/GdGX4wDsfAxx1rIYDYVoX4bDM+uBUQh7sQox/
+ R1bS0AaVJzPNcjeC14MS226mQRUaUPc9250aj44WmDfcg44/kMsoLFEmQo2II9aOlxUDJ+x1
+ xohGbh9mgBoVawMO3RMBihcEjo/8ytW6v7xSF+xP4Oc+HOn7qebAkxhSWcRxQVaQYw3S9iZz
+ 2iA09AXAkbvPKuMSXi4uau5daXStfBnmOfalG0j+9Y6hOFjz5j0XzaoF6Pln0jisDtWltYhP
+ X9LjFVhhLkTzPZB/xOeWGmsG4gv2V2ExbU3uAmb7t1VSD9+IO3Km4FtnYOKBWlxwEd8qOFpS
+ jEqMXURKOiJvnw3OXe9MqG19XdeENA1KyhK5rqjpwdvPGfSn2V+SlsdJA0DFsobUScD9qXQw
+ OvhapHe3XboK2+Rd7L+g/9Ud7ZKLQHAsMBXOVJbufA1AT+IaOt0ugMcFkAR5UbBg5+dZUYJj
+ 1QbPQcGmM3wfvuaWV5+SlJ+WeKIb8ta5Ag0EVgT9ZgEQAM4o5G/kmruIQJ3K9SYzmPishRHV
+ DcUcvoakyXSX2mIoccmo9BHtD9MxIt+QmxOpYFNFM7YofX4lG0ld8H7FqoNVLd/+a0yru5Cx
+ adeZBe3qr1eLns10Q90LuMo7/6zJhCW2w+HE7xgmCHejAwuNe3+7yt4QmwlSGUqdxl8cgtS1
+ PlEK93xXDsgsJj/bw1EfSVdAUqhx8UQ3aVFxNug5OpoX9FdWJLKROUrfNeBE16RLrNrq2ROc
+ iSFETpVjyC/oZtzRFnwD9Or7EFMi76/xrWzk+/b15RJ9WrpXGMrttHUUcYZEOoiC2lEXMSAF
+ SSSj4vHbKDJ0vKQdEFtdgB1roqzxdIOg4rlHz5qwOTynueiBpaZI3PHDudZSMR5Fk6QjFooE
+ XTw3sSl/km/lvUFiv9CYyHOLdygWohvDuMkV/Jpdkfq8XwFSjOle+vT/4VqERnYFDIGBxaRx
+ koBLfNDiiuR3lD8tnJ4A1F88K6ojOUs+jndKsOaQpDZV6iNFv8IaNIklTPvPkZsmNDhJMRHH
+ Iu60S7BpzNeQeT4yyY4dX9lC2JL/LOEpw8DGf5BNOP1KgjCvyp1/KcFxDAo89IeqljaRsCdP
+ 7WCIECWYem6pLwaw6IAL7oX+tEqIMPph/G/jwZcdS6Hkyt/esHPuHNwX4guqTbVEuRqbDzDI
+ 2DJO5FbxABEBAAGJAiUEGAEKAA8CGwwFAlnDlGsFCQeA/gIACgkQoR5GchCkYf1yYRAAq+Yo
+ nbf9DGdK1kTAm2RTFg+w9oOp2Xjqfhds2PAhFFvrHQg1XfQR/UF/SjeUmaOmLSczM0s6XMeO
+ VcE77UFtJ/+hLo4PRFKm5X1Pcar6g5m4xGqa+Xfzi9tRkwC29KMCoQOag1BhHChgqYaUH3yo
+ UzaPwT/fY75iVI+yD0ih/e6j8qYvP8pvGwMQfrmN9YB0zB39YzCSdaUaNrWGD3iCBxg6lwSO
+ LKeRhxxfiXCIYEf3vwOsP3YMx2JkD5doseXmWBGW1U0T/oJF+DVfKB6mv5UfsTzpVhJRgee7
+ 4jkjqFq4qsUGxcvF2xtRkfHFpZDbRgRlVmiWkqDkT4qMA+4q1y/dWwshSKi/uwVZNycuLsz+
+ +OD8xPNCsMTqeUkAKfbD8xW4LCay3r/dD2ckoxRxtMD9eOAyu5wYzo/ydIPTh1QEj9SYyvp8
+ O0g6CpxEwyHUQtF5oh15O018z3ZLztFJKR3RD42VKVsrnNDKnoY0f4U0z7eJv2NeF8xHMuiU
+ RCIzqxX1GVYaNkKTnb/Qja8hnYnkUzY1Lc+OtwiGmXTwYsPZjjAaDX35J/RSKAoy5wGo/YFA
+ JxB1gWThL4kOTbsqqXj9GLcyOImkW0lJGGR3o/fV91Zh63S5TKnf2YGGGzxki+ADdxVQAm+Q
+ sbsRB8KNNvVXBOVNwko86rQqF9drZuw=
+Organization: Ideas on Board
+Message-ID: <1c54abca-1570-5bc5-af68-2d20b086aa90@ideasonboard.com>
+Date: Tue, 18 Jun 2019 12:05:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <65F49C97-C200-4BB1-A051-064575B9B729@gmail.com>
+Content-Language: en-GB
+X-Spam-Score: -0.3 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (kowaraj[at]gmail.com)
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.208.49 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 HTML_MESSAGE           BODY: HTML included in message
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1hcps5-000wMH-EO
-Subject: [linux-uvc-devel] PAN+TILT for Logitech BCC950 ConferenceCam
+ -0.2 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1hdCCO-00FHRK-Sz
+Subject: Re: [linux-uvc-devel] PAN+TILT for Logitech BCC950 ConferenceCam
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,100 +127,82 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6717144018163799495=="
+Reply-To: kieran.bingham@ideasonboard.com
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
+Hi Andrej,
 
---===============6717144018163799495==
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_C4337F4B-FE04-4AF5-9896-1F2D51DFB5A8"
+On 17/06/2019 12:33, Andrej Pashnin wrote:
+> Dear developers,=A0
+> =
 
+> I would like to control (pan-tilt-zoom) the following conference camera:
+>> Bus 001 Device 005: ID 046d:0837 Logitech, Inc. BCC950 ConferenceCam
+> It's a PTZ (pan-tilt-zoom) camera and I can control all 3 parameters
+> with a remote control device.
+> =
 
---Apple-Mail=_C4337F4B-FE04-4AF5-9896-1F2D51DFB5A8
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
+> However, using the=A0*v4l2-ctr*=A0utility I can only change the ZOOM
+> parameter. It doesn't contain neither PAN nor TILT in the list of
+> controllable parameters.
+> =
 
-Dear developers,=20
-
-I would like to control (pan-tilt-zoom) the following conference camera:
-> Bus 001 Device 005: ID 046d:0837 Logitech, Inc. BCC950 ConferenceCam
-It's a PTZ (pan-tilt-zoom) camera and I can control all 3 parameters =
-with a remote control device.
-
-However, using the v4l2-ctr utility I can only change the ZOOM =
-parameter. It doesn't contain neither PAN nor TILT in the list of =
-controllable parameters.
-
-Question #1.=20
-Why?=20
-
-Question #2.
-Is it possible to add this options to the driver? I don't mind writing =
-some linux kernel module if necessary. I just don't know where I should =
-start.
+> *Question #1.=A0*
+> Why? =
 
 
-I also know that it can be controlled programmatically with DirectShow =
-under Windows.=20
+
+Could you list the controls that are provided please?
+
+I.e. the output of :
+	v4l2-ctl -d /dev/video0 -l
+
+(where /dev/video0 is your device, and updated if necessary)
+
+> =
+
+> *Question #2.*
+> Is it possible to add this options to the driver? I don't mind writing
+> some linux kernel module if necessary. I just don't know where I should
+> start.
+
+It depends on how the camera exposes the controls. They could be custom
+properties or non-standard controls from the camera which the windows
+driver knows about specifically?
+
+> I also know that it can be controlled programmatically with DirectShow
+> under Windows.=A0
+> =
+
+> =
+
+> Thank you in advance for any suggestions.
+> =
+
+> Cheers,=A0
+> Andrey
+> =
+
+> =
+
+> _______________________________________________
+> Linux-uvc-devel mailing list
+> Linux-uvc-devel@lists.sourceforge.net
+> https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+> =
 
 
-Thank you in advance for any suggestions.
+-- =
 
-Cheers,=20
-Andrey=
+Regards
+--
+Kieran
 
---Apple-Mail=_C4337F4B-FE04-4AF5-9896-1F2D51DFB5A8
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=us-ascii
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html =
-charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
--webkit-nbsp-mode: space; -webkit-line-break: after-white-space;" =
-class=3D""><div class=3D"">Dear developers,&nbsp;</div><div class=3D""><br=
- class=3D""></div><div class=3D"">I would like to control =
-(pan-tilt-zoom) the following conference camera:</div><blockquote =
-type=3D"cite" class=3D"">Bus 001 Device 005: ID 046d:0837 Logitech, Inc. =
-BCC950 ConferenceCam</blockquote>It's a PTZ (pan-tilt-zoom) camera and I =
-can control all 3 parameters with a remote control device.<div =
-class=3D""><br class=3D""></div><div class=3D""><div class=3D"">However, =
-using the&nbsp;<b class=3D"">v4l2-ctr</b>&nbsp;utility I can only change =
-the ZOOM parameter. It doesn't contain neither PAN nor TILT in the list =
-of controllable parameters.</div><div class=3D""><br class=3D""></div><div=
- class=3D""><b class=3D"">Question #1.&nbsp;</b></div><div =
-class=3D"">Why?&nbsp;</div><div class=3D""><br class=3D""></div><div =
-class=3D""><b class=3D"">Question #2.</b></div><div class=3D"">Is it =
-possible to add this options to the driver? I don't mind writing some =
-linux kernel module if necessary. I just don't know where I should =
-start.</div><div class=3D""><br class=3D""></div><div class=3D""><br =
-class=3D""></div><div class=3D"">I also know that it can be controlled =
-programmatically with DirectShow under Windows.&nbsp;</div><div =
-class=3D""><br class=3D""></div><div class=3D""><br class=3D""></div><div =
-class=3D"">Thank you in advance for any suggestions.</div><div =
-class=3D""><br class=3D""></div><div class=3D"">Cheers,&nbsp;</div><div =
-class=3D"">Andrey</div></div></body></html>=
-
---Apple-Mail=_C4337F4B-FE04-4AF5-9896-1F2D51DFB5A8--
-
-
---===============6717144018163799495==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============6717144018163799495==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
-
---===============6717144018163799495==--
-
