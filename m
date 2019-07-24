@@ -2,126 +2,97 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85F7754FCB
-	for <lists+linux-uvc-devel@lfdr.de>; Tue, 25 Jun 2019 15:06:34 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EBA0732D6
+	for <lists+linux-uvc-devel@lfdr.de>; Wed, 24 Jul 2019 17:35:25 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1hfl9Q-0001Xg-V1; Tue, 25 Jun 2019 13:06:20 +0000
+	id 1hqJIQ-0006J5-Id; Wed, 24 Jul 2019 15:35:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <kieran.bingham@ideasonboard.com>) id 1hfl9P-0001XT-0S
- for linux-uvc-devel@lists.sourceforge.net; Tue, 25 Jun 2019 13:06:19 +0000
+ (envelope-from <phlomos@gmail.com>) id 1hqJIP-0006Ig-Bv
+ for linux-uvc-devel@lists.sourceforge.net; Wed, 24 Jul 2019 15:35:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:Sender:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Mime-Version:To:Date:Message-Id:Subject:
+ Content-Transfer-Encoding:Content-Type:From:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=SY8xmWVPr/kkq5pM6+8NpFFHe0Tm3o0E0Du6OL83Rfc=; b=Bdk0Qqfcfz0hPJO5Ypp0wW17mz
- 0/WPAp6Tc1oCssW86VXC3veHxANtqC5zMJJmnXfruxfmQ5X/YnVHY3qzBTAovHqwsKKMms94tnN2J
- 6vnmntWk0mi+U/S00Kqoz60V8TpYl8RMGAXVh11XS0WnsCVxOs41D5Bs4bbEBC5JPQBU=;
+ bh=erh2ivnXdTNuHlMl45b0gmCfMksQtYYSEdk0dTXBgX8=; b=Hi8cTHOM3q0YXi1I6k9rSB4QGH
+ YfW3Yye3zh6dYX9YStZj2MtktYZCp4y65Y1IIpKHId1JMRnyq9/A658KPq0MMOMkp8eTnzG1raOuo
+ ADQyeStbEweszCTLdY0kNJQ7jkD0u+E80tYwUagv0tcalJUjbaCXy91OI7wNv9wp1zD0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
- Message-ID:From:References:To:Subject:Reply-To:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ h=Mime-Version:To:Date:Message-Id:Subject:Content-Transfer-Encoding:
+ Content-Type:From:Sender:Reply-To:Cc:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=SY8xmWVPr/kkq5pM6+8NpFFHe0Tm3o0E0Du6OL83Rfc=; b=bs5GE55iGXFopKzkMkbPsX0PBx
- dgNMG+rkfLtRSZznoy2p2pha0MVHEn7gI4Fw6KhKBAXfMwOPjllsp0GuyJbjI4RgmFEfmxCD0D4Rz
- +Ibdao8dPSby79IFIcQlcy+rxFRwno8VG9nwcmFkr2iBDCO03KNc6OzajI5W0lM7M2mw=;
-Received: from perceval.ideasonboard.com ([213.167.242.64])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- id 1hfl9S-00DWLX-HA
- for linux-uvc-devel@lists.sourceforge.net; Tue, 25 Jun 2019 13:06:26 +0000
-Received: from [192.168.0.20]
- (cpc89242-aztw30-2-0-cust488.18-1.cable.virginm.net [86.31.129.233])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id A2497510;
- Tue, 25 Jun 2019 15:06:14 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1561467974;
- bh=8yYR+zYOs0hUCVJSsqWkfg3H7+nysNZ2um1veJJdIao=;
- h=Reply-To:Subject:To:References:From:Date:In-Reply-To:From;
- b=daSvae4iYEALcU++kgl0C+E4jonR21XPSh0sFgFbLQkXymrUfkypQOC2c/O5Rl2xt
- 64+nlrMpSAzt5xzzK5hQ9pVovbOSxtR8xabr5PyaPsQ7jr64IWgUJAZxBIUA9J8k+v
- sCaO9P/z6yxVUqUBsy+6mJY65LDNw4spiT6xPLRA=
-To: jerinho <jerinho@yahoo.com>, linux-uvc-devel@lists.sourceforge.net,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-References: <f55aba87-63ac-8404-62dd-4c8d1bc0ff4f@yahoo.com>
- <73a76e45-b06a-90ad-12b4-78ed67d9992a@yahoo.com>
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
- 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
- sbsRB8KNNvVXBOVNwko86rQqF9drZuw=
-Organization: Ideas on Board
-Message-ID: <350efec0-8d65-d8cd-385f-0d951886f12d@ideasonboard.com>
-Date: Tue, 25 Jun 2019 14:06:11 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
-In-Reply-To: <73a76e45-b06a-90ad-12b4-78ed67d9992a@yahoo.com>
-Content-Language: en-GB
+ bh=erh2ivnXdTNuHlMl45b0gmCfMksQtYYSEdk0dTXBgX8=; b=MoBsDQQt2UBeQbJBrf80TzovxD
+ 4LU6sRu5Iku4ozwJjXPCr/p9iKfB4L8sOapa6CuJLQji1pnU3d6zBBGJJ/Bz/bH3evozQC+TU2IdY
+ VRJ/9Cxj3d74jhsROT0prxNn2uTJ2MupcWTaKv8PJITnA8VuZEyXpl/7fGv88bVJC0qo=;
+Received: from mail-ed1-f44.google.com ([209.85.208.44])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.90_1)
+ id 1hqJIO-00GH9j-1j
+ for linux-uvc-devel@lists.sourceforge.net; Wed, 24 Jul 2019 15:35:13 +0000
+Received: by mail-ed1-f44.google.com with SMTP id w20so47481849edd.2
+ for <linux-uvc-devel@lists.sourceforge.net>;
+ Wed, 24 Jul 2019 08:35:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:content-transfer-encoding:subject:message-id:date:to
+ :mime-version; bh=erh2ivnXdTNuHlMl45b0gmCfMksQtYYSEdk0dTXBgX8=;
+ b=tW8+GeGvD/0wEIbOH7rvRxAeiYJ5iLMQq6yg9HrKZnkk+PIEV5vmjmE8Gi0DYpVwlN
+ 3kTL5mQ8jJGWsh8BMRSzsSRJP4xc8MO2BzpNbR3dZxxhqkVl6JW0LnoBpqU9aOO4FeLC
+ Q3fWj9W7CPqvJxrfTT/ZYdfNFBySdKHAYRTT4aGskOlktWra73wkqJkBxNW5akmJWc9P
+ qASaACsz3ZnlExbJOETb4wjrtdi6yDUClnLEqtRIgpAiyrLjg1j0OhPJsg8XErBiTKzc
+ PnPSuCTT9Qn/WjenvMKsGbtSjL85ieYbYDTkb6x8V3/O3AwP916mUY+LcYcl5RAIEfNQ
+ 77mA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:content-transfer-encoding:subject
+ :message-id:date:to:mime-version;
+ bh=erh2ivnXdTNuHlMl45b0gmCfMksQtYYSEdk0dTXBgX8=;
+ b=X5P/WTbJuV+oNOHXl305X182xCx8ywaE1LDWZ1TgBsxfTMizJOxAtdUQN5dKovEVSV
+ CwOMjEA/uOjmkWtFwvDH1L0ZH329xend/+oMTIB0SAYbj/fJuMNQbUv6Vqjp+blDIXP5
+ C+qxF91Pq60iGqCKOedeLTX80jYCKcHCJiQ0sMpwPpl959G8ckumjRHlCsf55OA/QFZb
+ fXyjcFiR4STrpuHHT+D3I/CyuPEcK8reQkf2pheel3SEiaaswmf/6yx6hvEyHOCNsX8t
+ qyrifunnZWX+a24GHPMWI7EgSK9pq6Qa8aFbuFox8XOuIAZvfR0XmfX1exDVmSv33Z3/
+ vQGQ==
+X-Gm-Message-State: APjAAAVk+465DOFrkDDWuWm1+cLtvsLXkZnIgsT8E/Wfu7W7s2HQ3NXg
+ 3xCG8ufTrodtVeoCDSUACKmGw5f79Ps=
+X-Google-Smtp-Source: APXvYqxbC0iHVALzX9nzznQ1gnJu7T3+ZsKC6H28umKNQN7Mx2uGWogtk7nxdAFdOXHpoyY8E3tPow==
+X-Received: by 2002:a50:8be8:: with SMTP id n37mr72025259edn.216.1563982505175; 
+ Wed, 24 Jul 2019 08:35:05 -0700 (PDT)
+Received: from cmumac2.unige.ch (cmumac2.unige.ch. [129.194.88.23])
+ by smtp.gmail.com with ESMTPSA id a18sm6433516ejp.2.2019.07.24.08.35.03
+ for <linux-uvc-devel@lists.sourceforge.net>
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 24 Jul 2019 08:35:04 -0700 (PDT)
+From: =?utf-8?Q?Heiri_M=C3=BCller?= <phlomos@gmail.com>
+X-Priority: 5
+Message-Id: <4C450CB0-E2FB-4788-9E12-7808B0B2C237@gmail.com>
+Date: Wed, 24 Jul 2019 17:35:03 +0200
+To: linux-uvc-devel@lists.sourceforge.net
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+X-Mailer: Apple Mail (2.3445.104.11)
 X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: devicehunt.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (phlomos[at]gmail.com)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.208.44 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1hfl9S-00DWLX-HA
-Subject: Re: [linux-uvc-devel] Supported device missing. Realtek Integrated
- Webcam. 0bda:5751
+X-Headers-End: 1hqJIO-00GH9j-1j
+Subject: [linux-uvc-devel] 0x5a3:0x9230: Resource unavailable
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -133,69 +104,27 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: kieran.bingham@ideasonboard.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-Hi Jerinho,
-
-On 25/06/2019 13:55, jerinho via Linux-uvc-devel wrote:
-> Hi. I just want to report on a missing device for support by USB Video
-> Class driver. Details is as below
-> 
-> Device details
-> 
->  1. Vendor Id / Device Id : 0bda / 5751
->  2. Device name : Realtek Integrated Webcam
->     <https://devicehunt.com/view/type/usb/vendor/0BDA/device/5751>
->  3. Vendor : Realtek Semiconductor Inc.
-> 
-> My workstation details
-> 
->  1. Dell Venue 11 Pro 7140
->  2. Linux kernel where the last the device was known working : 4.4.0
->  3. Linux kernel where the device was known failed : 4.15.0-52-generic
->  4. My operating system where the device failed :
-
-So you are reporting that it *was* working, and now fails?
-
-Could you please provide a full kernel dmesg log?
-
-Are any video nodes present? (ls -alh /dev/video*)
-
-What are you using to test this webcam, and what makes you believe it is
-now failing? Are you using guvcview? cheese? google-hangouts/skype or such?
-
-Please try to describe exactly what failure you are seeing.
-
-As you are using ubuntu, you might also want to log a bug with them.
-
-Regards
---
-Kieran
-
-> 
-> 
->           Ubuntu 18.10 (Cosmic Cuttlefish)
-> 
->     <http://releases.ubuntu.com/18.10/>
-> 
-> I hope your team can please fix the issue and include the device into
-> the supported list. Please let me know if your team need any extra
-> information regarding this. And thank you for your concern and support
-> for this. Looking forward to cooperate.
-> 
-> 
-> 
-> _______________________________________________
-> Linux-uvc-devel mailing list
-> Linux-uvc-devel@lists.sourceforge.net
-> https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
-> 
-
-
-_______________________________________________
-Linux-uvc-devel mailing list
-Linux-uvc-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+SGVsbG8sCgoKSSBib3VnaHQgc29tZSBDaGluYSBVU0IgMi4wIENhbWVyYSAoQVJDIEludGVybmF0
+aW9uYWwsIFRyYW5zRGltZW5zaW9uLU5IIExMQyksIHRoYXQgc2F5cywgaXQgaGFzIFVWQyBzdXBw
+b3J0LiBJdHMgVVNCIElEIGlzIDB4NWEzOjB4OTIzMC4KSSBhbSBvbiBhIFNNUCBEZWJpYW4gNC45
+LjE2OCBrZXJuZWwuClRoZSBVVkMgZHJpdmVycyBzZWVtIHRvIGJlIGxvYWRlZDoKCnV2Y3ZpZGVv
+ICAgICAgICAgICAgICAgOTAxMTIgIDEKdmlkZW9idWYyX3ZtYWxsb2MgICAgICAxNjM4NCAgMSB1
+dmN2aWRlbwp2aWRlb2J1ZjJfdjRsMiAgICAgICAgIDI0NTc2ICAyIHV2Y3ZpZGVvLGN4MjM4ODUK
+dmlkZW9idWYyX2NvcmUgICAgICAgICA0MDk2MCAgNCB1dmN2aWRlbyx2aWRlb2J1ZjJfZHZiLGN4
+MjM4ODUsdmlkZW9idWYyX3Y0bDIKdmlkZW9kZXYgICAgICAgICAgICAgIDE4MDIyNCAgNyBjeDIz
+NDF4LHV2Y3ZpZGVvLHY0bDJfY29tbW9uLHZpZGVvYnVmMl9jb3JlLGN4MjM4ODUsdmlkZW9idWYy
+X3Y0bDIKbWVkaWEgICAgICAgICAgICAgICAgICA0MDk2MCAgMyB1dmN2aWRlbyx2aWRlb2Rldixz
+aTIxNTcKdXNiY29yZSAgICAgICAgICAgICAgIDI1Mzk1MiAgNiB1dmN2aWRlbyxlaGNpX2hjZCx4
+aGNpX3BjaSxidHVzYix4aGNpX2hjZCxlaGNpX3BjaQoKV2hlbiBJIHRyeSB0byBjYXB0dXJlIGFu
+IGltYWdlIHdpdGggR3V2Y3ZpZXcsIHRoZSBsb2dzIHNheTogIlY0TDJfQ09SRTogQ291bGQgbm90
+IGdyYWIgaW1hZ2UgKHNlbGVjdCB0aW1lb3V0KTogUmVzb3VyY2UgdGVtcG9yYXJpbHkgdW5hdmFp
+bGFibGXigJ0uCkkgYW0gYSBjb21wbGV0ZSBuZXdiaWUgd2l0aCBjYW1lcmFzIG9uIExpbnV4LCBz
+byBwbGVhc2UgZm9yZ2l2ZSwgaWYgdGhlIHNvbHV0aW9uIGlzIG9idmlvdXMuCgoKVGhhbmtzIGZv
+ciB5b3VyIGhlbHAhCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXV2Yy1kZXZlbCBtYWlsaW5nIGxpc3QKTGludXgtdXZjLWRldmVsQGxpc3Rz
+LnNvdXJjZWZvcmdlLm5ldApodHRwczovL2xpc3RzLnNvdXJjZWZvcmdlLm5ldC9saXN0cy9saXN0
+aW5mby9saW51eC11dmMtZGV2ZWwK
