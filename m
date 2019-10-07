@@ -2,90 +2,99 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70F1BC9EF8
-	for <lists+linux-uvc-devel@lfdr.de>; Thu,  3 Oct 2019 15:00:07 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D2BCCE36C
+	for <lists+linux-uvc-devel@lfdr.de>; Mon,  7 Oct 2019 15:26:37 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1iG0i2-0007CL-65; Thu, 03 Oct 2019 12:59:54 +0000
+	id 1iHT1n-0004kX-TA; Mon, 07 Oct 2019 13:26:19 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <daniel@rapido.net.br>) id 1iG0i0-0007CD-0z
- for linux-uvc-devel@lists.sourceforge.net; Thu, 03 Oct 2019 12:59:52 +0000
+ (envelope-from <phlomos@gmail.com>) id 1iHT1m-0004kP-52
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 07 Oct 2019 13:26:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Mime-Version:To:Date:Message-Id:Subject:
+ Content-Type:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=0Wp/xWkPFtk/6uyF6hdzujWIQx0Mg1vsfAbOCBeCaFU=; b=VNS/Upv+Q9MItL1KAI3aePzFAr
- 0Vj303/+F9TlYxnhw9+cl3Ngp7c9kzKnjyw1y58fL9InEcBusZzkmPEtyREVZkC0LE7zPlbVd+jYI
- ENLmRGjyJpE5SppncrfrfAuZp36XHW3uy7iju0dImH9RWy4KNeVAvVxAu0sPdJhLWdpI=;
+ bh=CmRQsgtVCcA1bfBySk+B9UB3dbQTEq9EJa2mWGuq/xs=; b=KvgXiRmcQQdlwx+tfO8BSgUszF
+ 5V4Z+oekxXCV89UniJESS92JToOvyAGfolN+Sy0ixPJkiVgnk6fPjLKIii4d4fyNTnKgff95tjF9U
+ iQMX904gi6cItShQ0Tzek+enN5LQBoJOrjLFzcIaRM6B2CspexanysTkAUkk0QCogzIw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ h=Mime-Version:To:Date:Message-Id:Subject:Content-Type:From:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=0Wp/xWkPFtk/6uyF6hdzujWIQx0Mg1vsfAbOCBeCaFU=; b=a
- HZlCcy2z2aW24HIM4KjNosPoy7O0FId3sUh8mdLW+pfYL97gmQnBiMib3RdmTNWzyf2xfbavIdKqD
- RSwdF/lBLYHm26A3UtYJq3fYd8oxnmxMeXmQZUYklmmNH+UbupmhPhb7H0EwF4b0FyBXMjBoiog3r
- e4gCu3dm/M7DSZp8=;
-Received: from mail-wm1-f66.google.com ([209.85.128.66])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=CmRQsgtVCcA1bfBySk+B9UB3dbQTEq9EJa2mWGuq/xs=; b=C
+ yJ790ZKJUpG5mdQCfS3QvX0fDM21ZfPmjO9dqPLoGmbmdK0d7qDKtwgeW5vC8gbhdHASf6zo0YHW9
+ /s53+4cQHbziHcWXYQR0SIOgNaG8BDEFFGwY7RqmH4XJpWpB39wFX2H1+CvuWYqQdFklmDSzce09r
+ a/FBMuEog+rzgTbs=;
+Received: from mail-ed1-f45.google.com ([209.85.208.45])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1iG0hu-00FZaY-NK
- for linux-uvc-devel@lists.sourceforge.net; Thu, 03 Oct 2019 12:59:51 +0000
-Received: by mail-wm1-f66.google.com with SMTP id y21so2244420wmi.0
+ id 1iHT1i-008hwF-V4
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 07 Oct 2019 13:26:18 +0000
+Received: by mail-ed1-f45.google.com with SMTP id c4so12454986edl.0
  for <linux-uvc-devel@lists.sourceforge.net>;
- Thu, 03 Oct 2019 05:59:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=rapido-net-br.20150623.gappssmtp.com; s=20150623;
- h=mime-version:from:date:message-id:subject:to;
- bh=0Wp/xWkPFtk/6uyF6hdzujWIQx0Mg1vsfAbOCBeCaFU=;
- b=isXRmFaUYAhKOIjJ1Ad+OIrwk1Z4U/5bO/hJ2piITCLy6TUVsplAsUgE3zM8YNN9Xn
- DTEG8uf2XMa0g/g9EAWSuV8jc6vP3qfL4wF8IVc6qDZUcXNq9+51cPNXJC1MQ6EgWSFU
- BkCw0EpTldRKaqyvsSwhBVQPZVSZsZSHfiaGdG0gLS/TGpYOHqWq2G/gNJvBb/fTrNp6
- mB19WZAvWYqdTahh4Lu6bAirJtuscBUeMJAbuRtXWyzhYxnBP9ZjnPhWtUS6EzPkhFpI
- XSg6j6I3qksiyk5dzNd9wPoc2Vn8xrk8PBqu4jDCx6gSJCcTCbNmc2387kuhOsJ8CS+M
- MGSw==
+ Mon, 07 Oct 2019 06:26:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:subject:message-id:date:to:mime-version;
+ bh=CmRQsgtVCcA1bfBySk+B9UB3dbQTEq9EJa2mWGuq/xs=;
+ b=cyRZakbjIxJxogk1XHs2MrMMOpZzKEIy+U11+kF74Fm5JtV4pgpZzNuST47gzMOUhQ
+ NIw77Fa6uihMCTUT0rG1sKYlY9wsTpetxx7e/l8UOvKurtIhgIqW1b9vtQ21iFwCTu6M
+ RcuytEsmgaydQElr3UN81clo+Spl1e79F3obHPSv+QxKOth4761S3ofA1wyGvTEBZMtV
+ F3vZxBDKJx8n+bqYhf6QrLjZ2jcOqLU8C0JuJ0pFqnTGy/s74f/TZux8UHom8etwqDlB
+ wqywhPVilBlognLdhBLrs4j8iVNi/d2HkLn6jp7aKeiPileu9lyvcVFN3vdPzXlwsyt1
+ djuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=0Wp/xWkPFtk/6uyF6hdzujWIQx0Mg1vsfAbOCBeCaFU=;
- b=PcUOO1LjQtsnm7IpFGxznDdbn6TWxCjlaDAbhnX7I383aB9oD2RHtq8virpvKz6wr6
- 2EU/AeiXwC4QHzKXTxq8IlMl68U4HwCq3ckkPtTjoiCC/ETldvxiP5bfKsmav5YAtD9J
- gFx6/Elpnk338XCWpjyTKC0+OvodcQscu6e1yNjCwWALYz68O7v/vow/hhqaEutZB1AT
- oeOsno9eJrjKbNhmKBCMUJyiMUJDcXgr/WClVuJOVxWNBNfQnEjsc2zeWtaIT+PPSYSZ
- aDxgHjnlMHJ3YmA6DQQs/cNQTSr52K5i8PHI80Ia7fH18GBn+zSA4XMbDOqn24RbnRVv
- MlEQ==
-X-Gm-Message-State: APjAAAUHWEEJK3v6fatsm5cTrad055q7qzhlgUciTKBllXtkO8BbTimR
- LbSpDmC2uPjEYru/b+m1dbo51f7gOAFVRcVyjFd14YMpG+g=
-X-Google-Smtp-Source: APXvYqwbtV3rDB9UaTJSJAi6LTnAXu16YF7zowsRvZ+KEHGa49IBCe/A7ofjoZHDUs+rTxgilEkwHbMCAocGbhDMe+A=
-X-Received: by 2002:a1c:1a4b:: with SMTP id a72mr6750966wma.44.1570106237153; 
- Thu, 03 Oct 2019 05:37:17 -0700 (PDT)
-MIME-Version: 1.0
-From: Daniel Wolff <daniel@rapido.net.br>
-Date: Thu, 3 Oct 2019 09:37:06 -0300
-Message-ID: <CAK3-BP6G6TXCgmy5Za5zVoF8F2L3RmgmmUokkWxgEL3eb-huyA@mail.gmail.com>
-To: linux-uvc-devel@lists.sourceforge.net
-Content-Type: multipart/mixed; boundary="00000000000086b32e059400d876"
-X-Spam-Score: 0.0 (/)
+ h=x-gm-message-state:from:subject:message-id:date:to:mime-version;
+ bh=CmRQsgtVCcA1bfBySk+B9UB3dbQTEq9EJa2mWGuq/xs=;
+ b=cP2ag+VZI9R2E4QVMhsYV5dpVmvEsni1OA4sR21eC/XATH5wkMdIlQTmdLj9m7Ef5C
+ cizD9MbJdRr5vCz+R2o6wv3QKaedJb1tMBZZu36Ys46iDfc8hfZ3n/RbWy0PdFROuZID
+ e4VtnUHaQfYENwmd9PNXFZofI5gRVK4yOGKExY17FGtWvytghuuL6wbsaqUDOY/FOehC
+ oVXm8V7n60HgWmmpAsMp7g/AyiDqvlrDHDFt8cjveciid4f1ySabywnmuhDVDUFHXNEt
+ u0M1ZIHHJPOJW6fbP/Ci4t9LloU4N/e1kyiaW8HsQxUSZEhwkkCV/FI9wnchjOaaR0Yc
+ ZbCQ==
+X-Gm-Message-State: APjAAAWZfm96ibIsC+y2wSa4pMt5Y+Ci9UuOESYQDlgr1UDWbu9TObz0
+ v+WgKYhuJy9X0Pk7PKRCNjPkq494
+X-Google-Smtp-Source: APXvYqy3GmBAExH00ba/hNcyJAH3lmxTKCmduZrIxnQzno/CL9kXNVUCcHtuyZBxWJk//rC3gFilPQ==
+X-Received: by 2002:a50:fa09:: with SMTP id b9mr29039161edq.165.1570454767641; 
+ Mon, 07 Oct 2019 06:26:07 -0700 (PDT)
+Received: from cmumac2.unige.ch (cmumac2.unige.ch. [129.194.88.23])
+ by smtp.gmail.com with ESMTPSA id 60sm3334870edg.10.2019.10.07.06.26.05
+ for <linux-uvc-devel@lists.sourceforge.net>
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 07 Oct 2019 06:26:06 -0700 (PDT)
+From: =?utf-8?Q?Heiri_M=C3=BCller?= <phlomos@gmail.com>
+X-Priority: 5
+Message-Id: <BB396BFE-331D-48D6-8D22-C5717D0762C3@gmail.com>
+Date: Mon, 7 Oct 2019 15:26:03 +0200
+To: STB via Linux-uvc-devel <linux-uvc-devel@lists.sourceforge.net>
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+X-Mailer: Apple Mail (2.3445.104.11)
+X-Spam-Score: 0.9 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.128.66 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (phlomos[at]gmail.com)
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.128.66 listed in wl.mailspike.net]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ [209.85.208.45 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.208.45 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1iG0hu-00FZaY-NK
-Subject: [linux-uvc-devel] UVC webcam isn't creating the device properly
- (0c45:6365)
+X-Headers-End: 1iHT1i-008hwF-V4
+Subject: [linux-uvc-devel] ARC International
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,1471 +106,3429 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
+Content-Type: multipart/mixed; boundary="===============6566277610168211265=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
---00000000000086b32e059400d876
-Content-Type: text/plain; charset="UTF-8"
 
-Hi,
+--===============6566277610168211265==
+Content-Type: multipart/alternative;
+	boundary="Apple-Mail=_2A3120E5-47F1-462F-B5B3-3CBE077957F3"
 
-I've got a brand new Dell Latitude 5400 Laptop, with a webcam that
-isn't working.
-I've already tried all the quirks in the uvcvideo module, but none of
-them worked, unfortunately.
 
-With the files that I'm sending with this message, you will be able to
-see the specifics of the device.
+--Apple-Mail=_2A3120E5-47F1-462F-B5B3-3CBE077957F3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
 
-If I can do another tests to help you guys, please let me know.
+Hello,
 
-It would be nice if anybody can point me to right direction, regarding
-contributions of code and debugging, so I can be able to "scratch my
-on itch".
 
-Thanks anyway!
+I have a lot of problems with this camera: 05a3:9230
 
-Att,
-Wolff
+# lsusb -d 05a3:9230 -v
 
---00000000000086b32e059400d876
-Content-Type: text/x-log; charset="UTF-8"; name="dmesg.log"
-Content-Disposition: attachment; filename="dmesg.log"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k1aoonc00>
-X-Attachment-Id: f_k1aoonc00
+Bus 003 Device 004: ID 05a3:9230 ARC International Camera
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.00
+  bDeviceClass          239 Miscellaneous Device
+  bDeviceSubClass         2=20
+  bDeviceProtocol         1 Interface Association
+  bMaxPacketSize0        64
+  idVendor           0x05a3 ARC International
+  idProduct          0x9230 Camera
+  bcdDevice            1.00
+  iManufacturer           2 HD Camera Manufacturer
+  iProduct                1 USB 2.0 Camera
+  iSerial                 0=20
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x028f
+    bNumInterfaces          2
+    bConfigurationValue     1
+    iConfiguration          0=20
+    bmAttributes         0x80
+      (Bus Powered)
+    MaxPower              500mA
+    Interface Association:
+      bLength                 8
+      bDescriptorType        11
+      bFirstInterface         0
+      bInterfaceCount         2
+      bFunctionClass         14 Video
+      bFunctionSubClass       3 Video Interface Collection
+      bFunctionProtocol       0=20
+      iFunction               5 HD USB Camera
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      1 Video Control
+      bInterfaceProtocol      0=20
+      iInterface              5 HD USB Camera
+      VideoControl Interface Descriptor:
+        bLength                13
+        bDescriptorType        36
+        bDescriptorSubtype      1 (HEADER)
+        bcdUVC               1.00
+        wTotalLength       0x004d
+        dwClockFrequency       15.000000MHz
+        bInCollection           1
+        baInterfaceNr( 0)       1
+      VideoControl Interface Descriptor:
+        bLength                 9
+        bDescriptorType        36
+        bDescriptorSubtype      3 (OUTPUT_TERMINAL)
+        bTerminalID             5
+        wTerminalType      0x0101 USB Streaming
+        bAssocTerminal          0
+        bSourceID               3
+        iTerminal               0=20
+      VideoControl Interface Descriptor:
+        bLength                26
+        bDescriptorType        36
+        bDescriptorSubtype      6 (EXTENSION_UNIT)
+        bUnitID                 3
+        guidExtensionCode         {28f03370-6311-4a2e-ba2c-6890eb334016}
+        bNumControl             8
+        bNrPins                 1
+        baSourceID( 0)          2
+        bControlSize            1
+        bmControls( 0)       0x1f
+        iExtension              0=20
+      VideoControl Interface Descriptor:
+        bLength                18
+        bDescriptorType        36
+        bDescriptorSubtype      2 (INPUT_TERMINAL)
+        bTerminalID             1
+        wTerminalType      0x0201 Camera Sensor
+        bAssocTerminal          0
+        iTerminal               0=20
+        wObjectiveFocalLengthMin      0
+        wObjectiveFocalLengthMax      0
+        wOcularFocalLength            0
+        bControlSize                  3
+        bmControls           0x0002006e
+          Auto-Exposure Mode
+          Auto-Exposure Priority
+          Exposure Time (Absolute)
+          Focus (Absolute)
+          Focus (Relative)
+          Focus, Auto
+      VideoControl Interface Descriptor:
+        bLength                11
+        bDescriptorType        36
+        bDescriptorSubtype      5 (PROCESSING_UNIT)
+      Warning: Descriptor too short
+        bUnitID                 2
+        bSourceID               1
+        wMaxMultiplier          0
+        bControlSize            2
+        bmControls     0x0000177f
+          Brightness
+          Contrast
+          Hue
+          Saturation
+          Sharpness
+          Gamma
+          White Balance Temperature
+          Backlight Compensation
+          Gain
+          Power Line Frequency
+          White Balance Temperature, Auto
+        iProcessing             0=20
+        bmVideoStandards     0x55
+          None
+          PAL - 625/50
+          NTSC - 625/50
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x83  EP 3 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0010  1x 16 bytes
+        bInterval               6
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       0
+      bNumEndpoints           0
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              5 HD USB Camera
+      VideoStreaming Interface Descriptor:
+        bLength                            15
+        bDescriptorType                    36
+        bDescriptorSubtype                  1 (INPUT_HEADER)
+        bNumFormats                         2
+        wTotalLength                   0x01b3
+        bEndPointAddress                  129
+        bmInfo                              0
+        bTerminalLink                       5
+        bStillCaptureMethod                 2
+        bTriggerSupport                     0
+        bTriggerUsage                       0
+        bControlSize                        1
+        bmaControls( 0)                     0
+        bmaControls( 1)                     0
+      VideoStreaming Interface Descriptor:
+        bLength                            11
+        bDescriptorType                    36
+        bDescriptorSubtype                  6 (FORMAT_MJPEG)
+        bFormatIndex                        1
+        bNumFrameDescriptors                6
+        bFlags                              0
+          Fixed-size samples: No
+        bDefaultFrameIndex                  1
+        bAspectRatioX                       0
+        bAspectRatioY                       0
+        bmInterlaceFlags                 0x00
+          Interlaced stream or variable: No
+          Fields per frame: 1 fields
+          Field 1 first: No
+          Field pattern: Field 1 only
+        bCopyProtect                        0
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  7 (FRAME_MJPEG)
+        bFrameIndex                         1
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                           1920
+        wHeight                          1080
+        dwMinBitRate                1028651672
+        dwMaxBitRate                1028651672
+        dwMaxVideoFrameBufferSize     4147789
+        dwDefaultFrameInterval         322580
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            322580
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  7 (FRAME_MJPEG)
+        bFrameIndex                         2
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                            640
+        wHeight                           480
+        dwMinBitRate                590881431
+        dwMaxBitRate                590881431
+        dwMaxVideoFrameBufferSize      614989
+        dwDefaultFrameInterval          83263
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)             83263
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  7 (FRAME_MJPEG)
+        bFrameIndex                         3
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                            800
+        wHeight                           600
+        dwMinBitRate                461082720
+        dwMaxBitRate                461082720
+        dwMaxVideoFrameBufferSize      960589
+        dwDefaultFrameInterval         166666
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            166666
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  7 (FRAME_MJPEG)
+        bFrameIndex                         4
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                           1280
+        wHeight                           720
+        dwMinBitRate                885018720
+        dwMaxBitRate                885018720
+        dwMaxVideoFrameBufferSize     1843789
+        dwDefaultFrameInterval         166666
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            166666
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  7 (FRAME_MJPEG)
+        bFrameIndex                         5
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                           1280
+        wHeight                          1024
+        dwMinBitRate                650263192
+        dwMaxBitRate                650263192
+        dwMaxVideoFrameBufferSize     2622029
+        dwDefaultFrameInterval         322580
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            322580
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  7 (FRAME_MJPEG)
+        bFrameIndex                         6
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                            320
+        wHeight                           240
+        dwMinBitRate                148144791
+        dwMaxBitRate                148144791
+        dwMaxVideoFrameBufferSize      154189
+        dwDefaultFrameInterval          83263
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)             83263
+      VideoStreaming Interface Descriptor:
+        bLength                             6
+        bDescriptorType                    36
+        bDescriptorSubtype                 13 (COLORFORMAT)
+        bColorPrimaries                     1 (BT.709,sRGB)
+        bTransferCharacteristics            1 (BT.709)
+        bMatrixCoefficients                 4 (SMPTE 170M (BT.601))
+      VideoStreaming Interface Descriptor:
+        bLength                            27
+        bDescriptorType                    36
+        bDescriptorSubtype                  4 (FORMAT_UNCOMPRESSED)
+        bFormatIndex                        2
+        bNumFrameDescriptors                6
+        guidFormat                            =
+{32595559-0000-0010-8000-00aa00389b71}
+        bBitsPerPixel                      16
+        bDefaultFrameIndex                  1
+        bAspectRatioX                       0
+        bAspectRatioY                       0
+        bmInterlaceFlags                 0x00
+          Interlaced stream or variable: No
+          Fields per frame: 2 fields
+          Field 1 first: No
+          Field pattern: Field 1 only
+        bCopyProtect                        0
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  5 (FRAME_UNCOMPRESSED)
+        bFrameIndex                         1
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                           1920
+        wHeight                          1080
+        dwMinBitRate                199065600
+        dwMaxBitRate                199065600
+        dwMaxVideoFrameBufferSize     4147200
+        dwDefaultFrameInterval        1666666
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)           1666666
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  5 (FRAME_UNCOMPRESSED)
+        bFrameIndex                         2
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                            640
+        wHeight                           480
+        dwMinBitRate                152371200
+        dwMaxBitRate                152371200
+        dwMaxVideoFrameBufferSize      614400
+        dwDefaultFrameInterval         322580
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            322580
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  5 (FRAME_UNCOMPRESSED)
+        bFrameIndex                         3
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                            800
+        wHeight                           600
+        dwMinBitRate                161280000
+        dwMaxBitRate                161280000
+        dwMaxVideoFrameBufferSize      960000
+        dwDefaultFrameInterval         476190
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            476190
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  5 (FRAME_UNCOMPRESSED)
+        bFrameIndex                         4
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                           1280
+        wHeight                           720
+        dwMinBitRate                132710400
+        dwMaxBitRate                132710400
+        dwMaxVideoFrameBufferSize     1843200
+        dwDefaultFrameInterval        1111111
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)           1111111
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  5 (FRAME_UNCOMPRESSED)
+        bFrameIndex                         5
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                           1280
+        wHeight                          1024
+        dwMinBitRate                125829120
+        dwMaxBitRate                125829120
+        dwMaxVideoFrameBufferSize     2621440
+        dwDefaultFrameInterval        1666666
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)           1666666
+      VideoStreaming Interface Descriptor:
+        bLength                            30
+        bDescriptorType                    36
+        bDescriptorSubtype                  5 (FRAME_UNCOMPRESSED)
+        bFrameIndex                         6
+        bmCapabilities                   0x00
+          Still image unsupported
+        wWidth                            320
+        wHeight                           240
+        dwMinBitRate                 38092800
+        dwMaxBitRate                 38092800
+        dwMaxVideoFrameBufferSize      153600
+        dwDefaultFrameInterval         322580
+        bFrameIntervalType                  1
+        dwFrameInterval( 0)            322580
+      VideoStreaming Interface Descriptor:
+        bLength                            10
+        bDescriptorType                    36
+        bDescriptorSubtype                  3 (STILL_IMAGE_FRAME)
+        bEndpointAddress                    0
+        bNumImageSizePatterns               1
+        wWidth( 0)                       1920
+        wHeight( 0)                      1080
+        bNumCompressionPatterns             0
+      VideoStreaming Interface Descriptor:
+        bLength                             6
+        bDescriptorType                    36
+        bDescriptorSubtype                 13 (COLORFORMAT)
+        bColorPrimaries                     1 (BT.709,sRGB)
+        bTransferCharacteristics            1 (BT.709)
+        bMatrixCoefficients                 4 (SMPTE 170M (BT.601))
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       1
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              0=20
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            5
+          Transfer Type            Isochronous
+          Synch Type               Asynchronous
+          Usage Type               Data
+        wMaxPacketSize     0x0080  1x 128 bytes
+        bInterval               1
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       2
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              0=20
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            5
+          Transfer Type            Isochronous
+          Synch Type               Asynchronous
+          Usage Type               Data
+        wMaxPacketSize     0x0100  1x 256 bytes
+        bInterval               1
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       3
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              0=20
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            5
+          Transfer Type            Isochronous
+          Synch Type               Asynchronous
+          Usage Type               Data
+        wMaxPacketSize     0x0320  1x 800 bytes
+        bInterval               1
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       4
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              0=20
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            5
+          Transfer Type            Isochronous
+          Synch Type               Asynchronous
+          Usage Type               Data
+        wMaxPacketSize     0x0b20  2x 800 bytes
+        bInterval               1
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       5
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              0=20
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            5
+          Transfer Type            Isochronous
+          Synch Type               Asynchronous
+          Usage Type               Data
+        wMaxPacketSize     0x1320  3x 800 bytes
+        bInterval               1
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       6
+      bNumEndpoints           1
+      bInterfaceClass        14 Video
+      bInterfaceSubClass      2 Video Streaming
+      bInterfaceProtocol      0=20
+      iInterface              0=20
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            5
+          Transfer Type            Isochronous
+          Synch Type               Asynchronous
+          Usage Type               Data
+        wMaxPacketSize     0x1400  3x 1024 bytes
+        bInterval               1
+Device Qualifier (for other device speed):
+  bLength                10
+  bDescriptorType         6
+  bcdUSB               2.00
+  bDeviceClass          239 Miscellaneous Device
+  bDeviceSubClass         2=20
+  bDeviceProtocol         1 Interface Association
+  bMaxPacketSize0        64
+  bNumConfigurations      1
+can't get debug descriptor: Resource temporarily unavailable
+Device Status:     0x0002
+  (Bus Powered)
+  Remote Wakeup Enabled
 
-WyAgICAwLjAwMDAwMF0gTGludXggdmVyc2lvbiA1LjAuMC0yOS1nZW5lcmljIChidWlsZGRAbGN5
-MDEtYW1kNjQtMDMwKSAoZ2NjIHZlcnNpb24gOC4zLjAgKFVidW50dSA4LjMuMC02dWJ1bnR1MSkp
-ICMzMS1VYnVudHUgU01QIFRodSBTZXAgMTIgMTM6MDU6MzIgVVRDIDIwMTkgKFVidW50dSA1LjAu
-MC0yOS4zMS1nZW5lcmljIDUuMC4yMSkKWyAgICAwLjAwMDAwMF0gQ29tbWFuZCBsaW5lOiBCT09U
-X0lNQUdFPS92bWxpbnV6LTUuMC4wLTI5LWdlbmVyaWMgcm9vdD0vZGV2L21hcHBlci91YnVudHUt
-LXZnLXJvb3Qgcm8gcXVpZXQgc3BsYXNoIHZ0LmhhbmRvZmY9MQpbICAgIDAuMDAwMDAwXSBLRVJO
-RUwgc3VwcG9ydGVkIGNwdXM6ClsgICAgMC4wMDAwMDBdICAgSW50ZWwgR2VudWluZUludGVsClsg
-ICAgMC4wMDAwMDBdICAgQU1EIEF1dGhlbnRpY0FNRApbICAgIDAuMDAwMDAwXSAgIEh5Z29uIEh5
-Z29uR2VudWluZQpbICAgIDAuMDAwMDAwXSAgIENlbnRhdXIgQ2VudGF1ckhhdWxzClsgICAgMC4w
-MDAwMDBdIHg4Ni9mcHU6IFN1cHBvcnRpbmcgWFNBVkUgZmVhdHVyZSAweDAwMTogJ3g4NyBmbG9h
-dGluZyBwb2ludCByZWdpc3RlcnMnClsgICAgMC4wMDAwMDBdIHg4Ni9mcHU6IFN1cHBvcnRpbmcg
-WFNBVkUgZmVhdHVyZSAweDAwMjogJ1NTRSByZWdpc3RlcnMnClsgICAgMC4wMDAwMDBdIHg4Ni9m
-cHU6IFN1cHBvcnRpbmcgWFNBVkUgZmVhdHVyZSAweDAwNDogJ0FWWCByZWdpc3RlcnMnClsgICAg
-MC4wMDAwMDBdIHg4Ni9mcHU6IFN1cHBvcnRpbmcgWFNBVkUgZmVhdHVyZSAweDAwODogJ01QWCBi
-b3VuZHMgcmVnaXN0ZXJzJwpbICAgIDAuMDAwMDAwXSB4ODYvZnB1OiBTdXBwb3J0aW5nIFhTQVZF
-IGZlYXR1cmUgMHgwMTA6ICdNUFggQ1NSJwpbICAgIDAuMDAwMDAwXSB4ODYvZnB1OiB4c3RhdGVf
-b2Zmc2V0WzJdOiAgNTc2LCB4c3RhdGVfc2l6ZXNbMl06ICAyNTYKWyAgICAwLjAwMDAwMF0geDg2
-L2ZwdTogeHN0YXRlX29mZnNldFszXTogIDgzMiwgeHN0YXRlX3NpemVzWzNdOiAgIDY0ClsgICAg
-MC4wMDAwMDBdIHg4Ni9mcHU6IHhzdGF0ZV9vZmZzZXRbNF06ICA4OTYsIHhzdGF0ZV9zaXplc1s0
-XTogICA2NApbICAgIDAuMDAwMDAwXSB4ODYvZnB1OiBFbmFibGVkIHhzdGF0ZSBmZWF0dXJlcyAw
-eDFmLCBjb250ZXh0IHNpemUgaXMgOTYwIGJ5dGVzLCB1c2luZyAnY29tcGFjdGVkJyBmb3JtYXQu
-ClsgICAgMC4wMDAwMDBdIEJJT1MtcHJvdmlkZWQgcGh5c2ljYWwgUkFNIG1hcDoKWyAgICAwLjAw
-MDAwMF0gQklPUy1lODIwOiBbbWVtIDB4MDAwMDAwMDAwMDAwMDAwMC0weDAwMDAwMDAwMDAwOWRm
-ZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSBCSU9TLWU4MjA6IFttZW0gMHgwMDAwMDAwMDAwMDll
-MDAwLTB4MDAwMDAwMDAwMDA5ZWZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gQklPUy1lODIw
-OiBbbWVtIDB4MDAwMDAwMDAwMDA5ZjAwMC0weDAwMDAwMDAwMDAwOWZmZmZdIHVzYWJsZQpbICAg
-IDAuMDAwMDAwXSBCSU9TLWU4MjA6IFttZW0gMHgwMDAwMDAwMDAwMGEwMDAwLTB4MDAwMDAwMDAw
-MDBmZmZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gQklPUy1lODIwOiBbbWVtIDB4MDAwMDAw
-MDAwMDEwMDAwMC0weDAwMDAwMDAwM2ZmZmZmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSBCSU9T
-LWU4MjA6IFttZW0gMHgwMDAwMDAwMDQwMDAwMDAwLTB4MDAwMDAwMDA0MDNmZmZmZl0gcmVzZXJ2
-ZWQKWyAgICAwLjAwMDAwMF0gQklPUy1lODIwOiBbbWVtIDB4MDAwMDAwMDA0MDQwMDAwMC0weDAw
-MDAwMDAwNzA2MGNmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSBCSU9TLWU4MjA6IFttZW0gMHgw
-MDAwMDAwMDcwNjBkMDAwLTB4MDAwMDAwMDA3MDYwZGZmZl0gQUNQSSBOVlMKWyAgICAwLjAwMDAw
-MF0gQklPUy1lODIwOiBbbWVtIDB4MDAwMDAwMDA3MDYwZTAwMC0weDAwMDAwMDAwNzA2MGVmZmZd
-IHJlc2VydmVkClsgICAgMC4wMDAwMDBdIEJJT1MtZTgyMDogW21lbSAweDAwMDAwMDAwNzA2MGYw
-MDAtMHgwMDAwMDAwMDc4MmQ4ZmZmXSB1c2FibGUKWyAgICAwLjAwMDAwMF0gQklPUy1lODIwOiBb
-bWVtIDB4MDAwMDAwMDA3ODJkOTAwMC0weDAwMDAwMDAwNzg5ODZmZmZdIHJlc2VydmVkClsgICAg
-MC4wMDAwMDBdIEJJT1MtZTgyMDogW21lbSAweDAwMDAwMDAwNzg5ODcwMDAtMHgwMDAwMDAwMDc4
-YTAzZmZmXSBBQ1BJIGRhdGEKWyAgICAwLjAwMDAwMF0gQklPUy1lODIwOiBbbWVtIDB4MDAwMDAw
-MDA3OGEwNDAwMC0weDAwMDAwMDAwNzhlYTJmZmZdIEFDUEkgTlZTClsgICAgMC4wMDAwMDBdIEJJ
-T1MtZTgyMDogW21lbSAweDAwMDAwMDAwNzhlYTMwMDAtMHgwMDAwMDAwMDdhY2ZlZmZmXSByZXNl
-cnZlZApbICAgIDAuMDAwMDAwXSBCSU9TLWU4MjA6IFttZW0gMHgwMDAwMDAwMDdhY2ZmMDAwLTB4
-MDAwMDAwMDA3YWNmZmZmZl0gdXNhYmxlClsgICAgMC4wMDAwMDBdIEJJT1MtZTgyMDogW21lbSAw
-eDAwMDAwMDAwN2FkMDAwMDAtMHgwMDAwMDAwMDdmN2ZmZmZmXSByZXNlcnZlZApbICAgIDAuMDAw
-MDAwXSBCSU9TLWU4MjA6IFttZW0gMHgwMDAwMDAwMGYwMDAwMDAwLTB4MDAwMDAwMDBmN2ZmZmZm
-Zl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gQklPUy1lODIwOiBbbWVtIDB4MDAwMDAwMDBmZTAw
-MDAwMC0weDAwMDAwMDAwZmUwMTBmZmZdIHJlc2VydmVkClsgICAgMC4wMDAwMDBdIEJJT1MtZTgy
-MDogW21lbSAweDAwMDAwMDAwZmVjMDAwMDAtMHgwMDAwMDAwMGZlYzAwZmZmXSByZXNlcnZlZApb
-ICAgIDAuMDAwMDAwXSBCSU9TLWU4MjA6IFttZW0gMHgwMDAwMDAwMGZlZTAwMDAwLTB4MDAwMDAw
-MDBmZWUwMGZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gQklPUy1lODIwOiBbbWVtIDB4MDAw
-MDAwMDBmZjAwMDAwMC0weDAwMDAwMDAwZmZmZmZmZmZdIHJlc2VydmVkClsgICAgMC4wMDAwMDBd
-IEJJT1MtZTgyMDogW21lbSAweDAwMDAwMDAxMDAwMDAwMDAtMHgwMDAwMDAwNDdjN2ZmZmZmXSB1
-c2FibGUKWyAgICAwLjAwMDAwMF0gTlggKEV4ZWN1dGUgRGlzYWJsZSkgcHJvdGVjdGlvbjogYWN0
-aXZlClsgICAgMC4wMDAwMDBdIGU4MjA6IHVwZGF0ZSBbbWVtIDB4NmRiMWYwMTgtMHg2ZGIzY2M1
-N10gdXNhYmxlID09PiB1c2FibGUKWyAgICAwLjAwMDAwMF0gZTgyMDogdXBkYXRlIFttZW0gMHg2
-ZGIxZjAxOC0weDZkYjNjYzU3XSB1c2FibGUgPT0+IHVzYWJsZQpbICAgIDAuMDAwMDAwXSBlODIw
-OiB1cGRhdGUgW21lbSAweDZkYjBlMDE4LTB4NmRiMWU0NTddIHVzYWJsZSA9PT4gdXNhYmxlClsg
-ICAgMC4wMDAwMDBdIGU4MjA6IHVwZGF0ZSBbbWVtIDB4NmRiMGUwMTgtMHg2ZGIxZTQ1N10gdXNh
-YmxlID09PiB1c2FibGUKWyAgICAwLjAwMDAwMF0gZXh0ZW5kZWQgcGh5c2ljYWwgUkFNIG1hcDoK
-WyAgICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDAwMDAwMDAw
-MC0weDAwMDAwMDAwMDAwOWRmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNldHVw
-X2RhdGE6IFttZW0gMHgwMDAwMDAwMDAwMDllMDAwLTB4MDAwMDAwMDAwMDA5ZWZmZl0gcmVzZXJ2
-ZWQKWyAgICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDAwMDA5
-ZjAwMC0weDAwMDAwMDAwMDAwOWZmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNl
-dHVwX2RhdGE6IFttZW0gMHgwMDAwMDAwMDAwMGEwMDAwLTB4MDAwMDAwMDAwMDBmZmZmZl0gcmVz
-ZXJ2ZWQKWyAgICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDAw
-MDEwMDAwMC0weDAwMDAwMDAwM2ZmZmZmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSByZXNlcnZl
-IHNldHVwX2RhdGE6IFttZW0gMHgwMDAwMDAwMDQwMDAwMDAwLTB4MDAwMDAwMDA0MDNmZmZmZl0g
-cmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAw
-MDA0MDQwMDAwMC0weDAwMDAwMDAwNmRiMGUwMTddIHVzYWJsZQpbICAgIDAuMDAwMDAwXSByZXNl
-cnZlIHNldHVwX2RhdGE6IFttZW0gMHgwMDAwMDAwMDZkYjBlMDE4LTB4MDAwMDAwMDA2ZGIxZTQ1
-N10gdXNhYmxlClsgICAgMC4wMDAwMDBdIHJlc2VydmUgc2V0dXBfZGF0YTogW21lbSAweDAwMDAw
-MDAwNmRiMWU0NTgtMHgwMDAwMDAwMDZkYjFmMDE3XSB1c2FibGUKWyAgICAwLjAwMDAwMF0gcmVz
-ZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDA2ZGIxZjAxOC0weDAwMDAwMDAwNmRiM2Nj
-NTddIHVzYWJsZQpbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNldHVwX2RhdGE6IFttZW0gMHgwMDAw
-MDAwMDZkYjNjYzU4LTB4MDAwMDAwMDA3MDYwY2ZmZl0gdXNhYmxlClsgICAgMC4wMDAwMDBdIHJl
-c2VydmUgc2V0dXBfZGF0YTogW21lbSAweDAwMDAwMDAwNzA2MGQwMDAtMHgwMDAwMDAwMDcwNjBk
-ZmZmXSBBQ1BJIE5WUwpbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNldHVwX2RhdGE6IFttZW0gMHgw
-MDAwMDAwMDcwNjBlMDAwLTB4MDAwMDAwMDA3MDYwZWZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAw
-MF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDA3MDYwZjAwMC0weDAwMDAwMDAw
-NzgyZDhmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNldHVwX2RhdGE6IFttZW0g
-MHgwMDAwMDAwMDc4MmQ5MDAwLTB4MDAwMDAwMDA3ODk4NmZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAw
-MDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDA3ODk4NzAwMC0weDAwMDAw
-MDAwNzhhMDNmZmZdIEFDUEkgZGF0YQpbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNldHVwX2RhdGE6
-IFttZW0gMHgwMDAwMDAwMDc4YTA0MDAwLTB4MDAwMDAwMDA3OGVhMmZmZl0gQUNQSSBOVlMKWyAg
-ICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDA3OGVhMzAwMC0w
-eDAwMDAwMDAwN2FjZmVmZmZdIHJlc2VydmVkClsgICAgMC4wMDAwMDBdIHJlc2VydmUgc2V0dXBf
-ZGF0YTogW21lbSAweDAwMDAwMDAwN2FjZmYwMDAtMHgwMDAwMDAwMDdhY2ZmZmZmXSB1c2FibGUK
-WyAgICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDA3YWQwMDAw
-MC0weDAwMDAwMDAwN2Y3ZmZmZmZdIHJlc2VydmVkClsgICAgMC4wMDAwMDBdIHJlc2VydmUgc2V0
-dXBfZGF0YTogW21lbSAweDAwMDAwMDAwZjAwMDAwMDAtMHgwMDAwMDAwMGY3ZmZmZmZmXSByZXNl
-cnZlZApbICAgIDAuMDAwMDAwXSByZXNlcnZlIHNldHVwX2RhdGE6IFttZW0gMHgwMDAwMDAwMGZl
-MDAwMDAwLTB4MDAwMDAwMDBmZTAxMGZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gcmVzZXJ2
-ZSBzZXR1cF9kYXRhOiBbbWVtIDB4MDAwMDAwMDBmZWMwMDAwMC0weDAwMDAwMDAwZmVjMDBmZmZd
-IHJlc2VydmVkClsgICAgMC4wMDAwMDBdIHJlc2VydmUgc2V0dXBfZGF0YTogW21lbSAweDAwMDAw
-MDAwZmVlMDAwMDAtMHgwMDAwMDAwMGZlZTAwZmZmXSByZXNlcnZlZApbICAgIDAuMDAwMDAwXSBy
-ZXNlcnZlIHNldHVwX2RhdGE6IFttZW0gMHgwMDAwMDAwMGZmMDAwMDAwLTB4MDAwMDAwMDBmZmZm
-ZmZmZl0gcmVzZXJ2ZWQKWyAgICAwLjAwMDAwMF0gcmVzZXJ2ZSBzZXR1cF9kYXRhOiBbbWVtIDB4
-MDAwMDAwMDEwMDAwMDAwMC0weDAwMDAwMDA0N2M3ZmZmZmZdIHVzYWJsZQpbICAgIDAuMDAwMDAw
-XSBlZmk6IEVGSSB2Mi43MCBieSBBbWVyaWNhbiBNZWdhdHJlbmRzClsgICAgMC4wMDAwMDBdIGVm
-aTogIEFDUEkgMi4wPTB4Nzg5YTAwMDAgIEFDUEk9MHg3ODlhMDAwMCAgU01CSU9TPTB4ZjAwMDAg
-IFNNQklPUyAzLjA9MHhmMDAyMCAgRVNSVD0weDdhNzk1Mzk4ICBNRU1BVFRSPTB4NzVmN2YwMTgg
-IFRQTUV2ZW50TG9nPTB4NmRiM2QwMTggClsgICAgMC4wMDAwMDBdIHNlY3VyZWJvb3Q6IFNlY3Vy
-ZSBib290IGVuYWJsZWQKWyAgICAwLjAwMDAwMF0gS2VybmVsIGlzIGxvY2tlZCBkb3duIGZyb20g
-RUZJIHNlY3VyZSBib290OyBzZWUgbWFuIGtlcm5lbF9sb2NrZG93bi43ClsgICAgMC4wMDAwMDBd
-IFNNQklPUyAzLjIuMSBwcmVzZW50LgpbICAgIDAuMDAwMDAwXSBETUk6IERlbGwgSW5jLiBMYXRp
-dHVkZSA1NDAwLzBIUEY0WSwgQklPUyAxLjUuMSAwOC8yMS8yMDE5ClsgICAgMC4wMDAwMDBdIHRz
-YzogRGV0ZWN0ZWQgMjEwMC4wMDAgTUh6IHByb2Nlc3NvcgpbICAgIDAuMDAwNTA3XSB0c2M6IERl
-dGVjdGVkIDIxMTIuMDAwIE1IeiBUU0MKWyAgICAwLjAwMDUwN10gZTgyMDogdXBkYXRlIFttZW0g
-MHgwMDAwMDAwMC0weDAwMDAwZmZmXSB1c2FibGUgPT0+IHJlc2VydmVkClsgICAgMC4wMDA1MDhd
-IGU4MjA6IHJlbW92ZSBbbWVtIDB4MDAwYTAwMDAtMHgwMDBmZmZmZl0gdXNhYmxlClsgICAgMC4w
-MDA1MTNdIGxhc3RfcGZuID0gMHg0N2M4MDAgbWF4X2FyY2hfcGZuID0gMHg0MDAwMDAwMDAKWyAg
-ICAwLjAwMDUxNl0gTVRSUiBkZWZhdWx0IHR5cGU6IHdyaXRlLWJhY2sKWyAgICAwLjAwMDUxNl0g
-TVRSUiBmaXhlZCByYW5nZXMgZW5hYmxlZDoKWyAgICAwLjAwMDUxN10gICAwMDAwMC05RkZGRiB3
-cml0ZS1iYWNrClsgICAgMC4wMDA1MTddICAgQTAwMDAtQkZGRkYgdW5jYWNoYWJsZQpbICAgIDAu
-MDAwNTE4XSAgIEMwMDAwLUZGRkZGIHdyaXRlLXByb3RlY3QKWyAgICAwLjAwMDUxOF0gTVRSUiB2
-YXJpYWJsZSByYW5nZXMgZW5hYmxlZDoKWyAgICAwLjAwMDUxOV0gICAwIGJhc2UgMDBDMDAwMDAw
-MCBtYXNrIDdGQzAwMDAwMDAgdW5jYWNoYWJsZQpbICAgIDAuMDAwNTIwXSAgIDEgYmFzZSAwMDdF
-MDAwMDAwIG1hc2sgN0ZGRTAwMDAwMCB1bmNhY2hhYmxlClsgICAgMC4wMDA1MjBdICAgMiBiYXNl
-IDAwN0QwMDAwMDAgbWFzayA3RkZGMDAwMDAwIHVuY2FjaGFibGUKWyAgICAwLjAwMDUyMF0gICAz
-IGJhc2UgMDBBMDAwMDAwMCBtYXNrIDdGRTAwMDAwMDAgdW5jYWNoYWJsZQpbICAgIDAuMDAwNTIx
-XSAgIDQgYmFzZSAwMDkwMDAwMDAwIG1hc2sgN0ZGMDAwMDAwMCB1bmNhY2hhYmxlClsgICAgMC4w
-MDA1MjFdICAgNSBiYXNlIDAwODAwMDAwMDAgbWFzayA3RkYwMDAwMDAwIHdyaXRlLWNvbWJpbmlu
-ZwpbICAgIDAuMDAwNTIyXSAgIDYgZGlzYWJsZWQKWyAgICAwLjAwMDUyMl0gICA3IGRpc2FibGVk
-ClsgICAgMC4wMDA1MjJdICAgOCBkaXNhYmxlZApbICAgIDAuMDAwNTIyXSAgIDkgZGlzYWJsZWQK
-WyAgICAwLjAwMTU4M10geDg2L1BBVDogQ29uZmlndXJhdGlvbiBbMC03XTogV0IgIFdDICBVQy0g
-VUMgIFdCICBXUCAgVUMtIFdUICAKWyAgICAwLjAwMTcyM10gbGFzdF9wZm4gPSAweDdhZDAwIG1h
-eF9hcmNoX3BmbiA9IDB4NDAwMDAwMDAwClsgICAgMC4wMDY2NTZdIGVzcnQ6IFJlc2VydmluZyBF
-U1JUIHNwYWNlIGZyb20gMHgwMDAwMDAwMDdhNzk1Mzk4IHRvIDB4MDAwMDAwMDA3YTc5NTNkMC4K
-WyAgICAwLjAwNjY2Ml0gY2hlY2s6IFNjYW5uaW5nIDEgYXJlYXMgZm9yIGxvdyBtZW1vcnkgY29y
-cnVwdGlvbgpbICAgIDAuMDA2NjY2XSBVc2luZyBHQiBwYWdlcyBmb3IgZGlyZWN0IG1hcHBpbmcK
-WyAgICAwLjAwNjY2N10gQlJLIFsweDIxNWMwMTAwMCwgMHgyMTVjMDFmZmZdIFBHVEFCTEUKWyAg
-ICAwLjAwNjY2OF0gQlJLIFsweDIxNWMwMjAwMCwgMHgyMTVjMDJmZmZdIFBHVEFCTEUKWyAgICAw
-LjAwNjY2OV0gQlJLIFsweDIxNWMwMzAwMCwgMHgyMTVjMDNmZmZdIFBHVEFCTEUKWyAgICAwLjAw
-NjcwMV0gQlJLIFsweDIxNWMwNDAwMCwgMHgyMTVjMDRmZmZdIFBHVEFCTEUKWyAgICAwLjAwNjcw
-Ml0gQlJLIFsweDIxNWMwNTAwMCwgMHgyMTVjMDVmZmZdIFBHVEFCTEUKWyAgICAwLjAwNjgyOV0g
-QlJLIFsweDIxNWMwNjAwMCwgMHgyMTVjMDZmZmZdIFBHVEFCTEUKWyAgICAwLjAwNjg1N10gQlJL
-IFsweDIxNWMwNzAwMCwgMHgyMTVjMDdmZmZdIFBHVEFCTEUKWyAgICAwLjAwNjkzOV0gQlJLIFsw
-eDIxNWMwODAwMCwgMHgyMTVjMDhmZmZdIFBHVEFCTEUKWyAgICAwLjAwNjk4MF0gQlJLIFsweDIx
-NWMwOTAwMCwgMHgyMTVjMDlmZmZdIFBHVEFCTEUKWyAgICAwLjAwNzAzOF0gUkFNRElTSzogW21l
-bSAweDIwOWU1MDAwLTB4MjQ5NzFmZmZdClsgICAgMC4wMDcwNTBdIEFDUEk6IEVhcmx5IHRhYmxl
-IGNoZWNrc3VtIHZlcmlmaWNhdGlvbiBkaXNhYmxlZApbICAgIDAuMDA3MDUzXSBBQ1BJOiBSU0RQ
-IDB4MDAwMDAwMDA3ODlBMDAwMCAwMDAwMjQgKHYwMiBERUxMICApClsgICAgMC4wMDcwNTVdIEFD
-UEk6IFhTRFQgMHgwMDAwMDAwMDc4OUEwMEM4IDAwMDEwQyAodjAxIERFTEwgICBDQlgzICAgICAw
-MTA3MjAwOSBBTUkgIDAwMDEwMDEzKQpbICAgIDAuMDA3MDU4XSBBQ1BJOiBGQUNQIDB4MDAwMDAw
-MDA3ODlERkJGMCAwMDAxMTQgKHYwNiBERUxMICAgQ0JYMyAgICAgMDEwNzIwMDkgQU1JICAwMDAx
-MDAxMykKWyAgICAwLjAwNzA2MV0gQUNQSTogRFNEVCAweDAwMDAwMDAwNzg5QTAyNjAgMDNGOThE
-ICh2MDIgREVMTCAgIENCWDMgICAgIDAxMDcyMDA5IElOVEwgMjAxNjA1MjcpClsgICAgMC4wMDcw
-NjNdIEFDUEk6IEZBQ1MgMHgwMDAwMDAwMDc4RUExQzAwIDAwMDA0MApbICAgIDAuMDA3MDY0XSBB
-Q1BJOiBBUElDIDB4MDAwMDAwMDA3ODlERkQwOCAwMDAwQkMgKHYwNCBERUxMICAgQ0JYMyAgICAg
-MDEwNzIwMDkgQU1JICAwMDAxMDAxMykKWyAgICAwLjAwNzA2NV0gQUNQSTogRlBEVCAweDAwMDAw
-MDAwNzg5REZEQzggMDAwMDQ0ICh2MDEgREVMTCAgIENCWDMgICAgIDAxMDcyMDA5IEFNSSAgMDAw
-MTAwMTMpClsgICAgMC4wMDcwNjddIEFDUEk6IEZJRFQgMHgwMDAwMDAwMDc4OURGRTEwIDAwMDA5
-QyAodjAxIERFTEwgICBDQlgzICAgICAwMTA3MjAwOSBBTUkgIDAwMDEwMDEzKQpbICAgIDAuMDA3
-MDY4XSBBQ1BJOiBNQ0ZHIDB4MDAwMDAwMDA3ODlERkVCMCAwMDAwM0MgKHYwMSBERUxMICAgQ0JY
-MyAgICAgMDEwNzIwMDkgTVNGVCAwMDAwMDA5NykKWyAgICAwLjAwNzA3MF0gQUNQSTogU1NEVCAw
-eDAwMDAwMDAwNzg5REZFRjAgMDAxQjFDICh2MDIgQ3B1UmVmIENwdVNzZHQgIDAwMDAzMDAwIElO
-VEwgMjAxNjA1MjcpClsgICAgMC4wMDcwNzFdIEFDUEk6IFNTRFQgMHgwMDAwMDAwMDc4OUUxQTEw
-IDAwMTY2MyAodjAyIFNhU3NkdCBTYVNzZHQgICAwMDAwMzAwMCBJTlRMIDIwMTYwNTI3KQpbICAg
-IDAuMDA3MDczXSBBQ1BJOiBIUEVUIDB4MDAwMDAwMDA3ODlFMzA3OCAwMDAwMzggKHYwMSBERUxM
-XHggQ0JYMyAgICAgMDAwMDAwMDIgICAgICAwMTAwMDAxMykKWyAgICAwLjAwNzA3NF0gQUNQSTog
-U1NEVCAweDAwMDAwMDAwNzg5RTMwQjAgMDAxQTRDICh2MDIgREVMTFx4IENubFVfUnZwIDAwMDAx
-MDAwIElOVEwgMjAxNjA1MjcpClsgICAgMC4wMDcwNzZdIEFDUEk6IFNTRFQgMHgwMDAwMDAwMDc4
-OUU0QjAwIDAwMzEzMiAodjAyIElOVEVMICB4aF93aGxkNCAwMDAwMDAwMCBJTlRMIDIwMTYwNTI3
-KQpbICAgIDAuMDA3MDc3XSBBQ1BJOiBVRUZJIDB4MDAwMDAwMDA3ODlFN0MzOCAwMDAwNDIgKHYw
-MSBERUxMXHggQ0JYMyAgICAgMDAwMDAwMDIgICAgICAwMTAwMDAxMykKWyAgICAwLjAwNzA3OV0g
-QUNQSTogTFBJVCAweDAwMDAwMDAwNzg5RTdDODAgMDAwMDk0ICh2MDEgREVMTFx4IENCWDMgICAg
-IDAwMDAwMDAyICAgICAgMDEwMDAwMTMpClsgICAgMC4wMDcwODBdIEFDUEk6IFdTTVQgMHgwMDAw
-MDAwMDc4OUU3RDE4IDAwMDAyOCAodjAxIERFTEwgICBDQlgzICAgICAwMDAwMDAwMiAgICAgIDAx
-MDAwMDEzKQpbICAgIDAuMDA3MDgxXSBBQ1BJOiBTU0RUIDB4MDAwMDAwMDA3ODlFN0Q0MCAwMDI3
-REUgKHYwMiBERUxMXHggUHRpZERldmMgMDAwMDEwMDAgSU5UTCAyMDE2MDUyNykKWyAgICAwLjAw
-NzA4M10gQUNQSTogU1NEVCAweDAwMDAwMDAwNzg5RUE1MjAgMDAwQUU0ICh2MDIgREVMTFx4IFRi
-dFR5cGVDIDAwMDAwMDAwIElOVEwgMjAxNjA1MjcpClsgICAgMC4wMDcwODRdIEFDUEk6IERCR1Ag
-MHgwMDAwMDAwMDc4OUVCMDA4IDAwMDAzNCAodjAxIERFTExceCBDQlgzICAgICAwMDAwMDAwMiAg
-ICAgIDAxMDAwMDEzKQpbICAgIDAuMDA3MDg2XSBBQ1BJOiBEQkcyIDB4MDAwMDAwMDA3ODlFQjA0
-MCAwMDAwNTQgKHYwMCBERUxMXHggQ0JYMyAgICAgMDAwMDAwMDIgICAgICAwMTAwMDAxMykKWyAg
-ICAwLjAwNzA4N10gQUNQSTogU1NEVCAweDAwMDAwMDAwNzg5RUIwOTggMDAwN0M2ICh2MDIgREVM
-TFx4IFVzYkNUYWJsIDAwMDAxMDAwIElOVEwgMjAxNjA1MjcpClsgICAgMC4wMDcwODldIEFDUEk6
-IFNTRFQgMHgwMDAwMDAwMDc4OUVCODYwIDAwNkMwNSAodjAyIERwdGZUYSBEcHRmVGFibCAwMDAw
-MTAwMCBJTlRMIDIwMTYwNTI3KQpbICAgIDAuMDA3MDkwXSBBQ1BJOiBNU0RNIDB4MDAwMDAwMDA3
-ODlGMjQ2OCAwMDAwNTUgKHYwMyBERUxMICAgQ0JYMyAgICAgMDYyMjIwMDQgQU1JICAwMDAxMDAx
-MykKWyAgICAwLjAwNzA5Ml0gQUNQSTogU0xJQyAweDAwMDAwMDAwNzg5RjI0QzAgMDAwMTc2ICh2
-MDMgREVMTCAgIENCWDMgICAgIDAxMDcyMDA5IE1TRlQgMDAwMTAwMTMpClsgICAgMC4wMDcwOTNd
-IEFDUEk6IERNQVIgMHgwMDAwMDAwMDc4OUYyNjM4IDAwMDBDOCAodjAxIElOVEVMICBFREsyICAg
-ICAwMDAwMDAwMiAgICAgIDAxMDAwMDEzKQpbICAgIDAuMDA3MDk1XSBBQ1BJOiBTU0RUIDB4MDAw
-MDAwMDA3ODlGMjcwMCAwMDAxNDQgKHYwMiBJbnRlbCAgQURlYlRhYmwgMDAwMDEwMDAgSU5UTCAy
-MDE2MDUyNykKWyAgICAwLjAwNzA5Nl0gQUNQSTogTkhMVCAweDAwMDAwMDAwNzg5RjI4NDggMDAw
-MDJEICh2MDAgSU5URUwgIEVESzIgICAgIDAwMDAwMDAyICAgICAgMDEwMDAwMTMpClsgICAgMC4w
-MDcwOTddIEFDUEk6IEJHUlQgMHgwMDAwMDAwMDc4OUYyODc4IDAwMDAzOCAodjAwIERFTEwgICBD
-QlgzICAgICAwMTA3MjAwOSBBTUkgIDAwMDEwMDEzKQpbICAgIDAuMDA3MDk5XSBBQ1BJOiBVRUZJ
-IDB4MDAwMDAwMDA3ODlGMjhCMCAwMDA2M0EgKHYwMSBJTlRFTCAgUnN0U2F0YUUgMDAwMDAwMDAg
-Pz8gICAwMDAwMDAwMCkKWyAgICAwLjAwNzEwMF0gQUNQSTogVUVGSSAweDAwMDAwMDAwNzg5RjJF
-RjAgMDAwMDVDICh2MDEgSU5URUwgIFJzdFNhdGFWIDAwMDAwMDAwID8/ICAgMDAwMDAwMDApClsg
-ICAgMC4wMDcxMDJdIEFDUEk6IFRQTTIgMHgwMDAwMDAwMDc4OUYyRjUwIDAwMDAzNCAodjA0IERF
-TExceCBDQlgzICAgICAwMDAwMDAwMSBBTUkgIDAwMDAwMDAwKQpbICAgIDAuMDA3MTAzXSBBQ1BJ
-OiBBU0YhIDB4MDAwMDAwMDA3ODlGMkY4OCAwMDAwNzQgKHYzMiBERUxMXHggQ0JYMyAgICAgMDAw
-MDAwMDIgICAgICAwMTAwMDAxMykKWyAgICAwLjAwNzEwOV0gQUNQSTogTG9jYWwgQVBJQyBhZGRy
-ZXNzIDB4ZmVlMDAwMDAKWyAgICAwLjAwNzQxMF0gTm8gTlVNQSBjb25maWd1cmF0aW9uIGZvdW5k
-ClsgICAgMC4wMDc0MTBdIEZha2luZyBhIG5vZGUgYXQgW21lbSAweDAwMDAwMDAwMDAwMDAwMDAt
-MHgwMDAwMDAwNDdjN2ZmZmZmXQpbICAgIDAuMDA3NDE2XSBOT0RFX0RBVEEoMCkgYWxsb2NhdGVk
-IFttZW0gMHg0N2M3ZDUwMDAtMHg0N2M3ZmZmZmZdClsgICAgMC4wMDc1NjBdIFpvbmUgcmFuZ2Vz
-OgpbICAgIDAuMDA3NTYxXSAgIERNQSAgICAgIFttZW0gMHgwMDAwMDAwMDAwMDAxMDAwLTB4MDAw
-MDAwMDAwMGZmZmZmZl0KWyAgICAwLjAwNzU2MV0gICBETUEzMiAgICBbbWVtIDB4MDAwMDAwMDAw
-MTAwMDAwMC0weDAwMDAwMDAwZmZmZmZmZmZdClsgICAgMC4wMDc1NjJdICAgTm9ybWFsICAgW21l
-bSAweDAwMDAwMDAxMDAwMDAwMDAtMHgwMDAwMDAwNDdjN2ZmZmZmXQpbICAgIDAuMDA3NTYyXSAg
-IERldmljZSAgIGVtcHR5ClsgICAgMC4wMDc1NjNdIE1vdmFibGUgem9uZSBzdGFydCBmb3IgZWFj
-aCBub2RlClsgICAgMC4wMDc1NjVdIEVhcmx5IG1lbW9yeSBub2RlIHJhbmdlcwpbICAgIDAuMDA3
-NTY1XSAgIG5vZGUgICAwOiBbbWVtIDB4MDAwMDAwMDAwMDAwMTAwMC0weDAwMDAwMDAwMDAwOWRm
-ZmZdClsgICAgMC4wMDc1NjZdICAgbm9kZSAgIDA6IFttZW0gMHgwMDAwMDAwMDAwMDlmMDAwLTB4
-MDAwMDAwMDAwMDA5ZmZmZl0KWyAgICAwLjAwNzU2Nl0gICBub2RlICAgMDogW21lbSAweDAwMDAw
-MDAwMDAxMDAwMDAtMHgwMDAwMDAwMDNmZmZmZmZmXQpbICAgIDAuMDA3NTY2XSAgIG5vZGUgICAw
-OiBbbWVtIDB4MDAwMDAwMDA0MDQwMDAwMC0weDAwMDAwMDAwNzA2MGNmZmZdClsgICAgMC4wMDc1
-NjddICAgbm9kZSAgIDA6IFttZW0gMHgwMDAwMDAwMDcwNjBmMDAwLTB4MDAwMDAwMDA3ODJkOGZm
-Zl0KWyAgICAwLjAwNzU2N10gICBub2RlICAgMDogW21lbSAweDAwMDAwMDAwN2FjZmYwMDAtMHgw
-MDAwMDAwMDdhY2ZmZmZmXQpbICAgIDAuMDA3NTY3XSAgIG5vZGUgICAwOiBbbWVtIDB4MDAwMDAw
-MDEwMDAwMDAwMC0weDAwMDAwMDA0N2M3ZmZmZmZdClsgICAgMC4wMDc4ODVdIFplcm9lZCBzdHJ1
-Y3QgcGFnZSBpbiB1bmF2YWlsYWJsZSByYW5nZXM6IDMzMTYyIHBhZ2VzClsgICAgMC4wMDc4ODVd
-IEluaXRtZW0gc2V0dXAgbm9kZSAwIFttZW0gMHgwMDAwMDAwMDAwMDAxMDAwLTB4MDAwMDAwMDQ3
-YzdmZmZmZl0KWyAgICAwLjAwNzg4Nl0gT24gbm9kZSAwIHRvdGFscGFnZXM6IDQxNDY4MDYKWyAg
-ICAwLjAwNzg4N10gICBETUEgem9uZTogNjQgcGFnZXMgdXNlZCBmb3IgbWVtbWFwClsgICAgMC4w
-MDc4ODddICAgRE1BIHpvbmU6IDIyIHBhZ2VzIHJlc2VydmVkClsgICAgMC4wMDc4ODhdICAgRE1B
-IHpvbmU6IDM5OTggcGFnZXMsIExJRk8gYmF0Y2g6MApbICAgIDAuMDA3OTQ3XSAgIERNQTMyIHpv
-bmU6IDc2MTIgcGFnZXMgdXNlZCBmb3IgbWVtbWFwClsgICAgMC4wMDc5NDhdICAgRE1BMzIgem9u
-ZTogNDg3MTI4IHBhZ2VzLCBMSUZPIGJhdGNoOjYzClsgICAgMC4wMTcwMzRdICAgTm9ybWFsIHpv
-bmU6IDU3MTIwIHBhZ2VzIHVzZWQgZm9yIG1lbW1hcApbICAgIDAuMDE3MDM1XSAgIE5vcm1hbCB6
-b25lOiAzNjU1NjgwIHBhZ2VzLCBMSUZPIGJhdGNoOjYzClsgICAgMC4wNjk4NThdIFJlc2Vydmlu
-ZyBJbnRlbCBncmFwaGljcyBtZW1vcnkgYXQgW21lbSAweDdkODAwMDAwLTB4N2Y3ZmZmZmZdClsg
-ICAgMC4wNzAxNTVdIEFDUEk6IFBNLVRpbWVyIElPIFBvcnQ6IDB4MTgwOApbICAgIDAuMDcwMTU2
-XSBBQ1BJOiBMb2NhbCBBUElDIGFkZHJlc3MgMHhmZWUwMDAwMApbICAgIDAuMDcwMTYwXSBBQ1BJ
-OiBMQVBJQ19OTUkgKGFjcGlfaWRbMHgwMV0gaGlnaCBlZGdlIGxpbnRbMHgxXSkKWyAgICAwLjA3
-MDE2MV0gQUNQSTogTEFQSUNfTk1JIChhY3BpX2lkWzB4MDJdIGhpZ2ggZWRnZSBsaW50WzB4MV0p
-ClsgICAgMC4wNzAxNjFdIEFDUEk6IExBUElDX05NSSAoYWNwaV9pZFsweDAzXSBoaWdoIGVkZ2Ug
-bGludFsweDFdKQpbICAgIDAuMDcwMTYxXSBBQ1BJOiBMQVBJQ19OTUkgKGFjcGlfaWRbMHgwNF0g
-aGlnaCBlZGdlIGxpbnRbMHgxXSkKWyAgICAwLjA3MDE2Ml0gQUNQSTogTEFQSUNfTk1JIChhY3Bp
-X2lkWzB4MDVdIGhpZ2ggZWRnZSBsaW50WzB4MV0pClsgICAgMC4wNzAxNjJdIEFDUEk6IExBUElD
-X05NSSAoYWNwaV9pZFsweDA2XSBoaWdoIGVkZ2UgbGludFsweDFdKQpbICAgIDAuMDcwMTYyXSBB
-Q1BJOiBMQVBJQ19OTUkgKGFjcGlfaWRbMHgwN10gaGlnaCBlZGdlIGxpbnRbMHgxXSkKWyAgICAw
-LjA3MDE2M10gQUNQSTogTEFQSUNfTk1JIChhY3BpX2lkWzB4MDhdIGhpZ2ggZWRnZSBsaW50WzB4
-MV0pClsgICAgMC4wNzAyMDJdIElPQVBJQ1swXTogYXBpY19pZCAyLCB2ZXJzaW9uIDMyLCBhZGRy
-ZXNzIDB4ZmVjMDAwMDAsIEdTSSAwLTExOQpbICAgIDAuMDcwMjAzXSBBQ1BJOiBJTlRfU1JDX09W
-UiAoYnVzIDAgYnVzX2lycSAwIGdsb2JhbF9pcnEgMiBkZmwgZGZsKQpbICAgIDAuMDcwMjA0XSBB
-Q1BJOiBJTlRfU1JDX09WUiAoYnVzIDAgYnVzX2lycSA5IGdsb2JhbF9pcnEgOSBoaWdoIGxldmVs
-KQpbICAgIDAuMDcwMjA1XSBBQ1BJOiBJUlEwIHVzZWQgYnkgb3ZlcnJpZGUuClsgICAgMC4wNzAy
-MDVdIEFDUEk6IElSUTkgdXNlZCBieSBvdmVycmlkZS4KWyAgICAwLjA3MDIwNl0gVXNpbmcgQUNQ
-SSAoTUFEVCkgZm9yIFNNUCBjb25maWd1cmF0aW9uIGluZm9ybWF0aW9uClsgICAgMC4wNzAyMDdd
-IEFDUEk6IEhQRVQgaWQ6IDB4ODA4NmEyMDEgYmFzZTogMHhmZWQwMDAwMApbICAgIDAuMDcwMjEx
-XSBzbXBib290OiBBbGxvd2luZyA4IENQVXMsIDAgaG90cGx1ZyBDUFVzClsgICAgMC4wNzAyMjRd
-IFBNOiBSZWdpc3RlcmVkIG5vc2F2ZSBtZW1vcnk6IFttZW0gMHgwMDAwMDAwMC0weDAwMDAwZmZm
-XQpbICAgIDAuMDcwMjI1XSBQTTogUmVnaXN0ZXJlZCBub3NhdmUgbWVtb3J5OiBbbWVtIDB4MDAw
-OWUwMDAtMHgwMDA5ZWZmZl0KWyAgICAwLjA3MDIyNl0gUE06IFJlZ2lzdGVyZWQgbm9zYXZlIG1l
-bW9yeTogW21lbSAweDAwMGEwMDAwLTB4MDAwZmZmZmZdClsgICAgMC4wNzAyMjddIFBNOiBSZWdp
-c3RlcmVkIG5vc2F2ZSBtZW1vcnk6IFttZW0gMHg0MDAwMDAwMC0weDQwM2ZmZmZmXQpbICAgIDAu
-MDcwMjI4XSBQTTogUmVnaXN0ZXJlZCBub3NhdmUgbWVtb3J5OiBbbWVtIDB4NmRiMGUwMDAtMHg2
-ZGIwZWZmZl0KWyAgICAwLjA3MDIyOF0gUE06IFJlZ2lzdGVyZWQgbm9zYXZlIG1lbW9yeTogW21l
-bSAweDZkYjFlMDAwLTB4NmRiMWVmZmZdClsgICAgMC4wNzAyMjldIFBNOiBSZWdpc3RlcmVkIG5v
-c2F2ZSBtZW1vcnk6IFttZW0gMHg2ZGIxZjAwMC0weDZkYjFmZmZmXQpbICAgIDAuMDcwMjMwXSBQ
-TTogUmVnaXN0ZXJlZCBub3NhdmUgbWVtb3J5OiBbbWVtIDB4NmRiM2MwMDAtMHg2ZGIzY2ZmZl0K
-WyAgICAwLjA3MDIzMF0gUE06IFJlZ2lzdGVyZWQgbm9zYXZlIG1lbW9yeTogW21lbSAweDcwNjBk
-MDAwLTB4NzA2MGRmZmZdClsgICAgMC4wNzAyMzFdIFBNOiBSZWdpc3RlcmVkIG5vc2F2ZSBtZW1v
-cnk6IFttZW0gMHg3MDYwZTAwMC0weDcwNjBlZmZmXQpbICAgIDAuMDcwMjMyXSBQTTogUmVnaXN0
-ZXJlZCBub3NhdmUgbWVtb3J5OiBbbWVtIDB4NzgyZDkwMDAtMHg3ODk4NmZmZl0KWyAgICAwLjA3
-MDIzMl0gUE06IFJlZ2lzdGVyZWQgbm9zYXZlIG1lbW9yeTogW21lbSAweDc4OTg3MDAwLTB4Nzhh
-MDNmZmZdClsgICAgMC4wNzAyMzJdIFBNOiBSZWdpc3RlcmVkIG5vc2F2ZSBtZW1vcnk6IFttZW0g
-MHg3OGEwNDAwMC0weDc4ZWEyZmZmXQpbICAgIDAuMDcwMjMzXSBQTTogUmVnaXN0ZXJlZCBub3Nh
-dmUgbWVtb3J5OiBbbWVtIDB4NzhlYTMwMDAtMHg3YWNmZWZmZl0KWyAgICAwLjA3MDIzM10gUE06
-IFJlZ2lzdGVyZWQgbm9zYXZlIG1lbW9yeTogW21lbSAweDdhZDAwMDAwLTB4N2Y3ZmZmZmZdClsg
-ICAgMC4wNzAyMzRdIFBNOiBSZWdpc3RlcmVkIG5vc2F2ZSBtZW1vcnk6IFttZW0gMHg3ZjgwMDAw
-MC0weGVmZmZmZmZmXQpbICAgIDAuMDcwMjM0XSBQTTogUmVnaXN0ZXJlZCBub3NhdmUgbWVtb3J5
-OiBbbWVtIDB4ZjAwMDAwMDAtMHhmN2ZmZmZmZl0KWyAgICAwLjA3MDIzNF0gUE06IFJlZ2lzdGVy
-ZWQgbm9zYXZlIG1lbW9yeTogW21lbSAweGY4MDAwMDAwLTB4ZmRmZmZmZmZdClsgICAgMC4wNzAy
-MzVdIFBNOiBSZWdpc3RlcmVkIG5vc2F2ZSBtZW1vcnk6IFttZW0gMHhmZTAwMDAwMC0weGZlMDEw
-ZmZmXQpbICAgIDAuMDcwMjM1XSBQTTogUmVnaXN0ZXJlZCBub3NhdmUgbWVtb3J5OiBbbWVtIDB4
-ZmUwMTEwMDAtMHhmZWJmZmZmZl0KWyAgICAwLjA3MDIzNV0gUE06IFJlZ2lzdGVyZWQgbm9zYXZl
-IG1lbW9yeTogW21lbSAweGZlYzAwMDAwLTB4ZmVjMDBmZmZdClsgICAgMC4wNzAyMzZdIFBNOiBS
-ZWdpc3RlcmVkIG5vc2F2ZSBtZW1vcnk6IFttZW0gMHhmZWMwMTAwMC0weGZlZGZmZmZmXQpbICAg
-IDAuMDcwMjM2XSBQTTogUmVnaXN0ZXJlZCBub3NhdmUgbWVtb3J5OiBbbWVtIDB4ZmVlMDAwMDAt
-MHhmZWUwMGZmZl0KWyAgICAwLjA3MDIzNl0gUE06IFJlZ2lzdGVyZWQgbm9zYXZlIG1lbW9yeTog
-W21lbSAweGZlZTAxMDAwLTB4ZmVmZmZmZmZdClsgICAgMC4wNzAyMzZdIFBNOiBSZWdpc3RlcmVk
-IG5vc2F2ZSBtZW1vcnk6IFttZW0gMHhmZjAwMDAwMC0weGZmZmZmZmZmXQpbICAgIDAuMDcwMjM4
-XSBbbWVtIDB4N2Y4MDAwMDAtMHhlZmZmZmZmZl0gYXZhaWxhYmxlIGZvciBQQ0kgZGV2aWNlcwpb
-ICAgIDAuMDcwMjM4XSBCb290aW5nIHBhcmF2aXJ0dWFsaXplZCBrZXJuZWwgb24gYmFyZSBoYXJk
-d2FyZQpbICAgIDAuMDcwMjQwXSBjbG9ja3NvdXJjZTogcmVmaW5lZC1qaWZmaWVzOiBtYXNrOiAw
-eGZmZmZmZmZmIG1heF9jeWNsZXM6IDB4ZmZmZmZmZmYsIG1heF9pZGxlX25zOiA3NjQ1NTE5NjAw
-MjExNTY4IG5zClsgICAgMC4wNzAyNDddIHJhbmRvbTogZ2V0X3JhbmRvbV9ieXRlcyBjYWxsZWQg
-ZnJvbSBzdGFydF9rZXJuZWwrMHg5Ny8weDUxNiB3aXRoIGNybmdfaW5pdD0wClsgICAgMC4wNzAy
-NTFdIHNldHVwX3BlcmNwdTogTlJfQ1BVUzo4MTkyIG5yX2NwdW1hc2tfYml0czo4IG5yX2NwdV9p
-ZHM6OCBucl9ub2RlX2lkczoxClsgICAgMC4wNzA0MzFdIHBlcmNwdTogRW1iZWRkZWQgNDYgcGFn
-ZXMvY3B1IHMxNTE1NTIgcjgxOTIgZDI4NjcyIHUyNjIxNDQKWyAgICAwLjA3MDQzNV0gcGNwdS1h
-bGxvYzogczE1MTU1MiByODE5MiBkMjg2NzIgdTI2MjE0NCBhbGxvYz0xKjIwOTcxNTIKWyAgICAw
-LjA3MDQzNl0gcGNwdS1hbGxvYzogWzBdIDAgMSAyIDMgNCA1IDYgNyAKWyAgICAwLjA3MDQ1M10g
-QnVpbHQgMSB6b25lbGlzdHMsIG1vYmlsaXR5IGdyb3VwaW5nIG9uLiAgVG90YWwgcGFnZXM6IDQw
-ODE5ODgKWyAgICAwLjA3MDQ1M10gUG9saWN5IHpvbmU6IE5vcm1hbApbICAgIDAuMDcwNDU0XSBL
-ZXJuZWwgY29tbWFuZCBsaW5lOiBCT09UX0lNQUdFPS92bWxpbnV6LTUuMC4wLTI5LWdlbmVyaWMg
-cm9vdD0vZGV2L21hcHBlci91YnVudHUtLXZnLXJvb3Qgcm8gcXVpZXQgc3BsYXNoIHZ0LmhhbmRv
-ZmY9MQpbICAgIDAuMDc0MzYwXSBDYWxnYXJ5OiBkZXRlY3RpbmcgQ2FsZ2FyeSB2aWEgQklPUyBF
-QkRBIGFyZWEKWyAgICAwLjA3NDM2Ml0gQ2FsZ2FyeTogVW5hYmxlIHRvIGxvY2F0ZSBSaW8gR3Jh
-bmRlIHRhYmxlIGluIEVCREEgLSBiYWlsaW5nIQpbICAgIDAuMTEyMjI4XSBNZW1vcnk6IDE2MTAy
-NjQwSy8xNjU4NzIyNEsgYXZhaWxhYmxlICgxNDMzOUsga2VybmVsIGNvZGUsIDIzMzVLIHJ3ZGF0
-YSwgNDMwNEsgcm9kYXRhLCAyNTc2SyBpbml0LCA1MjA0SyBic3MsIDQ4NDU4NEsgcmVzZXJ2ZWQs
-IDBLIGNtYS1yZXNlcnZlZCkKWyAgICAwLjExMjMwOV0gU0xVQjogSFdhbGlnbj02NCwgT3JkZXI9
-MC0zLCBNaW5PYmplY3RzPTAsIENQVXM9OCwgTm9kZXM9MQpbICAgIDAuMTEyMzEzXSBmdHJhY2U6
-IGFsbG9jYXRpbmcgNDE1ODAgZW50cmllcyBpbiAxNjMgcGFnZXMKWyAgICAwLjEyMjg4M10gcmN1
-OiBIaWVyYXJjaGljYWwgUkNVIGltcGxlbWVudGF0aW9uLgpbICAgIDAuMTIyODg0XSByY3U6IAlS
-Q1UgcmVzdHJpY3RpbmcgQ1BVcyBmcm9tIE5SX0NQVVM9ODE5MiB0byBucl9jcHVfaWRzPTguClsg
-ICAgMC4xMjI4ODVdIAlUYXNrcyBSQ1UgZW5hYmxlZC4KWyAgICAwLjEyMjg4NV0gcmN1OiBSQ1Ug
-Y2FsY3VsYXRlZCB2YWx1ZSBvZiBzY2hlZHVsZXItZW5saXN0bWVudCBkZWxheSBpcyAyNSBqaWZm
-aWVzLgpbICAgIDAuMTIyODg1XSByY3U6IEFkanVzdGluZyBnZW9tZXRyeSBmb3IgcmN1X2Zhbm91
-dF9sZWFmPTE2LCBucl9jcHVfaWRzPTgKWyAgICAwLjEyNDYzMF0gTlJfSVJRUzogNTI0NTQ0LCBu
-cl9pcnFzOiAyMDQ4LCBwcmVhbGxvY2F0ZWQgaXJxczogMTYKWyAgICAwLjEyNDk4NV0gdnQgaGFu
-ZG9mZjogdHJhbnNwYXJlbnQgVlQgb24gdnQjMQpbICAgIDAuMTI0OTg5XSBDb25zb2xlOiBjb2xv
-dXIgZHVtbXkgZGV2aWNlIDgweDI1ClsgICAgMC4xMjQ5OTNdIHByaW50azogY29uc29sZSBbdHR5
-MF0gZW5hYmxlZApbICAgIDAuMTI1MDAzXSBBQ1BJOiBDb3JlIHJldmlzaW9uIDIwMTgxMjEzClsg
-ICAgMC4xMjUzNjZdIGNsb2Nrc291cmNlOiBocGV0OiBtYXNrOiAweGZmZmZmZmZmIG1heF9jeWNs
-ZXM6IDB4ZmZmZmZmZmYsIG1heF9pZGxlX25zOiA3OTYzNTg1NTI0NSBucwpbICAgIDAuMTI1NDA1
-XSBocGV0IGNsb2NrZXZlbnQgcmVnaXN0ZXJlZApbICAgIDAuMTI1NDU1XSBBUElDOiBTd2l0Y2gg
-dG8gc3ltbWV0cmljIEkvTyBtb2RlIHNldHVwClsgICAgMC4xMjU0NTddIERNQVI6IEhvc3QgYWRk
-cmVzcyB3aWR0aCAzOQpbICAgIDAuMTI1NDU3XSBETUFSOiBEUkhEIGJhc2U6IDB4MDAwMDAwZmVk
-OTAwMDAgZmxhZ3M6IDB4MApbICAgIDAuMTI1NDYwXSBETUFSOiBkbWFyMDogcmVnX2Jhc2VfYWRk
-ciBmZWQ5MDAwMCB2ZXIgMTowIGNhcCAxYzAwMDBjNDA2NjA0NjIgZWNhcCAxOWUyZmYwNTA1ZQpb
-ICAgIDAuMTI1NDYxXSBETUFSOiBEUkhEIGJhc2U6IDB4MDAwMDAwZmVkOTEwMDAgZmxhZ3M6IDB4
-MQpbICAgIDAuMTI1NDYzXSBETUFSOiBkbWFyMTogcmVnX2Jhc2VfYWRkciBmZWQ5MTAwMCB2ZXIg
-MTowIGNhcCBkMjAwOGM0MDY2MDQ2MiBlY2FwIGYwNTBkYQpbICAgIDAuMTI1NDY0XSBETUFSOiBS
-TVJSIGJhc2U6IDB4MDAwMDAwNzg4NjMwMDAgZW5kOiAweDAwMDAwMDc4ODgyZmZmClsgICAgMC4x
-MjU0NjRdIERNQVI6IFJNUlIgYmFzZTogMHgwMDAwMDA3ZDAwMDAwMCBlbmQ6IDB4MDAwMDAwN2Y3
-ZmZmZmYKWyAgICAwLjEyNTQ2NV0gRE1BUjogUk1SUiBiYXNlOiAweDAwMDAwMDc4OTA3MDAwIGVu
-ZDogMHgwMDAwMDA3ODk4NmZmZgpbICAgIDAuMTI1NDY2XSBETUFSLUlSOiBJT0FQSUMgaWQgMiB1
-bmRlciBEUkhEIGJhc2UgIDB4ZmVkOTEwMDAgSU9NTVUgMQpbICAgIDAuMTI1NDY3XSBETUFSLUlS
-OiBIUEVUIGlkIDAgdW5kZXIgRFJIRCBiYXNlIDB4ZmVkOTEwMDAKWyAgICAwLjEyNTQ2N10gRE1B
-Ui1JUjogUXVldWVkIGludmFsaWRhdGlvbiB3aWxsIGJlIGVuYWJsZWQgdG8gc3VwcG9ydCB4MmFw
-aWMgYW5kIEludHItcmVtYXBwaW5nLgpbICAgIDAuMTI3MjYwXSBETUFSLUlSOiBFbmFibGVkIElS
-USByZW1hcHBpbmcgaW4geDJhcGljIG1vZGUKWyAgICAwLjEyNzI2MV0geDJhcGljIGVuYWJsZWQK
-WyAgICAwLjEyNzI4NV0gU3dpdGNoZWQgQVBJQyByb3V0aW5nIHRvIGNsdXN0ZXIgeDJhcGljLgpb
-ICAgIDAuMTMyMzYxXSAuLlRJTUVSOiB2ZWN0b3I9MHgzMCBhcGljMT0wIHBpbjE9MiBhcGljMj0t
-MSBwaW4yPS0xClsgICAgMC4xNDk0MjBdIGNsb2Nrc291cmNlOiB0c2MtZWFybHk6IG1hc2s6IDB4
-ZmZmZmZmZmZmZmZmZmZmZiBtYXhfY3ljbGVzOiAweDFlNzE3ODVlNWRkLCBtYXhfaWRsZV9uczog
-NDQwNzk1MjQ0ODE0IG5zClsgICAgMC4xNDk0MjhdIENhbGlicmF0aW5nIGRlbGF5IGxvb3AgKHNr
-aXBwZWQpLCB2YWx1ZSBjYWxjdWxhdGVkIHVzaW5nIHRpbWVyIGZyZXF1ZW5jeS4uIDQyMjQuMDAg
-Qm9nb01JUFMgKGxwaj04NDQ4MDAwKQpbICAgIDAuMTQ5NDMwXSBwaWRfbWF4OiBkZWZhdWx0OiAz
-Mjc2OCBtaW5pbXVtOiAzMDEKWyAgICAwLjE1MTE5Nl0gTFNNOiBTZWN1cml0eSBGcmFtZXdvcmsg
-aW5pdGlhbGl6aW5nClsgICAgMC4xNTEyMDJdIFlhbWE6IGJlY29taW5nIG1pbmRmdWwuClsgICAg
-MC4xNTEyMTVdIEFwcEFybW9yOiBBcHBBcm1vciBpbml0aWFsaXplZApbICAgIDAuMTUzNDg3XSBE
-ZW50cnkgY2FjaGUgaGFzaCB0YWJsZSBlbnRyaWVzOiAyMDk3MTUyIChvcmRlcjogMTIsIDE2Nzc3
-MjE2IGJ5dGVzKQpbICAgIDAuMTU0NjI5XSBJbm9kZS1jYWNoZSBoYXNoIHRhYmxlIGVudHJpZXM6
-IDEwNDg1NzYgKG9yZGVyOiAxMSwgODM4ODYwOCBieXRlcykKWyAgICAwLjE1NDY2OV0gTW91bnQt
-Y2FjaGUgaGFzaCB0YWJsZSBlbnRyaWVzOiAzMjc2OCAob3JkZXI6IDYsIDI2MjE0NCBieXRlcykK
-WyAgICAwLjE1NDcwNF0gTW91bnRwb2ludC1jYWNoZSBoYXNoIHRhYmxlIGVudHJpZXM6IDMyNzY4
-IChvcmRlcjogNiwgMjYyMTQ0IGJ5dGVzKQpbICAgIDAuMTU0ODQxXSBFTkVSR1lfUEVSRl9CSUFT
-OiBTZXQgdG8gJ25vcm1hbCcsIHdhcyAncGVyZm9ybWFuY2UnClsgICAgMC4xNTQ4NDFdIEVORVJH
-WV9QRVJGX0JJQVM6IFZpZXcgYW5kIHVwZGF0ZSB3aXRoIHg4Nl9lbmVyZ3lfcGVyZl9wb2xpY3ko
-OCkKWyAgICAwLjE1NDg1MV0gbWNlOiBDUFUwOiBUaGVybWFsIG1vbml0b3JpbmcgZW5hYmxlZCAo
-VE0xKQpbICAgIDAuMTU0ODYzXSBwcm9jZXNzOiB1c2luZyBtd2FpdCBpbiBpZGxlIHRocmVhZHMK
-WyAgICAwLjE1NDg2NF0gTGFzdCBsZXZlbCBpVExCIGVudHJpZXM6IDRLQiA2NCwgMk1CIDgsIDRN
-QiA4ClsgICAgMC4xNTQ4NjRdIExhc3QgbGV2ZWwgZFRMQiBlbnRyaWVzOiA0S0IgNjQsIDJNQiAw
-LCA0TUIgMCwgMUdCIDQKWyAgICAwLjE1NDg2NV0gU3BlY3RyZSBWMSA6IE1pdGlnYXRpb246IHVz
-ZXJjb3B5L3N3YXBncyBiYXJyaWVycyBhbmQgX191c2VyIHBvaW50ZXIgc2FuaXRpemF0aW9uClsg
-ICAgMC4xNTQ4NjZdIFNwZWN0cmUgVjIgOiBNaXRpZ2F0aW9uOiBFbmhhbmNlZCBJQlJTClsgICAg
-MC4xNTQ4NjZdIFNwZWN0cmUgVjIgOiBTcGVjdHJlIHYyIC8gU3BlY3RyZVJTQiBtaXRpZ2F0aW9u
-OiBGaWxsaW5nIFJTQiBvbiBjb250ZXh0IHN3aXRjaApbICAgIDAuMTU0ODY5XSBTcGVjdHJlIFYy
-IDogbWl0aWdhdGlvbjogRW5hYmxpbmcgY29uZGl0aW9uYWwgSW5kaXJlY3QgQnJhbmNoIFByZWRp
-Y3Rpb24gQmFycmllcgpbICAgIDAuMTU0ODcwXSBTcGVjdWxhdGl2ZSBTdG9yZSBCeXBhc3M6IE1p
-dGlnYXRpb246IFNwZWN1bGF0aXZlIFN0b3JlIEJ5cGFzcyBkaXNhYmxlZCB2aWEgcHJjdGwgYW5k
-IHNlY2NvbXAKWyAgICAwLjE1NTAyN10gRnJlZWluZyBTTVAgYWx0ZXJuYXRpdmVzIG1lbW9yeTog
-MzZLClsgICAgMC4xNTczNDhdIFRTQyBkZWFkbGluZSB0aW1lciBlbmFibGVkClsgICAgMC4xNTcz
-NTNdIHNtcGJvb3Q6IENQVTA6IEludGVsKFIpIENvcmUoVE0pIGk3LTg2NjVVIENQVSBAIDEuOTBH
-SHogKGZhbWlseTogMHg2LCBtb2RlbDogMHg4ZSwgc3RlcHBpbmc6IDB4YykKWyAgICAwLjE1NzQx
-MV0gUGVyZm9ybWFuY2UgRXZlbnRzOiBQRUJTIGZtdDMrLCBTa3lsYWtlIGV2ZW50cywgMzItZGVl
-cCBMQlIsIGZ1bGwtd2lkdGggY291bnRlcnMsIEludGVsIFBNVSBkcml2ZXIuClsgICAgMC4xNTc0
-MjJdIC4uLiB2ZXJzaW9uOiAgICAgICAgICAgICAgICA0ClsgICAgMC4xNTc0MjJdIC4uLiBiaXQg
-d2lkdGg6ICAgICAgICAgICAgICA0OApbICAgIDAuMTU3NDIyXSAuLi4gZ2VuZXJpYyByZWdpc3Rl
-cnM6ICAgICAgNApbICAgIDAuMTU3NDIyXSAuLi4gdmFsdWUgbWFzazogICAgICAgICAgICAgMDAw
-MGZmZmZmZmZmZmZmZgpbICAgIDAuMTU3NDIyXSAuLi4gbWF4IHBlcmlvZDogICAgICAgICAgICAg
-MDAwMDdmZmZmZmZmZmZmZgpbICAgIDAuMTU3NDIyXSAuLi4gZml4ZWQtcHVycG9zZSBldmVudHM6
-ICAgMwpbICAgIDAuMTU3NDIyXSAuLi4gZXZlbnQgbWFzazogICAgICAgICAgICAgMDAwMDAwMDcw
-MDAwMDAwZgpbICAgIDAuMTU3NDIyXSByY3U6IEhpZXJhcmNoaWNhbCBTUkNVIGltcGxlbWVudGF0
-aW9uLgpbICAgIDAuMTU3NDIyXSByYW5kb206IGNybmcgZG9uZSAodHJ1c3RpbmcgQ1BVJ3MgbWFu
-dWZhY3R1cmVyKQpbICAgIDAuMTU3NDIyXSBOTUkgd2F0Y2hkb2c6IEVuYWJsZWQuIFBlcm1hbmVu
-dGx5IGNvbnN1bWVzIG9uZSBody1QTVUgY291bnRlci4KWyAgICAwLjE1NzQyMl0gc21wOiBCcmlu
-Z2luZyB1cCBzZWNvbmRhcnkgQ1BVcyAuLi4KWyAgICAwLjE1NzQyMl0geDg2OiBCb290aW5nIFNN
-UCBjb25maWd1cmF0aW9uOgpbICAgIDAuMTU3NDIyXSAuLi4uIG5vZGUgICMwLCBDUFVzOiAgICAg
-ICMxICMyICMzICM0ICM1ICM2ICM3ClsgICAgMC4xNTgxMzZdIHNtcDogQnJvdWdodCB1cCAxIG5v
-ZGUsIDggQ1BVcwpbICAgIDAuMTU4MTM2XSBzbXBib290OiBNYXggbG9naWNhbCBwYWNrYWdlczog
-MQpbICAgIDAuMTU4MTM2XSBzbXBib290OiBUb3RhbCBvZiA4IHByb2Nlc3NvcnMgYWN0aXZhdGVk
-ICgzMzc5Mi4wMCBCb2dvTUlQUykKWyAgICAwLjE2MTczMV0gZGV2dG1wZnM6IGluaXRpYWxpemVk
-ClsgICAgMC4xNjE3MzFdIHg4Ni9tbTogTWVtb3J5IGJsb2NrIHNpemU6IDEyOE1CClsgICAgMC4x
-NjIwODNdIFBNOiBSZWdpc3RlcmluZyBBQ1BJIE5WUyByZWdpb24gW21lbSAweDcwNjBkMDAwLTB4
-NzA2MGRmZmZdICg0MDk2IGJ5dGVzKQpbICAgIDAuMTYyMDgzXSBQTTogUmVnaXN0ZXJpbmcgQUNQ
-SSBOVlMgcmVnaW9uIFttZW0gMHg3OGEwNDAwMC0weDc4ZWEyZmZmXSAoNDg0NTU2OCBieXRlcykK
-WyAgICAwLjE2MjA4M10gY2xvY2tzb3VyY2U6IGppZmZpZXM6IG1hc2s6IDB4ZmZmZmZmZmYgbWF4
-X2N5Y2xlczogMHhmZmZmZmZmZiwgbWF4X2lkbGVfbnM6IDc2NDUwNDE3ODUxMDAwMDAgbnMKWyAg
-ICAwLjE2MjA4M10gZnV0ZXggaGFzaCB0YWJsZSBlbnRyaWVzOiAyMDQ4IChvcmRlcjogNSwgMTMx
-MDcyIGJ5dGVzKQpbICAgIDAuMTYyMDgzXSBwaW5jdHJsIGNvcmU6IGluaXRpYWxpemVkIHBpbmN0
-cmwgc3Vic3lzdGVtClsgICAgMC4xNjIwODNdIFJUQyB0aW1lOiAxMjoxMzoyOSwgZGF0ZTogMjAx
-OS0xMC0wMwpbICAgIDAuMTYyMDgzXSBORVQ6IFJlZ2lzdGVyZWQgcHJvdG9jb2wgZmFtaWx5IDE2
-ClsgICAgMC4xNjIwODNdIGF1ZGl0OiBpbml0aWFsaXppbmcgbmV0bGluayBzdWJzeXMgKGRpc2Fi
-bGVkKQpbICAgIDAuMTYyMDgzXSBhdWRpdDogdHlwZT0yMDAwIGF1ZGl0KDE1NzAxMDQ4MDkuMDQw
-OjEpOiBzdGF0ZT1pbml0aWFsaXplZCBhdWRpdF9lbmFibGVkPTAgcmVzPTEKWyAgICAwLjE2MjA4
-M10gRUlTQSBidXMgcmVnaXN0ZXJlZApbICAgIDAuMTYyMDgzXSBjcHVpZGxlOiB1c2luZyBnb3Zl
-cm5vciBsYWRkZXIKWyAgICAwLjE2MjA4M10gY3B1aWRsZTogdXNpbmcgZ292ZXJub3IgbWVudQpb
-ICAgIDAuMTYyMDgzXSBBQ1BJOiBidXMgdHlwZSBQQ0kgcmVnaXN0ZXJlZApbICAgIDAuMTYyMDgz
-XSBhY3BpcGhwOiBBQ1BJIEhvdCBQbHVnIFBDSSBDb250cm9sbGVyIERyaXZlciB2ZXJzaW9uOiAw
-LjUKWyAgICAwLjE2MjA4M10gUENJOiBNTUNPTkZJRyBmb3IgZG9tYWluIDAwMDAgW2J1cyAwMC03
-Zl0gYXQgW21lbSAweGYwMDAwMDAwLTB4ZjdmZmZmZmZdIChiYXNlIDB4ZjAwMDAwMDApClsgICAg
-MC4xNjIwODNdIFBDSTogTU1DT05GSUcgYXQgW21lbSAweGYwMDAwMDAwLTB4ZjdmZmZmZmZdIHJl
-c2VydmVkIGluIEU4MjAKWyAgICAwLjE2MjA4M10gUENJOiBVc2luZyBjb25maWd1cmF0aW9uIHR5
-cGUgMSBmb3IgYmFzZSBhY2Nlc3MKWyAgICAwLjE2MjIxNF0gSHVnZVRMQiByZWdpc3RlcmVkIDEu
-MDAgR2lCIHBhZ2Ugc2l6ZSwgcHJlLWFsbG9jYXRlZCAwIHBhZ2VzClsgICAgMC4xNjIyMTRdIEh1
-Z2VUTEIgcmVnaXN0ZXJlZCAyLjAwIE1pQiBwYWdlIHNpemUsIHByZS1hbGxvY2F0ZWQgMCBwYWdl
-cwpbICAgIDAuMTYyMjE0XSBBQ1BJOiBBZGRlZCBfT1NJKE1vZHVsZSBEZXZpY2UpClsgICAgMC4x
-NjIyMTRdIEFDUEk6IEFkZGVkIF9PU0koUHJvY2Vzc29yIERldmljZSkKWyAgICAwLjE2MjIxNF0g
-QUNQSTogQWRkZWQgX09TSSgzLjAgX1NDUCBFeHRlbnNpb25zKQpbICAgIDAuMTYyMjE0XSBBQ1BJ
-OiBBZGRlZCBfT1NJKFByb2Nlc3NvciBBZ2dyZWdhdG9yIERldmljZSkKWyAgICAwLjE2MjIxNF0g
-QUNQSTogQWRkZWQgX09TSShMaW51eC1EZWxsLVZpZGVvKQpbICAgIDAuMTYyMjE0XSBBQ1BJOiBB
-ZGRlZCBfT1NJKExpbnV4LUxlbm92by1OVi1IRE1JLUF1ZGlvKQpbICAgIDAuMTYyMjE0XSBBQ1BJ
-OiBBZGRlZCBfT1NJKExpbnV4LUhQSS1IeWJyaWQtR3JhcGhpY3MpClsgICAgMC4yMDg0NDhdIEFD
-UEk6IDEwIEFDUEkgQU1MIHRhYmxlcyBzdWNjZXNzZnVsbHkgYWNxdWlyZWQgYW5kIGxvYWRlZApb
-ICAgIDAuMjE4NzU4XSBBQ1BJOiBbRmlybXdhcmUgQnVnXTogQklPUyBfT1NJKExpbnV4KSBxdWVy
-eSBpZ25vcmVkClsgICAgMC4yMjQyNTNdIEFDUEk6IER5bmFtaWMgT0VNIFRhYmxlIExvYWQ6Clsg
-ICAgMC4yMjQyNTddIEFDUEk6IFNTRFQgMHhGRkZGOUIzNEU5QUM4QTAwIDAwMDBGNCAodjAyIFBt
-UmVmICBDcHUwUHNkICAwMDAwMzAwMCBJTlRMIDIwMTYwNTI3KQpbICAgIDAuMjI0NTE3XSBBQ1BJ
-OiBcX1NCXy5QUjAwOiBfT1NDIG5hdGl2ZSB0aGVybWFsIExWVCBBY2tlZApbICAgIDAuMjI1MTgz
-XSBBQ1BJOiBEeW5hbWljIE9FTSBUYWJsZSBMb2FkOgpbICAgIDAuMjI1MTg2XSBBQ1BJOiBTU0RU
-IDB4RkZGRjlCMzRFOTVGMDgwMCAwMDA0MDAgKHYwMiBQbVJlZiAgQ3B1MENzdCAgMDAwMDMwMDEg
-SU5UTCAyMDE2MDUyNykKWyAgICAwLjIyNTUxNF0gQUNQSTogRHluYW1pYyBPRU0gVGFibGUgTG9h
-ZDoKWyAgICAwLjIyNTUxN10gQUNQSTogU1NEVCAweEZGRkY5QjM0RUJDMTcwMDAgMDAwNTYwICh2
-MDIgUG1SZWYgIENwdTBJc3QgIDAwMDAzMDAwIElOVEwgMjAxNjA1MjcpClsgICAgMC4yMjU5MDJd
-IEFDUEk6IER5bmFtaWMgT0VNIFRhYmxlIExvYWQ6ClsgICAgMC4yMjU5MDVdIEFDUEk6IFNTRFQg
-MHhGRkZGOUIzNEU5NDEwQTAwIDAwMDExQiAodjAyIFBtUmVmICBDcHUwSHdwICAwMDAwMzAwMCBJ
-TlRMIDIwMTYwNTI3KQpbICAgIDAuMjI2MTU5XSBBQ1BJOiBEeW5hbWljIE9FTSBUYWJsZSBMb2Fk
-OgpbICAgIDAuMjI2MTYyXSBBQ1BJOiBTU0RUIDB4RkZGRjlCMzRFOTVGQjAwMCAwMDA3MjQgKHYw
-MiBQbVJlZiAgSHdwTHZ0ICAgMDAwMDMwMDAgSU5UTCAyMDE2MDUyNykKWyAgICAwLjIyNjYyOF0g
-QUNQSTogRHluYW1pYyBPRU0gVGFibGUgTG9hZDoKWyAgICAwLjIyNjYzMV0gQUNQSTogU1NEVCAw
-eEZGRkY5QjM0RTk1RkI4MDAgMDAwNUZDICh2MDIgUG1SZWYgIEFwSXN0ICAgIDAwMDAzMDAwIElO
-VEwgMjAxNjA1MjcpClsgICAgMC4yMjcwMDhdIEFDUEk6IER5bmFtaWMgT0VNIFRhYmxlIExvYWQ6
-ClsgICAgMC4yMjcwMTFdIEFDUEk6IFNTRFQgMHhGRkZGOUIzNEU5NUY3NDAwIDAwMDMxNyAodjAy
-IFBtUmVmICBBcEh3cCAgICAwMDAwMzAwMCBJTlRMIDIwMTYwNTI3KQpbICAgIDAuMjI3Mzg3XSBB
-Q1BJOiBEeW5hbWljIE9FTSBUYWJsZSBMb2FkOgpbICAgIDAuMjI3MzkwXSBBQ1BJOiBTU0RUIDB4
-RkZGRjlCMzRFQkQ1MjAwMCAwMDBBQjAgKHYwMiBQbVJlZiAgQXBQc2QgICAgMDAwMDMwMDAgSU5U
-TCAyMDE2MDUyNykKWyAgICAwLjIyODE2NV0gQUNQSTogRHluYW1pYyBPRU0gVGFibGUgTG9hZDoK
-WyAgICAwLjIyODE2OF0gQUNQSTogU1NEVCAweEZGRkY5QjM0RTk1RjI4MDAgMDAwMzBBICh2MDIg
-UG1SZWYgIEFwQ3N0ICAgIDAwMDAzMDAwIElOVEwgMjAxNjA1MjcpClsgICAgMC4yMzA1NzRdIEFD
-UEk6IEVDOiBFQyBzdGFydGVkClsgICAgMC4yMzA1NzVdIEFDUEk6IEVDOiBpbnRlcnJ1cHQgYmxv
-Y2tlZApbICAgIDAuMjQwNzgzXSBBQ1BJOiBcX1NCXy5QQ0kwLkxQQ0IuRUNEVjogVXNlZCBhcyBm
-aXJzdCBFQwpbICAgIDAuMjQwNzg0XSBBQ1BJOiBcX1NCXy5QQ0kwLkxQQ0IuRUNEVjogR1BFPTB4
-NmUsIEVDX0NNRC9FQ19TQz0weDkzNCwgRUNfREFUQT0weDkzMApbICAgIDAuMjQwNzg1XSBBQ1BJ
-OiBcX1NCXy5QQ0kwLkxQQ0IuRUNEVjogVXNlZCBhcyBib290IERTRFQgRUMgdG8gaGFuZGxlIHRy
-YW5zYWN0aW9ucwpbICAgIDAuMjQwNzg2XSBBQ1BJOiBJbnRlcnByZXRlciBlbmFibGVkClsgICAg
-MC4yNDA4MTldIEFDUEk6IChzdXBwb3J0cyBTMCBTMyBTNCBTNSkKWyAgICAwLjI0MDgyMF0gQUNQ
-STogVXNpbmcgSU9BUElDIGZvciBpbnRlcnJ1cHQgcm91dGluZwpbICAgIDAuMjQwODU0XSBQQ0k6
-IFVzaW5nIGhvc3QgYnJpZGdlIHdpbmRvd3MgZnJvbSBBQ1BJOyBpZiBuZWNlc3NhcnksIHVzZSAi
-cGNpPW5vY3JzIiBhbmQgcmVwb3J0IGEgYnVnClsgICAgMC4yNDEyOTddIEFDUEk6IEVuYWJsZWQg
-MTAgR1BFcyBpbiBibG9jayAwMCB0byA3RgpbICAgIDAuMjUxNTEyXSBBQ1BJOiBQb3dlciBSZXNv
-dXJjZSBbQlRQUl0gKG9mZikKWyAgICAwLjI1MjYxM10gQUNQSTogUG93ZXIgUmVzb3VyY2UgW1VT
-QkNdIChvbikKWyAgICAwLjI1Mjc0MV0gQUNQSTogUG93ZXIgUmVzb3VyY2UgW1BBVURdIChvbikK
-WyAgICAwLjI1NTAzMl0gQUNQSTogUG93ZXIgUmVzb3VyY2UgW1YwUFJdIChvbikKWyAgICAwLjI1
-NTE2NF0gQUNQSTogUG93ZXIgUmVzb3VyY2UgW1YxUFJdIChvbikKWyAgICAwLjI1NTI5MV0gQUNQ
-STogUG93ZXIgUmVzb3VyY2UgW1YyUFJdIChvbikKWyAgICAwLjI1OTI4Nl0gQUNQSTogUG93ZXIg
-UmVzb3VyY2UgW1dSU1RdIChvbikKWyAgICAwLjI2OTE5NV0gQUNQSTogUG93ZXIgUmVzb3VyY2Ug
-W1BJTl0gKG9mZikKWyAgICAwLjI2OTUyMV0gQUNQSTogUENJIFJvb3QgQnJpZGdlIFtQQ0kwXSAo
-ZG9tYWluIDAwMDAgW2J1cyAwMC03ZV0pClsgICAgMC4yNjk1MjRdIGFjcGkgUE5QMEEwODowMDog
-X09TQzogT1Mgc3VwcG9ydHMgW0V4dGVuZGVkQ29uZmlnIEFTUE0gQ2xvY2tQTSBTZWdtZW50cyBN
-U0ldClsgICAgMC4yNzE4NDRdIGFjcGkgUE5QMEEwODowMDogX09TQzogT1Mgbm93IGNvbnRyb2xz
-IFtQQ0llSG90cGx1ZyBTSFBDSG90cGx1ZyBQTUUgQUVSIFBDSWVDYXBhYmlsaXR5IExUUl0KWyAg
-ICAwLjI3MjY1Ml0gUENJIGhvc3QgYnJpZGdlIHRvIGJ1cyAwMDAwOjAwClsgICAgMC4yNzI2NTNd
-IHBjaV9idXMgMDAwMDowMDogcm9vdCBidXMgcmVzb3VyY2UgW2lvICAweDAwMDAtMHgwY2Y3IHdp
-bmRvd10KWyAgICAwLjI3MjY1M10gcGNpX2J1cyAwMDAwOjAwOiByb290IGJ1cyByZXNvdXJjZSBb
-aW8gIDB4MGQwMC0weGZmZmYgd2luZG93XQpbICAgIDAuMjcyNjU0XSBwY2lfYnVzIDAwMDA6MDA6
-IHJvb3QgYnVzIHJlc291cmNlIFttZW0gMHgwMDBhMDAwMC0weDAwMGJmZmZmIHdpbmRvd10KWyAg
-ICAwLjI3MjY1NV0gcGNpX2J1cyAwMDAwOjAwOiByb290IGJ1cyByZXNvdXJjZSBbbWVtIDB4MDAw
-YzAwMDAtMHgwMDBjM2ZmZiB3aW5kb3ddClsgICAgMC4yNzI2NTVdIHBjaV9idXMgMDAwMDowMDog
-cm9vdCBidXMgcmVzb3VyY2UgW21lbSAweDAwMGM0MDAwLTB4MDAwYzdmZmYgd2luZG93XQpbICAg
-IDAuMjcyNjU2XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJlc291cmNlIFttZW0gMHgwMDBj
-ODAwMC0weDAwMGNiZmZmIHdpbmRvd10KWyAgICAwLjI3MjY1Nl0gcGNpX2J1cyAwMDAwOjAwOiBy
-b290IGJ1cyByZXNvdXJjZSBbbWVtIDB4MDAwY2MwMDAtMHgwMDBjZmZmZiB3aW5kb3ddClsgICAg
-MC4yNzI2NTZdIHBjaV9idXMgMDAwMDowMDogcm9vdCBidXMgcmVzb3VyY2UgW21lbSAweDAwMGQw
-MDAwLTB4MDAwZDNmZmYgd2luZG93XQpbICAgIDAuMjcyNjU3XSBwY2lfYnVzIDAwMDA6MDA6IHJv
-b3QgYnVzIHJlc291cmNlIFttZW0gMHgwMDBkNDAwMC0weDAwMGQ3ZmZmIHdpbmRvd10KWyAgICAw
-LjI3MjY1N10gcGNpX2J1cyAwMDAwOjAwOiByb290IGJ1cyByZXNvdXJjZSBbbWVtIDB4MDAwZDgw
-MDAtMHgwMDBkYmZmZiB3aW5kb3ddClsgICAgMC4yNzI2NThdIHBjaV9idXMgMDAwMDowMDogcm9v
-dCBidXMgcmVzb3VyY2UgW21lbSAweDAwMGRjMDAwLTB4MDAwZGZmZmYgd2luZG93XQpbICAgIDAu
-MjcyNjU4XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJlc291cmNlIFttZW0gMHg3ZjgwMDAw
-MC0weGVmZmZmZmZmIHdpbmRvd10KWyAgICAwLjI3MjY1OV0gcGNpX2J1cyAwMDAwOjAwOiByb290
-IGJ1cyByZXNvdXJjZSBbbWVtIDB4ZmM4MDAwMDAtMHhmZTdmZmZmZiB3aW5kb3ddClsgICAgMC4y
-NzI2NjBdIHBjaV9idXMgMDAwMDowMDogcm9vdCBidXMgcmVzb3VyY2UgW2J1cyAwMC03ZV0KWyAg
-ICAwLjI3MjY2NF0gcGNpIDAwMDA6MDA6MDAuMDogWzgwODY6M2UzNF0gdHlwZSAwMCBjbGFzcyAw
-eDA2MDAwMApbICAgIDAuMjcyNzY2XSBwY2kgMDAwMDowMDowMi4wOiBbODA4NjozZWEwXSB0eXBl
-IDAwIGNsYXNzIDB4MDMwMDAwClsgICAgMC4yNzI3NzNdIHBjaSAwMDAwOjAwOjAyLjA6IHJlZyAw
-eDEwOiBbbWVtIDB4OTAwMDAwMDAtMHg5MGZmZmZmZiA2NGJpdF0KWyAgICAwLjI3Mjc3Nl0gcGNp
-IDAwMDA6MDA6MDIuMDogcmVnIDB4MTg6IFttZW0gMHg4MDAwMDAwMC0weDhmZmZmZmZmIDY0Yml0
-IHByZWZdClsgICAgMC4yNzI3NzhdIHBjaSAwMDAwOjAwOjAyLjA6IHJlZyAweDIwOiBbaW8gIDB4
-MzAwMC0weDMwM2ZdClsgICAgMC4yNzI3ODddIHBjaSAwMDAwOjAwOjAyLjA6IEJBUiAyOiBhc3Np
-Z25lZCB0byBlZmlmYgpbICAgIDAuMjcyODg3XSBwY2kgMDAwMDowMDowNC4wOiBbODA4NjoxOTAz
-XSB0eXBlIDAwIGNsYXNzIDB4MTE4MDAwClsgICAgMC4yNzI4OTVdIHBjaSAwMDAwOjAwOjA0LjA6
-IHJlZyAweDEwOiBbbWVtIDB4OTEyYjgwMDAtMHg5MTJiZmZmZiA2NGJpdF0KWyAgICAwLjI3MzAy
-Nl0gcGNpIDAwMDA6MDA6MDguMDogWzgwODY6MTkxMV0gdHlwZSAwMCBjbGFzcyAweDA4ODAwMApb
-ICAgIDAuMjczMDM0XSBwY2kgMDAwMDowMDowOC4wOiByZWcgMHgxMDogW21lbSAweDkxMmQzMDAw
-LTB4OTEyZDNmZmYgNjRiaXRdClsgICAgMC4yNzMxNzFdIHBjaSAwMDAwOjAwOjEyLjA6IFs4MDg2
-OjlkZjldIHR5cGUgMDAgY2xhc3MgMHgxMTgwMDAKWyAgICAwLjI3MzE5MV0gcGNpIDAwMDA6MDA6
-MTIuMDogcmVnIDB4MTA6IFttZW0gMHg5MTJkMjAwMC0weDkxMmQyZmZmIDY0Yml0XQpbICAgIDAu
-MjczMzU4XSBwY2kgMDAwMDowMDoxNC4wOiBbODA4Njo5ZGVkXSB0eXBlIDAwIGNsYXNzIDB4MGMw
-MzMwClsgICAgMC4yNzMzNzNdIHBjaSAwMDAwOjAwOjE0LjA6IHJlZyAweDEwOiBbbWVtIDB4OTEy
-YTAwMDAtMHg5MTJhZmZmZiA2NGJpdF0KWyAgICAwLjI3MzQyM10gcGNpIDAwMDA6MDA6MTQuMDog
-UE1FIyBzdXBwb3J0ZWQgZnJvbSBEM2hvdCBEM2NvbGQKWyAgICAwLjI3MzU0MV0gcGNpIDAwMDA6
-MDA6MTQuMjogWzgwODY6OWRlZl0gdHlwZSAwMCBjbGFzcyAweDA1MDAwMApbICAgIDAuMjczNTU4
-XSBwY2kgMDAwMDowMDoxNC4yOiByZWcgMHgxMDogW21lbSAweDkxMmM4MDAwLTB4OTEyYzlmZmYg
-NjRiaXRdClsgICAgMC4yNzM1NjddIHBjaSAwMDAwOjAwOjE0LjI6IHJlZyAweDE4OiBbbWVtIDB4
-OTEyZDEwMDAtMHg5MTJkMWZmZiA2NGJpdF0KWyAgICAwLjI3MzY5MF0gcGNpIDAwMDA6MDA6MTQu
-MzogWzgwODY6OWRmMF0gdHlwZSAwMCBjbGFzcyAweDAyODAwMApbICAgIDAuMjczNzI0XSBwY2kg
-MDAwMDowMDoxNC4zOiByZWcgMHgxMDogW21lbSAweDkxMmM0MDAwLTB4OTEyYzdmZmYgNjRiaXRd
-ClsgICAgMC4yNzM4MDhdIHBjaSAwMDAwOjAwOjE0LjM6IFBNRSMgc3VwcG9ydGVkIGZyb20gRDAg
-RDNob3QgRDNjb2xkClsgICAgMC4yNzM5NjZdIHBjaSAwMDAwOjAwOjE1LjA6IFs4MDg2OjlkZThd
-IHR5cGUgMDAgY2xhc3MgMHgwYzgwMDAKWyAgICAwLjI3NDAyNF0gcGNpIDAwMDA6MDA6MTUuMDog
-cmVnIDB4MTA6IFttZW0gMHgwMDAwMDAwMC0weDAwMDAwZmZmIDY0Yml0XQpbICAgIDAuMjc0Mjk2
-XSBwY2kgMDAwMDowMDoxNS4xOiBbODA4Njo5ZGU5XSB0eXBlIDAwIGNsYXNzIDB4MGM4MDAwClsg
-ICAgMC4yNzQzMTldIHBjaSAwMDAwOjAwOjE1LjE6IHJlZyAweDEwOiBbbWVtIDB4MDAwMDAwMDAt
-MHgwMDAwMGZmZiA2NGJpdF0KWyAgICAwLjI3NDU3OF0gcGNpIDAwMDA6MDA6MTYuMDogWzgwODY6
-OWRlMF0gdHlwZSAwMCBjbGFzcyAweDA3ODAwMApbICAgIDAuMjc0NjAyXSBwY2kgMDAwMDowMDox
-Ni4wOiByZWcgMHgxMDogW21lbSAweDkxMmNlMDAwLTB4OTEyY2VmZmYgNjRiaXRdClsgICAgMC4y
-NzQ2NjldIHBjaSAwMDAwOjAwOjE2LjA6IFBNRSMgc3VwcG9ydGVkIGZyb20gRDNob3QKWyAgICAw
-LjI3NDc5NF0gcGNpIDAwMDA6MDA6MTYuMzogWzgwODY6OWRlM10gdHlwZSAwMCBjbGFzcyAweDA3
-MDAwMgpbICAgIDAuMjc0ODA3XSBwY2kgMDAwMDowMDoxNi4zOiByZWcgMHgxMDogW2lvICAweDMw
-YTAtMHgzMGE3XQpbICAgIDAuMjc0ODEyXSBwY2kgMDAwMDowMDoxNi4zOiByZWcgMHgxNDogW21l
-bSAweDkxMmNkMDAwLTB4OTEyY2RmZmZdClsgICAgMC4yNzQ5NDddIHBjaSAwMDAwOjAwOjE3LjA6
-IFs4MDg2OjI4MmFdIHR5cGUgMDAgY2xhc3MgMHgwMTA0MDAKWyAgICAwLjI3NDk2Ml0gcGNpIDAw
-MDA6MDA6MTcuMDogcmVnIDB4MTA6IFttZW0gMHg5MTJiMDAwMC0weDkxMmI3ZmZmXQpbICAgIDAu
-Mjc0OTY4XSBwY2kgMDAwMDowMDoxNy4wOiByZWcgMHgxNDogW21lbSAweDkxMmNjMDAwLTB4OTEy
-Y2MwZmZdClsgICAgMC4yNzQ5NzRdIHBjaSAwMDAwOjAwOjE3LjA6IHJlZyAweDE4OiBbaW8gIDB4
-MzA5MC0weDMwOTddClsgICAgMC4yNzQ5ODBdIHBjaSAwMDAwOjAwOjE3LjA6IHJlZyAweDFjOiBb
-aW8gIDB4MzA4MC0weDMwODNdClsgICAgMC4yNzQ5ODZdIHBjaSAwMDAwOjAwOjE3LjA6IHJlZyAw
-eDIwOiBbaW8gIDB4MzA2MC0weDMwN2ZdClsgICAgMC4yNzQ5OTJdIHBjaSAwMDAwOjAwOjE3LjA6
-IHJlZyAweDI0OiBbbWVtIDB4OTEyMDAwMDAtMHg5MTI3ZmZmZl0KWyAgICAwLjI3NTAyNV0gcGNp
-IDAwMDA6MDA6MTcuMDogUE1FIyBzdXBwb3J0ZWQgZnJvbSBEM2hvdApbICAgIDAuMjc1MTg0XSBw
-Y2kgMDAwMDowMDoxOS4wOiBbODA4Njo5ZGM1XSB0eXBlIDAwIGNsYXNzIDB4MGM4MDAwClsgICAg
-MC4yNzUyNDJdIHBjaSAwMDAwOjAwOjE5LjA6IHJlZyAweDEwOiBbbWVtIDB4MDAwMDAwMDAtMHgw
-MDAwMGZmZiA2NGJpdF0KWyAgICAwLjI3NTUxOV0gcGNpIDAwMDA6MDA6MWMuMDogWzgwODY6OWRi
-Zl0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMApbICAgIDAuMjc1NTgwXSBwY2kgMDAwMDowMDoxYy4w
-OiBQTUUjIHN1cHBvcnRlZCBmcm9tIEQwIEQzaG90IEQzY29sZApbICAgIDAuMjc1NTkzXSBwY2kg
-MDAwMDowMDoxYy4wOiBQVE0gZW5hYmxlZCAocm9vdCksIDRkbnMgZ3JhbnVsYXJpdHkKWyAgICAw
-LjI3NTc3NV0gcGNpIDAwMDA6MDA6MWYuMDogWzgwODY6OWQ4NF0gdHlwZSAwMCBjbGFzcyAweDA2
-MDEwMApbICAgIDAuMjc1OTQ3XSBwY2kgMDAwMDowMDoxZi4zOiBbODA4Njo5ZGM4XSB0eXBlIDAw
-IGNsYXNzIDB4MDQwMzgwClsgICAgMC4yNzU5ODddIHBjaSAwMDAwOjAwOjFmLjM6IHJlZyAweDEw
-OiBbbWVtIDB4OTEyYzAwMDAtMHg5MTJjM2ZmZiA2NGJpdF0KWyAgICAwLjI3NjAyM10gcGNpIDAw
-MDA6MDA6MWYuMzogcmVnIDB4MjA6IFttZW0gMHg5MTAwMDAwMC0weDkxMGZmZmZmIDY0Yml0XQpb
-ICAgIDAuMjc2MDk3XSBwY2kgMDAwMDowMDoxZi4zOiBQTUUjIHN1cHBvcnRlZCBmcm9tIEQzaG90
-IEQzY29sZApbICAgIDAuMjc2MjU1XSBwY2kgMDAwMDowMDoxZi40OiBbODA4Njo5ZGEzXSB0eXBl
-IDAwIGNsYXNzIDB4MGMwNTAwClsgICAgMC4yNzYyNzNdIHBjaSAwMDAwOjAwOjFmLjQ6IHJlZyAw
-eDEwOiBbbWVtIDB4OTEyY2EwMDAtMHg5MTJjYTBmZiA2NGJpdF0KWyAgICAwLjI3NjMwMF0gcGNp
-IDAwMDA6MDA6MWYuNDogcmVnIDB4MjA6IFtpbyAgMHhlZmEwLTB4ZWZiZl0KWyAgICAwLjI3NjQy
-MF0gcGNpIDAwMDA6MDA6MWYuNTogWzgwODY6OWRhNF0gdHlwZSAwMCBjbGFzcyAweDBjODAwMApb
-ICAgIDAuMjc2NDM0XSBwY2kgMDAwMDowMDoxZi41OiByZWcgMHgxMDogW21lbSAweGZlMDEwMDAw
-LTB4ZmUwMTBmZmZdClsgICAgMC4yNzY1NTldIHBjaSAwMDAwOjAwOjFmLjY6IFs4MDg2OjE1YmRd
-IHR5cGUgMDAgY2xhc3MgMHgwMjAwMDAKWyAgICAwLjI3NjU5NF0gcGNpIDAwMDA6MDA6MWYuNjog
-cmVnIDB4MTA6IFttZW0gMHg5MTI4MDAwMC0weDkxMjlmZmZmXQpbICAgIDAuMjc2NzM1XSBwY2kg
-MDAwMDowMDoxZi42OiBQTUUjIHN1cHBvcnRlZCBmcm9tIEQwIEQzaG90IEQzY29sZApbICAgIDAu
-Mjc2OTA4XSBwY2kgMDAwMDowMTowMC4wOiBbMTBlYzo1MjVhXSB0eXBlIDAwIGNsYXNzIDB4ZmYw
-MDAwClsgICAgMC4yNzY5MzddIHBjaSAwMDAwOjAxOjAwLjA6IHJlZyAweDE0OiBbbWVtIDB4OTEx
-MDAwMDAtMHg5MTEwMGZmZl0KWyAgICAwLjI3NzAzNF0gcGNpIDAwMDA6MDE6MDAuMDogc3VwcG9y
-dHMgRDEgRDIKWyAgICAwLjI3NzAzNF0gcGNpIDAwMDA6MDE6MDAuMDogUE1FIyBzdXBwb3J0ZWQg
-ZnJvbSBEMSBEMiBEM2hvdCBEM2NvbGQKWyAgICAwLjI3NzE0N10gcGNpIDAwMDA6MDA6MWMuMDog
-UENJIGJyaWRnZSB0byBbYnVzIDAxXQpbICAgIDAuMjc3MTUwXSBwY2kgMDAwMDowMDoxYy4wOiAg
-IGJyaWRnZSB3aW5kb3cgW21lbSAweDkxMTAwMDAwLTB4OTExZmZmZmZdClsgICAgMC4yNzg3NTNd
-IEFDUEk6IFBDSSBJbnRlcnJ1cHQgTGluayBbTE5LQV0gKElSUXMgMyA0IDUgNiAxMCAxMSAxMiAx
-NCAxNSkgKjAKWyAgICAwLjI3ODgxNl0gQUNQSTogUENJIEludGVycnVwdCBMaW5rIFtMTktCXSAo
-SVJRcyAzIDQgNSA2IDEwIDExIDEyIDE0IDE1KSAqMQpbICAgIDAuMjc4ODc3XSBBQ1BJOiBQQ0kg
-SW50ZXJydXB0IExpbmsgW0xOS0NdIChJUlFzIDMgNCA1IDYgMTAgMTEgMTIgMTQgMTUpICowClsg
-ICAgMC4yNzg5MzhdIEFDUEk6IFBDSSBJbnRlcnJ1cHQgTGluayBbTE5LRF0gKElSUXMgMyA0IDUg
-NiAxMCAxMSAxMiAxNCAxNSkgKjAKWyAgICAwLjI3ODk5OF0gQUNQSTogUENJIEludGVycnVwdCBM
-aW5rIFtMTktFXSAoSVJRcyAzIDQgNSA2IDEwIDExIDEyIDE0IDE1KSAqMApbICAgIDAuMjc5MDU5
-XSBBQ1BJOiBQQ0kgSW50ZXJydXB0IExpbmsgW0xOS0ZdIChJUlFzIDMgNCA1IDYgMTAgMTEgMTIg
-MTQgMTUpICowClsgICAgMC4yNzkxMjBdIEFDUEk6IFBDSSBJbnRlcnJ1cHQgTGluayBbTE5LR10g
-KElSUXMgMyA0IDUgNiAxMCAxMSAxMiAxNCAxNSkgKjAKWyAgICAwLjI3OTE4MF0gQUNQSTogUENJ
-IEludGVycnVwdCBMaW5rIFtMTktIXSAoSVJRcyAzIDQgNSA2IDEwIDExIDEyIDE0IDE1KSAqMApb
-ICAgIDAuMzAyOTg3XSBBQ1BJOiBFQzogaW50ZXJydXB0IHVuYmxvY2tlZApbICAgIDAuMzAyOTg3
-XSBBQ1BJOiBFQzogZXZlbnQgdW5ibG9ja2VkClsgICAgMC4zMDI5ODddIEFDUEk6IFxfU0JfLlBD
-STAuTFBDQi5FQ0RWOiBHUEU9MHg2ZSwgRUNfQ01EL0VDX1NDPTB4OTM0LCBFQ19EQVRBPTB4OTMw
-ClsgICAgMC4zMDI5ODddIEFDUEk6IFxfU0JfLlBDSTAuTFBDQi5FQ0RWOiBVc2VkIGFzIGJvb3Qg
-RFNEVCBFQyB0byBoYW5kbGUgdHJhbnNhY3Rpb25zIGFuZCBldmVudHMKWyAgICAwLjMwMjk4OV0g
-U0NTSSBzdWJzeXN0ZW0gaW5pdGlhbGl6ZWQKWyAgICAwLjMwMjk4OV0gbGliYXRhIHZlcnNpb24g
-My4wMCBsb2FkZWQuClsgICAgMC4zMDI5ODldIHBjaSAwMDAwOjAwOjAyLjA6IHZnYWFyYjogc2V0
-dGluZyBhcyBib290IFZHQSBkZXZpY2UKWyAgICAwLjMwMjk4OV0gcGNpIDAwMDA6MDA6MDIuMDog
-dmdhYXJiOiBWR0EgZGV2aWNlIGFkZGVkOiBkZWNvZGVzPWlvK21lbSxvd25zPWlvK21lbSxsb2Nr
-cz1ub25lClsgICAgMC4zMDI5ODldIHBjaSAwMDAwOjAwOjAyLjA6IHZnYWFyYjogYnJpZGdlIGNv
-bnRyb2wgcG9zc2libGUKWyAgICAwLjMwMjk4OV0gdmdhYXJiOiBsb2FkZWQKWyAgICAwLjMwMjk4
-OV0gQUNQSTogYnVzIHR5cGUgVVNCIHJlZ2lzdGVyZWQKWyAgICAwLjMwMjk4OV0gdXNiY29yZTog
-cmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciB1c2JmcwpbICAgIDAuMzAyOTg5XSB1c2Jj
-b3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIGh1YgpbICAgIDAuMzAyOTg5XSB1
-c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBkZXZpY2UgZHJpdmVyIHVzYgpbICAgIDAuMzAyOTg5XSBw
-cHNfY29yZTogTGludXhQUFMgQVBJIHZlci4gMSByZWdpc3RlcmVkClsgICAgMC4zMDI5ODldIHBw
-c19jb3JlOiBTb2Z0d2FyZSB2ZXIuIDUuMy42IC0gQ29weXJpZ2h0IDIwMDUtMjAwNyBSb2RvbGZv
-IEdpb21ldHRpIDxnaW9tZXR0aUBsaW51eC5pdD4KWyAgICAwLjMwMjk4OV0gUFRQIGNsb2NrIHN1
-cHBvcnQgcmVnaXN0ZXJlZApbICAgIDAuMzA1NDI1XSBFREFDIE1DOiBWZXI6IDMuMC4wClsgICAg
-MC4zMDc1NjhdIFJlZ2lzdGVyZWQgZWZpdmFycyBvcGVyYXRpb25zClsgICAgMC4zMzM2NDFdIFBD
-STogVXNpbmcgQUNQSSBmb3IgSVJRIHJvdXRpbmcKWyAgICAwLjM1NDE1MF0gUENJOiBwY2lfY2Fj
-aGVfbGluZV9zaXplIHNldCB0byA2NCBieXRlcwpbICAgIDAuMzU0MzcwXSBlODIwOiByZXNlcnZl
-IFJBTSBidWZmZXIgW21lbSAweDAwMDllMDAwLTB4MDAwOWZmZmZdClsgICAgMC4zNTQzNzFdIGU4
-MjA6IHJlc2VydmUgUkFNIGJ1ZmZlciBbbWVtIDB4NmRiMGUwMTgtMHg2ZmZmZmZmZl0KWyAgICAw
-LjM1NDM3Ml0gZTgyMDogcmVzZXJ2ZSBSQU0gYnVmZmVyIFttZW0gMHg2ZGIxZjAxOC0weDZmZmZm
-ZmZmXQpbICAgIDAuMzU0MzcyXSBlODIwOiByZXNlcnZlIFJBTSBidWZmZXIgW21lbSAweDcwNjBk
-MDAwLTB4NzNmZmZmZmZdClsgICAgMC4zNTQzNzJdIGU4MjA6IHJlc2VydmUgUkFNIGJ1ZmZlciBb
-bWVtIDB4NzgyZDkwMDAtMHg3YmZmZmZmZl0KWyAgICAwLjM1NDM3M10gZTgyMDogcmVzZXJ2ZSBS
-QU0gYnVmZmVyIFttZW0gMHg3YWQwMDAwMC0weDdiZmZmZmZmXQpbICAgIDAuMzU0MzczXSBlODIw
-OiByZXNlcnZlIFJBTSBidWZmZXIgW21lbSAweDQ3YzgwMDAwMC0weDQ3ZmZmZmZmZl0KWyAgICAw
-LjM1NzQyMl0gTmV0TGFiZWw6IEluaXRpYWxpemluZwpbICAgIDAuMzU3NDIyXSBOZXRMYWJlbDog
-IGRvbWFpbiBoYXNoIHNpemUgPSAxMjgKWyAgICAwLjM1NzQyMl0gTmV0TGFiZWw6ICBwcm90b2Nv
-bHMgPSBVTkxBQkVMRUQgQ0lQU092NCBDQUxJUFNPClsgICAgMC4zNTc0MjJdIE5ldExhYmVsOiAg
-dW5sYWJlbGVkIHRyYWZmaWMgYWxsb3dlZCBieSBkZWZhdWx0ClsgICAgMC4zNTc4NDVdIGhwZXQw
-OiBhdCBNTUlPIDB4ZmVkMDAwMDAsIElSUXMgMiwgOCwgMCwgMCwgMCwgMCwgMCwgMApbICAgIDAu
-MzU3ODQ3XSBocGV0MDogOCBjb21wYXJhdG9ycywgNjQtYml0IDI0LjAwMDAwMCBNSHogY291bnRl
-cgpbICAgIDAuMzYxNDM1XSBjbG9ja3NvdXJjZTogU3dpdGNoZWQgdG8gY2xvY2tzb3VyY2UgdHNj
-LWVhcmx5ClsgICAgMC4zNjgwMTNdIFZGUzogRGlzayBxdW90YXMgZHF1b3RfNi42LjAKWyAgICAw
-LjM2ODAyMV0gVkZTOiBEcXVvdC1jYWNoZSBoYXNoIHRhYmxlIGVudHJpZXM6IDUxMiAob3JkZXIg
-MCwgNDA5NiBieXRlcykKWyAgICAwLjM2ODA4NF0gQXBwQXJtb3I6IEFwcEFybW9yIEZpbGVzeXN0
-ZW0gRW5hYmxlZApbICAgIDAuMzY4MDk3XSBwbnA6IFBuUCBBQ1BJIGluaXQKWyAgICAwLjM2ODE1
-OF0gc3lzdGVtIDAwOjAwOiBbbWVtIDB4NDAwMDAwMDAtMHg0MDNmZmZmZl0gaGFzIGJlZW4gcmVz
-ZXJ2ZWQKWyAgICAwLjM2ODE2MV0gc3lzdGVtIDAwOjAwOiBQbHVnIGFuZCBQbGF5IEFDUEkgZGV2
-aWNlLCBJRHMgUE5QMGMwMiAoYWN0aXZlKQpbICAgIDAuMzY4Mjc2XSBzeXN0ZW0gMDA6MDE6IFtp
-byAgMHgwNjgwLTB4MDY5Zl0gaGFzIGJlZW4gcmVzZXJ2ZWQKWyAgICAwLjM2ODI3N10gc3lzdGVt
-IDAwOjAxOiBbaW8gIDB4MTY0ZS0weDE2NGZdIGhhcyBiZWVuIHJlc2VydmVkClsgICAgMC4zNjgy
-NzldIHN5c3RlbSAwMDowMTogUGx1ZyBhbmQgUGxheSBBQ1BJIGRldmljZSwgSURzIFBOUDBjMDIg
-KGFjdGl2ZSkKWyAgICAwLjM2ODMwOV0gcG5wIDAwOjAyOiBQbHVnIGFuZCBQbGF5IEFDUEkgZGV2
-aWNlLCBJRHMgUE5QMGIwMCAoYWN0aXZlKQpbICAgIDAuMzY4MzcyXSBzeXN0ZW0gMDA6MDM6IFtp
-byAgMHgxODU0LTB4MTg1N10gaGFzIGJlZW4gcmVzZXJ2ZWQKWyAgICAwLjM2ODM3M10gc3lzdGVt
-IDAwOjAzOiBQbHVnIGFuZCBQbGF5IEFDUEkgZGV2aWNlLCBJRHMgSU5UM2YwZCBQTlAwYzAyIChh
-Y3RpdmUpClsgICAgMC4zNjg0NDBdIHBucCAwMDowNDogUGx1ZyBhbmQgUGxheSBBQ1BJIGRldmlj
-ZSwgSURzIFBOUDAzMDMgKGFjdGl2ZSkKWyAgICAwLjM2ODQ3Ml0gcG5wIDAwOjA1OiBQbHVnIGFu
-ZCBQbGF5IEFDUEkgZGV2aWNlLCBJRHMgRExMMDhiOCBQTlAwZjEzIChhY3RpdmUpClsgICAgMC4z
-Njg2MDVdIHN5c3RlbSAwMDowNjogW21lbSAweGZlZDEwMDAwLTB4ZmVkMTdmZmZdIGhhcyBiZWVu
-IHJlc2VydmVkClsgICAgMC4zNjg2MDVdIHN5c3RlbSAwMDowNjogW21lbSAweGZlZDE4MDAwLTB4
-ZmVkMThmZmZdIGhhcyBiZWVuIHJlc2VydmVkClsgICAgMC4zNjg2MDZdIHN5c3RlbSAwMDowNjog
-W21lbSAweGZlZDE5MDAwLTB4ZmVkMTlmZmZdIGhhcyBiZWVuIHJlc2VydmVkClsgICAgMC4zNjg2
-MDddIHN5c3RlbSAwMDowNjogW21lbSAweGYwMDAwMDAwLTB4ZjdmZmZmZmZdIGhhcyBiZWVuIHJl
-c2VydmVkClsgICAgMC4zNjg2MDddIHN5c3RlbSAwMDowNjogW21lbSAweGZlZDIwMDAwLTB4ZmVk
-M2ZmZmZdIGhhcyBiZWVuIHJlc2VydmVkClsgICAgMC4zNjg2MDhdIHN5c3RlbSAwMDowNjogW21l
-bSAweGZlZDkwMDAwLTB4ZmVkOTNmZmZdIGNvdWxkIG5vdCBiZSByZXNlcnZlZApbICAgIDAuMzY4
-NjA5XSBzeXN0ZW0gMDA6MDY6IFttZW0gMHhmZWQ0NTAwMC0weGZlZDhmZmZmXSBoYXMgYmVlbiBy
-ZXNlcnZlZApbICAgIDAuMzY4NjA5XSBzeXN0ZW0gMDA6MDY6IFttZW0gMHhmZWUwMDAwMC0weGZl
-ZWZmZmZmXSBjb3VsZCBub3QgYmUgcmVzZXJ2ZWQKWyAgICAwLjM2ODYxMV0gc3lzdGVtIDAwOjA2
-OiBQbHVnIGFuZCBQbGF5IEFDUEkgZGV2aWNlLCBJRHMgUE5QMGMwMiAoYWN0aXZlKQpbICAgIDAu
-MzY4NzY1XSBzeXN0ZW0gMDA6MDc6IFtpbyAgMHgxODAwLTB4MThmZV0gY291bGQgbm90IGJlIHJl
-c2VydmVkClsgICAgMC4zNjg3NjZdIHN5c3RlbSAwMDowNzogW21lbSAweGZkMDAwMDAwLTB4ZmQ2
-OWZmZmZdIGhhcyBiZWVuIHJlc2VydmVkClsgICAgMC4zNjg3NjddIHN5c3RlbSAwMDowNzogW21l
-bSAweGZkNmIwMDAwLTB4ZmQ2Y2ZmZmZdIGhhcyBiZWVuIHJlc2VydmVkClsgICAgMC4zNjg3Njdd
-IHN5c3RlbSAwMDowNzogW21lbSAweGZkNmYwMDAwLTB4ZmRmZmZmZmZdIGhhcyBiZWVuIHJlc2Vy
-dmVkClsgICAgMC4zNjg3NjhdIHN5c3RlbSAwMDowNzogW21lbSAweGZlMDAwMDAwLTB4ZmUwMWZm
-ZmZdIGNvdWxkIG5vdCBiZSByZXNlcnZlZApbICAgIDAuMzY4NzY5XSBzeXN0ZW0gMDA6MDc6IFtt
-ZW0gMHhmZTIwMDAwMC0weGZlN2ZmZmZmXSBoYXMgYmVlbiByZXNlcnZlZApbICAgIDAuMzY4NzY5
-XSBzeXN0ZW0gMDA6MDc6IFttZW0gMHhmZjAwMDAwMC0weGZmZmZmZmZmXSBoYXMgYmVlbiByZXNl
-cnZlZApbICAgIDAuMzY4NzcxXSBzeXN0ZW0gMDA6MDc6IFBsdWcgYW5kIFBsYXkgQUNQSSBkZXZp
-Y2UsIElEcyBQTlAwYzAyIChhY3RpdmUpClsgICAgMC4zNjg5NzldIHN5c3RlbSAwMDowODogW2lv
-ICAweDIwMDAtMHgyMGZlXSBoYXMgYmVlbiByZXNlcnZlZApbICAgIDAuMzY4OTgxXSBzeXN0ZW0g
-MDA6MDg6IFBsdWcgYW5kIFBsYXkgQUNQSSBkZXZpY2UsIElEcyBQTlAwYzAyIChhY3RpdmUpClsg
-ICAgMC4zNjk3NTldIHN5c3RlbSAwMDowOTogUGx1ZyBhbmQgUGxheSBBQ1BJIGRldmljZSwgSURz
-IFBOUDBjMDIgKGFjdGl2ZSkKWyAgICAwLjM5MDEzN10gcG5wOiBQblAgQUNQSTogZm91bmQgMTAg
-ZGV2aWNlcwpbICAgIDAuMzk1OTk2XSBjbG9ja3NvdXJjZTogYWNwaV9wbTogbWFzazogMHhmZmZm
-ZmYgbWF4X2N5Y2xlczogMHhmZmZmZmYsIG1heF9pZGxlX25zOiAyMDg1NzAxMDI0IG5zClsgICAg
-MC4zOTYwMjJdIHBjaSAwMDAwOjAwOjE1LjA6IEJBUiAwOiBhc3NpZ25lZCBbbWVtIDB4N2Y4MDAw
-MDAtMHg3ZjgwMGZmZiA2NGJpdF0KWyAgICAwLjM5NjA4NV0gcGNpIDAwMDA6MDA6MTUuMTogQkFS
-IDA6IGFzc2lnbmVkIFttZW0gMHg3ZjgwMTAwMC0weDdmODAxZmZmIDY0Yml0XQpbICAgIDAuMzk2
-MTQ1XSBwY2kgMDAwMDowMDoxOS4wOiBCQVIgMDogYXNzaWduZWQgW21lbSAweDdmODAyMDAwLTB4
-N2Y4MDJmZmYgNjRiaXRdClsgICAgMC4zOTYyMDJdIHBjaSAwMDAwOjAwOjFjLjA6IFBDSSBicmlk
-Z2UgdG8gW2J1cyAwMV0KWyAgICAwLjM5NjIwNl0gcGNpIDAwMDA6MDA6MWMuMDogICBicmlkZ2Ug
-d2luZG93IFttZW0gMHg5MTEwMDAwMC0weDkxMWZmZmZmXQpbICAgIDAuMzk2MjEzXSBwY2lfYnVz
-IDAwMDA6MDA6IHJlc291cmNlIDQgW2lvICAweDAwMDAtMHgwY2Y3IHdpbmRvd10KWyAgICAwLjM5
-NjIxNF0gcGNpX2J1cyAwMDAwOjAwOiByZXNvdXJjZSA1IFtpbyAgMHgwZDAwLTB4ZmZmZiB3aW5k
-b3ddClsgICAgMC4zOTYyMTVdIHBjaV9idXMgMDAwMDowMDogcmVzb3VyY2UgNiBbbWVtIDB4MDAw
-YTAwMDAtMHgwMDBiZmZmZiB3aW5kb3ddClsgICAgMC4zOTYyMTZdIHBjaV9idXMgMDAwMDowMDog
-cmVzb3VyY2UgNyBbbWVtIDB4MDAwYzAwMDAtMHgwMDBjM2ZmZiB3aW5kb3ddClsgICAgMC4zOTYy
-MThdIHBjaV9idXMgMDAwMDowMDogcmVzb3VyY2UgOCBbbWVtIDB4MDAwYzQwMDAtMHgwMDBjN2Zm
-ZiB3aW5kb3ddClsgICAgMC4zOTYyMTldIHBjaV9idXMgMDAwMDowMDogcmVzb3VyY2UgOSBbbWVt
-IDB4MDAwYzgwMDAtMHgwMDBjYmZmZiB3aW5kb3ddClsgICAgMC4zOTYyMjBdIHBjaV9idXMgMDAw
-MDowMDogcmVzb3VyY2UgMTAgW21lbSAweDAwMGNjMDAwLTB4MDAwY2ZmZmYgd2luZG93XQpbICAg
-IDAuMzk2MjIxXSBwY2lfYnVzIDAwMDA6MDA6IHJlc291cmNlIDExIFttZW0gMHgwMDBkMDAwMC0w
-eDAwMGQzZmZmIHdpbmRvd10KWyAgICAwLjM5NjIyMl0gcGNpX2J1cyAwMDAwOjAwOiByZXNvdXJj
-ZSAxMiBbbWVtIDB4MDAwZDQwMDAtMHgwMDBkN2ZmZiB3aW5kb3ddClsgICAgMC4zOTYyMjNdIHBj
-aV9idXMgMDAwMDowMDogcmVzb3VyY2UgMTMgW21lbSAweDAwMGQ4MDAwLTB4MDAwZGJmZmYgd2lu
-ZG93XQpbICAgIDAuMzk2MjI1XSBwY2lfYnVzIDAwMDA6MDA6IHJlc291cmNlIDE0IFttZW0gMHgw
-MDBkYzAwMC0weDAwMGRmZmZmIHdpbmRvd10KWyAgICAwLjM5NjIyNl0gcGNpX2J1cyAwMDAwOjAw
-OiByZXNvdXJjZSAxNSBbbWVtIDB4N2Y4MDAwMDAtMHhlZmZmZmZmZiB3aW5kb3ddClsgICAgMC4z
-OTYyMjddIHBjaV9idXMgMDAwMDowMDogcmVzb3VyY2UgMTYgW21lbSAweGZjODAwMDAwLTB4ZmU3
-ZmZmZmYgd2luZG93XQpbICAgIDAuMzk2MjI4XSBwY2lfYnVzIDAwMDA6MDE6IHJlc291cmNlIDEg
-W21lbSAweDkxMTAwMDAwLTB4OTExZmZmZmZdClsgICAgMC4zOTY0NTFdIE5FVDogUmVnaXN0ZXJl
-ZCBwcm90b2NvbCBmYW1pbHkgMgpbICAgIDAuMzk2NjA4XSB0Y3BfbGlzdGVuX3BvcnRhZGRyX2hh
-c2ggaGFzaCB0YWJsZSBlbnRyaWVzOiA4MTkyIChvcmRlcjogNSwgMTMxMDcyIGJ5dGVzKQpbICAg
-IDAuMzk2NjY1XSBUQ1AgZXN0YWJsaXNoZWQgaGFzaCB0YWJsZSBlbnRyaWVzOiAxMzEwNzIgKG9y
-ZGVyOiA4LCAxMDQ4NTc2IGJ5dGVzKQpbICAgIDAuMzk2ODUxXSBUQ1AgYmluZCBoYXNoIHRhYmxl
-IGVudHJpZXM6IDY1NTM2IChvcmRlcjogOCwgMTA0ODU3NiBieXRlcykKWyAgICAwLjM5Njk4N10g
-VENQOiBIYXNoIHRhYmxlcyBjb25maWd1cmVkIChlc3RhYmxpc2hlZCAxMzEwNzIgYmluZCA2NTUz
-NikKWyAgICAwLjM5NzAzMV0gVURQIGhhc2ggdGFibGUgZW50cmllczogODE5MiAob3JkZXI6IDYs
-IDI2MjE0NCBieXRlcykKWyAgICAwLjM5NzA4MF0gVURQLUxpdGUgaGFzaCB0YWJsZSBlbnRyaWVz
-OiA4MTkyIChvcmRlcjogNiwgMjYyMTQ0IGJ5dGVzKQpbICAgIDAuMzk3MTczXSBORVQ6IFJlZ2lz
-dGVyZWQgcHJvdG9jb2wgZmFtaWx5IDEKWyAgICAwLjM5NzE3N10gTkVUOiBSZWdpc3RlcmVkIHBy
-b3RvY29sIGZhbWlseSA0NApbICAgIDAuMzk3MTg3XSBwY2kgMDAwMDowMDowMi4wOiBWaWRlbyBk
-ZXZpY2Ugd2l0aCBzaGFkb3dlZCBST00gYXQgW21lbSAweDAwMGMwMDAwLTB4MDAwZGZmZmZdClsg
-ICAgMC4zOTc3MTNdIFBDSTogQ0xTIDY0IGJ5dGVzLCBkZWZhdWx0IDY0ClsgICAgMC4zOTc3NDVd
-IFVucGFja2luZyBpbml0cmFtZnMuLi4KWyAgICAwLjkzOTM0MF0gRnJlZWluZyBpbml0cmQgbWVt
-b3J5OiA2NTA3NksKWyAgICAwLjk1MzUzNl0gUENJLURNQTogVXNpbmcgc29mdHdhcmUgYm91bmNl
-IGJ1ZmZlcmluZyBmb3IgSU8gKFNXSU9UTEIpClsgICAgMC45NTM1MzddIHNvZnR3YXJlIElPIFRM
-QjogbWFwcGVkIFttZW0gMHg2OWIwZTAwMC0weDZkYjBlMDAwXSAoNjRNQikKWyAgICAwLjk1MzY4
-NV0gY2xvY2tzb3VyY2U6IHRzYzogbWFzazogMHhmZmZmZmZmZmZmZmZmZmZmIG1heF9jeWNsZXM6
-IDB4MWU3MTc4NWU1ZGQsIG1heF9pZGxlX25zOiA0NDA3OTUyNDQ4MTQgbnMKWyAgICAwLjk1Mzcw
-MF0gY2xvY2tzb3VyY2U6IFN3aXRjaGVkIHRvIGNsb2Nrc291cmNlIHRzYwpbICAgIDAuOTUzODE0
-XSBjaGVjazogU2Nhbm5pbmcgZm9yIGxvdyBtZW1vcnkgY29ycnVwdGlvbiBldmVyeSA2MCBzZWNv
-bmRzClsgICAgMC45NTUyNjZdIEluaXRpYWxpc2Ugc3lzdGVtIHRydXN0ZWQga2V5cmluZ3MKWyAg
-ICAwLjk1NTI3NF0gS2V5IHR5cGUgYmxhY2tsaXN0IHJlZ2lzdGVyZWQKWyAgICAwLjk1NTI5Nl0g
-d29ya2luZ3NldDogdGltZXN0YW1wX2JpdHM9MzYgbWF4X29yZGVyPTIyIGJ1Y2tldF9vcmRlcj0w
-ClsgICAgMC45NTYzNDJdIHpidWQ6IGxvYWRlZApbICAgIDAuOTU2NjE1XSBzcXVhc2hmczogdmVy
-c2lvbiA0LjAgKDIwMDkvMDEvMzEpIFBoaWxsaXAgTG91Z2hlcgpbICAgIDAuOTU2NzUzXSBmdXNl
-IGluaXQgKEFQSSB2ZXJzaW9uIDcuMjgpClsgICAgMC45Nzc5NDVdIEtleSB0eXBlIGFzeW1tZXRy
-aWMgcmVnaXN0ZXJlZApbICAgIDAuOTc3OTQ1XSBBc3ltbWV0cmljIGtleSBwYXJzZXIgJ3g1MDkn
-IHJlZ2lzdGVyZWQKWyAgICAwLjk3Nzk1MF0gQmxvY2sgbGF5ZXIgU0NTSSBnZW5lcmljIChic2cp
-IGRyaXZlciB2ZXJzaW9uIDAuNCBsb2FkZWQgKG1ham9yIDI0MykKWyAgICAwLjk3Nzk2OV0gaW8g
-c2NoZWR1bGVyIG1xLWRlYWRsaW5lIHJlZ2lzdGVyZWQKWyAgICAwLjk3ODIzNl0gcGNpZXBvcnQg
-MDAwMDowMDoxYy4wOiBTaWduYWxpbmcgUE1FIHdpdGggSVJRIDEyMgpbICAgIDAuOTc4MjY2XSBh
-ZXIgMDAwMDowMDoxYy4wOnBjaWUwMDI6IEFFUiBlbmFibGVkIHdpdGggSVJRIDEyMgpbICAgIDAu
-OTc4Mjg5XSBkcGMgMDAwMDowMDoxYy4wOnBjaWUwMDg6IERQQyBlcnJvciBjb250YWlubWVudCBj
-YXBhYmlsaXRpZXM6IEludCBNc2cgIzAsIFJQRXh0KyBQb2lzb25lZFRMUCsgU3dUcmlnZ2VyKyBS
-UCBQSU8gTG9nIDQsIERMX0FjdGl2ZUVycisKWyAgICAwLjk3ODMzMl0gc2hwY2hwOiBTdGFuZGFy
-ZCBIb3QgUGx1ZyBQQ0kgQ29udHJvbGxlciBEcml2ZXIgdmVyc2lvbjogMC40ClsgICAgMC45Nzgz
-NjZdIGVmaWZiOiBwcm9iaW5nIGZvciBlZmlmYgpbICAgIDAuOTc4Mzc0XSBlZmlmYjogZnJhbWVi
-dWZmZXIgYXQgMHg4MDAwMDAwMCwgdXNpbmcgODEwMGssIHRvdGFsIDgxMDBrClsgICAgMC45Nzgz
-NzVdIGVmaWZiOiBtb2RlIGlzIDE5MjB4MTA4MHgzMiwgbGluZWxlbmd0aD03NjgwLCBwYWdlcz0x
-ClsgICAgMC45NzgzNzVdIGVmaWZiOiBzY3JvbGxpbmc6IHJlZHJhdwpbICAgIDAuOTc4Mzc2XSBl
-ZmlmYjogVHJ1ZWNvbG9yOiBzaXplPTg6ODo4OjgsIHNoaWZ0PTI0OjE2Ojg6MApbICAgIDAuOTc4
-NDIyXSBDb25zb2xlOiBzd2l0Y2hpbmcgdG8gY29sb3VyIGZyYW1lIGJ1ZmZlciBkZXZpY2UgMjQw
-eDY3ClsgICAgMC45Nzg0MzVdIGZiMDogRUZJIFZHQSBmcmFtZSBidWZmZXIgZGV2aWNlClsgICAg
-MC45Nzg0MzhdIGludGVsX2lkbGU6IE1XQUlUIHN1YnN0YXRlczogMHgxMTE0MjEyMApbICAgIDAu
-OTc4NDM5XSBpbnRlbF9pZGxlOiB2MC40LjEgbW9kZWwgMHg4RQpbICAgIDAuOTc4NjY2XSBpbnRl
-bF9pZGxlOiBsYXBpY190aW1lcl9yZWxpYWJsZV9zdGF0ZXMgMHhmZmZmZmZmZgpbICAgIDAuOTc5
-NzE5XSBBQ1BJOiBBQyBBZGFwdGVyIFtBQ10gKG9uLWxpbmUpClsgICAgMC45Nzk3NThdIGlucHV0
-OiBMaWQgU3dpdGNoIGFzIC9kZXZpY2VzL0xOWFNZU1RNOjAwL0xOWFNZQlVTOjAwL1BOUDBDMEQ6
-MDAvaW5wdXQvaW5wdXQwClsgICAgMC45Nzk3OTJdIEFDUEk6IExpZCBTd2l0Y2ggW0xJRDBdClsg
-ICAgMC45Nzk4MjddIGlucHV0OiBQb3dlciBCdXR0b24gYXMgL2RldmljZXMvTE5YU1lTVE06MDAv
-TE5YU1lCVVM6MDAvUE5QMEMwQzowMC9pbnB1dC9pbnB1dDEKWyAgICAwLjk3OTgzM10gQUNQSTog
-UG93ZXIgQnV0dG9uIFtQQlROXQpbICAgIDAuOTc5ODQ2XSBpbnB1dDogU2xlZXAgQnV0dG9uIGFz
-IC9kZXZpY2VzL0xOWFNZU1RNOjAwL0xOWFNZQlVTOjAwL1BOUDBDMEU6MDAvaW5wdXQvaW5wdXQy
-ClsgICAgMC45Nzk4NDldIEFDUEk6IFNsZWVwIEJ1dHRvbiBbU0JUTl0KWyAgICAwLjk4MTc0M10g
-dGhlcm1hbCBMTlhUSEVSTTowMDogcmVnaXN0ZXJlZCBhcyB0aGVybWFsX3pvbmUwClsgICAgMC45
-ODE3NDRdIEFDUEk6IFRoZXJtYWwgWm9uZSBbVEhNXSAoMjUgQykKWyAgICAwLjk4MTg3NV0gU2Vy
-aWFsOiA4MjUwLzE2NTUwIGRyaXZlciwgMzIgcG9ydHMsIElSUSBzaGFyaW5nIGVuYWJsZWQKWyAg
-ICAwLjk4MzQzMV0gc2VyaWFsIDAwMDA6MDA6MTYuMzogZW5hYmxpbmcgZGV2aWNlICgwMDAwIC0+
-IDAwMDMpClsgICAgMS4wMDUxNTldIDAwMDA6MDA6MTYuMzogdHR5UzQgYXQgSS9PIDB4MzBhMCAo
-aXJxID0gMTksIGJhc2VfYmF1ZCA9IDExNTIwMCkgaXMgYSAxNjU1MEEKWyAgICAxLjAwNTg5NV0g
-TGludXggYWdwZ2FydCBpbnRlcmZhY2UgdjAuMTAzClsgICAgMS4wMDc1NjRdIHRwbV90aXMgTVNG
-VDAxMDE6MDA6IDIuMCBUUE0gKGRldmljZS1pZCAweDAsIHJldi1pZCA3OCkKWyAgICAxLjAyMDc5
-Nl0gbG9vcDogbW9kdWxlIGxvYWRlZApbICAgIDEuMDIwODkxXSBsaWJwaHk6IEZpeGVkIE1ESU8g
-QnVzOiBwcm9iZWQKWyAgICAxLjAyMDg5MV0gdHVuOiBVbml2ZXJzYWwgVFVOL1RBUCBkZXZpY2Ug
-ZHJpdmVyLCAxLjYKWyAgICAxLjAyMDkwM10gUFBQIGdlbmVyaWMgZHJpdmVyIHZlcnNpb24gMi40
-LjIKWyAgICAxLjAyMDkyMF0gZWhjaV9oY2Q6IFVTQiAyLjAgJ0VuaGFuY2VkJyBIb3N0IENvbnRy
-b2xsZXIgKEVIQ0kpIERyaXZlcgpbICAgIDEuMDIwOTIxXSBlaGNpLXBjaTogRUhDSSBQQ0kgcGxh
-dGZvcm0gZHJpdmVyClsgICAgMS4wMjA5MjZdIGVoY2ktcGxhdGZvcm06IEVIQ0kgZ2VuZXJpYyBw
-bGF0Zm9ybSBkcml2ZXIKWyAgICAxLjAyMDkzMV0gb2hjaV9oY2Q6IFVTQiAxLjEgJ09wZW4nIEhv
-c3QgQ29udHJvbGxlciAoT0hDSSkgRHJpdmVyClsgICAgMS4wMjA5MzFdIG9oY2ktcGNpOiBPSENJ
-IFBDSSBwbGF0Zm9ybSBkcml2ZXIKWyAgICAxLjAyMDkzNV0gb2hjaS1wbGF0Zm9ybTogT0hDSSBn
-ZW5lcmljIHBsYXRmb3JtIGRyaXZlcgpbICAgIDEuMDIwOTM5XSB1aGNpX2hjZDogVVNCIFVuaXZl
-cnNhbCBIb3N0IENvbnRyb2xsZXIgSW50ZXJmYWNlIGRyaXZlcgpbICAgIDEuMDIxMDc2XSB4aGNp
-X2hjZCAwMDAwOjAwOjE0LjA6IHhIQ0kgSG9zdCBDb250cm9sbGVyClsgICAgMS4wMjEwNzldIHho
-Y2lfaGNkIDAwMDA6MDA6MTQuMDogbmV3IFVTQiBidXMgcmVnaXN0ZXJlZCwgYXNzaWduZWQgYnVz
-IG51bWJlciAxClsgICAgMS4wMjIyNzZdIHhoY2lfaGNkIDAwMDA6MDA6MTQuMDogaGNjIHBhcmFt
-cyAweDIwMDA3N2MxIGhjaSB2ZXJzaW9uIDB4MTEwIHF1aXJrcyAweDAwMDAwMDAwMDAwMDk4MTAK
-WyAgICAxLjAyMjI4Nl0geGhjaV9oY2QgMDAwMDowMDoxNC4wOiBjYWNoZSBsaW5lIHNpemUgb2Yg
-NjQgaXMgbm90IHN1cHBvcnRlZApbICAgIDEuMDIyNTI2XSB1c2IgdXNiMTogTmV3IFVTQiBkZXZp
-Y2UgZm91bmQsIGlkVmVuZG9yPTFkNmIsIGlkUHJvZHVjdD0wMDAyLCBiY2REZXZpY2U9IDUuMDAK
-WyAgICAxLjAyMjUyN10gdXNiIHVzYjE6IE5ldyBVU0IgZGV2aWNlIHN0cmluZ3M6IE1mcj0zLCBQ
-cm9kdWN0PTIsIFNlcmlhbE51bWJlcj0xClsgICAgMS4wMjI1MjddIHVzYiB1c2IxOiBQcm9kdWN0
-OiB4SENJIEhvc3QgQ29udHJvbGxlcgpbICAgIDEuMDIyNTI4XSB1c2IgdXNiMTogTWFudWZhY3R1
-cmVyOiBMaW51eCA1LjAuMC0yOS1nZW5lcmljIHhoY2ktaGNkClsgICAgMS4wMjI1MjhdIHVzYiB1
-c2IxOiBTZXJpYWxOdW1iZXI6IDAwMDA6MDA6MTQuMApbICAgIDEuMDIyNjc2XSBodWIgMS0wOjEu
-MDogVVNCIGh1YiBmb3VuZApbICAgIDEuMDIyNzA5XSBodWIgMS0wOjEuMDogMTIgcG9ydHMgZGV0
-ZWN0ZWQKWyAgICAxLjAyMzYxOF0gYmF0dGVyeTogQUNQSTogQmF0dGVyeSBTbG90IFtCQVQwXSAo
-YmF0dGVyeSBwcmVzZW50KQpbICAgIDEuMDI0NTMyXSB4aGNpX2hjZCAwMDAwOjAwOjE0LjA6IHhI
-Q0kgSG9zdCBDb250cm9sbGVyClsgICAgMS4wMjQ1MzNdIHhoY2lfaGNkIDAwMDA6MDA6MTQuMDog
-bmV3IFVTQiBidXMgcmVnaXN0ZXJlZCwgYXNzaWduZWQgYnVzIG51bWJlciAyClsgICAgMS4wMjQ1
-MzVdIHhoY2lfaGNkIDAwMDA6MDA6MTQuMDogSG9zdCBzdXBwb3J0cyBVU0IgMy4xIEVuaGFuY2Vk
-IFN1cGVyU3BlZWQKWyAgICAxLjAyNDU1MV0gdXNiIHVzYjI6IE5ldyBVU0IgZGV2aWNlIGZvdW5k
-LCBpZFZlbmRvcj0xZDZiLCBpZFByb2R1Y3Q9MDAwMywgYmNkRGV2aWNlPSA1LjAwClsgICAgMS4w
-MjQ1NTFdIHVzYiB1c2IyOiBOZXcgVVNCIGRldmljZSBzdHJpbmdzOiBNZnI9MywgUHJvZHVjdD0y
-LCBTZXJpYWxOdW1iZXI9MQpbICAgIDEuMDI0NTUyXSB1c2IgdXNiMjogUHJvZHVjdDogeEhDSSBI
-b3N0IENvbnRyb2xsZXIKWyAgICAxLjAyNDU1Ml0gdXNiIHVzYjI6IE1hbnVmYWN0dXJlcjogTGlu
-dXggNS4wLjAtMjktZ2VuZXJpYyB4aGNpLWhjZApbICAgIDEuMDI0NTUzXSB1c2IgdXNiMjogU2Vy
-aWFsTnVtYmVyOiAwMDAwOjAwOjE0LjAKWyAgICAxLjAyNDU5Nl0gaHViIDItMDoxLjA6IFVTQiBo
-dWIgZm91bmQKWyAgICAxLjAyNDYwNF0gaHViIDItMDoxLjA6IDYgcG9ydHMgZGV0ZWN0ZWQKWyAg
-ICAxLjAyNTM5OV0gdXNiOiBwb3J0IHBvd2VyIG1hbmFnZW1lbnQgbWF5IGJlIHVucmVsaWFibGUK
-WyAgICAxLjAyNTQ2OF0gaTgwNDI6IFBOUDogUFMvMiBDb250cm9sbGVyIFtQTlAwMzAzOlBTMkss
-UE5QMGYxMzpQUzJNXSBhdCAweDYwLDB4NjQgaXJxIDEsMTIKWyAgICAxLjAyNjA1NV0gaTgwNDI6
-IFdhcm5pbmc6IEtleWxvY2sgYWN0aXZlClsgICAgMS4wMjc4OTddIHNlcmlvOiBpODA0MiBLQkQg
-cG9ydCBhdCAweDYwLDB4NjQgaXJxIDEKWyAgICAxLjAyNzkxMV0gc2VyaW86IGk4MDQyIEFVWCBw
-b3J0IGF0IDB4NjAsMHg2NCBpcnEgMTIKWyAgICAxLjAyNzk0Nl0gbW91c2VkZXY6IFBTLzIgbW91
-c2UgZGV2aWNlIGNvbW1vbiBmb3IgYWxsIG1pY2UKWyAgICAxLjAyODAzNF0gcnRjX2Ntb3MgMDA6
-MDI6IFJUQyBjYW4gd2FrZSBmcm9tIFM0ClsgICAgMS4wMjg3MjFdIHJ0Y19jbW9zIDAwOjAyOiBy
-ZWdpc3RlcmVkIGFzIHJ0YzAKWyAgICAxLjAyODcyOF0gcnRjX2Ntb3MgMDA6MDI6IGFsYXJtcyB1
-cCB0byBvbmUgbW9udGgsIHkzaywgMjQyIGJ5dGVzIG52cmFtClsgICAgMS4wMjg3MzJdIGkyYyAv
-ZGV2IGVudHJpZXMgZHJpdmVyClsgICAgMS4wMjg3NzVdIGRldmljZS1tYXBwZXI6IHVldmVudDog
-dmVyc2lvbiAxLjAuMwpbICAgIDEuMDI4ODYzXSBkZXZpY2UtbWFwcGVyOiBpb2N0bDogNC4zOS4w
-LWlvY3RsICgyMDE4LTA0LTAzKSBpbml0aWFsaXNlZDogZG0tZGV2ZWxAcmVkaGF0LmNvbQpbICAg
-IDEuMDI4ODkyXSBwbGF0Zm9ybSBlaXNhLjA6IFByb2JpbmcgRUlTQSBidXMgMApbICAgIDEuMDI4
-ODkzXSBwbGF0Zm9ybSBlaXNhLjA6IEVJU0E6IENhbm5vdCBhbGxvY2F0ZSByZXNvdXJjZSBmb3Ig
-bWFpbmJvYXJkClsgICAgMS4wMjg4OTNdIHBsYXRmb3JtIGVpc2EuMDogQ2Fubm90IGFsbG9jYXRl
-IHJlc291cmNlIGZvciBFSVNBIHNsb3QgMQpbICAgIDEuMDI4ODk0XSBwbGF0Zm9ybSBlaXNhLjA6
-IENhbm5vdCBhbGxvY2F0ZSByZXNvdXJjZSBmb3IgRUlTQSBzbG90IDIKWyAgICAxLjAyODg5NF0g
-cGxhdGZvcm0gZWlzYS4wOiBDYW5ub3QgYWxsb2NhdGUgcmVzb3VyY2UgZm9yIEVJU0Egc2xvdCAz
-ClsgICAgMS4wMjg4OTVdIHBsYXRmb3JtIGVpc2EuMDogQ2Fubm90IGFsbG9jYXRlIHJlc291cmNl
-IGZvciBFSVNBIHNsb3QgNApbICAgIDEuMDI4ODk1XSBwbGF0Zm9ybSBlaXNhLjA6IENhbm5vdCBh
-bGxvY2F0ZSByZXNvdXJjZSBmb3IgRUlTQSBzbG90IDUKWyAgICAxLjAyODg5Nl0gcGxhdGZvcm0g
-ZWlzYS4wOiBDYW5ub3QgYWxsb2NhdGUgcmVzb3VyY2UgZm9yIEVJU0Egc2xvdCA2ClsgICAgMS4w
-Mjg4OTZdIHBsYXRmb3JtIGVpc2EuMDogQ2Fubm90IGFsbG9jYXRlIHJlc291cmNlIGZvciBFSVNB
-IHNsb3QgNwpbICAgIDEuMDI4ODk3XSBwbGF0Zm9ybSBlaXNhLjA6IENhbm5vdCBhbGxvY2F0ZSBy
-ZXNvdXJjZSBmb3IgRUlTQSBzbG90IDgKWyAgICAxLjAyODkxMF0gcGxhdGZvcm0gZWlzYS4wOiBF
-SVNBOiBEZXRlY3RlZCAwIGNhcmRzClsgICAgMS4wMjg5MTJdIGludGVsX3BzdGF0ZTogSW50ZWwg
-UC1zdGF0ZSBkcml2ZXIgaW5pdGlhbGl6aW5nClsgICAgMS4wMjkxOTNdIGlucHV0OiBBVCBUcmFu
-c2xhdGVkIFNldCAyIGtleWJvYXJkIGFzIC9kZXZpY2VzL3BsYXRmb3JtL2k4MDQyL3NlcmlvMC9p
-bnB1dC9pbnB1dDMKWyAgICAxLjAzMTEwN10gaW50ZWxfcHN0YXRlOiBIV1AgZW5hYmxlZApbICAg
-IDEuMDMxMjQ4XSBsZWR0cmlnLWNwdTogcmVnaXN0ZXJlZCB0byBpbmRpY2F0ZSBhY3Rpdml0eSBv
-biBDUFVzClsgICAgMS4wMzEyNTBdIEVGSSBWYXJpYWJsZXMgRmFjaWxpdHkgdjAuMDggMjAwNC1N
-YXktMTcKWyAgICAxLjA2NDY5OV0gaW50ZWxfcG1jX2NvcmU6ICBpbml0aWFsaXplZApbICAgIDEu
-MDY0ODE0XSBORVQ6IFJlZ2lzdGVyZWQgcHJvdG9jb2wgZmFtaWx5IDEwClsgICAgMS4wNjc5Mzld
-IFNlZ21lbnQgUm91dGluZyB3aXRoIElQdjYKWyAgICAxLjA2Nzk1MF0gTkVUOiBSZWdpc3RlcmVk
-IHByb3RvY29sIGZhbWlseSAxNwpbICAgIDEuMDY4MDA0XSBLZXkgdHlwZSBkbnNfcmVzb2x2ZXIg
-cmVnaXN0ZXJlZApbICAgIDEuMDY4MzA1XSBtY2U6IFVzaW5nIDEwIE1DRSBiYW5rcwpbICAgIDEu
-MDY4MzExXSBSQVM6IENvcnJlY3RhYmxlIEVycm9ycyBjb2xsZWN0b3IgaW5pdGlhbGl6ZWQuClsg
-ICAgMS4wNjgzMjVdIG1pY3JvY29kZTogc2lnPTB4ODA2ZWMsIHBmPTB4ODAsIHJldmlzaW9uPTB4
-YjgKWyAgICAxLjA2ODQ2N10gbWljcm9jb2RlOiBNaWNyb2NvZGUgVXBkYXRlIERyaXZlcjogdjIu
-Mi4KWyAgICAxLjA2ODQ3NV0gc2NoZWRfY2xvY2s6IE1hcmtpbmcgc3RhYmxlICgxMDcyMDE2NTk3
-LCAtMzU1MDk0OSktPigxMDk2Mzc2MzQyLCAtMjc5MTA2OTQpClsgICAgMS4wNjg3MDFdIHJlZ2lz
-dGVyZWQgdGFza3N0YXRzIHZlcnNpb24gMQpbICAgIDEuMDY4NzA3XSBMb2FkaW5nIGNvbXBpbGVk
-LWluIFguNTA5IGNlcnRpZmljYXRlcwpbICAgIDEuMDY5NTE2XSBMb2FkZWQgWC41MDkgY2VydCAn
-QnVpbGQgdGltZSBhdXRvZ2VuZXJhdGVkIGtlcm5lbCBrZXk6IDZlODlkOGEzZDM5MjBhNmY5NTBj
-Nzg4Y2E2ZmIxNDUzZjViYmVhNjQnClsgICAgMS4wNzAzMDRdIExvYWRlZCBVRUZJOmRiIGNlcnQg
-J0RlbGwgSW5jLiBVRUZJIERCOiA1ZGRiNzcyZGM4ODA2NjAwNTViYTBiYzEzMTg4NmJiNjMwYTYz
-OWU3JyBsaW5rZWQgdG8gc2Vjb25kYXJ5IHN5cyBrZXlyaW5nClsgICAgMS4wNzAzMTVdIExvYWRl
-ZCBVRUZJOmRiIGNlcnQgJ01pY3Jvc29mdCBDb3Jwb3JhdGlvbiBVRUZJIENBIDIwMTE6IDEzYWRi
-ZjQzMDliZDgyNzA5YzhjZDU0ZjMxNmVkNTIyOTg4YTFiZDQnIGxpbmtlZCB0byBzZWNvbmRhcnkg
-c3lzIGtleXJpbmcKWyAgICAxLjA3MDMyNF0gTG9hZGVkIFVFRkk6ZGIgY2VydCAnTWljcm9zb2Z0
-IFdpbmRvd3MgUHJvZHVjdGlvbiBQQ0EgMjAxMTogYTkyOTAyMzk4ZTE2YzQ5Nzc4Y2Q5MGY5OWU0
-ZjlhZTE3YzU1YWY1MycgbGlua2VkIHRvIHNlY29uZGFyeSBzeXMga2V5cmluZwpbICAgIDEuMDcw
-NjIzXSBDb3VsZG4ndCBnZXQgc2l6ZTogMHg4MDAwMDAwMDAwMDAwMDBlClsgICAgMS4wNzA2MjRd
-IE1PRFNJR046IENvdWxkbid0IGdldCBVRUZJIE1va0xpc3RSVApbICAgIDEuMDcxMjY1XSB6c3dh
-cDogbG9hZGVkIHVzaW5nIHBvb2wgbHpvL3pidWQKWyAgICAxLjA3Mzg2Nl0gS2V5IHR5cGUgYmln
-X2tleSByZWdpc3RlcmVkClsgICAgMS4wNzM4NjhdIEtleSB0eXBlIHRydXN0ZWQgcmVnaXN0ZXJl
-ZApbICAgIDEuMDc1MDU0XSBLZXkgdHlwZSBlbmNyeXB0ZWQgcmVnaXN0ZXJlZApbICAgIDEuMDc1
-MDU2XSBBcHBBcm1vcjogQXBwQXJtb3Igc2hhMSBwb2xpY3kgaGFzaGluZyBlbmFibGVkClsgICAg
-MS4wNzY2NThdIGltYTogQWxsb2NhdGVkIGhhc2ggYWxnb3JpdGhtOiBzaGExClsgICAgMS4zNTc1
-OTRdIHVzYiAxLTM6IG5ldyBmdWxsLXNwZWVkIFVTQiBkZXZpY2UgbnVtYmVyIDIgdXNpbmcgeGhj
-aV9oY2QKWyAgICAxLjUwOTc3OF0gdXNiIDEtMzogTmV3IFVTQiBkZXZpY2UgZm91bmQsIGlkVmVu
-ZG9yPTQxM2MsIGlkUHJvZHVjdD0yNTAxLCBiY2REZXZpY2U9IDEuMzAKWyAgICAxLjUwOTc3OV0g
-dXNiIDEtMzogTmV3IFVTQiBkZXZpY2Ugc3RyaW5nczogTWZyPTEsIFByb2R1Y3Q9MiwgU2VyaWFs
-TnVtYmVyPTAKWyAgICAxLjUwOTc3OV0gdXNiIDEtMzogUHJvZHVjdDogRGVsbCBLTTYzMiBXaXJl
-bGVzcyBLZXlib2FyZCBhbmQgTW91c2UKWyAgICAxLjUwOTc4MF0gdXNiIDEtMzogTWFudWZhY3R1
-cmVyOiBEZWxsClsgICAgMS42Mzc1OTRdIHVzYiAxLTY6IG5ldyBoaWdoLXNwZWVkIFVTQiBkZXZp
-Y2UgbnVtYmVyIDMgdXNpbmcgeGhjaV9oY2QKWyAgICAxLjc5NzM5NV0gdXNiIDEtNjogTmV3IFVT
-QiBkZXZpY2UgZm91bmQsIGlkVmVuZG9yPTBjNDUsIGlkUHJvZHVjdD02MzY1LCBiY2REZXZpY2U9
-IDAuMDAKWyAgICAxLjc5NzM5Nl0gdXNiIDEtNjogTmV3IFVTQiBkZXZpY2Ugc3RyaW5nczogTWZy
-PTIsIFByb2R1Y3Q9MSwgU2VyaWFsTnVtYmVyPTAKWyAgICAxLjc5NzM5N10gdXNiIDEtNjogUHJv
-ZHVjdDogVVNCIDIuMCBDYW1lcmEKWyAgICAxLjc5NzM5N10gdXNiIDEtNjogTWFudWZhY3R1cmVy
-OiBTb25peCBUZWNobm9sb2d5IENvLiwgTHRkLgpbICAgIDEuODI5NjA0XSB0cG0gdHBtMDogVW5h
-YmxlIHRvIHJlYWQgYnVyc3Rjb3VudApbICAgIDEuODI5NjA1XSB0cG0gdHBtMDogdHBtX3RyeV90
-cmFuc21pdDogc2VuZCgpOiBlcnJvciAtMTYKWyAgICAxLjgyOTYzM10gaW1hOiBFcnJvciBDb21t
-dW5pY2F0aW5nIHRvIFRQTSBjaGlwClsgICAgMS44NDE3NzhdIE5vIGFyY2hpdGVjdHVyZSBwb2xp
-Y2llcyBmb3VuZApbICAgIDEuODQxNzg4XSBldm06IEluaXRpYWxpc2luZyBFVk0gZXh0ZW5kZWQg
-YXR0cmlidXRlczoKWyAgICAxLjg0MTc4OF0gZXZtOiBzZWN1cml0eS5zZWxpbnV4ClsgICAgMS44
-NDE3ODldIGV2bTogc2VjdXJpdHkuU01BQ0s2NApbICAgIDEuODQxNzg5XSBldm06IHNlY3VyaXR5
-LlNNQUNLNjRFWEVDClsgICAgMS44NDE3ODldIGV2bTogc2VjdXJpdHkuU01BQ0s2NFRSQU5TTVVU
-RQpbICAgIDEuODQxNzg5XSBldm06IHNlY3VyaXR5LlNNQUNLNjRNTUFQClsgICAgMS44NDE3ODld
-IGV2bTogc2VjdXJpdHkuYXBwYXJtb3IKWyAgICAxLjg0MTc5MF0gZXZtOiBzZWN1cml0eS5pbWEK
-WyAgICAxLjg0MTc5MF0gZXZtOiBzZWN1cml0eS5jYXBhYmlsaXR5ClsgICAgMS44NDE3OTBdIGV2
-bTogSE1BQyBhdHRyczogMHgxClsgICAgMS44NDIzNzRdICAgTWFnaWMgbnVtYmVyOiA3OjY4ODoy
-MjcKWyAgICAxLjg0MjQxMF0gYWNwaSBkZXZpY2U6NzQ6IGhhc2ggbWF0Y2hlcwpbICAgIDEuODQy
-NDI2XSBtZW1vcnkgbWVtb3J5MTA5OiBoYXNoIG1hdGNoZXMKWyAgICAxLjg0MjY0MF0gcnRjX2Nt
-b3MgMDA6MDI6IHNldHRpbmcgc3lzdGVtIGNsb2NrIHRvIDIwMTktMTAtMDNUMTI6MTM6MzEgVVRD
-ICgxNTcwMTA0ODExKQpbICAgIDEuODQyODkyXSBMb2NrZG93bjogc3dhcHBlci8wOiBIaWJlcm5h
-dGlvbiBpcyByZXN0cmljdGVkOyBzZWUgbWFuIGtlcm5lbF9sb2NrZG93bi43ClsgICAgMS44NDM2
-NTFdIEZyZWVpbmcgdW51c2VkIGRlY3J5cHRlZCBtZW1vcnk6IDIwNDBLClsgICAgMS44NDM5ODJd
-IEZyZWVpbmcgdW51c2VkIGtlcm5lbCBpbWFnZSBtZW1vcnk6IDI1NzZLClsgICAgMS44NjU3MDRd
-IFdyaXRlIHByb3RlY3RpbmcgdGhlIGtlcm5lbCByZWFkLW9ubHkgZGF0YTogMjI1MjhrClsgICAg
-MS44NjYxOTldIEZyZWVpbmcgdW51c2VkIGtlcm5lbCBpbWFnZSBtZW1vcnk6IDIwMTZLClsgICAg
-MS44NjY1MDNdIEZyZWVpbmcgdW51c2VkIGtlcm5lbCBpbWFnZSBtZW1vcnk6IDE4NDBLClsgICAg
-MS44NzEzMTZdIHg4Ni9tbTogQ2hlY2tlZCBXK1ggbWFwcGluZ3M6IHBhc3NlZCwgbm8gVytYIHBh
-Z2VzIGZvdW5kLgpbICAgIDEuODcxMzE5XSBSdW4gL2luaXQgYXMgaW5pdCBwcm9jZXNzClsgICAg
-MS45MjQ1MjldIGhpZHJhdzogcmF3IEhJRCBldmVudHMgZHJpdmVyIChDKSBKaXJpIEtvc2luYQpb
-ICAgIDEuOTI0NjM3XSBhY3BpIFBOUDBDMTQ6MDI6IGR1cGxpY2F0ZSBXTUkgR1VJRCAwNTkwMTIy
-MS1ENTY2LTExRDEtQjJGMC0wMEEwQzkwNjI5MTAgKGZpcnN0IGluc3RhbmNlIHdhcyBvbiBQTlAw
-QzE0OjAxKQpbICAgIDEuOTI0NjY2XSB3bWlfYnVzIHdtaV9idXMtUE5QMEMxNDowMzogV1FCQyBk
-YXRhIGJsb2NrIHF1ZXJ5IGNvbnRyb2wgbWV0aG9kIG5vdCBmb3VuZApbICAgIDEuOTI0NjY2XSBh
-Y3BpIFBOUDBDMTQ6MDM6IGR1cGxpY2F0ZSBXTUkgR1VJRCAwNTkwMTIyMS1ENTY2LTExRDEtQjJG
-MC0wMEEwQzkwNjI5MTAgKGZpcnN0IGluc3RhbmNlIHdhcyBvbiBQTlAwQzE0OjAxKQpbICAgIDEu
-OTI1NDM0XSB1c2IgMS04OiBuZXcgaGlnaC1zcGVlZCBVU0IgZGV2aWNlIG51bWJlciA0IHVzaW5n
-IHhoY2lfaGNkClsgICAgMS45Mjc4ODJdIGFjcGkgUE5QMEMxNDowNDogZHVwbGljYXRlIFdNSSBH
-VUlEIDA1OTAxMjIxLUQ1NjYtMTFEMS1CMkYwLTAwQTBDOTA2MjkxMCAoZmlyc3QgaW5zdGFuY2Ug
-d2FzIG9uIFBOUDBDMTQ6MDEpClsgICAgMS45MzE0ODBdIHJ0c3hfcGNpIDAwMDA6MDE6MDAuMDog
-ZW5hYmxpbmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpClsgICAgMS45MzIxNjJdIGk4MDFfc21idXMg
-MDAwMDowMDoxZi40OiBTUEQgV3JpdGUgRGlzYWJsZSBpcyBzZXQKWyAgICAxLjkzMjIzMV0gaTgw
-MV9zbWJ1cyAwMDAwOjAwOjFmLjQ6IFNNQnVzIHVzaW5nIFBDSSBpbnRlcnJ1cHQKWyAgICAxLjkz
-MzA2OF0gZTEwMDBlOiBJbnRlbChSKSBQUk8vMTAwMCBOZXR3b3JrIERyaXZlciAtIDMuMi42LWsK
-WyAgICAxLjkzMzA2OF0gZTEwMDBlOiBDb3B5cmlnaHQoYykgMTk5OSAtIDIwMTUgSW50ZWwgQ29y
-cG9yYXRpb24uClsgICAgMS45MzQ4NzddIGUxMDAwZSAwMDAwOjAwOjFmLjY6IEludGVycnVwdCBU
-aHJvdHRsaW5nIFJhdGUgKGludHMvc2VjKSBzZXQgdG8gZHluYW1pYyBjb25zZXJ2YXRpdmUgbW9k
-ZQpbICAgIDEuOTM0ODkxXSBpbnRlbC1scHNzIDAwMDA6MDA6MTUuMDogZW5hYmxpbmcgZGV2aWNl
-ICgwMDAwIC0+IDAwMDIpClsgICAgMS45NDM2NzldIFZGSU8gLSBVc2VyIExldmVsIG1ldGEtZHJp
-dmVyIHZlcnNpb246IDAuMwpbICAgIDEuOTQ1MzYyXSBhaGNpIDAwMDA6MDA6MTcuMDogdmVyc2lv
-biAzLjAKWyAgICAxLjk1MTE5OF0gYWNwaSBQTlAwQzE0OjA1OiBkdXBsaWNhdGUgV01JIEdVSUQg
-MDU5MDEyMjEtRDU2Ni0xMUQxLUIyRjAtMDBBMEM5MDYyOTEwIChmaXJzdCBpbnN0YW5jZSB3YXMg
-b24gUE5QMEMxNDowMSkKWyAgICAxLjk1NjQxMl0gYWhjaSAwMDAwOjAwOjE3LjA6IEFIQ0kgMDAw
-MS4wMzAxIDMyIHNsb3RzIDIgcG9ydHMgNiBHYnBzIDB4NSBpbXBsIFJBSUQgbW9kZQpbICAgIDEu
-OTU2NDE0XSBhaGNpIDAwMDA6MDA6MTcuMDogZmxhZ3M6IDY0Yml0IG5jcSBzbnRmIHBtIGNsbyBv
-bmx5IHBpbyBzbHVtIHBhcnQgZGVzbyBzYWRtIHNkcyBhcHN0IApbICAgIDEuOTU3MTQ1XSBzY3Np
-IGhvc3QwOiBhaGNpClsgICAgMS45NTcyNjBdIHNjc2kgaG9zdDE6IGFoY2kKWyAgICAxLjk1NzMx
-OV0gc2NzaSBob3N0MjogYWhjaQpbICAgIDEuOTU3MzU1XSBhdGExOiBTQVRBIG1heCBVRE1BLzEz
-MyBhYmFyIG01MjQyODhAMHg5MTIwMDAwMCBwb3J0IDB4OTEyMDAxMDAgaXJxIDEyNgpbICAgIDEu
-OTU3MzU2XSBhdGEyOiBEVU1NWQpbICAgIDEuOTU3MzU4XSBhdGEzOiBTQVRBIG1heCBVRE1BLzEz
-MyBhYmFyIG01MjQyODhAMHg5MTIwMDAwMCBwb3J0IDB4OTEyMDAyMDAgaXJxIDEyNgpbICAgIDEu
-OTcxMTQwXSBjcnlwdGQ6IG1heF9jcHVfcWxlbiBzZXQgdG8gMTAwMApbICAgIDEuOTc3MDM5XSBB
-VlgyIHZlcnNpb24gb2YgZ2NtX2VuYy9kZWMgZW5nYWdlZC4KWyAgICAxLjk3NzA0MF0gQUVTIENU
-UiBtb2RlIGJ5OCBvcHRpbWl6YXRpb24gZW5hYmxlZApbICAgIDEuOTkxNjAyXSBpbnRlbC1scHNz
-IDAwMDA6MDA6MTUuMTogZW5hYmxpbmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpClsgICAgMS45OTIx
-OTBdIGNoZWNraW5nIGdlbmVyaWMgKDgwMDAwMDAwIDdlOTAwMCkgdnMgaHcgKDgwMDAwMDAwIDEw
-MDAwMDAwKQpbICAgIDEuOTkyMTkxXSBmYjA6IHN3aXRjaGluZyB0byBpbnRlbGRybWZiIGZyb20g
-RUZJIFZHQQpbICAgIDEuOTkyMjAyXSBDb25zb2xlOiBzd2l0Y2hpbmcgdG8gY29sb3VyIGR1bW15
-IGRldmljZSA4MHgyNQpbICAgIDEuOTkyMjQ2XSBbZHJtXSBSZXBsYWNpbmcgVkdBIGNvbnNvbGUg
-ZHJpdmVyClsgICAgMS45OTM1NjJdIFtkcm1dIFN1cHBvcnRzIHZibGFuayB0aW1lc3RhbXAgY2Fj
-aGluZyBSZXYgMiAoMjEuMTAuMjAxMykuClsgICAgMS45OTM1NjJdIFtkcm1dIERyaXZlciBzdXBw
-b3J0cyBwcmVjaXNlIHZibGFuayB0aW1lc3RhbXAgcXVlcnkuClsgICAgMS45OTQ0MzFdIGk5MTUg
-MDAwMDowMDowMi4wOiB2Z2FhcmI6IGNoYW5nZWQgVkdBIGRlY29kZXM6IG9sZGRlY29kZXM9aW8r
-bWVtLGRlY29kZXM9aW8rbWVtOm93bnM9aW8rbWVtClsgICAgMS45OTQ3MjddIFtkcm1dIEZpbmlz
-aGVkIGxvYWRpbmcgRE1DIGZpcm13YXJlIGk5MTUva2JsX2RtY192ZXIxXzA0LmJpbiAodjEuNCkK
-WyAgICAyLjAxMDkyMV0gZTEwMDBlIDAwMDA6MDA6MWYuNiAwMDAwOjAwOjFmLjYgKHVuaW5pdGlh
-bGl6ZWQpOiByZWdpc3RlcmVkIFBIQyBjbG9jawpbICAgIDIuMDE1NTc0XSBpMmNfaGlkIGkyYy1E
-RUxMMDhCODowMDogaTJjLURFTEwwOEI4OjAwIHN1cHBseSB2ZGQgbm90IGZvdW5kLCB1c2luZyBk
-dW1teSByZWd1bGF0b3IKWyAgICAyLjAxNTU4M10gaTJjX2hpZCBpMmMtREVMTDA4Qjg6MDA6IExp
-bmtlZCBhcyBhIGNvbnN1bWVyIHRvIHJlZ3VsYXRvci4wClsgICAgMi4wMTU1ODRdIGkyY19oaWQg
-aTJjLURFTEwwOEI4OjAwOiBpMmMtREVMTDA4Qjg6MDAgc3VwcGx5IHZkZGwgbm90IGZvdW5kLCB1
-c2luZyBkdW1teSByZWd1bGF0b3IKWyAgICAyLjAxODkzMF0gW2RybV0gSW5pdGlhbGl6ZWQgaTkx
-NSAxLjYuMCAyMDE4MTIwNCBmb3IgMDAwMDowMDowMi4wIG9uIG1pbm9yIDAKWyAgICAyLjAyMTU4
-Nl0gQUNQSTogVmlkZW8gRGV2aWNlIFtHRlgwXSAobXVsdGktaGVhZDogeWVzICByb206IG5vICBw
-b3N0OiBubykKWyAgICAyLjAyMjI5MV0gaW5wdXQ6IFZpZGVvIEJ1cyBhcyAvZGV2aWNlcy9MTlhT
-WVNUTTowMC9MTlhTWUJVUzowMC9QTlAwQTA4OjAwL0xOWFZJREVPOjAwL2lucHV0L2lucHV0Ngpb
-ICAgIDIuMDY1MDI5XSBmYmNvbjogaW50ZWxkcm1mYiAoZmIwKSBpcyBwcmltYXJ5IGRldmljZQpb
-ICAgIDIuMDY1MDU0XSBDb25zb2xlOiBzd2l0Y2hpbmcgdG8gY29sb3VyIGZyYW1lIGJ1ZmZlciBk
-ZXZpY2UgMjQweDY3ClsgICAgMi4wNjUwNjddIGk5MTUgMDAwMDowMDowMi4wOiBmYjA6IGludGVs
-ZHJtZmIgZnJhbWUgYnVmZmVyIGRldmljZQpbICAgIDIuMDY3NjEyXSBpbnRlbC1scHNzIDAwMDA6
-MDA6MTkuMDogZW5hYmxpbmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpClsgICAgMi4wNzk1ODRdIGUx
-MDAwZSAwMDAwOjAwOjFmLjYgZXRoMDogKFBDSSBFeHByZXNzOjIuNUdUL3M6V2lkdGggeDEpIDg4
-OjZmOmQ0OmZkOjU3OmZiClsgICAgMi4wNzk1ODVdIGUxMDAwZSAwMDAwOjAwOjFmLjYgZXRoMDog
-SW50ZWwoUikgUFJPLzEwMDAgTmV0d29yayBDb25uZWN0aW9uClsgICAgMi4wNzk2NjFdIGUxMDAw
-ZSAwMDAwOjAwOjFmLjYgZXRoMDogTUFDOiAxMywgUEhZOiAxMiwgUEJBIE5vOiBGRkZGRkYtMEZG
-ClsgICAgMi4wODA2NDldIGUxMDAwZSAwMDAwOjAwOjFmLjYgZW5vMjogcmVuYW1lZCBmcm9tIGV0
-aDAKWyAgICAyLjA4NDQwN10gdXNiIDEtODogTmV3IFVTQiBkZXZpY2UgZm91bmQsIGlkVmVuZG9y
-PTBhNWMsIGlkUHJvZHVjdD01ODQyLCBiY2REZXZpY2U9IDEuMDEKWyAgICAyLjA4NDQwN10gdXNi
-IDEtODogTmV3IFVTQiBkZXZpY2Ugc3RyaW5nczogTWZyPTEsIFByb2R1Y3Q9MiwgU2VyaWFsTnVt
-YmVyPTMKWyAgICAyLjA4NDQwOF0gdXNiIDEtODogUHJvZHVjdDogNTgyMDAKWyAgICAyLjA4NDQw
-OF0gdXNiIDEtODogTWFudWZhY3R1cmVyOiBCcm9hZGNvbSBDb3JwClsgICAgMi4wODQ0MDldIHVz
-YiAxLTg6IFNlcmlhbE51bWJlcjogMDEyMzQ1Njc4OUFCQ0QKWyAgICAyLjIxMzYxMV0gdXNiIDEt
-MTA6IG5ldyBmdWxsLXNwZWVkIFVTQiBkZXZpY2UgbnVtYmVyIDUgdXNpbmcgeGhjaV9oY2QKWyAg
-ICAyLjI3MDM3OF0gYXRhMzogU0FUQSBsaW5rIHVwIDYuMCBHYnBzIChTU3RhdHVzIDEzMyBTQ29u
-dHJvbCAzMDApClsgICAgMi4yNzAzOTBdIGF0YTE6IFNBVEEgbGluayBkb3duIChTU3RhdHVzIDQg
-U0NvbnRyb2wgMzAwKQpbICAgIDIuMjcxMzk0XSBhdGEzLjAwOiBBVEEtMTA6IEFEQVRBIFNVODEw
-TlMzOCBTQVRBIDI1NiBHQiwgODAzMDExMDEsIG1heCBVRE1BLzEzMwpbICAgIDIuMjcxMzk1XSBh
-dGEzLjAwOiA1MDAxMTgxOTIgc2VjdG9ycywgbXVsdGkgMTY6IExCQTQ4IE5DUSAoZGVwdGggMzIp
-LCBBQQpbICAgIDIuMjcyNTQ2XSBhdGEzLjAwOiBjb25maWd1cmVkIGZvciBVRE1BLzEzMwpbICAg
-IDIuMjcyNzcwXSBzY3NpIDI6MDowOjA6IERpcmVjdC1BY2Nlc3MgICAgIEFUQSAgICAgIEFEQVRB
-IFNVODEwTlMzOCAgMTEwMSBQUTogMCBBTlNJOiA1ClsgICAgMi4yNzMwOTNdIHNkIDI6MDowOjA6
-IEF0dGFjaGVkIHNjc2kgZ2VuZXJpYyBzZzAgdHlwZSAwClsgICAgMi4yNzMzNjNdIHNkIDI6MDow
-OjA6IFtzZGFdIDUwMDExODE5MiA1MTItYnl0ZSBsb2dpY2FsIGJsb2NrczogKDI1NiBHQi8yMzgg
-R2lCKQpbICAgIDIuMjczMzcwXSBzZCAyOjA6MDowOiBbc2RhXSBXcml0ZSBQcm90ZWN0IGlzIG9m
-ZgpbICAgIDIuMjczMzcxXSBzZCAyOjA6MDowOiBbc2RhXSBNb2RlIFNlbnNlOiAwMCAzYSAwMCAw
-MApbICAgIDIuMjczMzgxXSBzZCAyOjA6MDowOiBbc2RhXSBXcml0ZSBjYWNoZTogZW5hYmxlZCwg
-cmVhZCBjYWNoZTogZW5hYmxlZCwgZG9lc24ndCBzdXBwb3J0IERQTyBvciBGVUEKWyAgICAyLjI3
-NTI2OV0gIHNkYTogc2RhMSBzZGEyIHNkYTMKWyAgICAyLjI3NjM3MV0gc2QgMjowOjA6MDogW3Nk
-YV0gQXR0YWNoZWQgU0NTSSBkaXNrClsgICAgMi4yNzk5NDldIGlucHV0OiBERUxMMDhCODowMCAw
-NDg4OjEyMUYgTW91c2UgYXMgL2RldmljZXMvcGNpMDAwMDowMC8wMDAwOjAwOjE1LjEvaTJjX2Rl
-c2lnbndhcmUuMS9pMmMtNi9pMmMtREVMTDA4Qjg6MDAvMDAxODowNDg4OjEyMUYuMDAwMS9pbnB1
-dC9pbnB1dDcKWyAgICAyLjI3OTk4OF0gaW5wdXQ6IERFTEwwOEI4OjAwIDA0ODg6MTIxRiBUb3Vj
-aHBhZCBhcyAvZGV2aWNlcy9wY2kwMDAwOjAwLzAwMDA6MDA6MTUuMS9pMmNfZGVzaWdud2FyZS4x
-L2kyYy02L2kyYy1ERUxMMDhCODowMC8wMDE4OjA0ODg6MTIxRi4wMDAxL2lucHV0L2lucHV0OApb
-ICAgIDIuMjgwMDE5XSBpbnB1dDogREVMTDA4Qjg6MDAgMDQ4ODoxMjFGIGFzIC9kZXZpY2VzL3Bj
-aTAwMDA6MDAvMDAwMDowMDoxNS4xL2kyY19kZXNpZ253YXJlLjEvaTJjLTYvaTJjLURFTEwwOEI4
-OjAwLzAwMTg6MDQ4ODoxMjFGLjAwMDEvaW5wdXQvaW5wdXQ5ClsgICAgMi4yODAwNDJdIGhpZC1n
-ZW5lcmljIDAwMTg6MDQ4ODoxMjFGLjAwMDE6IGlucHV0LGhpZHJhdzA6IEkyQyBISUQgdjEuMDAg
-TW91c2UgW0RFTEwwOEI4OjAwIDA0ODg6MTIxRl0gb24gaTJjLURFTEwwOEI4OjAwClsgICAgMi4z
-NjczMTZdIHVzYiAxLTEwOiBOZXcgVVNCIGRldmljZSBmb3VuZCwgaWRWZW5kb3I9ODA4NywgaWRQ
-cm9kdWN0PTBhYWEsIGJjZERldmljZT0gMC4wMgpbICAgIDIuMzY3MzE3XSB1c2IgMS0xMDogTmV3
-IFVTQiBkZXZpY2Ugc3RyaW5nczogTWZyPTAsIFByb2R1Y3Q9MCwgU2VyaWFsTnVtYmVyPTAKWyAg
-ICAyLjM3MjY1N10gaW5wdXQ6IERlbGwgRGVsbCBLTTYzMiBXaXJlbGVzcyBLZXlib2FyZCBhbmQg
-TW91c2UgYXMgL2RldmljZXMvcGNpMDAwMDowMC8wMDAwOjAwOjE0LjAvdXNiMS8xLTMvMS0zOjEu
-MC8wMDAzOjQxM0M6MjUwMS4wMDAyL2lucHV0L2lucHV0MTAKWyAgICAyLjQyOTg5OV0gaGlkLWdl
-bmVyaWMgMDAwMzo0MTNDOjI1MDEuMDAwMjogaW5wdXQsaGlkcmF3MTogVVNCIEhJRCB2MS4xMSBL
-ZXlib2FyZCBbRGVsbCBEZWxsIEtNNjMyIFdpcmVsZXNzIEtleWJvYXJkIGFuZCBNb3VzZV0gb24g
-dXNiLTAwMDA6MDA6MTQuMC0zL2lucHV0MApbICAgIDIuNDMxNjU0XSBpbnB1dDogRGVsbCBEZWxs
-IEtNNjMyIFdpcmVsZXNzIEtleWJvYXJkIGFuZCBNb3VzZSBDb25zdW1lciBDb250cm9sIGFzIC9k
-ZXZpY2VzL3BjaTAwMDA6MDAvMDAwMDowMDoxNC4wL3VzYjEvMS0zLzEtMzoxLjEvMDAwMzo0MTND
-OjI1MDEuMDAwMy9pbnB1dC9pbnB1dDExClsgICAgMi40ODk3NjddIGlucHV0OiBEZWxsIERlbGwg
-S002MzIgV2lyZWxlc3MgS2V5Ym9hcmQgYW5kIE1vdXNlIFN5c3RlbSBDb250cm9sIGFzIC9kZXZp
-Y2VzL3BjaTAwMDA6MDAvMDAwMDowMDoxNC4wL3VzYjEvMS0zLzEtMzoxLjEvMDAwMzo0MTNDOjI1
-MDEuMDAwMy9pbnB1dC9pbnB1dDEyClsgICAgMi40OTAxMTFdIGhpZC1nZW5lcmljIDAwMDM6NDEz
-QzoyNTAxLjAwMDM6IGlucHV0LGhpZGRldjAsaGlkcmF3MjogVVNCIEhJRCB2MS4xMSBEZXZpY2Ug
-W0RlbGwgRGVsbCBLTTYzMiBXaXJlbGVzcyBLZXlib2FyZCBhbmQgTW91c2VdIG9uIHVzYi0wMDAw
-OjAwOjE0LjAtMy9pbnB1dDEKWyAgICAyLjQ5MTU4MV0gaW5wdXQ6IERlbGwgRGVsbCBLTTYzMiBX
-aXJlbGVzcyBLZXlib2FyZCBhbmQgTW91c2UgYXMgL2RldmljZXMvcGNpMDAwMDowMC8wMDAwOjAw
-OjE0LjAvdXNiMS8xLTMvMS0zOjEuMi8wMDAzOjQxM0M6MjUwMS4wMDA0L2lucHV0L2lucHV0MTMK
-WyAgICAyLjQ5MTg3OF0gaGlkLWdlbmVyaWMgMDAwMzo0MTNDOjI1MDEuMDAwNDogaW5wdXQsaGlk
-cmF3MzogVVNCIEhJRCB2MS4xMSBNb3VzZSBbRGVsbCBEZWxsIEtNNjMyIFdpcmVsZXNzIEtleWJv
-YXJkIGFuZCBNb3VzZV0gb24gdXNiLTAwMDA6MDA6MTQuMC0zL2lucHV0MgpbICAgIDIuNDkxODk0
-XSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIHVzYmhpZApbICAgIDIu
-NDkxODk0XSB1c2JoaWQ6IFVTQiBISUQgY29yZSBkcml2ZXIKWyAgICAyLjY5MjM2OF0gaW5wdXQ6
-IFBTLzIgR2VuZXJpYyBNb3VzZSBhcyAvZGV2aWNlcy9wbGF0Zm9ybS9pODA0Mi9zZXJpbzEvaW5w
-dXQvaW5wdXQ1ClsgICAgOS41NjgzMDFdIE5FVDogUmVnaXN0ZXJlZCBwcm90b2NvbCBmYW1pbHkg
-MzgKWyAgICA5Ljc1ODQ0Ml0gRVhUNC1mcyAoZG0tMSk6IG1vdW50ZWQgZmlsZXN5c3RlbSB3aXRo
-IG9yZGVyZWQgZGF0YSBtb2RlLiBPcHRzOiAobnVsbCkKWyAgICA5LjkyMzUzMV0gc3lzdGVtZFsx
-XTogSW5zZXJ0ZWQgbW9kdWxlICdhdXRvZnM0JwpbICAgMTAuMDA4OTQxXSBzeXN0ZW1kWzFdOiBz
-eXN0ZW1kIDI0MCBydW5uaW5nIGluIHN5c3RlbSBtb2RlLiAoK1BBTSArQVVESVQgK1NFTElOVVgg
-K0lNQSArQVBQQVJNT1IgK1NNQUNLICtTWVNWSU5JVCArVVRNUCArTElCQ1JZUFRTRVRVUCArR0NS
-WVBUICtHTlVUTFMgK0FDTCArWFogK0xaNCArU0VDQ09NUCArQkxLSUQgK0VMRlVUSUxTICtLTU9E
-IC1JRE4yICtJRE4gLVBDUkUyIGRlZmF1bHQtaGllcmFyY2h5PWh5YnJpZCkKWyAgIDEwLjAyNTg2
-Nl0gc3lzdGVtZFsxXTogRGV0ZWN0ZWQgYXJjaGl0ZWN0dXJlIHg4Ni02NC4KWyAgIDEwLjAyOTE3
-NF0gc3lzdGVtZFsxXTogU2V0IGhvc3RuYW1lIHRvIDxkZWxsLWxhcHRvcD4uClsgICAxMC4wMjk0
-OTJdIExvY2tkb3duOiBzeXN0ZW1kOiAvZGV2L21lbSxrbWVtLHBvcnQgaXMgcmVzdHJpY3RlZDsg
-c2VlIG1hbiBrZXJuZWxfbG9ja2Rvd24uNwpbICAgMTAuMDMyNjAyXSBMb2NrZG93bjogc3lzdGVt
-ZDogQlBGIGlzIHJlc3RyaWN0ZWQ7IHNlZSBtYW4ga2VybmVsX2xvY2tkb3duLjcKWyAgIDEwLjA3
-OTI1OV0gc3lzdGVtZFsxXTogRmlsZSAvbGliL3N5c3RlbWQvc3lzdGVtL3N5c3RlbWQtam91cm5h
-bGQuc2VydmljZToxMiBjb25maWd1cmVzIGFuIElQIGZpcmV3YWxsIChJUEFkZHJlc3NEZW55PWFu
-eSksIGJ1dCB0aGUgbG9jYWwgc3lzdGVtIGRvZXMgbm90IHN1cHBvcnQgQlBGL2Nncm91cCBiYXNl
-ZCBmaXJld2FsbGluZy4KWyAgIDEwLjA3OTI2MF0gc3lzdGVtZFsxXTogUHJvY2VlZGluZyBXSVRI
-T1VUIGZpcmV3YWxsaW5nIGluIGVmZmVjdCEgKFRoaXMgd2FybmluZyBpcyBvbmx5IHNob3duIGZv
-ciB0aGUgZmlyc3QgbG9hZGVkIHVuaXQgdXNpbmcgSVAgZmlyZXdhbGxpbmcuKQpbICAgMTAuMTM4
-MDExXSBzeXN0ZW1kWzFdOiAvbGliL3N5c3RlbWQvc3lzdGVtL3NwaWNlLXZkYWdlbnRkLnNlcnZp
-Y2U6ODogUElERmlsZT0gcmVmZXJlbmNlcyBwYXRoIGJlbG93IGxlZ2FjeSBkaXJlY3RvcnkgL3Zh
-ci9ydW4vLCB1cGRhdGluZyAvdmFyL3J1bi9zcGljZS12ZGFnZW50ZC9zcGljZS12ZGFnZW50ZC5w
-aWQg4oaSIC9ydW4vc3BpY2UtdmRhZ2VudGQvc3BpY2UtdmRhZ2VudGQucGlkOyBwbGVhc2UgdXBk
-YXRlIHRoZSB1bml0IGZpbGUgYWNjb3JkaW5nbHkuClsgICAxMC4xNDAyMDddIHN5c3RlbWRbMV06
-IExpc3RlbmluZyBvbiBTeXNsb2cgU29ja2V0LgpbICAgMTAuMTQxMTA2XSBzeXN0ZW1kWzFdOiBM
-aXN0ZW5pbmcgb24gTFZNMiBwb2xsIGRhZW1vbiBzb2NrZXQuClsgICAxMC4xNDExNDBdIHN5c3Rl
-bWRbMV06IExpc3RlbmluZyBvbiBpbml0Y3RsIENvbXBhdGliaWxpdHkgTmFtZWQgUGlwZS4KWyAg
-IDEwLjE0MTE2MV0gc3lzdGVtZFsxXTogTGlzdGVuaW5nIG9uIERldmljZS1tYXBwZXIgZXZlbnQg
-ZGFlbW9uIEZJRk9zLgpbICAgMTAuMTUyMTI1XSBFWFQ0LWZzIChkbS0xKTogcmUtbW91bnRlZC4g
-T3B0czogZXJyb3JzPXJlbW91bnQtcm8KWyAgIDEwLjE2MDM4NF0gbHA6IGRyaXZlciBsb2FkZWQg
-YnV0IG5vIGRldmljZXMgZm91bmQKWyAgIDEwLjE2MjQyNl0gcHBkZXY6IHVzZXItc3BhY2UgcGFy
-YWxsZWwgcG9ydCBkcml2ZXIKWyAgIDEwLjM2OTE2Ml0gc3lzdGVtZC1qb3VybmFsZFs2NDddOiBS
-ZWNlaXZlZCByZXF1ZXN0IHRvIGZsdXNoIHJ1bnRpbWUgam91cm5hbCBmcm9tIFBJRCAxClsgICAx
-MS44OTkzNjNdIHByb2NfdGhlcm1hbCAwMDAwOjAwOjA0LjA6IGVuYWJsaW5nIGRldmljZSAoMDAw
-MCAtPiAwMDAyKQpbICAgMTEuOTI2MDgwXSBjZmc4MDIxMTogTG9hZGluZyBjb21waWxlZC1pbiBY
-LjUwOSBjZXJ0aWZpY2F0ZXMgZm9yIHJlZ3VsYXRvcnkgZGF0YWJhc2UKWyAgIDExLjkzNzYwNl0g
-Y2ZnODAyMTE6IExvYWRlZCBYLjUwOSBjZXJ0ICdzZm9yc2hlZTogMDBiMjhkZGY0N2FlZjljZWE3
-JwpbICAgMTEuOTUyODAzXSBwcm9jX3RoZXJtYWwgMDAwMDowMDowNC4wOiBDcmVhdGluZyBzeXNm
-cyBncm91cCBmb3IgUFJPQ19USEVSTUFMX1BDSQpbICAgMTEuOTY2ODQ3XSBtZWlfbWUgMDAwMDow
-MDoxNi4wOiBlbmFibGluZyBkZXZpY2UgKDAwMDAgLT4gMDAwMikKWyAgIDEyLjAwMDczNl0gSW50
-ZWwoUikgV2lyZWxlc3MgV2lGaSBkcml2ZXIgZm9yIExpbnV4ClsgICAxMi4wMDA3MzddIENvcHly
-aWdodChjKSAyMDAzLSAyMDE1IEludGVsIENvcnBvcmF0aW9uClsgICAxMi4wMDA3NzddIGl3bHdp
-ZmkgMDAwMDowMDoxNC4zOiBlbmFibGluZyBkZXZpY2UgKDAwMDAgLT4gMDAwMikKWyAgIDEyLjAx
-MTQxMF0gaXdsd2lmaSAwMDAwOjAwOjE0LjM6IGxvYWRlZCBmaXJtd2FyZSB2ZXJzaW9uIDQzLjk1
-ZWI0ZTk3LjAgb3BfbW9kZSBpd2xtdm0KWyAgIDEyLjAzODI1Ml0gaXdsd2lmaSAwMDAwOjAwOjE0
-LjM6IERldGVjdGVkIEludGVsKFIpIER1YWwgQmFuZCBXaXJlbGVzcyBBQyA5NTYwLCBSRVY9MHgz
-MTgKWyAgIDEyLjA0NjgwN10gaW5wdXQ6IEludGVsIEhJRCBldmVudHMgYXMgL2RldmljZXMvcGxh
-dGZvcm0vSU5UMzNENTowMC9pbnB1dC9pbnB1dDE0ClsgICAxMi4wOTA3ODBdIGl3bHdpZmkgMDAw
-MDowMDoxNC4zOiBiYXNlIEhXIGFkZHJlc3M6IDY0OjMyOmE4OjgyOmRiOjQ3ClsgICAxMi4wOTM2
-MjVdIGludGVsLWhpZCBJTlQzM0Q1OjAwOiBwbGF0Zm9ybSBzdXBwb3J0cyA1IGJ1dHRvbiBhcnJh
-eQpbICAgMTIuMDkzNjYxXSBpbnB1dDogSW50ZWwgSElEIDUgYnV0dG9uIGFycmF5IGFzIC9kZXZp
-Y2VzL3BsYXRmb3JtL0lOVDMzRDU6MDAvaW5wdXQvaW5wdXQxNQpbICAgMTIuMTA1NjI5XSBpZG1h
-NjQgaWRtYTY0LjA6IEZvdW5kIEludGVsIGludGVncmF0ZWQgRE1BIDY0LWJpdApbICAgMTIuMTg3
-OTEwXSBpZWVlODAyMTEgcGh5MDogU2VsZWN0ZWQgcmF0ZSBjb250cm9sIGFsZ29yaXRobSAnaXds
-LW12bS1ycycKWyAgIDEyLjE4ODExN10gdGhlcm1hbCB0aGVybWFsX3pvbmU0OiBmYWlsZWQgdG8g
-cmVhZCBvdXQgdGhlcm1hbCB6b25lICgtNjEpClsgICAxMi4yMTc2MTNdIGlkbWE2NCBpZG1hNjQu
-MTogRm91bmQgSW50ZWwgaW50ZWdyYXRlZCBETUEgNjQtYml0ClsgICAxMi41ODMyMDFdIHNuZF9o
-ZGFfaW50ZWwgMDAwMDowMDoxZi4zOiBlbmFibGluZyBkZXZpY2UgKDAwMDAgLT4gMDAwMikKWyAg
-IDEyLjYwNzY0OV0gc25kX2hkYV9pbnRlbCAwMDAwOjAwOjFmLjM6IExpbmtlZCBhcyBhIGNvbnN1
-bWVyIHRvIDAwMDA6MDA6MDIuMApbICAgMTIuNjA3NjgyXSBzbmRfaGRhX2ludGVsIDAwMDA6MDA6
-MWYuMzogYm91bmQgMDAwMDowMDowMi4wIChvcHMgaTkxNV9hdWRpb19jb21wb25lbnRfYmluZF9v
-cHMgW2k5MTVdKQpbICAgMTIuNjc4ODg5XSBCbHVldG9vdGg6IENvcmUgdmVyIDIuMjIKWyAgIDEy
-LjY3ODkwNF0gTkVUOiBSZWdpc3RlcmVkIHByb3RvY29sIGZhbWlseSAzMQpbICAgMTIuNjc4OTA0
-XSBCbHVldG9vdGg6IEhDSSBkZXZpY2UgYW5kIGNvbm5lY3Rpb24gbWFuYWdlciBpbml0aWFsaXpl
-ZApbICAgMTIuNjc4OTA3XSBCbHVldG9vdGg6IEhDSSBzb2NrZXQgbGF5ZXIgaW5pdGlhbGl6ZWQK
-WyAgIDEyLjY3ODkwOF0gQmx1ZXRvb3RoOiBMMkNBUCBzb2NrZXQgbGF5ZXIgaW5pdGlhbGl6ZWQK
-WyAgIDEyLjY3ODkxMF0gQmx1ZXRvb3RoOiBTQ08gc29ja2V0IGxheWVyIGluaXRpYWxpemVkClsg
-ICAxMi43MDc4MjZdIGlucHV0OiBEZWxsIFdNSSBob3RrZXlzIGFzIC9kZXZpY2VzL3BsYXRmb3Jt
-L1BOUDBDMTQ6MDMvd21pX2J1cy93bWlfYnVzLVBOUDBDMTQ6MDMvOURCQjU5OTQtQTk5Ny0xMURB
-LUIwMTItQjYyMkExRUY1NDkyL2lucHV0L2lucHV0MTYKWyAgIDEyLjcxMTczOV0gdXNiY29yZTog
-cmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBidHVzYgpbICAgMTIuNzEyNzg2XSBCbHVl
-dG9vdGg6IGhjaTA6IEJvb3Rsb2FkZXIgcmV2aXNpb24gMC4xIGJ1aWxkIDQyIHdlZWsgNTIgMjAx
-NQpbICAgMTIuNzEzODExXSBCbHVldG9vdGg6IGhjaTA6IERldmljZSByZXZpc2lvbiBpcyAyClsg
-ICAxMi43MTM4MTJdIEJsdWV0b290aDogaGNpMDogU2VjdXJlIGJvb3QgaXMgZW5hYmxlZApbICAg
-MTIuNzEzODEyXSBCbHVldG9vdGg6IGhjaTA6IE9UUCBsb2NrIGlzIGVuYWJsZWQKWyAgIDEyLjcx
-MzgxM10gQmx1ZXRvb3RoOiBoY2kwOiBBUEkgbG9jayBpcyBlbmFibGVkClsgICAxMi43MTM4MTNd
-IEJsdWV0b290aDogaGNpMDogRGVidWcgbG9jayBpcyBkaXNhYmxlZApbICAgMTIuNzEzODE0XSBC
-bHVldG9vdGg6IGhjaTA6IE1pbmltdW0gZmlybXdhcmUgYnVpbGQgMSB3ZWVrIDEwIDIwMTQKWyAg
-IDEyLjcxNjM3MV0gQmx1ZXRvb3RoOiBoY2kwOiBGb3VuZCBkZXZpY2UgZmlybXdhcmU6IGludGVs
-L2lidC0xNy0xNi0xLnNmaQpbICAgMTIuNzQ5Nzc0XSBSQVBMIFBNVTogQVBJIHVuaXQgaXMgMl4t
-MzIgSm91bGVzLCA1IGZpeGVkIGNvdW50ZXJzLCA2NTUzNjAgbXMgb3ZmbCB0aW1lcgpbICAgMTIu
-NzQ5Nzc1XSBSQVBMIFBNVTogaHcgdW5pdCBvZiBkb21haW4gcHAwLWNvcmUgMl4tMTQgSm91bGVz
-ClsgICAxMi43NDk3NzVdIFJBUEwgUE1VOiBodyB1bml0IG9mIGRvbWFpbiBwYWNrYWdlIDJeLTE0
-IEpvdWxlcwpbICAgMTIuNzQ5Nzc2XSBSQVBMIFBNVTogaHcgdW5pdCBvZiBkb21haW4gZHJhbSAy
-Xi0xNCBKb3VsZXMKWyAgIDEyLjc0OTc3Nl0gUkFQTCBQTVU6IGh3IHVuaXQgb2YgZG9tYWluIHBw
-MS1ncHUgMl4tMTQgSm91bGVzClsgICAxMi43NDk3NzddIFJBUEwgUE1VOiBodyB1bml0IG9mIGRv
-bWFpbiBwc3lzIDJeLTE0IEpvdWxlcwpbICAgMTIuNzgwNTQwXSBpbnRlbF9yYXBsOiBGb3VuZCBS
-QVBMIGRvbWFpbiBwYWNrYWdlClsgICAxMi43ODA1NDFdIGludGVsX3JhcGw6IEZvdW5kIFJBUEwg
-ZG9tYWluIGNvcmUKWyAgIDEyLjc4MDU0Ml0gaW50ZWxfcmFwbDogRm91bmQgUkFQTCBkb21haW4g
-dW5jb3JlClsgICAxMi43ODA1NDJdIGludGVsX3JhcGw6IEZvdW5kIFJBUEwgZG9tYWluIGRyYW0K
-WyAgIDEyLjg1MzEzOF0gbWVkaWE6IExpbnV4IG1lZGlhIGludGVyZmFjZTogdjAuMTAKWyAgIDEy
-Ljg2MDEyNF0gdmlkZW9kZXY6IExpbnV4IHZpZGVvIGNhcHR1cmUgaW50ZXJmYWNlOiB2Mi4wMApb
-ICAgMTIuODgyOTk1XSBpbnB1dDogREVMTDA4Qjg6MDAgMDQ4ODoxMjFGIE1vdXNlIGFzIC9kZXZp
-Y2VzL3BjaTAwMDA6MDAvMDAwMDowMDoxNS4xL2kyY19kZXNpZ253YXJlLjEvaTJjLTYvaTJjLURF
-TEwwOEI4OjAwLzAwMTg6MDQ4ODoxMjFGLjAwMDEvaW5wdXQvaW5wdXQxNwpbICAgMTIuODgzMDYy
-XSBpbnB1dDogREVMTDA4Qjg6MDAgMDQ4ODoxMjFGIFRvdWNocGFkIGFzIC9kZXZpY2VzL3BjaTAw
-MDA6MDAvMDAwMDowMDoxNS4xL2kyY19kZXNpZ253YXJlLjEvaTJjLTYvaTJjLURFTEwwOEI4OjAw
-LzAwMTg6MDQ4ODoxMjFGLjAwMDEvaW5wdXQvaW5wdXQxOApbICAgMTIuODgzMTIwXSBpbnB1dDog
-REVMTDA4Qjg6MDAgMDQ4ODoxMjFGIFVOS05PV04gYXMgL2RldmljZXMvcGNpMDAwMDowMC8wMDAw
-OjAwOjE1LjEvaTJjX2Rlc2lnbndhcmUuMS9pMmMtNi9pMmMtREVMTDA4Qjg6MDAvMDAxODowNDg4
-OjEyMUYuMDAwMS9pbnB1dC9pbnB1dDE5ClsgICAxMi44ODMxNTRdIGhpZC1tdWx0aXRvdWNoIDAw
-MTg6MDQ4ODoxMjFGLjAwMDE6IGlucHV0LGhpZHJhdzA6IEkyQyBISUQgdjEuMDAgTW91c2UgW0RF
-TEwwOEI4OjAwIDA0ODg6MTIxRl0gb24gaTJjLURFTEwwOEI4OjAwClsgICAxMi45NDAwMTBdIHV2
-Y3ZpZGVvOiBGb3VuZCBVVkMgMS4wMCBkZXZpY2UgVVNCIDIuMCBDYW1lcmEgKDBjNDU6NjM2NSkK
-WyAgIDEyLjk0MDU5OF0gdXZjdmlkZW86IFVWQyBub24gY29tcGxpYW5jZSAtIEdFVF9ERUYoUFJP
-QkUpIG5vdCBzdXBwb3J0ZWQuIEVuYWJsaW5nIHdvcmthcm91bmQuClsgICAxMi45NDA5ODVdIHV2
-Y3ZpZGVvOiBGYWlsZWQgdG8gcXVlcnkgKDEyOSkgVVZDIHByb2JlIGNvbnRyb2wgOiAtMzIgKGV4
-cC4gMjYpLgpbICAgMTIuOTQwOTg4XSB1dmN2aWRlbzogRmFpbGVkIHRvIGluaXRpYWxpemUgdGhl
-IGRldmljZSAoLTUpLgpbICAgMTIuOTQxMDI2XSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRl
-cmZhY2UgZHJpdmVyIHV2Y3ZpZGVvClsgICAxMi45NDEwMjddIFVTQiBWaWRlbyBDbGFzcyBkcml2
-ZXIgKDEuMS4xKQpbICAgMTMuMzkxMjQyXSBkZWxsX2xhcHRvcDogVXNpbmcgaTgwNDIgZmlsdGVy
-IGZ1bmN0aW9uIGZvciByZWNlaXZpbmcgZXZlbnRzClsgICAxMy43MTA3MTddIHNuZF9oZGFfY29k
-ZWNfcmVhbHRlayBoZGF1ZGlvQzBEMDogYXV0b2NvbmZpZyBmb3IgQUxDMzIwNDogbGluZV9vdXRz
-PTEgKDB4MTQvMHgwLzB4MC8weDAvMHgwKSB0eXBlOnNwZWFrZXIKWyAgIDEzLjcxMDcxOV0gc25k
-X2hkYV9jb2RlY19yZWFsdGVrIGhkYXVkaW9DMEQwOiAgICBzcGVha2VyX291dHM9MCAoMHgwLzB4
-MC8weDAvMHgwLzB4MCkKWyAgIDEzLjcxMDcyMF0gc25kX2hkYV9jb2RlY19yZWFsdGVrIGhkYXVk
-aW9DMEQwOiAgICBocF9vdXRzPTEgKDB4MjEvMHgwLzB4MC8weDAvMHgwKQpbICAgMTMuNzEwNzIx
-XSBzbmRfaGRhX2NvZGVjX3JlYWx0ZWsgaGRhdWRpb0MwRDA6ICAgIG1vbm86IG1vbm9fb3V0PTB4
-MApbICAgMTMuNzEwNzIyXSBzbmRfaGRhX2NvZGVjX3JlYWx0ZWsgaGRhdWRpb0MwRDA6ICAgIGlu
-cHV0czoKWyAgIDEzLjcxMDcyM10gc25kX2hkYV9jb2RlY19yZWFsdGVrIGhkYXVkaW9DMEQwOiAg
-ICAgIEhlYWRzZXQgTWljPTB4MTkKWyAgIDEzLjcxMDcyNF0gc25kX2hkYV9jb2RlY19yZWFsdGVr
-IGhkYXVkaW9DMEQwOiAgICAgIEhlYWRwaG9uZSBNaWM9MHgxYQpbICAgMTMuNzEwNzI1XSBzbmRf
-aGRhX2NvZGVjX3JlYWx0ZWsgaGRhdWRpb0MwRDA6ICAgICAgSW50ZXJuYWwgTWljPTB4MTIKWyAg
-IDE0LjA2NjAwNF0gQmx1ZXRvb3RoOiBoY2kwOiBXYWl0aW5nIGZvciBmaXJtd2FyZSBkb3dubG9h
-ZCB0byBjb21wbGV0ZQpbICAgMTQuMDY2Nzc5XSBCbHVldG9vdGg6IGhjaTA6IEZpcm13YXJlIGxv
-YWRlZCBpbiAxMzIzMzAwIHVzZWNzClsgICAxNC4wNjY4MDddIEJsdWV0b290aDogaGNpMDogV2Fp
-dGluZyBmb3IgZGV2aWNlIHRvIGJvb3QKWyAgIDE0LjA3MjQyM10gaXdsd2lmaSAwMDAwOjAwOjE0
-LjMgd2xvMTogcmVuYW1lZCBmcm9tIHdsYW4wClsgICAxNC4wNzk3ODVdIEJsdWV0b290aDogaGNp
-MDogRGV2aWNlIGJvb3RlZCBpbiAxMjY4MSB1c2VjcwpbICAgMTQuMDgwMDc2XSBCbHVldG9vdGg6
-IGhjaTA6IEZvdW5kIEludGVsIEREQyBwYXJhbWV0ZXJzOiBpbnRlbC9pYnQtMTctMTYtMS5kZGMK
-WyAgIDE0LjA4MjgwMV0gQmx1ZXRvb3RoOiBoY2kwOiBBcHBseWluZyBJbnRlbCBEREMgcGFyYW1l
-dGVycyBjb21wbGV0ZWQKWyAgIDE0LjA5NzM2Ml0gQWRkaW5nIDk5OTQyMGsgc3dhcCBvbiAvZGV2
-L21hcHBlci91YnVudHUtLXZnLXN3YXBfMS4gIFByaW9yaXR5Oi0yIGV4dGVudHM6MSBhY3Jvc3M6
-OTk5NDIwayBTU0ZTClsgICAxNC43Njk5MTddIEVYVDQtZnMgKHNkYTIpOiBtb3VudGVkIGZpbGVz
-eXN0ZW0gd2l0aCBvcmRlcmVkIGRhdGEgbW9kZS4gT3B0czogKG51bGwpClsgICAxNC44MTcxNzld
-IGF1ZGl0OiB0eXBlPTE0MDAgYXVkaXQoMTU3MDEwNDgyNC40Njg6Mik6IGFwcGFybW9yPSJTVEFU
-VVMiIG9wZXJhdGlvbj0icHJvZmlsZV9sb2FkIiBwcm9maWxlPSJ1bmNvbmZpbmVkIiBuYW1lPSJu
-dmlkaWFfbW9kcHJvYmUiIHBpZD04MzA4IGNvbW09ImFwcGFybW9yX3BhcnNlciIKWyAgIDE0Ljgx
-NzE4Ml0gYXVkaXQ6IHR5cGU9MTQwMCBhdWRpdCgxNTcwMTA0ODI0LjQ2ODozKTogYXBwYXJtb3I9
-IlNUQVRVUyIgb3BlcmF0aW9uPSJwcm9maWxlX2xvYWQiIHByb2ZpbGU9InVuY29uZmluZWQiIG5h
-bWU9Im52aWRpYV9tb2Rwcm9iZS8va21vZCIgcGlkPTgzMDggY29tbT0iYXBwYXJtb3JfcGFyc2Vy
-IgpbICAgMTQuODE4ODUyXSBhdWRpdDogdHlwZT0xNDAwIGF1ZGl0KDE1NzAxMDQ4MjQuNDcyOjQp
-OiBhcHBhcm1vcj0iU1RBVFVTIiBvcGVyYXRpb249InByb2ZpbGVfbG9hZCIgcHJvZmlsZT0idW5j
-b25maW5lZCIgbmFtZT0iL3Vzci9iaW4vbWFuIiBwaWQ9ODMwOSBjb21tPSJhcHBhcm1vcl9wYXJz
-ZXIiClsgICAxNC44MTg4NTRdIGF1ZGl0OiB0eXBlPTE0MDAgYXVkaXQoMTU3MDEwNDgyNC40NzI6
-NSk6IGFwcGFybW9yPSJTVEFUVVMiIG9wZXJhdGlvbj0icHJvZmlsZV9sb2FkIiBwcm9maWxlPSJ1
-bmNvbmZpbmVkIiBuYW1lPSJtYW5fZmlsdGVyIiBwaWQ9ODMwOSBjb21tPSJhcHBhcm1vcl9wYXJz
-ZXIiClsgICAxNC44MTg4NTZdIGF1ZGl0OiB0eXBlPTE0MDAgYXVkaXQoMTU3MDEwNDgyNC40NzI6
-Nik6IGFwcGFybW9yPSJTVEFUVVMiIG9wZXJhdGlvbj0icHJvZmlsZV9sb2FkIiBwcm9maWxlPSJ1
-bmNvbmZpbmVkIiBuYW1lPSJtYW5fZ3JvZmYiIHBpZD04MzA5IGNvbW09ImFwcGFybW9yX3BhcnNl
-ciIKWyAgIDE0LjgxOTEyNl0gYXVkaXQ6IHR5cGU9MTQwMCBhdWRpdCgxNTcwMTA0ODI0LjQ3Mjo3
-KTogYXBwYXJtb3I9IlNUQVRVUyIgb3BlcmF0aW9uPSJwcm9maWxlX2xvYWQiIHByb2ZpbGU9InVu
-Y29uZmluZWQiIG5hbWU9ImxpYnJlb2ZmaWNlLW9vcHNsYXNoIiBwaWQ9ODMxMCBjb21tPSJhcHBh
-cm1vcl9wYXJzZXIiClsgICAxNC44MTkxNDddIGF1ZGl0OiB0eXBlPTE0MDAgYXVkaXQoMTU3MDEw
-NDgyNC40NzI6OCk6IGFwcGFybW9yPSJTVEFUVVMiIG9wZXJhdGlvbj0icHJvZmlsZV9sb2FkIiBw
-cm9maWxlPSJ1bmNvbmZpbmVkIiBuYW1lPSJsaWJyZW9mZmljZS14cGRmaW1wb3J0IiBwaWQ9ODMx
-MSBjb21tPSJhcHBhcm1vcl9wYXJzZXIiClsgICAxNC44MjAxMzBdIGF1ZGl0OiB0eXBlPTE0MDAg
-YXVkaXQoMTU3MDEwNDgyNC40NzI6OSk6IGFwcGFybW9yPSJTVEFUVVMiIG9wZXJhdGlvbj0icHJv
-ZmlsZV9sb2FkIiBwcm9maWxlPSJ1bmNvbmZpbmVkIiBuYW1lPSIvdXNyL3NiaW4vaXBwdXNieGQi
-IHBpZD04MzE3IGNvbW09ImFwcGFybW9yX3BhcnNlciIKWyAgIDE0LjgyMjMwOV0gYXVkaXQ6IHR5
-cGU9MTQwMCBhdWRpdCgxNTcwMTA0ODI0LjQ3NjoxMCk6IGFwcGFybW9yPSJTVEFUVVMiIG9wZXJh
-dGlvbj0icHJvZmlsZV9sb2FkIiBwcm9maWxlPSJ1bmNvbmZpbmVkIiBuYW1lPSIvdXNyL2xpYi9j
-dXBzL2JhY2tlbmQvY3Vwcy1wZGYiIHBpZD04MzEyIGNvbW09ImFwcGFybW9yX3BhcnNlciIKWyAg
-IDE0LjgyMjMxMV0gYXVkaXQ6IHR5cGU9MTQwMCBhdWRpdCgxNTcwMTA0ODI0LjQ3NjoxMSk6IGFw
-cGFybW9yPSJTVEFUVVMiIG9wZXJhdGlvbj0icHJvZmlsZV9sb2FkIiBwcm9maWxlPSJ1bmNvbmZp
-bmVkIiBuYW1lPSIvdXNyL3NiaW4vY3Vwc2QiIHBpZD04MzEyIGNvbW09ImFwcGFybW9yX3BhcnNl
-ciIKWyAgIDE1LjI1NzgxNF0gQmx1ZXRvb3RoOiBCTkVQIChFdGhlcm5ldCBFbXVsYXRpb24pIHZl
-ciAxLjMKWyAgIDE1LjI1NzgxNV0gQmx1ZXRvb3RoOiBCTkVQIGZpbHRlcnM6IHByb3RvY29sIG11
-bHRpY2FzdApbICAgMTUuMjU3ODE4XSBCbHVldG9vdGg6IEJORVAgc29ja2V0IGxheWVyIGluaXRp
-YWxpemVkClsgICAxNS41MTU5OThdIGF1ZnMgNC54LXJjTi0yMDE5MDIwNApbICAgMTYuMTU3MzEw
-XSBpd2x3aWZpIDAwMDA6MDA6MTQuMzogQklPUyBjb250YWlucyBXR0RTIGJ1dCBubyBXUkRTClsg
-ICAxNi44MDI1MDRdIGlucHV0OiBIREEgSW50ZWwgUENIIEhlYWRwaG9uZSBNaWMgYXMgL2Rldmlj
-ZXMvcGNpMDAwMDowMC8wMDAwOjAwOjFmLjMvc291bmQvY2FyZDAvaW5wdXQyMApbICAgMTYuODAy
-NTUyXSBpbnB1dDogSERBIEludGVsIFBDSCBIRE1JL0RQLHBjbT0zIGFzIC9kZXZpY2VzL3BjaTAw
-MDA6MDAvMDAwMDowMDoxZi4zL3NvdW5kL2NhcmQwL2lucHV0MjEKWyAgIDE2LjgwMjU4OF0gaW5w
-dXQ6IEhEQSBJbnRlbCBQQ0ggSERNSS9EUCxwY209NyBhcyAvZGV2aWNlcy9wY2kwMDAwOjAwLzAw
-MDA6MDA6MWYuMy9zb3VuZC9jYXJkMC9pbnB1dDIyClsgICAxNi44MDI2MjFdIGlucHV0OiBIREEg
-SW50ZWwgUENIIEhETUkvRFAscGNtPTggYXMgL2RldmljZXMvcGNpMDAwMDowMC8wMDAwOjAwOjFm
-LjMvc291bmQvY2FyZDAvaW5wdXQyMwpbICAgMTYuODAyNjU2XSBpbnB1dDogSERBIEludGVsIFBD
-SCBIRE1JL0RQLHBjbT05IGFzIC9kZXZpY2VzL3BjaTAwMDA6MDAvMDAwMDowMDoxZi4zL3NvdW5k
-L2NhcmQwL2lucHV0MjQKWyAgIDE2LjgwMjY5MF0gaW5wdXQ6IEhEQSBJbnRlbCBQQ0ggSERNSS9E
-UCxwY209MTAgYXMgL2RldmljZXMvcGNpMDAwMDowMC8wMDAwOjAwOjFmLjMvc291bmQvY2FyZDAv
-aW5wdXQyNQpbICAgMTkuMTgzNjQyXSB3bG8xOiBhdXRoZW50aWNhdGUgd2l0aCAyYzo1YTowZjo3
-YTplODpiOApbICAgMTkuMTkwMzM4XSB3bG8xOiBzZW5kIGF1dGggdG8gMmM6NWE6MGY6N2E6ZTg6
-YjggKHRyeSAxLzMpClsgICAxOS4yMzAxMTZdIHdsbzE6IGF1dGhlbnRpY2F0ZWQKWyAgIDE5LjIz
-MzQ5Ml0gd2xvMTogYXNzb2NpYXRlIHdpdGggMmM6NWE6MGY6N2E6ZTg6YjggKHRyeSAxLzMpClsg
-ICAxOS4yMzU3OTNdIHdsbzE6IFJYIEFzc29jUmVzcCBmcm9tIDJjOjVhOjBmOjdhOmU4OmI4IChj
-YXBhYj0weDExMSBzdGF0dXM9MCBhaWQ9MTApClsgICAxOS4yMzg0MjNdIHdsbzE6IGFzc29jaWF0
-ZWQKWyAgIDE5LjMwNDk3Ml0gd2xvMTogTGltaXRpbmcgVFggcG93ZXIgdG8gMTcgZEJtIGFzIGFk
-dmVydGlzZWQgYnkgMmM6NWE6MGY6N2E6ZTg6YjgKWyAgIDE5LjMxOTA5NV0gSVB2NjogQUREUkNP
-TkYoTkVUREVWX0NIQU5HRSk6IHdsbzE6IGxpbmsgYmVjb21lcyByZWFkeQpbICAgMjAuMjQxNjU1
-XSByZmtpbGw6IGlucHV0IGhhbmRsZXIgZGlzYWJsZWQKWyAgIDIzLjA4OTQ3MV0gQmx1ZXRvb3Ro
-OiBSRkNPTU0gVFRZIGxheWVyIGluaXRpYWxpemVkClsgICAyMy4wODk0NzhdIEJsdWV0b290aDog
-UkZDT01NIHNvY2tldCBsYXllciBpbml0aWFsaXplZApbICAgMjMuMDg5NDgyXSBCbHVldG9vdGg6
-IFJGQ09NTSB2ZXIgMS4xMQpbICA5MDEuODY2MDI4XSB1c2Jjb3JlOiBkZXJlZ2lzdGVyaW5nIGlu
-dGVyZmFjZSBkcml2ZXIgdXZjdmlkZW8KWyAgOTA1LjQ1NzQ1NV0gdXZjdmlkZW86IEZvdW5kIFVW
-QyAxLjAwIGRldmljZSBVU0IgMi4wIENhbWVyYSAoMGM0NTo2MzY1KQpbICA5MDUuNDU4MDYzXSB1
-dmN2aWRlbzogVVZDIG5vbiBjb21wbGlhbmNlIC0gR0VUX0RFRihQUk9CRSkgbm90IHN1cHBvcnRl
-ZC4gRW5hYmxpbmcgd29ya2Fyb3VuZC4KWyAgOTA1LjQ1ODU4NF0gdXZjdmlkZW86IEZhaWxlZCB0
-byBxdWVyeSAoMTI5KSBVVkMgcHJvYmUgY29udHJvbCA6IC0zMiAoZXhwLiAyNikuClsgIDkwNS40
-NTg1ODldIHV2Y3ZpZGVvOiBGYWlsZWQgdG8gaW5pdGlhbGl6ZSB0aGUgZGV2aWNlICgtNSkuClsg
-IDkwNS40NTg2OTddIHVzYmNvcmU6IHJlZ2lzdGVyZWQgbmV3IGludGVyZmFjZSBkcml2ZXIgdXZj
-dmlkZW8KWyAgOTA1LjQ1ODY5OF0gVVNCIFZpZGVvIENsYXNzIGRyaXZlciAoMS4xLjEpCg==
---00000000000086b32e059400d876
-Content-Type: text/x-log; charset="US-ASCII"; name="lsusb.log"
-Content-Disposition: attachment; filename="lsusb.log"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k1aoonck1>
-X-Attachment-Id: f_k1aoonck1
+When I connect it, I get the following errors:
 
-CkJ1cyAwMDEgRGV2aWNlIDAwMzogSUQgMGM0NTo2MzY1IE1pY3JvZGlhIApEZXZpY2UgRGVzY3Jp
-cHRvcjoKICBiTGVuZ3RoICAgICAgICAgICAgICAgIDE4CiAgYkRlc2NyaXB0b3JUeXBlICAgICAg
-ICAgMQogIGJjZFVTQiAgICAgICAgICAgICAgIDIuMDAKICBiRGV2aWNlQ2xhc3MgICAgICAgICAg
-MjM5IE1pc2NlbGxhbmVvdXMgRGV2aWNlCiAgYkRldmljZVN1YkNsYXNzICAgICAgICAgMiAKICBi
-RGV2aWNlUHJvdG9jb2wgICAgICAgICAxIEludGVyZmFjZSBBc3NvY2lhdGlvbgogIGJNYXhQYWNr
-ZXRTaXplMCAgICAgICAgNjQKICBpZFZlbmRvciAgICAgICAgICAgMHgwYzQ1IE1pY3JvZGlhCiAg
-aWRQcm9kdWN0ICAgICAgICAgIDB4NjM2NSAKICBiY2REZXZpY2UgICAgICAgICAgICAwLjAwCiAg
-aU1hbnVmYWN0dXJlciAgICAgICAgICAgMiBTb25peCBUZWNobm9sb2d5IENvLiwgTHRkLgogIGlQ
-cm9kdWN0ICAgICAgICAgICAgICAgIDEgVVNCIDIuMCBDYW1lcmEKICBpU2VyaWFsICAgICAgICAg
-ICAgICAgICAwIAogIGJOdW1Db25maWd1cmF0aW9ucyAgICAgIDEKICBDb25maWd1cmF0aW9uIERl
-c2NyaXB0b3I6CiAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICBiRGVzY3JpcHRvclR5
-cGUgICAgICAgICAyCiAgICB3VG90YWxMZW5ndGggICAgICAgMHgwMTQzCiAgICBiTnVtSW50ZXJm
-YWNlcyAgICAgICAgICAyCiAgICBiQ29uZmlndXJhdGlvblZhbHVlICAgICAxCiAgICBpQ29uZmln
-dXJhdGlvbiAgICAgICAgICAwIAogICAgYm1BdHRyaWJ1dGVzICAgICAgICAgMHg4MAogICAgICAo
-QnVzIFBvd2VyZWQpCiAgICBNYXhQb3dlciAgICAgICAgICAgICAgNTAwbUEKICAgIEludGVyZmFj
-ZSBBc3NvY2lhdGlvbjoKICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgOAogICAgICBiRGVz
-Y3JpcHRvclR5cGUgICAgICAgIDExCiAgICAgIGJGaXJzdEludGVyZmFjZSAgICAgICAgIDAKICAg
-ICAgYkludGVyZmFjZUNvdW50ICAgICAgICAgMgogICAgICBiRnVuY3Rpb25DbGFzcyAgICAgICAg
-IDE0IFZpZGVvCiAgICAgIGJGdW5jdGlvblN1YkNsYXNzICAgICAgIDMgVmlkZW8gSW50ZXJmYWNl
-IENvbGxlY3Rpb24KICAgICAgYkZ1bmN0aW9uUHJvdG9jb2wgICAgICAgMCAKICAgICAgaUZ1bmN0
-aW9uICAgICAgICAgICAgICAgMiBTb25peCBUZWNobm9sb2d5IENvLiwgTHRkLgogICAgSW50ZXJm
-YWNlIERlc2NyaXB0b3I6CiAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgIDkKICAgICAgYkRl
-c2NyaXB0b3JUeXBlICAgICAgICAgNAogICAgICBiSW50ZXJmYWNlTnVtYmVyICAgICAgICAwCiAg
-ICAgIGJBbHRlcm5hdGVTZXR0aW5nICAgICAgIDAKICAgICAgYk51bUVuZHBvaW50cyAgICAgICAg
-ICAgMQogICAgICBiSW50ZXJmYWNlQ2xhc3MgICAgICAgIDE0IFZpZGVvCiAgICAgIGJJbnRlcmZh
-Y2VTdWJDbGFzcyAgICAgIDEgVmlkZW8gQ29udHJvbAogICAgICBiSW50ZXJmYWNlUHJvdG9jb2wg
-ICAgICAwIAogICAgICBpSW50ZXJmYWNlICAgICAgICAgICAgICAwIAogICAgICBWaWRlb0NvbnRy
-b2wgSW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAx
-MwogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgMzYKICAgICAgICBiRGVzY3JpcHRvclN1
-YnR5cGUgICAgICAxIChIRUFERVIpCiAgICAgICAgYmNkVVZDICAgICAgICAgICAgICAgMS4wMAog
-ICAgICAgIHdUb3RhbExlbmd0aCAgICAgICAweDAwNjcKICAgICAgICBkd0Nsb2NrRnJlcXVlbmN5
-ICAgICAgIDE1LjAwMDAwME1IegogICAgICAgIGJJbkNvbGxlY3Rpb24gICAgICAgICAgIDEKICAg
-ICAgICBiYUludGVyZmFjZU5yKCAwKSAgICAgICAxCiAgICAgIFZpZGVvQ29udHJvbCBJbnRlcmZh
-Y2UgRGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICAgICAg
-YkRlc2NyaXB0b3JUeXBlICAgICAgICAzNgogICAgICAgIGJEZXNjcmlwdG9yU3VidHlwZSAgICAg
-IDMgKE9VVFBVVF9URVJNSU5BTCkKICAgICAgICBiVGVybWluYWxJRCAgICAgICAgICAgICA1CiAg
-ICAgICAgd1Rlcm1pbmFsVHlwZSAgICAgIDB4MDEwMSBVU0IgU3RyZWFtaW5nCiAgICAgICAgYkFz
-c29jVGVybWluYWwgICAgICAgICAgMAogICAgICAgIGJTb3VyY2VJRCAgICAgICAgICAgICAgIDQK
-ICAgICAgICBpVGVybWluYWwgICAgICAgICAgICAgICAwIAogICAgICBWaWRlb0NvbnRyb2wgSW50
-ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAyNgogICAg
-ICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgMzYKICAgICAgICBiRGVzY3JpcHRvclN1YnR5cGUg
-ICAgICA2IChFWFRFTlNJT05fVU5JVCkKICAgICAgICBiVW5pdElEICAgICAgICAgICAgICAgICAz
-CiAgICAgICAgZ3VpZEV4dGVuc2lvbkNvZGUgICAgICAgICB7MjhmMDMzNzAtNjMxMS00YTJlLWJh
-MmMtNjg5MGViMzM0MDE2fQogICAgICAgIGJOdW1Db250cm9sICAgICAgICAgICAgIDgKICAgICAg
-ICBiTnJQaW5zICAgICAgICAgICAgICAgICAxCiAgICAgICAgYmFTb3VyY2VJRCggMCkgICAgICAg
-ICAgMgogICAgICAgIGJDb250cm9sU2l6ZSAgICAgICAgICAgIDEKICAgICAgICBibUNvbnRyb2xz
-KCAwKSAgICAgICAweDFmCiAgICAgICAgaUV4dGVuc2lvbiAgICAgICAgICAgICAgMCAKICAgICAg
-VmlkZW9Db250cm9sIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAg
-ICAgICAgICAgMjYKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgIDM2CiAgICAgICAgYkRl
-c2NyaXB0b3JTdWJ0eXBlICAgICAgNiAoRVhURU5TSU9OX1VOSVQpCiAgICAgICAgYlVuaXRJRCAg
-ICAgICAgICAgICAgICAgNAogICAgICAgIGd1aWRFeHRlbnNpb25Db2RlICAgICAgICAgezI4MTJh
-ZTNmLWJjZDctNGUxMS1hMzU3LTZmMWVkZWY3ZDYxZH0KICAgICAgICBiTnVtQ29udHJvbCAgICAg
-ICAgICAgICA4CiAgICAgICAgYk5yUGlucyAgICAgICAgICAgICAgICAgMQogICAgICAgIGJhU291
-cmNlSUQoIDApICAgICAgICAgIDMKICAgICAgICBiQ29udHJvbFNpemUgICAgICAgICAgICAxCiAg
-ICAgICAgYm1Db250cm9scyggMCkgICAgICAgMHhmZgogICAgICAgIGlFeHRlbnNpb24gICAgICAg
-ICAgICAgIDAgCiAgICAgIFZpZGVvQ29udHJvbCBJbnRlcmZhY2UgRGVzY3JpcHRvcjoKICAgICAg
-ICBiTGVuZ3RoICAgICAgICAgICAgICAgIDE4CiAgICAgICAgYkRlc2NyaXB0b3JUeXBlICAgICAg
-ICAzNgogICAgICAgIGJEZXNjcmlwdG9yU3VidHlwZSAgICAgIDIgKElOUFVUX1RFUk1JTkFMKQog
-ICAgICAgIGJUZXJtaW5hbElEICAgICAgICAgICAgIDEKICAgICAgICB3VGVybWluYWxUeXBlICAg
-ICAgMHgwMjAxIENhbWVyYSBTZW5zb3IKICAgICAgICBiQXNzb2NUZXJtaW5hbCAgICAgICAgICAw
-CiAgICAgICAgaVRlcm1pbmFsICAgICAgICAgICAgICAgMCAKICAgICAgICB3T2JqZWN0aXZlRm9j
-YWxMZW5ndGhNaW4gICAgICAwCiAgICAgICAgd09iamVjdGl2ZUZvY2FsTGVuZ3RoTWF4ICAgICAg
-MAogICAgICAgIHdPY3VsYXJGb2NhbExlbmd0aCAgICAgICAgICAgIDAKICAgICAgICBiQ29udHJv
-bFNpemUgICAgICAgICAgICAgICAgICAzCiAgICAgICAgYm1Db250cm9scyAgICAgICAgICAgMHgw
-MDAwMDAwMAogICAgICBWaWRlb0NvbnRyb2wgSW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgICAg
-Ykxlbmd0aCAgICAgICAgICAgICAgICAxMQogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAg
-MzYKICAgICAgICBiRGVzY3JpcHRvclN1YnR5cGUgICAgICA1IChQUk9DRVNTSU5HX1VOSVQpCiAg
-ICAgIFdhcm5pbmc6IERlc2NyaXB0b3IgdG9vIHNob3J0CiAgICAgICAgYlVuaXRJRCAgICAgICAg
-ICAgICAgICAgMgogICAgICAgIGJTb3VyY2VJRCAgICAgICAgICAgICAgIDEKICAgICAgICB3TWF4
-TXVsdGlwbGllciAgICAgICAgICAwCiAgICAgICAgYkNvbnRyb2xTaXplICAgICAgICAgICAgMgog
-ICAgICAgIGJtQ29udHJvbHMgICAgIDB4MDAwMDAwMDAKICAgICAgICBpUHJvY2Vzc2luZyAgICAg
-ICAgICAgICAwIAogICAgICAgIGJtVmlkZW9TdGFuZGFyZHMgICAgIDB4MDAKICAgICAgRW5kcG9p
-bnQgRGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA3CiAgICAgICAg
-YkRlc2NyaXB0b3JUeXBlICAgICAgICAgNQogICAgICAgIGJFbmRwb2ludEFkZHJlc3MgICAgIDB4
-ODMgIEVQIDMgSU4KICAgICAgICBibUF0dHJpYnV0ZXMgICAgICAgICAgICAzCiAgICAgICAgICBU
-cmFuc2ZlciBUeXBlICAgICAgICAgICAgSW50ZXJydXB0CiAgICAgICAgICBTeW5jaCBUeXBlICAg
-ICAgICAgICAgICAgTm9uZQogICAgICAgICAgVXNhZ2UgVHlwZSAgICAgICAgICAgICAgIERhdGEK
-ICAgICAgICB3TWF4UGFja2V0U2l6ZSAgICAgMHgwMDEwICAxeCAxNiBieXRlcwogICAgICAgIGJJ
-bnRlcnZhbCAgICAgICAgICAgICAgIDYKICAgIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICBi
-TGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDQK
-ICAgICAgYkludGVyZmFjZU51bWJlciAgICAgICAgMQogICAgICBiQWx0ZXJuYXRlU2V0dGluZyAg
-ICAgICAwCiAgICAgIGJOdW1FbmRwb2ludHMgICAgICAgICAgIDAKICAgICAgYkludGVyZmFjZUNs
-YXNzICAgICAgICAxNCBWaWRlbwogICAgICBiSW50ZXJmYWNlU3ViQ2xhc3MgICAgICAyIFZpZGVv
-IFN0cmVhbWluZwogICAgICBiSW50ZXJmYWNlUHJvdG9jb2wgICAgICAwIAogICAgICBpSW50ZXJm
-YWNlICAgICAgICAgICAgICAwIAogICAgICBWaWRlb1N0cmVhbWluZyBJbnRlcmZhY2UgRGVzY3Jp
-cHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICAgICAgICAgICAgIDE0CiAgICAg
-ICAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAgICAgICAgICAgICAzNgogICAgICAgIGJEZXNjcmlw
-dG9yU3VidHlwZSAgICAgICAgICAgICAgICAgIDEgKElOUFVUX0hFQURFUikKICAgICAgICBiTnVt
-Rm9ybWF0cyAgICAgICAgICAgICAgICAgICAgICAgICAxCiAgICAgICAgd1RvdGFsTGVuZ3RoICAg
-ICAgICAgICAgICAgICAgIDB4MDA0ZAogICAgICAgIGJFbmRQb2ludEFkZHJlc3MgICAgICAgICAg
-ICAgICAgICAxMjkKICAgICAgICBibUluZm8gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAw
-CiAgICAgICAgYlRlcm1pbmFsTGluayAgICAgICAgICAgICAgICAgICAgICAgNQogICAgICAgIGJT
-dGlsbENhcHR1cmVNZXRob2QgICAgICAgICAgICAgICAgIDAKICAgICAgICBiVHJpZ2dlclN1cHBv
-cnQgICAgICAgICAgICAgICAgICAgICAwCiAgICAgICAgYlRyaWdnZXJVc2FnZSAgICAgICAgICAg
-ICAgICAgICAgICAgMAogICAgICAgIGJDb250cm9sU2l6ZSAgICAgICAgICAgICAgICAgICAgICAg
-IDEKICAgICAgICBibWFDb250cm9scyggMCkgICAgICAgICAgICAgICAgICAgICAwCiAgICAgIFZp
-ZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgMjcKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAg
-ICAgICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAg
-NCAoRk9STUFUX1VOQ09NUFJFU1NFRCkKICAgICAgICBiRm9ybWF0SW5kZXggICAgICAgICAgICAg
-ICAgICAgICAgICAxCiAgICAgICAgYk51bUZyYW1lRGVzY3JpcHRvcnMgICAgICAgICAgICAgICAg
-MQogICAgICAgIGd1aWRGb3JtYXQgICAgICAgICAgICAgICAgICAgICAgICAgICAgezMyNTk1NTU5
-LTAwMDAtMDAxMC04MDAwLTAwYWEwMDM4OWI3MX0KICAgICAgICBiQml0c1BlclBpeGVsICAgICAg
-ICAgICAgICAgICAgICAgIDE2CiAgICAgICAgYkRlZmF1bHRGcmFtZUluZGV4ICAgICAgICAgICAg
-ICAgICAgMQogICAgICAgIGJBc3BlY3RSYXRpb1ggICAgICAgICAgICAgICAgICAgICAgIDAKICAg
-ICAgICBiQXNwZWN0UmF0aW9ZICAgICAgICAgICAgICAgICAgICAgICAwCiAgICAgICAgYm1JbnRl
-cmxhY2VGbGFncyAgICAgICAgICAgICAgICAgMHgwMAogICAgICAgICAgSW50ZXJsYWNlZCBzdHJl
-YW0gb3IgdmFyaWFibGU6IE5vCiAgICAgICAgICBGaWVsZHMgcGVyIGZyYW1lOiAyIGZpZWxkcwog
-ICAgICAgICAgRmllbGQgMSBmaXJzdDogTm8KICAgICAgICAgIEZpZWxkIHBhdHRlcm46IEZpZWxk
-IDEgb25seQogICAgICAgIGJDb3B5UHJvdGVjdCAgICAgICAgICAgICAgICAgICAgICAgIDAKICAg
-ICAgVmlkZW9TdHJlYW1pbmcgSW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAzMAogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAg
-ICAgICAgICAgICAgICAgMzYKICAgICAgICBiRGVzY3JpcHRvclN1YnR5cGUgICAgICAgICAgICAg
-ICAgICA1IChGUkFNRV9VTkNPTVBSRVNTRUQpCiAgICAgICAgYkZyYW1lSW5kZXggICAgICAgICAg
-ICAgICAgICAgICAgICAgMQogICAgICAgIGJtQ2FwYWJpbGl0aWVzICAgICAgICAgICAgICAgICAg
-IDB4MDAKICAgICAgICAgIFN0aWxsIGltYWdlIHVuc3VwcG9ydGVkCiAgICAgICAgd1dpZHRoICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIDY0MAogICAgICAgIHdIZWlnaHQgICAgICAgICAgICAg
-ICAgICAgICAgICAgICA0ODAKICAgICAgICBkd01pbkJpdFJhdGUgICAgICAgICAgICAgICAgMTQ3
-NDU2MDAwCiAgICAgICAgZHdNYXhCaXRSYXRlICAgICAgICAgICAgICAgIDE0NzQ1NjAwMAogICAg
-ICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZlclNpemUgICAgICA2MTQ0MDAKICAgICAgICBkd0RlZmF1
-bHRGcmFtZUludGVydmFsICAgICAgICAgMzMzMzMzCiAgICAgICAgYkZyYW1lSW50ZXJ2YWxUeXBl
-ICAgICAgICAgICAgICAgICAgMQogICAgICAgIGR3RnJhbWVJbnRlcnZhbCggMCkgICAgICAgICAg
-ICAzMzMzMzMKICAgICAgVmlkZW9TdHJlYW1pbmcgSW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAg
-ICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgNgogICAgICAgIGJEZXNjcmlw
-dG9yVHlwZSAgICAgICAgICAgICAgICAgICAgMzYKICAgICAgICBiRGVzY3JpcHRvclN1YnR5cGUg
-ICAgICAgICAgICAgICAgIDEzIChDT0xPUkZPUk1BVCkKICAgICAgICBiQ29sb3JQcmltYXJpZXMg
-ICAgICAgICAgICAgICAgICAgICAxIChCVC43MDksc1JHQikKICAgICAgICBiVHJhbnNmZXJDaGFy
-YWN0ZXJpc3RpY3MgICAgICAgICAgICAxIChCVC43MDkpCiAgICAgICAgYk1hdHJpeENvZWZmaWNp
-ZW50cyAgICAgICAgICAgICAgICAgNCAoU01QVEUgMTcwTSAoQlQuNjAxKSkKICAgIEludGVyZmFj
-ZSBEZXNjcmlwdG9yOgogICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICAgIGJEZXNj
-cmlwdG9yVHlwZSAgICAgICAgIDQKICAgICAgYkludGVyZmFjZU51bWJlciAgICAgICAgMQogICAg
-ICBiQWx0ZXJuYXRlU2V0dGluZyAgICAgICAxCiAgICAgIGJOdW1FbmRwb2ludHMgICAgICAgICAg
-IDEKICAgICAgYkludGVyZmFjZUNsYXNzICAgICAgICAxNCBWaWRlbwogICAgICBiSW50ZXJmYWNl
-U3ViQ2xhc3MgICAgICAyIFZpZGVvIFN0cmVhbWluZwogICAgICBiSW50ZXJmYWNlUHJvdG9jb2wg
-ICAgICAwIAogICAgICBpSW50ZXJmYWNlICAgICAgICAgICAgICAwIAogICAgICBFbmRwb2ludCBE
-ZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgIDcKICAgICAgICBiRGVz
-Y3JpcHRvclR5cGUgICAgICAgICA1CiAgICAgICAgYkVuZHBvaW50QWRkcmVzcyAgICAgMHg4MSAg
-RVAgMSBJTgogICAgICAgIGJtQXR0cmlidXRlcyAgICAgICAgICAgIDUKICAgICAgICAgIFRyYW5z
-ZmVyIFR5cGUgICAgICAgICAgICBJc29jaHJvbm91cwogICAgICAgICAgU3luY2ggVHlwZSAgICAg
-ICAgICAgICAgIEFzeW5jaHJvbm91cwogICAgICAgICAgVXNhZ2UgVHlwZSAgICAgICAgICAgICAg
-IERhdGEKICAgICAgICB3TWF4UGFja2V0U2l6ZSAgICAgMHgwMDgwICAxeCAxMjggYnl0ZXMKICAg
-ICAgICBiSW50ZXJ2YWwgICAgICAgICAgICAgICAxCiAgICBJbnRlcmZhY2UgRGVzY3JpcHRvcjoK
-ICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgOQogICAgICBiRGVzY3JpcHRvclR5cGUgICAg
-ICAgICA0CiAgICAgIGJJbnRlcmZhY2VOdW1iZXIgICAgICAgIDEKICAgICAgYkFsdGVybmF0ZVNl
-dHRpbmcgICAgICAgMgogICAgICBiTnVtRW5kcG9pbnRzICAgICAgICAgICAxCiAgICAgIGJJbnRl
-cmZhY2VDbGFzcyAgICAgICAgMTQgVmlkZW8KICAgICAgYkludGVyZmFjZVN1YkNsYXNzICAgICAg
-MiBWaWRlbyBTdHJlYW1pbmcKICAgICAgYkludGVyZmFjZVByb3RvY29sICAgICAgMCAKICAgICAg
-aUludGVyZmFjZSAgICAgICAgICAgICAgMCAKICAgICAgRW5kcG9pbnQgRGVzY3JpcHRvcjoKICAg
-ICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA3CiAgICAgICAgYkRlc2NyaXB0b3JUeXBlICAg
-ICAgICAgNQogICAgICAgIGJFbmRwb2ludEFkZHJlc3MgICAgIDB4ODEgIEVQIDEgSU4KICAgICAg
-ICBibUF0dHJpYnV0ZXMgICAgICAgICAgICA1CiAgICAgICAgICBUcmFuc2ZlciBUeXBlICAgICAg
-ICAgICAgSXNvY2hyb25vdXMKICAgICAgICAgIFN5bmNoIFR5cGUgICAgICAgICAgICAgICBBc3lu
-Y2hyb25vdXMKICAgICAgICAgIFVzYWdlIFR5cGUgICAgICAgICAgICAgICBEYXRhCiAgICAgICAg
-d01heFBhY2tldFNpemUgICAgIDB4MDEwMCAgMXggMjU2IGJ5dGVzCiAgICAgICAgYkludGVydmFs
-ICAgICAgICAgICAgICAgMQogICAgSW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgIGJMZW5ndGgg
-ICAgICAgICAgICAgICAgIDkKICAgICAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAgNAogICAgICBi
-SW50ZXJmYWNlTnVtYmVyICAgICAgICAxCiAgICAgIGJBbHRlcm5hdGVTZXR0aW5nICAgICAgIDMK
-ICAgICAgYk51bUVuZHBvaW50cyAgICAgICAgICAgMQogICAgICBiSW50ZXJmYWNlQ2xhc3MgICAg
-ICAgIDE0IFZpZGVvCiAgICAgIGJJbnRlcmZhY2VTdWJDbGFzcyAgICAgIDIgVmlkZW8gU3RyZWFt
-aW5nCiAgICAgIGJJbnRlcmZhY2VQcm90b2NvbCAgICAgIDAgCiAgICAgIGlJbnRlcmZhY2UgICAg
-ICAgICAgICAgIDAgCiAgICAgIEVuZHBvaW50IERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAg
-ICAgICAgICAgICAgICAgNwogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDUKICAgICAg
-ICBiRW5kcG9pbnRBZGRyZXNzICAgICAweDgxICBFUCAxIElOCiAgICAgICAgYm1BdHRyaWJ1dGVz
-ICAgICAgICAgICAgNQogICAgICAgICAgVHJhbnNmZXIgVHlwZSAgICAgICAgICAgIElzb2Nocm9u
-b3VzCiAgICAgICAgICBTeW5jaCBUeXBlICAgICAgICAgICAgICAgQXN5bmNocm9ub3VzCiAgICAg
-ICAgICBVc2FnZSBUeXBlICAgICAgICAgICAgICAgRGF0YQogICAgICAgIHdNYXhQYWNrZXRTaXpl
-ICAgICAweDAzMjAgIDF4IDgwMCBieXRlcwogICAgICAgIGJJbnRlcnZhbCAgICAgICAgICAgICAg
-IDEKICAgIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICBiTGVuZ3RoICAgICAgICAgICAgICAg
-ICA5CiAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDQKICAgICAgYkludGVyZmFjZU51bWJl
-ciAgICAgICAgMQogICAgICBiQWx0ZXJuYXRlU2V0dGluZyAgICAgICA0CiAgICAgIGJOdW1FbmRw
-b2ludHMgICAgICAgICAgIDEKICAgICAgYkludGVyZmFjZUNsYXNzICAgICAgICAxNCBWaWRlbwog
-ICAgICBiSW50ZXJmYWNlU3ViQ2xhc3MgICAgICAyIFZpZGVvIFN0cmVhbWluZwogICAgICBiSW50
-ZXJmYWNlUHJvdG9jb2wgICAgICAwIAogICAgICBpSW50ZXJmYWNlICAgICAgICAgICAgICAwIAog
-ICAgICBFbmRwb2ludCBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAg
-IDcKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICA1CiAgICAgICAgYkVuZHBvaW50QWRk
-cmVzcyAgICAgMHg4MSAgRVAgMSBJTgogICAgICAgIGJtQXR0cmlidXRlcyAgICAgICAgICAgIDUK
-ICAgICAgICAgIFRyYW5zZmVyIFR5cGUgICAgICAgICAgICBJc29jaHJvbm91cwogICAgICAgICAg
-U3luY2ggVHlwZSAgICAgICAgICAgICAgIEFzeW5jaHJvbm91cwogICAgICAgICAgVXNhZ2UgVHlw
-ZSAgICAgICAgICAgICAgIERhdGEKICAgICAgICB3TWF4UGFja2V0U2l6ZSAgICAgMHgwYjIwICAy
-eCA4MDAgYnl0ZXMKICAgICAgICBiSW50ZXJ2YWwgICAgICAgICAgICAgICAxCiAgICBJbnRlcmZh
-Y2UgRGVzY3JpcHRvcjoKICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgOQogICAgICBiRGVz
-Y3JpcHRvclR5cGUgICAgICAgICA0CiAgICAgIGJJbnRlcmZhY2VOdW1iZXIgICAgICAgIDEKICAg
-ICAgYkFsdGVybmF0ZVNldHRpbmcgICAgICAgNQogICAgICBiTnVtRW5kcG9pbnRzICAgICAgICAg
-ICAxCiAgICAgIGJJbnRlcmZhY2VDbGFzcyAgICAgICAgMTQgVmlkZW8KICAgICAgYkludGVyZmFj
-ZVN1YkNsYXNzICAgICAgMiBWaWRlbyBTdHJlYW1pbmcKICAgICAgYkludGVyZmFjZVByb3RvY29s
-ICAgICAgMCAKICAgICAgaUludGVyZmFjZSAgICAgICAgICAgICAgMCAKICAgICAgRW5kcG9pbnQg
-RGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA3CiAgICAgICAgYkRl
-c2NyaXB0b3JUeXBlICAgICAgICAgNQogICAgICAgIGJFbmRwb2ludEFkZHJlc3MgICAgIDB4ODEg
-IEVQIDEgSU4KICAgICAgICBibUF0dHJpYnV0ZXMgICAgICAgICAgICA1CiAgICAgICAgICBUcmFu
-c2ZlciBUeXBlICAgICAgICAgICAgSXNvY2hyb25vdXMKICAgICAgICAgIFN5bmNoIFR5cGUgICAg
-ICAgICAgICAgICBBc3luY2hyb25vdXMKICAgICAgICAgIFVzYWdlIFR5cGUgICAgICAgICAgICAg
-ICBEYXRhCiAgICAgICAgd01heFBhY2tldFNpemUgICAgIDB4MTMyMCAgM3ggODAwIGJ5dGVzCiAg
-ICAgICAgYkludGVydmFsICAgICAgICAgICAgICAgMQogICAgSW50ZXJmYWNlIERlc2NyaXB0b3I6
-CiAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgIDkKICAgICAgYkRlc2NyaXB0b3JUeXBlICAg
-ICAgICAgNAogICAgICBiSW50ZXJmYWNlTnVtYmVyICAgICAgICAxCiAgICAgIGJBbHRlcm5hdGVT
-ZXR0aW5nICAgICAgIDYKICAgICAgYk51bUVuZHBvaW50cyAgICAgICAgICAgMQogICAgICBiSW50
-ZXJmYWNlQ2xhc3MgICAgICAgIDE0IFZpZGVvCiAgICAgIGJJbnRlcmZhY2VTdWJDbGFzcyAgICAg
-IDIgVmlkZW8gU3RyZWFtaW5nCiAgICAgIGJJbnRlcmZhY2VQcm90b2NvbCAgICAgIDAgCiAgICAg
-IGlJbnRlcmZhY2UgICAgICAgICAgICAgIDAgCiAgICAgIEVuZHBvaW50IERlc2NyaXB0b3I6CiAg
-ICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgNwogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAg
-ICAgICAgIDUKICAgICAgICBiRW5kcG9pbnRBZGRyZXNzICAgICAweDgxICBFUCAxIElOCiAgICAg
-ICAgYm1BdHRyaWJ1dGVzICAgICAgICAgICAgNQogICAgICAgICAgVHJhbnNmZXIgVHlwZSAgICAg
-ICAgICAgIElzb2Nocm9ub3VzCiAgICAgICAgICBTeW5jaCBUeXBlICAgICAgICAgICAgICAgQXN5
-bmNocm9ub3VzCiAgICAgICAgICBVc2FnZSBUeXBlICAgICAgICAgICAgICAgRGF0YQogICAgICAg
-IHdNYXhQYWNrZXRTaXplICAgICAweDE0MDAgIDN4IDEwMjQgYnl0ZXMKICAgICAgICBiSW50ZXJ2
-YWwgICAgICAgICAgICAgICAxCkRldmljZSBRdWFsaWZpZXIgKGZvciBvdGhlciBkZXZpY2Ugc3Bl
-ZWQpOgogIGJMZW5ndGggICAgICAgICAgICAgICAgMTAKICBiRGVzY3JpcHRvclR5cGUgICAgICAg
-ICA2CiAgYmNkVVNCICAgICAgICAgICAgICAgMi4wMAogIGJEZXZpY2VDbGFzcyAgICAgICAgICAy
-MzkgTWlzY2VsbGFuZW91cyBEZXZpY2UKICBiRGV2aWNlU3ViQ2xhc3MgICAgICAgICAyIAogIGJE
-ZXZpY2VQcm90b2NvbCAgICAgICAgIDEgSW50ZXJmYWNlIEFzc29jaWF0aW9uCiAgYk1heFBhY2tl
-dFNpemUwICAgICAgICA2NAogIGJOdW1Db25maWd1cmF0aW9ucyAgICAgIDEKRGV2aWNlIFN0YXR1
-czogICAgIDB4MDAwMgogIChCdXMgUG93ZXJlZCkKICBSZW1vdGUgV2FrZXVwIEVuYWJsZWQK
---00000000000086b32e059400d876
+kernel: [32787.348442] usb 2-5: new high-speed USB device number 5 using =
+xhci_hcd
+kernel: [32787.348442] usb 2-5: new high-speed USB device number 5 using =
+xhci_hcd
+kernel: [32787.564156] usb 2-5: New USB device found, idVendor=3D05a3, =
+idProduct=3D9230, bcdDevice=3D 1.00
+kernel: [32787.564162] usb 2-5: New USB device strings: Mfr=3D2, =
+Product=3D1, SerialNumber=3D0
+kernel: [32787.564166] usb 2-5: Product: USB 2.0 Camera
+kernel: [32787.564168] usb 2-5: Manufacturer: HD Camera Manufacturer
+kernel: [32787.564156] usb 2-5: New USB device found, idVendor=3D05a3, =
+idProduct=3D9230, bcdDevice=3D 1.00
+kernel: [32787.564162] usb 2-5: New USB device strings: Mfr=3D2, =
+Product=3D1, SerialNumber=3D0
+kernel: [32787.564166] usb 2-5: Product: USB 2.0 Camera
+kernel: [32787.564168] usb 2-5: Manufacturer: HD Camera Manufacturer
+mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"
+mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"
+mtp-probe: bus: 2, device: 5 was not an MTP device
+mtp-probe: bus: 2, device: 5 was not an MTP device
+kernel: [32787.646917] uvcvideo: Found UVC 1.00 device USB 2.0 Camera =
+(05a3:9230)
+kernel: [32787.646917] uvcvideo: Found UVC 1.00 device USB 2.0 Camera =
+(05a3:9230)
+kernel: [32787.704217] uvcvideo 2-5:1.0: Entity type for entity =
+Extension 3 was not initialized!
+kernel: [32787.704219] uvcvideo 2-5:1.0: Entity type for entity =
+Processing 2 was not initialized!
+kernel: [32787.704221] uvcvideo 2-5:1.0: Entity type for entity Camera 1 =
+was not initialized!
+kernel: [32787.704286] input: USB 2.0 Camera: HD USB Camera as =
+/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.0/input/input11
+kernel: [32787.704372] usbcore: registered new interface driver uvcvideo
+kernel: [32787.704373] USB Video Class driver (1.1.1)
+kernel: [32787.704217] uvcvideo 2-5:1.0: Entity type for entity =
+Extension 3 was not initialized!
+kernel: [32787.704219] uvcvideo 2-5:1.0: Entity type for entity =
+Processing 2 was not initialized!
+kernel: [32787.704221] uvcvideo 2-5:1.0: Entity type for entity Camera 1 =
+was not initialized!
+kernel: [32787.704286] input: USB 2.0 Camera: HD USB Camera as =
+/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.0/input/input11
+kernel: [32787.704372] usbcore: registered new interface driver uvcvideo
+kernel: [32787.704373] USB Video Class driver (1.1.1)
+mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"
+mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"
+mtp-probe: bus: 2, device: 5 was not an MTP device
+mtp-probe: bus: 2, device: 5 was not an MTP device
+
+
+No picture with guvc:
+
+# guvcview
+
+=3D=3D> /var/log/syslog <=3D=3D
+Oct  7 10:02:54 hotspot kernel: [252735.199538] uvcvideo: uvc_v4l2_open
+GUVCVIEW: version 2.0.6
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+Oct  7 10:02:54 hotspot kernel: [252735.314695] uvcvideo: Resuming =
+interface 0
+Oct  7 10:02:54 hotspot kernel: [252735.314698] uvcvideo: Resuming =
+interface 1
+Oct  7 10:02:54 hotspot kernel: [252735.315246] uvcvideo: =
+uvc_v4l2_release
+Oct  7 10:02:54 hotspot kernel: [252735.316439] uvcvideo: uvc_v4l2_open
+ALSA lib pcm.c:2565:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2565:(snd_pcm_open_noupdate) Unknown PCM =
+cards.pcm.center_lfe
+ALSA lib pcm.c:2565:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib pcm_route.c:869:(find_matching_chmap) Found no matching channel =
+map
+Cannot connect to server socket err =3D No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, =
+skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, =
+skipping unlock
+Cannot connect to server socket err =3D No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, =
+skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, =
+skipping unlock
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pulse.c:243:(pulse_connect) PulseAudio: Unable to connect: =
+Connection refused
+
+ALSA lib pulse.c:243:(pulse_connect) PulseAudio: Unable to connect: =
+Connection refused
+
+ALSA lib pcm_a52.c:823:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type =
+for card
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type =
+for card
+Cannot connect to server socket err =3D No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, =
+skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, =
+skipping unlock
+Oct  7 10:02:55 hotspot kernel: [252736.084118] uvcvideo: Trying format =
+0x47504a4d (MJPG): 640x480.
+Oct  7 10:02:55 hotspot kernel: [252736.084120] uvcvideo: Using default =
+frame interval 8326.3 us (120.1 fps).
+Oct  7 10:02:55 hotspot kernel: [252736.140969] uvcvideo: Trying format =
+0x47504a4d (MJPG): 640x480.
+Oct  7 10:02:55 hotspot kernel: [252736.140971] uvcvideo: Using default =
+frame interval 8326.3 us (120.1 fps).
+Oct  7 10:02:55 hotspot kernel: [252736.199682] uvcvideo: uvc_v4l2_mmap
+Oct  7 10:02:55 hotspot kernel: [252736.199713] uvcvideo: uvc_v4l2_mmap
+Oct  7 10:02:55 hotspot kernel: [252736.199737] uvcvideo: uvc_v4l2_mmap
+Oct  7 10:02:55 hotspot kernel: [252736.199761] uvcvideo: uvc_v4l2_mmap
+Oct  7 10:02:55 hotspot kernel: [252736.199808] uvcvideo: Setting frame =
+interval to 1/25 (400000).
+libGL error: No matching fbConfigs or visuals found
+libGL error: failed to load driver: swrast
+X Error of failed request:  BadValue (integer parameter out of range for =
+operation)
+  Major opcode of failed request:  149 (GLX)
+  Minor opcode of failed request:  3 (X_GLXCreateContext)
+  Value in failed request:  0x0
+  Serial number of failed request:  94
+  Current serial number in output stream:  95
+Oct  7 10:02:57 hotspot kernel: [252737.861637] uvcvideo: =
+uvc_v4l2_release
+Oct  7 10:02:59 hotspot kernel: [252739.865312] uvcvideo: Suspending =
+interface 1
+Oct  7 10:02:59 hotspot kernel: [252739.865316] uvcvideo: Suspending =
+interface 0
+
+
+Can anybody help me or at least list that camera as non supported?
+
+
+Thanks for your work!=
+
+--Apple-Mail=_2A3120E5-47F1-462F-B5B3-3CBE077957F3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;" =
+class=3D"">Hello,<div class=3D""><br class=3D""></div><div class=3D""><br =
+class=3D""></div><div class=3D"">I have a lot of problems with this =
+camera:&nbsp;05a3:9230</div><div class=3D""><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;"><br =
+class=3D""></span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;"># lsusb -d 05a3:9230 -v</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo; min-height: 13px;"><span =
+class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;"></span><br class=3D""></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Bus 003 Device =
+004: ID 05a3:9230 ARC International Camera</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Device =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 18</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bcdUSB &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+2.00</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDeviceClass&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 239 Miscellaneous =
+Device</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDeviceSubClass &nbsp; &nbsp; &nbsp; &nbsp; 2&nbsp;</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDeviceProtocol &nbsp; &nbsp; &nbsp; &nbsp; 1 Interface =
+Association</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; bMaxPacketSize0&nbsp; &nbsp; &nbsp; &nbsp; =
+64</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+idVendor &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0x05a3 ARC =
+International</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; idProduct&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0x9230 Camera</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; bcdDevice&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1.00</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; iManufacturer &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 2 HD Camera Manufacturer</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+iProduct&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 USB =
+2.0 Camera</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; iSerial &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; bNumConfigurations&nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+Configuration Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; =
+&nbsp; 2</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; wTotalLength &nbsp; &nbsp; &nbsp; 0x028f</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+bNumInterfaces&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+bConfigurationValue &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+iConfiguration&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; bmAttributes &nbsp; &nbsp; &nbsp; &nbsp; 0x80</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; (Bus Powered)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; MaxPower&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 500mA</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; Interface =
+Association:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; 11</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bFirstInterface &nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceCount &nbsp; &nbsp; &nbsp; &nbsp; 2</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bFunctionClass &nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bFunctionSubClass &nbsp; &nbsp; &nbsp; 3 Video Interface =
+Collection</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bFunctionProtocol &nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iFunction &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5 HD USB Camera</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+Interface Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 0</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 1 Video =
+Control</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceProtocol&nbsp; &nbsp; &nbsp; =
+0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; iInterface&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+5 HD USB Camera</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoControl Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 13</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; 1 =
+(HEADER)</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bcdUVC &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1.00</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wTotalLength &nbsp; =
+&nbsp; &nbsp; 0x004d</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwClockFrequency =
+&nbsp; &nbsp; &nbsp; 15.000000MHz</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bInCollection &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; baInterfaceNr( 0) &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoControl Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 9</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; 3 =
+(OUTPUT_TERMINAL)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bTerminalID &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wTerminalType&nbsp; &nbsp; &nbsp; 0x0101 USB =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bAssocTerminal&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bSourceID &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; iTerminal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoControl Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 26</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+bDescriptorSubtype&nbsp; &nbsp; &nbsp; 6 =
+(EXTENSION_UNIT)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bUnitID &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; guidExtensionCode &nbsp; &nbsp; &nbsp; &nbsp; =
+{28f03370-6311-4a2e-ba2c-6890eb334016}</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bNumControl &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+8</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bNrPins &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; baSourceID( 0)&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 2</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bControlSize&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmControls( 0) &nbsp; &nbsp; &nbsp; 0x1f</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; iExtension&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoControl Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 18</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+bDescriptorSubtype&nbsp; &nbsp; &nbsp; 2 =
+(INPUT_TERMINAL)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bTerminalID &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wTerminalType&nbsp; &nbsp; &nbsp; 0x0201 Camera =
+Sensor</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bAssocTerminal&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; iTerminal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+wObjectiveFocalLengthMin&nbsp; &nbsp; &nbsp; 0</span></div><div class=3D""=
+ style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wObjectiveFocalLengthMax&nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; wOcularFocalLength&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 0</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bControlSize&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+3</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmControls &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0x0002006e</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Auto-Exposure =
+Mode</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Auto-Exposure Priority</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Exposure Time (Absolute)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Focus (Absolute)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Focus (Relative)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Focus, Auto</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; VideoControl Interface Descriptor:</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 11</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+bDescriptorSubtype&nbsp; &nbsp; &nbsp; 5 =
+(PROCESSING_UNIT)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; Warning: Descriptor too =
+short</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bUnitID &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 2</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bSourceID &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxMultiplier&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bControlSize&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 2</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmControls &nbsp; &nbsp; =
+0x0000177f</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Brightness</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Contrast</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Hue</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Saturation</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Sharpness</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Gamma</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; White Balance =
+Temperature</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Backlight =
+Compensation</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Gain</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Power Line Frequency</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; White Balance Temperature, Auto</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; iProcessing &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmVideoStandards &nbsp; &nbsp; =
+0x55</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; None</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; PAL - 625/50</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; NTSC - 625/50</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x83&nbsp; EP 3 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 3</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Interrupt</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; None</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Usage Type &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Data</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wMaxPacketSize &nbsp; =
+&nbsp; 0x0010&nbsp; 1x 16 bytes</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+6</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; Interface Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 0</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5 HD USB Camera</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; VideoStreaming Interface Descriptor:</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 15</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 1 (INPUT_HEADER)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bNumFormats &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wTotalLength &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x01b3</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bEndPointAddress&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+129</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmInfo&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bTerminalLink &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bStillCaptureMethod &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 2</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bTriggerSupport &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bTriggerUsage &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bControlSize&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmaControls( 0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bmaControls( 1) &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoStreaming Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 11</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 6 (FORMAT_MJPEG)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFormatIndex&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bNumFrameDescriptors&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 6</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bFlags&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fixed-size =
+samples: No</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+bDefaultFrameIndex&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bAspectRatioX &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bAspectRatioY &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmInterlaceFlags &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Interlaced =
+stream or variable: No</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fields per =
+frame: 1 fields</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Field 1 first: =
+No</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Field pattern: Field 1 only</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bCopyProtect&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; VideoStreaming Interface Descriptor:</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 30</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 7 (FRAME_MJPEG)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1920</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1080</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1028651672</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1028651672</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize &nbsp; &nbsp; 4147789</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+322580</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 322580</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7 (FRAME_MJPEG)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 640</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 480</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+590881431</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+590881431</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize&nbsp; &nbsp; &nbsp; 614989</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+83263</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 83263</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7 (FRAME_MJPEG)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 800</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 600</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+461082720</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+461082720</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize&nbsp; &nbsp; &nbsp; 960589</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+166666</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 166666</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7 (FRAME_MJPEG)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1280</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 720</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+885018720</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+885018720</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize &nbsp; &nbsp; 1843789</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+166666</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 166666</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7 (FRAME_MJPEG)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1280</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1024</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+650263192</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+650263192</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize &nbsp; &nbsp; 2622029</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+322580</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 322580</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7 (FRAME_MJPEG)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 320</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 240</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+148144791</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+148144791</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize&nbsp; &nbsp; &nbsp; 154189</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+83263</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 83263</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 6</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 13 (COLORFORMAT)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bColorPrimaries &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 1 (BT.709,sRGB)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bTransferCharacteristics&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1 (BT.709)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bMatrixCoefficients =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 (SMPTE 170M =
+(BT.601))</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 27</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 =
+(FORMAT_UNCOMPRESSED)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bFormatIndex&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 2</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bNumFrameDescriptors&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 6</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; guidFormat&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; =
+{32595559-0000-0010-8000-00aa00389b71}</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bBitsPerPixel&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 16</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDefaultFrameIndex&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bAspectRatioX &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bAspectRatioY &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmInterlaceFlags &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Interlaced =
+stream or variable: No</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fields per =
+frame: 2 fields</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Field 1 first: =
+No</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Field pattern: Field 1 only</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bCopyProtect&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; VideoStreaming Interface Descriptor:</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 30</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 5 (FRAME_UNCOMPRESSED)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1920</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1080</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+199065600</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+199065600</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize &nbsp; &nbsp; 4147200</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval&nbsp; &nbsp; &nbsp; &nbsp; =
+1666666</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1666666</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoStreaming Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 30</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 5 (FRAME_UNCOMPRESSED)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 640</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 480</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+152371200</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+152371200</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize&nbsp; &nbsp; &nbsp; 614400</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+322580</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 322580</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5 =
+(FRAME_UNCOMPRESSED)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bFrameIndex &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 3</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Still image unsupported</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wWidth&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 800</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wHeight &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 600</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwMinBitRate&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 161280000</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+161280000</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize&nbsp; &nbsp; &nbsp; 960000</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+476190</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 476190</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 30</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5 =
+(FRAME_UNCOMPRESSED)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bFrameIndex &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 4</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; Still image unsupported</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wWidth &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1280</span></div><div class=3D""=
+ style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wHeight &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 720</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwMinBitRate&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 132710400</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+132710400</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize &nbsp; &nbsp; 1843200</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval&nbsp; &nbsp; &nbsp; &nbsp; =
+1111111</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1111111</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoStreaming Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 30</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 5 (FRAME_UNCOMPRESSED)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1280</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1024</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+125829120</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMaxBitRate&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+125829120</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize &nbsp; &nbsp; 2621440</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval&nbsp; &nbsp; &nbsp; &nbsp; =
+1666666</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1666666</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoStreaming Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 30</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 5 (FRAME_UNCOMPRESSED)</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bFrameIndex &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bmCapabilities &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 0x00</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Still image =
+unsupported</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 320</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wHeight &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 240</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; dwMinBitRate &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+38092800</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; dwMaxBitRate &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 38092800</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; =
+dwMaxVideoFrameBufferSize&nbsp; &nbsp; &nbsp; 153600</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwDefaultFrameInterval &nbsp; &nbsp; &nbsp; &nbsp; =
+322580</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bFrameIntervalType&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; dwFrameInterval( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 322580</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; VideoStreaming Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; 10</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bDescriptorType&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+36</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bDescriptorSubtype&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 =
+(STILL_IMAGE_FRAME)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bEndpointAddress&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bNumImageSizePatterns &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; wWidth( 0) &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1920</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; wHeight( 0)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1080</span></div><div class=3D""=
+ style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bNumCompressionPatterns &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; VideoStreaming Interface Descriptor:</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 36</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorSubtype &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; 13 (COLORFORMAT)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bColorPrimaries &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; 1 (BT.709,sRGB)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bTransferCharacteristics&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1 (BT.709)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bMatrixCoefficients =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 (SMPTE 170M =
+(BT.601))</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; Interface =
+Descriptor:</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x81&nbsp; EP 1 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Isochronous</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Asynchronous</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Usage Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxPacketSize &nbsp; &nbsp; 0x0080&nbsp; 1x 128 =
+bytes</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; Interface Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 2</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x81&nbsp; EP 1 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Isochronous</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Asynchronous</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Usage Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxPacketSize &nbsp; &nbsp; 0x0100&nbsp; 1x 256 =
+bytes</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; Interface Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 3</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x81&nbsp; EP 1 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Isochronous</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Asynchronous</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Usage Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxPacketSize &nbsp; &nbsp; 0x0320&nbsp; 1x 800 =
+bytes</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; Interface Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x81&nbsp; EP 1 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Isochronous</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Asynchronous</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Usage Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxPacketSize &nbsp; &nbsp; 0x0b20&nbsp; 2x 800 =
+bytes</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; Interface Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 5</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x81&nbsp; EP 1 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Isochronous</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Asynchronous</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Usage Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxPacketSize &nbsp; &nbsp; 0x1320&nbsp; 3x 800 =
+bytes</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; Interface Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 4</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bInterfaceNumber&nbsp; &nbsp; &nbsp; &nbsp; 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bAlternateSetting &nbsp; &nbsp; &nbsp; 6</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; bNumEndpoints &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceClass&nbsp; &nbsp; &nbsp; &nbsp; 14 =
+Video</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; bInterfaceSubClass&nbsp; &nbsp; &nbsp; 2 Video =
+Streaming</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; bInterfaceProtocol&nbsp; =
+&nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; iInterface&nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0&nbsp;</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; Endpoint Descriptor:</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; bLength &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; =
+5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bEndpointAddress &nbsp; &nbsp; 0x81&nbsp; EP 1 =
+IN</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bmAttributes&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 5</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; Transfer Type&nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; Isochronous</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Synch Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+Asynchronous</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Usage Type =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; =
+&nbsp; &nbsp; wMaxPacketSize &nbsp; &nbsp; 0x1400&nbsp; 3x 1024 =
+bytes</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+&nbsp; &nbsp; &nbsp; bInterval &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; 1</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">Device =
+Qualifier (for other device speed):</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bLength&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+10</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDescriptorType &nbsp; &nbsp; &nbsp; &nbsp; 6</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; bcdUSB =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.00</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDeviceClass&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 239 Miscellaneous =
+Device</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDeviceSubClass &nbsp; &nbsp; &nbsp; &nbsp; 2&nbsp;</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bDeviceProtocol &nbsp; &nbsp; &nbsp; &nbsp; 1 Interface =
+Association</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; bMaxPacketSize0&nbsp; &nbsp; &nbsp; &nbsp; =
+64</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+bNumConfigurations&nbsp; &nbsp; &nbsp; 1</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">can't get debug =
+descriptor: Resource temporarily unavailable</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Device Status: =
+&nbsp; &nbsp; 0x0002</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; (Bus Powered)</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; Remote =
+Wakeup Enabled</span></div></div><div class=3D""><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;"><br =
+class=3D""></span></div><div class=3D"">When I connect it, I get the =
+following errors:</div><div class=3D""><br class=3D""></div><div =
+class=3D""><div class=3D""><font face=3D"Menlo" class=3D""><span =
+class=3D"" style=3D"font-size: 11px;">kernel: [32787.348442] usb 2-5: =
+new high-speed USB device number 5 using =
+xhci_hcd</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.348442] usb 2-5: new high-speed USB device number 5 using =
+xhci_hcd</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.564156] usb 2-5: New USB device found, idVendor=3D05a3, =
+idProduct=3D9230, bcdDevice=3D 1.00</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.564162] usb 2-5: New USB =
+device strings: Mfr=3D2, Product=3D1, =
+SerialNumber=3D0</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.564166] usb 2-5: Product: USB 2.0 Camera</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.564168] usb 2-5: Manufacturer: =
+HD Camera Manufacturer</span></font></div><div class=3D""><font =
+face=3D"Menlo" class=3D""><span class=3D"" style=3D"font-size: =
+11px;">kernel: [32787.564156] usb 2-5: New USB device found, =
+idVendor=3D05a3, idProduct=3D9230, bcdDevice=3D =
+1.00</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.564162] usb 2-5: New USB device strings: Mfr=3D2, Product=3D1, =
+SerialNumber=3D0</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.564166] usb 2-5: Product: USB 2.0 Camera</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.564168] usb 2-5: Manufacturer: =
+HD Camera Manufacturer</span></font></div><div class=3D""><font =
+face=3D"Menlo" class=3D""><span class=3D"" style=3D"font-size: =
+11px;">mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">mtp-probe: bus: 2, device: 5 was not an MTP =
+device</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">mtp-probe: bus: =
+2, device: 5 was not an MTP device</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.646917] uvcvideo: Found UVC =
+1.00 device USB 2.0 Camera (05a3:9230)</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.646917] uvcvideo: Found UVC =
+1.00 device USB 2.0 Camera (05a3:9230)</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.704217] uvcvideo 2-5:1.0: =
+Entity type for entity Extension 3 was not =
+initialized!</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704219] uvcvideo 2-5:1.0: Entity type for entity Processing 2 was =
+not initialized!</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704221] uvcvideo 2-5:1.0: Entity type for entity Camera 1 was not =
+initialized!</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704286] input: USB 2.0 Camera: HD USB Camera as =
+/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.0/input/input11</span></fo=
+nt></div><div class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.704372] usbcore: registered =
+new interface driver uvcvideo</span></font></div><div class=3D""><font =
+face=3D"Menlo" class=3D""><span class=3D"" style=3D"font-size: =
+11px;">kernel: [32787.704373] USB Video Class driver =
+(1.1.1)</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704217] uvcvideo 2-5:1.0: Entity type for entity Extension 3 was =
+not initialized!</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704219] uvcvideo 2-5:1.0: Entity type for entity Processing 2 was =
+not initialized!</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704221] uvcvideo 2-5:1.0: Entity type for entity Camera 1 was not =
+initialized!</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">kernel: =
+[32787.704286] input: USB 2.0 Camera: HD USB Camera as =
+/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.0/input/input11</span></fo=
+nt></div><div class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">kernel: [32787.704372] usbcore: registered =
+new interface driver uvcvideo</span></font></div><div class=3D""><font =
+face=3D"Menlo" class=3D""><span class=3D"" style=3D"font-size: =
+11px;">kernel: [32787.704373] USB Video Class driver =
+(1.1.1)</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">mtp-probe: =
+checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">mtp-probe: checking bus 2, device 5: =
+"/sys/devices/pci0000:00/0000:00:14.0/usb2/2-5"</span></font></div><div =
+class=3D""><font face=3D"Menlo" class=3D""><span class=3D"" =
+style=3D"font-size: 11px;">mtp-probe: bus: 2, device: 5 was not an MTP =
+device</span></font></div><div class=3D""><font face=3D"Menlo" =
+class=3D""><span class=3D"" style=3D"font-size: 11px;">mtp-probe: bus: =
+2, device: 5 was not an MTP device</span></font></div></div><div =
+class=3D""><br class=3D""></div><div class=3D""><br class=3D""></div><div =
+class=3D"">No picture with guvc:</div><div class=3D""><br =
+class=3D""></div><div class=3D""><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;"># guvcview</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;"><br =
+class=3D""></span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">=3D=3D&gt; /var/log/syslog &lt;=3D=3D</span></div><d=
+iv class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: =
+11px; line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:54 hotspot kernel: [252735.199538] uvcvideo: =
+uvc_v4l2_open</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">GUVCVIEW: version 2.0.6</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">V4L2_CORE: =
+(UVCIOC_CTRL_MAP) Error: No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:54 hotspot kernel: [252735.314695] uvcvideo: Resuming interface =
+0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:54 hotspot kernel: =
+[252735.314698] uvcvideo: Resuming interface 1</span></div><div class=3D""=
+ style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:54 hotspot kernel: [252735.315246] uvcvideo: =
+uvc_v4l2_release</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:54 hotspot kernel: =
+[252735.316439] uvcvideo: uvc_v4l2_open</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pcm.c:2565:(snd_pcm_open_noupdate) Unknown PCM =
+cards.pcm.rear</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">ALSA lib pcm.c:2565:(snd_pcm_open_noupdate) =
+Unknown PCM cards.pcm.center_lfe</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pcm.c:2565:(snd_pcm_open_noupdate) Unknown PCM =
+cards.pcm.side</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">ALSA lib pcm_route.c:869:(find_matching_chmap) =
+Found no matching channel map</span></div><div class=3D"" style=3D"margin:=
+ 0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Cannot connect to server socket err =3D No such =
+file or directory</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Cannot connect to server request =
+channel</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">jack =
+server is not running or cannot be started</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: =
+no-common-ligatures;">JackShmReadWritePtr::~JackShmReadWritePtr - Init =
+not done for -1, skipping unlock</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: =
+no-common-ligatures;">JackShmReadWritePtr::~JackShmReadWritePtr - Init =
+not done for -1, skipping unlock</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Cannot connect to =
+server socket err =3D No such file or directory</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Cannot connect to =
+server request channel</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">jack server is not running or cannot be =
+started</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">JackShmReadWritePtr::~JackShmReadWritePtr - Init =
+not done for -1, skipping unlock</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: =
+no-common-ligatures;">JackShmReadWritePtr::~JackShmReadWritePtr - Init =
+not done for -1, skipping unlock</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pulse.c:243:(pulse_connect) PulseAudio: Unable to connect: Connection =
+refused</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo; =
+min-height: 13px;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;"></span><br class=3D""></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pulse.c:243:(pulse_connect) PulseAudio: Unable to connect: Connection =
+refused</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo; =
+min-height: 13px;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;"></span><br class=3D""></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">ALSA lib =
+pcm_a52.c:823:(_snd_pcm_a52_open) a52 is only for =
+playback</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">ALSA =
+lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for =
+card</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">ALSA =
+lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for =
+card</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">Cannot =
+connect to server socket err =3D No such file or =
+directory</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Cannot connect to server request =
+channel</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">jack =
+server is not running or cannot be started</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: =
+no-common-ligatures;">JackShmReadWritePtr::~JackShmReadWritePtr - Init =
+not done for -1, skipping unlock</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: =
+no-common-ligatures;">JackShmReadWritePtr::~JackShmReadWritePtr - Init =
+not done for -1, skipping unlock</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:55 hotspot kernel: [252736.084118] uvcvideo: Trying format =
+0x47504a4d (MJPG): 640x480.</span></div><div class=3D"" style=3D"margin: =
+0px; font-stretch: normal; font-size: 11px; line-height: normal; =
+font-family: Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:55 hotspot kernel: =
+[252736.084120] uvcvideo: Using default frame interval 8326.3 us (120.1 =
+fps).</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:55 hotspot kernel: =
+[252736.140969] uvcvideo: Trying format 0x47504a4d (MJPG): =
+640x480.</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:55 hotspot kernel: =
+[252736.140971] uvcvideo: Using default frame interval 8326.3 us (120.1 =
+fps).</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:55 hotspot kernel: =
+[252736.199682] uvcvideo: uvc_v4l2_mmap</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:55 hotspot kernel: [252736.199713] uvcvideo: =
+uvc_v4l2_mmap</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:55 hotspot kernel: =
+[252736.199737] uvcvideo: uvc_v4l2_mmap</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:55 hotspot kernel: [252736.199761] uvcvideo: =
+uvc_v4l2_mmap</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:55 hotspot kernel: =
+[252736.199808] uvcvideo: Setting frame interval to 1/25 =
+(400000).</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">libGL error: No matching fbConfigs or visuals =
+found</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">libGL =
+error: failed to load driver: swrast</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">X Error of failed =
+request:&nbsp; BadValue (integer parameter out of range for =
+operation)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; Major opcode of failed request:&nbsp; 149 =
+(GLX)</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+Minor opcode of failed request:&nbsp; 3 =
+(X_GLXCreateContext)</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">&nbsp; Value in failed request:&nbsp; =
+0x0</span></div><div class=3D"" style=3D"margin: 0px; font-stretch: =
+normal; font-size: 11px; line-height: normal; font-family: Menlo;"><span =
+class=3D"" style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; =
+Serial number of failed request:&nbsp; 94</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">&nbsp; Current =
+serial number in output stream:&nbsp; 95</span></div><div class=3D"" =
+style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:57 hotspot kernel: [252737.861637] uvcvideo: =
+uvc_v4l2_release</span></div><div class=3D"" style=3D"margin: 0px; =
+font-stretch: normal; font-size: 11px; line-height: normal; font-family: =
+Menlo;"><span class=3D"" style=3D"font-variant-ligatures: =
+no-common-ligatures;">Oct&nbsp; 7 10:02:59 hotspot kernel: =
+[252739.865312] uvcvideo: Suspending interface 1</span></div><div =
+class=3D"" style=3D"margin: 0px; font-stretch: normal; font-size: 11px; =
+line-height: normal; font-family: Menlo;"><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;">Oct&nbsp; 7 =
+10:02:59 hotspot kernel: [252739.865316] uvcvideo: Suspending interface =
+0</span></div></div><div class=3D""><span class=3D"" =
+style=3D"font-variant-ligatures: no-common-ligatures;"><br =
+class=3D""></span></div><div class=3D""><br class=3D""></div><div =
+class=3D"">Can anybody help me or at least list that camera as non =
+supported?</div><div class=3D""><br class=3D""></div><div class=3D""><br =
+class=3D""></div><div class=3D"">Thanks for your =
+work!</div></body></html>=
+
+--Apple-Mail=_2A3120E5-47F1-462F-B5B3-3CBE077957F3--
+
+
+--===============6566277610168211265==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---00000000000086b32e059400d876
+--===============6566277610168211265==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1572,5 +3539,5 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---00000000000086b32e059400d876--
+--===============6566277610168211265==--
 
