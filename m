@@ -2,120 +2,93 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1246B10FBB5
-	for <lists+linux-uvc-devel@lfdr.de>; Tue,  3 Dec 2019 11:26:43 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id EDFF5130A57
+	for <lists+linux-uvc-devel@lfdr.de>; Sun,  5 Jan 2020 23:50:58 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1ic5Nz-0005y9-Og; Tue, 03 Dec 2019 10:26:27 +0000
+	id 1ioEjM-0006Eb-KH; Sun, 05 Jan 2020 22:50:44 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <quwenruo.btrfs@gmx.com>) id 1ic5Nx-0005y0-BB
- for Linux-uvc-devel@lists.sourceforge.net; Tue, 03 Dec 2019 10:26:25 +0000
+ (envelope-from <mandasx@gmail.com>) id 1ioEjL-0006EO-D1
+ for linux-uvc-devel@lists.sourceforge.net; Sun, 05 Jan 2020 22:50:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Date:Message-ID:Subject:
- From:To:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Dh4gjgxLbyFbLlmvuwbpfXl0u4WQBb2teNdCCAC5Ueg=; b=LgD+fp+cqIkNVK/SDp5uBeiJlC
- a9eUexFww7jvLpn9B7m23acUepr+wKF+HClS0FTUPi6mC4geOOx0KAFME36WQLXTdFjQHxk1h4d2b
- FqnGg6aZXsYU6CAUOBFMpxNQ+WxaIbkR9ZrtTRz+mnNqLvCFsd3LRyRQxtwQvXIkIKvQ=;
+ bh=C4HsY/4EQfagAUj66fIgk/gqoy9OYaF2mlrPd+K+QDQ=; b=mZmgSuKyLA9nNqyeeb1yA13J8f
+ Njb/+5Aku/504pbspRZs4bvIrJ8hWunnUu3FJMFAlzcfuTTRCKTeEKExH0Wt/1RMAecUhSCOAmS5G
+ W06q7Kbon5yhZOgXremeh6ldlFu4YbgqfdjKhe9Agmb52fQAhcRKtf9+gVYVVe1mq5AM=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:Date:Message-ID:Subject:From:To:Sender:Reply-To
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=Dh4gjgxLbyFbLlmvuwbpfXl0u4WQBb2teNdCCAC5Ueg=; b=m
- JVuI4CIyrfHKfGNfH6dzCml0Zfik0ahEPTrs3RT7FJ/JPgaIWVAaFwKOMwTS9ThFWZ5cBXjz/bCeF
- surx32mrichBRgxB14/rgSLU+oUPDtk63JmYa/IrR+Lr65dLBtaZc3Fjy/C1R04rDICozwl/oqghH
- ZMavttg+atsLATfI=;
-Received: from mout.gmx.net ([212.227.15.19])
+ List-Owner:List-Archive; bh=C4HsY/4EQfagAUj66fIgk/gqoy9OYaF2mlrPd+K+QDQ=; b=R
+ LDi7O0yLcCVmzyYKVm5nC4xdwNlMafbc+79BlKQMMuejR/LvsKpjWmWoe0e2FMcslbM/pAzAZiaNZ
+ Q/Vkn9dhjgeuHL0jzGU4sWvjLtV1R2B8H3WMYzum5yYd2cQtR4MhE9pprdGYjyYmILyVuvlelDg+V
+ ZYiUOfKmvOeM+SBM=;
+Received: from mail-qt1-f182.google.com ([209.85.160.182])
  by sfi-mx-4.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1ic5Nu-005lsX-QB
- for Linux-uvc-devel@lists.sourceforge.net; Tue, 03 Dec 2019 10:26:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1575368772;
- bh=E0Bs8VrmUEvwUpTiQyYLpPTgeS37MI9lT7EvSHD3KD0=;
- h=X-UI-Sender-Class:To:From:Subject:Date;
- b=e1TCHH6/vqix46OOi2SdMv227spPhROiTt+pqrROK9ofg8nWx44rf7mtHlaWXfMfr
- v5fTNuV9HxATAC5PQ4prM9IbnICquH9OXYe/mf5ESqUbbKFetFgaLrY/WF+iO1sUjd
- XWC0Sv1BAo3KL1aYoqHap8fDBOGB629w3c3xbIt8=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [0.0.0.0] ([149.28.201.231]) by mail.gmx.com (mrgmx005
- [212.227.17.184]) with ESMTPSA (Nemesis) id 1MiJZE-1i5lVV3sJy-00fTsW for
- <Linux-uvc-devel@lists.sourceforge.net>; Tue, 03 Dec 2019 11:26:12 +0100
-To: Linux-uvc-devel@lists.sourceforge.net
-From: Qu Wenruo <quwenruo.btrfs@gmx.com>
-Autocrypt: addr=quwenruo.btrfs@gmx.com; prefer-encrypt=mutual; keydata=
- mQENBFnVga8BCACyhFP3ExcTIuB73jDIBA/vSoYcTyysFQzPvez64TUSCv1SgXEByR7fju3o
- 8RfaWuHCnkkea5luuTZMqfgTXrun2dqNVYDNOV6RIVrc4YuG20yhC1epnV55fJCThqij0MRL
- 1NxPKXIlEdHvN0Kov3CtWA+R1iNN0RCeVun7rmOrrjBK573aWC5sgP7YsBOLK79H3tmUtz6b
- 9Imuj0ZyEsa76Xg9PX9Hn2myKj1hfWGS+5og9Va4hrwQC8ipjXik6NKR5GDV+hOZkktU81G5
- gkQtGB9jOAYRs86QG/b7PtIlbd3+pppT0gaS+wvwMs8cuNG+Pu6KO1oC4jgdseFLu7NpABEB
- AAG0IlF1IFdlbnJ1byA8cXV3ZW5ydW8uYnRyZnNAZ214LmNvbT6JAU4EEwEIADgCGwMFCwkI
- BwIGFQgJCgsCBBYCAwECHgECF4AWIQQt33LlpaVbqJ2qQuHCPZHzoSX+qAUCXZw1oQAKCRDC
- PZHzoSX+qCY6CACd+mWu3okGwRKXju6bou+7VkqCaHTdyXwWFTsr+/0ly5nUdDtT3yEVggPJ
- 3VP70wjlrxUjNjFb6iIvGYxiPOrop1NGwGYvQktgRhaIhALG6rPoSSAhGNjwGVRw0km0PlIN
- D29BTj/lYEk+jVM1YL0QLgAE1AI3krihg/lp/fQT53wLhR8YZIF8ETXbClQG1vJ0cllPuEEv
- efKxRyiTSjB+PsozSvYWhXsPeJ+KKjFen7ebE5reQTPFzSHctCdPnoR/4jSPlnTlnEvLeqcD
- ZTuKfQe1gWrPeevQzgCtgBF/WjIOeJs41klnYzC3DymuQlmFubss0jShLOW8eSOOWhLRuQEN
- BFnVga8BCACqU+th4Esy/c8BnvliFAjAfpzhI1wH76FD1MJPmAhA3DnX5JDORcgaCbPEwhLj
- 1xlwTgpeT+QfDmGJ5B5BlrrQFZVE1fChEjiJvyiSAO4yQPkrPVYTI7Xj34FnscPj/IrRUUka
- 68MlHxPtFnAHr25VIuOS41lmYKYNwPNLRz9Ik6DmeTG3WJO2BQRNvXA0pXrJH1fNGSsRb+pK
- EKHKtL1803x71zQxCwLh+zLP1iXHVM5j8gX9zqupigQR/Cel2XPS44zWcDW8r7B0q1eW4Jrv
- 0x19p4P923voqn+joIAostyNTUjCeSrUdKth9jcdlam9X2DziA/DHDFfS5eq4fEvABEBAAGJ
- ATwEGAEIACYCGwwWIQQt33LlpaVbqJ2qQuHCPZHzoSX+qAUCXZw1rgUJCWpOfwAKCRDCPZHz
- oSX+qFcEB/95cs8cM1OQdE/GgOfCGxwgckMeWyzOR7bkAWW0lDVp2hpgJuxBW/gyfmtBnUai
- fnggx3EE3ev8HTysZU9q0h+TJwwJKGv6sUc8qcTGFDtavnnl+r6xDUY7A6GvXEsSoCEEynby
- 72byGeSovfq/4AWGNPBG1L61Exl+gbqfvbECP3ziXnob009+z9I4qXodHSYINfAkZkA523JG
- ap12LndJeLk3gfWNZfXEWyGnuciRGbqESkhIRav8ootsCIops/SqXm0/k+Kcl4gGUO/iD/T5
- oagaDh0QtOd8RWSMwLxwn8uIhpH84Q4X1LadJ5NCgGa6xPP5qqRuiC+9gZqbq4Nj
-Message-ID: <836b72e6-6c56-a663-dff2-e1c084dd20bc@gmx.com>
-Date: Tue, 3 Dec 2019 18:26:09 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ id 1ioEjE-00AasK-Ph
+ for linux-uvc-devel@lists.sourceforge.net; Sun, 05 Jan 2020 22:50:43 +0000
+Received: by mail-qt1-f182.google.com with SMTP id n15so41179643qtp.5
+ for <linux-uvc-devel@lists.sourceforge.net>;
+ Sun, 05 Jan 2020 14:50:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=C4HsY/4EQfagAUj66fIgk/gqoy9OYaF2mlrPd+K+QDQ=;
+ b=PgD1kCBq+NsnD8DaGyY5VrmN4QqXHnYRvYKJIvT8nBlvi21Y+ouLYGe2fj3tB+xuPy
+ bTvZ18KBXs3NT8kLTLbl2EoVPELA/i7g+bCAdmoIodOx1a8PirhQkT5+qO0U2UjTToxv
+ /XhNZ31L60SeNF3u+JDtdri3W7csXe4uuGZ8xH2xRnJeJ14oRtaDQzX6ulZ9LGNQrwgm
+ 9X5DKrlQIGotCssIcaoq7UToKlqJXGrnvQ/JNqOSfGo7sO2MxEdDFXp6Vw3++dUqUEHC
+ Q+pHyam9WYlWM1ByVua38RXWYSM49hMmk81hgf9n8a+EbCQyA5gz30UJMOBfeQdqXCfq
+ WL6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=C4HsY/4EQfagAUj66fIgk/gqoy9OYaF2mlrPd+K+QDQ=;
+ b=pkVkrWBNjUDZPBicGeInQwSkFPSJ8EFYI5ICgT6ljPt+ETBV4K5yIAPQ0dm3lQkwJW
+ 1J6uNFE0q2Fal0pA4oBy4/gdXUczmBj4u/R9oG8ZVdaSbfUISVizSj5IOJFSAw5YEBFd
+ E86/sHhomLlYv9aLPXGS2UCvdLZR1THaY9CfXbaO9rjoNeiUWkoTKgTxpJ/aQlSZYdYI
+ PYB5c0lDhce/srLxSnOuDoEySEO5/YMMpr3cJ4lexLBI62+PaGn9HSi9BcV8edK5WBdS
+ kTyVLYfSQYLtWIDy+5nv6TSFkmL6Fw0uRUJgWZAEVlPNjvOTCevFX1JPxoUSX0EmWXB5
+ 766Q==
+X-Gm-Message-State: APjAAAW36CX76yGhs5yk77aipE2/m68PbiAYkwY7ictzooE6IacmoACU
+ C+FL/eh1oeXz3uoAeW0dR0ilE7FZa53LAo5mGnAoBew2
+X-Google-Smtp-Source: APXvYqwUmxAdWes9BxGNxpd5cjbCiAKK3TirBfitMYbGEq/qT3chXk8jVrVxfrDmbpUY5utu6tfxOkOFKO5369haqiA=
+X-Received: by 2002:ac8:7297:: with SMTP id v23mr72123242qto.135.1578264630622; 
+ Sun, 05 Jan 2020 14:50:30 -0800 (PST)
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:aAto4FW3mFGS0lY/Y3n0PHaxnKsuy4i4LzWDCppu19fpuPqfD8m
- 5PzzMiNBSbrve7pDLi0e66SGxsXANY4tN9u/Dn2L6asrHRqi2JG7lNgFGamy6MrzkYbkIp5
- O1FsUPKu9DI0jjYsYY9IQYUkA0AvkXO6h6YXWspY2GdBlkUiKEfzBnKjUA2pZ4OBxD1YGzR
- C2yiHsUonNdeSHgKz5Qpg==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pF23OIWbZes=:+oNqedTJ/mIQ5dGhGcWGMT
- BhrcNJGKstcEfz5VbDkZaPfXwiEUbOeLuqN8jAX4vkKEZ9MkQ2W1IflsJsmFOXi8PMDmBkiZn
- 2+81y3CmejSzM8IDP1tdAAmEYq2F/Kx6CkHZ4unIfNtz9uxWjWpFJrbqI2KWjTYw2gNqFwlhp
- W36VIYWTol5FPYToteQF8GMHnB+jCu0/GJ8UCWgl7YadgQauSWR40UoBri3AGcvBgqgCgZsmg
- /eGgqVOI8pyYo9VsLtxGxMenr5kXhebKoj7P1QP9OyWHzWgDan3qWqE8DWCrD4DkU1sbZw2J+
- kLqvfAb68ipUKqgeCKcF+x4kcgrTQpvCKUhKU5RqRCh56qv4uhxoZNkmEx20U0LGt9j/RFRuJ
- Q9SI6K2r/jzRTBBQHqbnvJeSsL128KBOYCl4Pd/BCX1fzKL/2AxxsK85h973JMj3v9t4zZL+j
- uc7Nxopal+Ydxt7tNNM1ByYoYmOlqyoR3Ws22Q1lznb9h5NbLR2bwt3b5B61aG/pj+cOVKk3P
- XsWiOI3RigmhC1iOBVsTr2FCzSQri3c0uU3lkmU0txCVrkZmA03sm/CAgA8X+D8REKXbOOVKz
- 4nfJy081M2ImMRbCzj72yffGYT07d/tokDTWfKxXKW66OLcKhmfeBHXF9AR+QqNC/xKqbuBHo
- o+x88QaGNUBY4rWzVoepb6FOZMdHjJRDICtNxM4Q9UYbN2sWSTtrca+LUfcWqEoKWbk7nL/0L
- j6psqdJJBnXdMAsMTYYwKXnJ82Iy3LueHH4OKAjanwnICotkjowAoGXonaQiAYl7ibeAXJz9E
- CdwguGpnqyXrpLXUSv9l1lPaA6Kza3jhIEVATKNtp5eh7W6Jt06EzuVvLDNeiAPmbL+x4s82M
- fG9phHqKUl2KYQ6i+ZIHGwrmwJHt75/CIFj8MPjPW66TJSKwtJFf3UaYewkYTvZYBQpgRf2zJ
- Y1lHGyvIrrr3teN7UAu4SFHOm/TklgIshqaXK1WGeofQ/fPebMZtOHQ5rRJcax1PLWxlZAxCS
- VljRglgXkuhsUp9VCr9zArUZGNUBnQk7nYye5fqecN0NGImR+yKyZBgZxyd6zrvc/A/X5EIfB
- X2QZj/sN9WcYyWF9xPakkPirHyl3ry5pmpJV9vm3+TC6acEQsYNt1QO3IJVJ7NImAUG2uW53d
- zhnSPQ13NfDRQqjAvQntrGGBz6qSfZZMUWF6e3ILJE3m44g5vYSqO+t9ZxdZ1BEwlaUQ6Jo6g
- rmlvIwX0FEzKi7KkIkP30Fnto08HIJtL1its0QWCLdP2BsKzlv6G6YU0VuIY=
-X-Spam-Score: 0.0 (/)
+From: Dimitris Mandalidis <mandasx@gmail.com>
+Date: Mon, 6 Jan 2020 00:50:19 +0200
+Message-ID: <CAE3YyDTLnY1Ybd9Cqjgo8fLAJtKW06uUQHSq==bfs9AwPchHLQ@mail.gmail.com>
+To: linux-uvc-devel@lists.sourceforge.net
+X-Spam-Score: 0.9 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.160.182 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (quwenruo.btrfs[at]gmx.com)
+ (mandasx[at]gmail.com)
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.160.182 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1ic5Nu-005lsX-QB
-Subject: [linux-uvc-devel] UVC: unsupported device (Elgato HD60S+),
- Unknown video format 30313050-0000-0010-8000-00aa00389b71
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1ioEjE-00AasK-Ph
+Subject: [linux-uvc-devel] 05c8:0374 webcam support + problem
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,86 +100,167 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6355978495134696320=="
+Content-Type: multipart/mixed; boundary="===============6415368344307765220=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============6355978495134696320==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="KOsyD3tah5XJdtxhcOJ44ZLzMK14q38KJ"
+--===============6415368344307765220==
+Content-Type: multipart/alternative; boundary="000000000000ab7c3c059b6c5eeb"
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---KOsyD3tah5XJdtxhcOJ44ZLzMK14q38KJ
-Content-Type: multipart/mixed; boundary="39acKCRaOrl6WOwQMasHpDJRO8EynOtrL"
+--000000000000ab7c3c059b6c5eeb
+Content-Type: text/plain; charset="UTF-8"
 
---39acKCRaOrl6WOwQMasHpDJRO8EynOtrL
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Hi all,
+
+This is to report that the:
+
+"ID 05c8:0374 Cheng Uei Precision Industry Co., Ltd (Foxlink) HP HD Webcam"
+(lsusb output)
+
+is a (somehow) supported from the uvc driver. This camera is used in HP
+ZBook 17
+G2 laptops (at least)
+
+Here is the output of "dmesg | grep -i uvc" (from a session where the webcam
+works):
+
+[    8.705459] uvcvideo: Found UVC 1.00 device HP HD Webcam (05c8:0374)
+[    8.726559] uvcvideo 2-7:1.0: Entity type for entity Extension 4 was not
+initialized!
+[    8.726561] uvcvideo 2-7:1.0: Entity type for entity Extension 3 was not
+initialized!
+[    8.726562] uvcvideo 2-7:1.0: Entity type for entity Processing 2 was
+not initialized!
+[    8.726562] uvcvideo 2-7:1.0: Entity type for entity Camera 1 was not
+initialized!
+[    8.726722] usbcore: registered new interface driver uvcvideo
+[    9.922433] uvcvideo: Found UVC 1.00 device HP HD Webcam (05c8:0374)
+[    9.922758] uvcvideo: Failed to query (GET_INFO) UVC control 2 on unit
+1: -71 (exp. 1).
+[    9.923039] uvcvideo: Failed to query (GET_INFO) UVC control 3 on unit
+1: -71 (exp. 1).
+[    9.923119] uvcvideo: Failed to query (GET_INFO) UVC control 4 on unit
+1: -71 (exp. 1).
+[    9.923274] uvcvideo: Failed to query (GET_INFO) UVC control 2 on unit
+2: -71 (exp. 1).
+[    9.923360] uvcvideo: Failed to query (GET_INFO) UVC control 3 on unit
+2: -71 (exp. 1).
+[    9.923752] uvcvideo: Failed to query (GET_INFO) UVC control 6 on unit
+2: -71 (exp. 1).
+[    9.923967] uvcvideo: Failed to query (GET_INFO) UVC control 7 on unit
+2: -71 (exp. 1).
+[    9.924053] uvcvideo: Failed to query (GET_INFO) UVC control 8 on unit
+2: -71 (exp. 1).
+[    9.924158] uvcvideo: Failed to query (GET_INFO) UVC control 9 on unit
+2: -71 (exp. 1).
+[   10.432245] uvcvideo: Failed to query (GET_INFO) UVC control 10 on unit
+2: -110 (exp. 1).
+[   10.944207] uvcvideo: Failed to query (GET_INFO) UVC control 1 on unit
+2: -110 (exp. 1).
+[   11.456224] uvcvideo: Failed to query (GET_INFO) UVC control 5 on unit
+2: -110 (exp. 1).
+[   11.968248] uvcvideo: Failed to query (GET_INFO) UVC control 11 on unit
+2: -110 (exp. 1).
+[   22.208370] uvcvideo: UVC non compliance - GET_DEF(PROBE) not supported.
+Enabling workaround.
+[   27.328440] uvcvideo: Failed to query (129) UVC probe control : -110
+(exp. 26).
+[   27.328575] uvcvideo: Failed to initialize the device (-5).
+[   27.905201] uvcvideo: Found UVC 1.00 device HP HD Webcam (05c8:0374)
+[   27.926891] uvcvideo 2-7:1.0: Entity type for entity Extension 4 was not
+initialized!
+[   27.926898] uvcvideo 2-7:1.0: Entity type for entity Extension 3 was not
+initialized!
+[   27.926902] uvcvideo 2-7:1.0: Entity type for entity Processing 2 was
+not initialized!
+[   27.926905] uvcvideo 2-7:1.0: Entity type for entity Camera 1 was not
+initialized!
+
+This is the happy (and rare) path; under circumstances I 'm not still able
+to
+reproduce (usually after a power-related event, suspend to RAM, shutdown
+etc.)
+the camera stops working, it isn't listed in libusb and "dmesg | grep -i
+usb"
+doesn't report anything related. When this happens, camera doesn't appear
+neither on Windows and the only way I found to resurrect it is to shutdown
+the
+laptop and leave it off for a while.
+
+This is probably a power-related problem as it seems like the device isn't
+powered up at all in some cases, but I was wondering if someone has ever
+spotted
+something similar.
+
+Dimitris
+
+--000000000000ab7c3c059b6c5eeb
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi,
+<div dir=3D"ltr">Hi all,<br><br>This is to report that the:<br><br>&quot;ID=
+ 05c8:0374 Cheng Uei Precision Industry Co., Ltd (Foxlink) HP HD Webcam&quo=
+t;<br>(lsusb output)<br><br>is a (somehow) supported from the uvc driver. T=
+his camera is used in HP ZBook 17<br>G2 laptops (at least)<br><br>Here is t=
+he output of &quot;dmesg | grep -i uvc&quot; (from a session where the webc=
+am<br>works):<br><br>[ =C2=A0 =C2=A08.705459] uvcvideo: Found UVC 1.00 devi=
+ce HP HD Webcam (05c8:0374)<br>[ =C2=A0 =C2=A08.726559] uvcvideo 2-7:1.0: E=
+ntity type for entity Extension 4 was not initialized!<br>[ =C2=A0 =C2=A08.=
+726561] uvcvideo 2-7:1.0: Entity type for entity Extension 3 was not initia=
+lized!<br>[ =C2=A0 =C2=A08.726562] uvcvideo 2-7:1.0: Entity type for entity=
+ Processing 2 was not initialized!<br>[ =C2=A0 =C2=A08.726562] uvcvideo 2-7=
+:1.0: Entity type for entity Camera 1 was not initialized!<br>[ =C2=A0 =C2=
+=A08.726722] usbcore: registered new interface driver uvcvideo<br>[ =C2=A0 =
+=C2=A09.922433] uvcvideo: Found UVC 1.00 device HP HD Webcam (05c8:0374)<br=
+>[ =C2=A0 =C2=A09.922758] uvcvideo: Failed to query (GET_INFO) UVC control =
+2 on unit 1: -71 (exp. 1).<br>[ =C2=A0 =C2=A09.923039] uvcvideo: Failed to =
+query (GET_INFO) UVC control 3 on unit 1: -71 (exp. 1).<br>[ =C2=A0 =C2=A09=
+.923119] uvcvideo: Failed to query (GET_INFO) UVC control 4 on unit 1: -71 =
+(exp. 1).<br>[ =C2=A0 =C2=A09.923274] uvcvideo: Failed to query (GET_INFO) =
+UVC control 2 on unit 2: -71 (exp. 1).<br>[ =C2=A0 =C2=A09.923360] uvcvideo=
+: Failed to query (GET_INFO) UVC control 3 on unit 2: -71 (exp. 1).<br>[ =
+=C2=A0 =C2=A09.923752] uvcvideo: Failed to query (GET_INFO) UVC control 6 o=
+n unit 2: -71 (exp. 1).<br>[ =C2=A0 =C2=A09.923967] uvcvideo: Failed to que=
+ry (GET_INFO) UVC control 7 on unit 2: -71 (exp. 1).<br>[ =C2=A0 =C2=A09.92=
+4053] uvcvideo: Failed to query (GET_INFO) UVC control 8 on unit 2: -71 (ex=
+p. 1).<br>[ =C2=A0 =C2=A09.924158] uvcvideo: Failed to query (GET_INFO) UVC=
+ control 9 on unit 2: -71 (exp. 1).<br>[ =C2=A0 10.432245] uvcvideo: Failed=
+ to query (GET_INFO) UVC control 10 on unit 2: -110 (exp. 1).<br>[ =C2=A0 1=
+0.944207] uvcvideo: Failed to query (GET_INFO) UVC control 1 on unit 2: -11=
+0 (exp. 1).<br>[ =C2=A0 11.456224] uvcvideo: Failed to query (GET_INFO) UVC=
+ control 5 on unit 2: -110 (exp. 1).<br>[ =C2=A0 11.968248] uvcvideo: Faile=
+d to query (GET_INFO) UVC control 11 on unit 2: -110 (exp. 1).<br>[ =C2=A0 =
+22.208370] uvcvideo: UVC non compliance - GET_DEF(PROBE) not supported. Ena=
+bling workaround.<br>[ =C2=A0 27.328440] uvcvideo: Failed to query (129) UV=
+C probe control : -110 (exp. 26).<br>[ =C2=A0 27.328575] uvcvideo: Failed t=
+o initialize the device (-5).<br>[ =C2=A0 27.905201] uvcvideo: Found UVC 1.=
+00 device HP HD Webcam (05c8:0374)<br>[ =C2=A0 27.926891] uvcvideo 2-7:1.0:=
+ Entity type for entity Extension 4 was not initialized!<br>[ =C2=A0 27.926=
+898] uvcvideo 2-7:1.0: Entity type for entity Extension 3 was not initializ=
+ed!<br>[ =C2=A0 27.926902] uvcvideo 2-7:1.0: Entity type for entity Process=
+ing 2 was not initialized!<br>[ =C2=A0 27.926905] uvcvideo 2-7:1.0: Entity =
+type for entity Camera 1 was not initialized!<br><br>This is the happy (and=
+ rare) path; under circumstances I &#39;m not still able to<br>reproduce (u=
+sually after a power-related event, suspend to RAM, shutdown etc.)<br>the c=
+amera stops working, it isn&#39;t listed in libusb and &quot;dmesg | grep -=
+i usb&quot;<br>doesn&#39;t report anything related. When this happens, came=
+ra doesn&#39;t appear<br>neither on Windows and the only way I found to res=
+urrect it is to shutdown the<br>laptop and leave it off for a while.<br><di=
+v><br></div><div>This is probably a power-related problem as it seems like =
+the device isn&#39;t<br>powered up at all in some cases, but I was wonderin=
+g if someone has ever spotted<br>something similar.<br><br>Dimitris<br></di=
+v></div>
 
-Just got a new capture card, Elgato HD60S+, it supports UVC, but
-obviously not supported under Linux (yet?).
-
-For the dmesg:
-usb 2-2: new SuperSpeed Gen 1 USB device number 3 using xhci_hcd
-usb 2-2: LPM exit latency is zeroed, disabling LPM.
-usb 2-2: New USB device found, idVendor=3D0fd9, idProduct=3D006a, bcdDevi=
-ce=3D
-0.00
-usb 2-2: New USB device strings: Mfr=3D1, Product=3D2, SerialNumber=3D4
-usb 2-2: Product: Game Capture HD60 S+
-usb 2-2: Manufacturer: Elgato
-usb 2-2: SerialNumber: 00031D15A8000
-uvcvideo: Unknown video format 30313050-0000-0010-8000-00aa00389b71  <<<
-uvcvideo: Found UVC 1.10 device Game Capture HD60 S+ (0fd9:006a)
-uvcvideo 2-2:1.0: Entity type for entity Processing 2 was not initialized=
-!
-uvcvideo 2-2:1.0: Entity type for entity Input 1 was not initialized!
-input: Game Capture HD60 S+: Game Capt as
-/devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb2/2-2/2-2:1.0/input/inpu=
-t28
-hid-generic 0003:0FD9:006A.0009: hiddev1,hidraw6: USB HID v1.01 Device
-[Elgato Game Capture HD60 S+] on usb-0000:03:00.0-2/input2
-
-Is that some proprietary format not supported?
-
-Thanks,
-Qu
+--000000000000ab7c3c059b6c5eeb--
 
 
---39acKCRaOrl6WOwQMasHpDJRO8EynOtrL--
-
---KOsyD3tah5XJdtxhcOJ44ZLzMK14q38KJ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEELd9y5aWlW6idqkLhwj2R86El/qgFAl3mOEEACgkQwj2R86El
-/qgDhAf/bK3qCCt29C4/4HRVtE6vFHyCxmjfdPYGbApkmUdgSwc+PCfWLXI7/Kza
-/zouUC4W6xkM0+r9q9NWmC+0+wet38EGK8GZxl6J8Xnk+JAtsZInoG4e8q3ReTS3
-OVVKLuD7+Uv+chRuL3ZTs5f5YpTYQIW+61vyHGEsA0vFamMRcBkZA0oqANrREuF6
-EfFaiwuir9pVZOPjN1u9cdkJFxBIBouUiZIkIkAjavjFAb/wO4NYNy51yQxAKyV8
-h7Y8sFEscE+SMJJEcCwjy6JtS9AvQn7SE2ODyRskffJnywNW+ZSDyC5YtS0Xlhwk
-ahzaRlvMvwsdsDbWJIkSb3zjHAJ30w==
-=XKnZ
------END PGP SIGNATURE-----
-
---KOsyD3tah5XJdtxhcOJ44ZLzMK14q38KJ--
-
-
---===============6355978495134696320==
+--===============6415368344307765220==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============6355978495134696320==
+--===============6415368344307765220==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -217,5 +271,5 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---===============6355978495134696320==--
+--===============6415368344307765220==--
 
