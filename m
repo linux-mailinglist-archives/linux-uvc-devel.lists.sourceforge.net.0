@@ -2,91 +2,65 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4676D1315FA
-	for <lists+linux-uvc-devel@lfdr.de>; Mon,  6 Jan 2020 17:24:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1308A1370C5
+	for <lists+linux-uvc-devel@lfdr.de>; Fri, 10 Jan 2020 16:10:40 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1ioVBG-0001PJ-Hf; Mon, 06 Jan 2020 16:24:38 +0000
+	id 1ipvvW-0004OK-Uh; Fri, 10 Jan 2020 15:10:18 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <mandasx@gmail.com>) id 1ioVBE-0001P9-Ce
- for linux-uvc-devel@lists.sourceforge.net; Mon, 06 Jan 2020 16:24:36 +0000
+ (envelope-from <d.jacobi@solpeg.de>) id 1ipvvU-0004OC-UU
+ for linux-uvc-devel@lists.sourceforge.net; Fri, 10 Jan 2020 15:10:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Date:Message-ID:Subject:
+ From:To:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=1sVXZLS9INV+sefq8EJ6YiC8jBwxKQoADwdwgiEm9oU=; b=eRkDi9F/Tf+aQl72dOBiQqvxqA
- Jfof1MStcslu+Lsr4hipWDlM6Oh7DQLQvFsPIypQlRSExLaRFqtiVJAQTniKSA6d1DOXNfHNMHoH+
- BayEro1+KWNbz1xYisNplYyzVnxA/yUU5zA/rt7EMnu5RGUAOKB5J4GwFJt174OmucUg=;
+ bh=BZg2E8HTaa4e36kA+Yqd7R0QGvv+wWwOhR0Gi3KGaJE=; b=BwGfYXnFrzUjFzKh++A8v/8IMH
+ D9V+gyNGLvyg7qfi2uinVKDaKN3sMPAPErSP7uwkTyGyBpZ6mMPwWrbr3p7px18/rncVdJZBzeJrm
+ rYdd5fYHcaBe4ILEdE4USkdVaTzjK1ZVFhFi1iheRUA1LA2WUQTfqGDbgjNuDbYU/vsM=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ h=Content-Type:MIME-Version:Date:Message-ID:Subject:From:To:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=1sVXZLS9INV+sefq8EJ6YiC8jBwxKQoADwdwgiEm9oU=; b=O
- oDCteizetg2wLiHSo+uFNR6u9WdK4GVoe/kpEbrxrfGien4kTXvul0xl1nD0SDUzs/IZVqhGm9SEE
- Dt0zPGW4M6bGS/qXJYEuC8pZ1GZ0KP5mYie/sKor76Nvi9kAzXqJ5Qfd23IrtR+3shxDU+dKJP91Z
- SC+w3ITnFa+r3J0k=;
-Received: from mail-qv1-f47.google.com ([209.85.219.47])
+ List-Owner:List-Archive; bh=BZg2E8HTaa4e36kA+Yqd7R0QGvv+wWwOhR0Gi3KGaJE=; b=k
+ vonyBPa+iF+kOGa7uGWCi99e1FhLoEvp6TMrVhVts5nA46STLLeBPIHtpnIUxB9sYqbhmMJ6r78tz
+ 9yRCofX19gSQXlp3o3ua2N/AxqdtahhvbV6MtO/TFWUe5Ar97bw623FLM9f42sBWJiFSznKMfdTPq
+ PnH7Qx9b2Cyw+XgM=;
+Received: from dsp1.rb-host.de ([91.211.112.206])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1ioVB9-00CR11-Gy
- for linux-uvc-devel@lists.sourceforge.net; Mon, 06 Jan 2020 16:24:36 +0000
-Received: by mail-qv1-f47.google.com with SMTP id x1so19243066qvr.8
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1ipvvS-00H1mJ-SP
+ for linux-uvc-devel@lists.sourceforge.net; Fri, 10 Jan 2020 15:10:16 +0000
+Received: from dsp1.rb-host.de (localhost.localdomain [127.0.0.1])
+ by dsp1.rb-host.de (Proxmox) with ESMTP id C36E0C2279
  for <linux-uvc-devel@lists.sourceforge.net>;
- Mon, 06 Jan 2020 08:24:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=1sVXZLS9INV+sefq8EJ6YiC8jBwxKQoADwdwgiEm9oU=;
- b=CcxF5SXQzjMcKQLCJWcBSZPIAJO2KdRYvwt9NsYcfznTR03ZAvfFwPgrEhYYRADuKw
- TCLthDi19lfIdCKKk45BdEyIUnCpXFZxO295Nhxa4AwX7i9GDcHzQLEZG8ws0/TKQDtu
- x1BhhH477nC+dPt7i1uF0GJHwnjLFdaaIWF40aU3fF2leru68tZucUc2CVwbL/Ssqi2l
- e/Cneh4d23Hhif+11ogP9gEFiqq1+DNNr+06utexbL60i2twFtV/TtmtoqPaxs24zLOW
- j8p+mJb8HJojb2pQFlpGp6nR2/RuxnRlJgY3YDmJipPcGkRdmyPUxTWYdp21h2nGOtJL
- f7Kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=1sVXZLS9INV+sefq8EJ6YiC8jBwxKQoADwdwgiEm9oU=;
- b=sXzwn1MTmvMk6QcRNavPfIUzyS2K6JDXuWRz4DSn26AI72wzpulvR6AO548RDeIwwZ
- QTmQim2kp9RZ1kQSBQhfSWtaV2lZzuwrAlKTKafy85p8MgJvdSrnFELb19K3MF0Wydp/
- NUuupsbNfFCi+QuSABmTWH3yRcsbH0b0al+o1tfUEnF+f6dLBDAgmcwJbgWF1w76kaKm
- O9BNOQ4W2WuTLWuX+oAMYvI/QSVKCbIwr/IdAoWh5M54pig7c65x8xwSDGFU22JC9d2D
- HGJL/bf5DfT9IqxEi/pdPGEUGX5W7UvowuAYyrDv+ByLLNKPZdTTjyVl/1r+HNW0t9IF
- Yysw==
-X-Gm-Message-State: APjAAAUZ3iy8VbVE/YEKitp1KuCFOTJXotTJH4pVhYqcheZ9M1VNYl5t
- XFkA1IoQOdtKDtEjYn7LowylnyAFIU2F9ifAXpyCwWGs
-X-Google-Smtp-Source: APXvYqwLThU1njBDtXfgJbd9/tJfZgSiIkhsoAWG6AcCVvJAKgir9wSadWukF7oGxSSuEwTf//JVDr7UjREQJ/T/LwA=
-X-Received: by 2002:a0c:c68a:: with SMTP id d10mr80793594qvj.126.1578327865249; 
- Mon, 06 Jan 2020 08:24:25 -0800 (PST)
-MIME-Version: 1.0
-From: Dimitris Mandalidis <mandasx@gmail.com>
-Date: Mon, 6 Jan 2020 18:24:14 +0200
-Message-ID: <CAE3YyDRG_iDnjzWBLzATRonV3Z2EeO6QwQgNeYAfMDiTpHSrXw@mail.gmail.com>
+ Fri, 10 Jan 2020 15:51:04 +0100 (CET)
 To: linux-uvc-devel@lists.sourceforge.net
-X-Spam-Score: 0.9 (/)
+From: Dieko Jacobi <d.jacobi@solpeg.de>
+Message-ID: <f97bf8f1-f878-7879-63cc-ef0f20510c84@solpeg.de>
+Date: Fri, 10 Jan 2020 15:51:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
+MIME-Version: 1.0
+Content-Language: en-US
+X-Virus-Scanned: clamav-milter 0.101.4 at mail-s3.rb-host.de
+X-Virus-Status: Clean
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (mandasx[at]gmail.com)
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.219.47 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ trust [91.211.112.206 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  1.0 HTML_MESSAGE           BODY: HTML included in message
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 0.0 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1ioVB9-00CR11-Gy
-Subject: [linux-uvc-devel] Logitech C170 webcam
+X-Headers-End: 1ipvvS-00H1mJ-SP
+Subject: [linux-uvc-devel] Support for Samsung VG-STC4000 Webcam
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,67 +72,137 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4672171083443604302=="
+Content-Type: multipart/mixed; boundary="===============3623812555481961002=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
---===============4672171083443604302==
-Content-Type: multipart/alternative; boundary="000000000000bf6fd3059b7b17cb"
+This is a multi-part message in MIME format.
+--===============3623812555481961002==
+Content-Type: multipart/alternative;
+ boundary="------------A4FAAF65AF77BFE32CC1CF3A"
+Content-Language: en-US
 
---000000000000bf6fd3059b7b17cb
-Content-Type: text/plain; charset="UTF-8"
+This is a multi-part message in MIME format.
+--------------A4FAAF65AF77BFE32CC1CF3A
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-Hi,
+Hallo,
 
-This is to report that :
+I have a Samsung VG-STC4000 Webcam and it seems the device is not 
+supported. How can I get it to work?
 
-"ID 046d:082b Logitech, Inc. Webcam C170"
+4 years ago or so Samsung produced this camera for their smart TVs in 
+order to support video conferencing with Microsoft skype.
+Since Microsoft ended the support for skype on samsung TVs, the skype 
+app is no longer available and the webcam device ist useless.
 
-is supported by the uvc driver.
+I try to avoid sending the device into trash...
 
-Default support comes with pretty low frame rate (device reportedly
-supports 30gps). This can be worked around through:
+When I plug the device I get this info with lsusb:
 
-/usr/bin/v4l2-ctl -c exposure_auto_priority=0 # if your device is
-/dev/video0
+ID 04e8:2061 Samsung Electronics Co., Ltd
 
-or permanently through the following udev rule:
+dmesg:
 
-ACTION=="add", SUBSYSTEM=="video4linux", SUBSYSTEMS=="usb",
-ATTRS{idVendor}=="046d", ATTRS{idProduct}=="082b", RUN+="/usr/bin/v4l2-ctl
--d /dev/%k -c exposure_auto_priority=0"
+[Fr Jan 10 15:41:12 2020] usb 1-7: new high-speed USB device number 9 
+using ehci-pci
+[Fr Jan 10 15:41:12 2020] usb 1-7: New USB device found, idVendor=04e8, 
+idProduct=2061
+[Fr Jan 10 15:41:12 2020] usb 1-7: New USB device strings: Mfr=1, 
+Product=2, SerialNumber=0
+[Fr Jan 10 15:41:12 2020] usb 1-7: Product: USB2.0 UVC HQ WebCam
+[Fr Jan 10 15:41:12 2020] usb 1-7: Manufacturer: Alpha Imaging Tech. Corp.
+[Fr Jan 10 15:41:12 2020] uvcvideo: Found UVC 1.00 device USB2.0 UVC HQ 
+WebCam (04e8:2061)
+[Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity 
+Extension 2 was not initialized!
+[Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity 
+Extension 6 was not initialized!
+[Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity 
+Extension 5 was not initialized!
+[Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity 
+Processing 3 was not initialized!
+[Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity 
+Camera 1 was not initialized!
+[Fr Jan 10 15:41:12 2020] input: USB2.0 UVC HQ WebCam as 
+/devices/pci0000:00/0000:00:04.1/usb1/1-7/1-7:1.0/input/input19
 
-Kind regards,
-Dimitris
-
---000000000000bf6fd3059b7b17cb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div><br></div><div>This is to report that :=C2=A0</div=
-><div><br></div><div>&quot;ID 046d:082b Logitech, Inc. Webcam C170&quot;<br=
-></div><div><br></div><div>is supported by the uvc driver.</div><div><br></=
-div><div>Default support comes with pretty low frame rate (device reportedl=
-y supports 30gps). This can be worked around through:</div><div><br></div><=
-div>/usr/bin/v4l2-ctl -c exposure_auto_priority=3D0 # if your device is /de=
-v/video0<br></div><div><br></div><div>or permanently through the following =
-udev rule:</div><div><br></div><div>ACTION=3D=3D&quot;add&quot;, SUBSYSTEM=
-=3D=3D&quot;video4linux&quot;, SUBSYSTEMS=3D=3D&quot;usb&quot;, ATTRS{idVen=
-dor}=3D=3D&quot;046d&quot;, ATTRS{idProduct}=3D=3D&quot;082b&quot;, RUN+=3D=
-&quot;/usr/bin/v4l2-ctl -d /dev/%k -c exposure_auto_priority=3D0&quot;<br><=
-/div><div><br></div><div>Kind regards,</div><div>Dimitris</div><div><br></d=
-iv><div><br></div><div><br></div></div>
-
---000000000000bf6fd3059b7b17cb--
+Thanks for your support !
 
 
---===============4672171083443604302==
+--------------A4FAAF65AF77BFE32CC1CF3A
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <font face="Helvetica, Arial, sans-serif">Hallo,<br>
+      <br>
+      I have a Samsung VG-STC4000 Webcam and it seems the device is not
+      supported. How can I get it to work?<br>
+      <br>
+      4 years ago or so Samsung produced this camera for their smart TVs
+      in order to support video conferencing with Microsoft skype.<br>
+      Since Microsoft ended the support for skype on samsung TVs, the
+      skype app is no longer available and the webcam device ist
+      useless.<br>
+      <br>
+      I try to avoid sending the device into trash...<br>
+      <br>
+      When I plug the device I get this info with lsusb:<br>
+      <br>
+      ID 04e8:2061 Samsung Electronics Co., Ltd<br>
+      <br>
+      dmesg:<br>
+      <br>
+      [Fr Jan 10 15:41:12 2020] usb 1-7: new high-speed USB device
+      number 9 using ehci-pci<br>
+      [Fr Jan 10 15:41:12 2020] usb 1-7: New USB device found,
+      idVendor=04e8, idProduct=2061<br>
+      [Fr Jan 10 15:41:12 2020] usb 1-7: New USB device strings: Mfr=1,
+      Product=2, SerialNumber=0<br>
+      [Fr Jan 10 15:41:12 2020] usb 1-7: Product: USB2.0 UVC HQ WebCam<br>
+      [Fr Jan 10 15:41:12 2020] usb 1-7: Manufacturer: Alpha Imaging
+      Tech. Corp.<br>
+      [Fr Jan 10 15:41:12 2020] uvcvideo: Found UVC 1.00 device USB2.0
+      UVC HQ WebCam (04e8:2061)<br>
+      [Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity
+      Extension 2 was not initialized!<br>
+      [Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity
+      Extension 6 was not initialized!<br>
+      [Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity
+      Extension 5 was not initialized!<br>
+      [Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity
+      Processing 3 was not initialized!<br>
+      [Fr Jan 10 15:41:12 2020] uvcvideo 1-7:1.0: Entity type for entity
+      Camera 1 was not initialized!<br>
+      [Fr Jan 10 15:41:12 2020] input: USB2.0 UVC HQ WebCam as
+      /devices/pci0000:00/0000:00:04.1/usb1/1-7/1-7:1.0/input/input19<br>
+      <br>
+      Thanks for your support !</font><br>
+    <div class="moz-signature">
+      <div style="font-size: 12.0pt; font-family: Garamond,Times,serif"><br>
+      </div>
+    </div>
+  </body>
+</html>
+
+--------------A4FAAF65AF77BFE32CC1CF3A--
+
+
+
+--===============3623812555481961002==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============4672171083443604302==
+--===============3623812555481961002==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -169,5 +213,6 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---===============4672171083443604302==--
+--===============3623812555481961002==--
+
 
