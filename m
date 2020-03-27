@@ -2,81 +2,69 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EFBF18F6C4
-	for <lists+linux-uvc-devel@lfdr.de>; Mon, 23 Mar 2020 15:25:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64803196040
+	for <lists+linux-uvc-devel@lfdr.de>; Fri, 27 Mar 2020 22:12:34 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jGO0I-0005vD-Kt; Mon, 23 Mar 2020 14:24:34 +0000
+	id 1jHwGv-00044q-Ov; Fri, 27 Mar 2020 21:12:09 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <dominik@greysector.net>) id 1jGO0G-0005uj-JI
- for linux-uvc-devel@lists.sourceforge.net; Mon, 23 Mar 2020 14:24:32 +0000
+ (envelope-from <arnaud@sphaero.org>) id 1jHwGu-00044S-IK
+ for linux-uvc-devel@lists.sourceforge.net; Fri, 27 Mar 2020 21:12:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Date:Message-ID:Subject:From:To:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=b8wbPxgdnNZquf2y+On7QShKcwckA6w0qTNLiMLjyYs=; b=YUdZ2Zh818nl7rjWc1A78le5LP
- 5hBof1kdJzNtVUl2/S+c2+0imtYriFhmHj3jgbbLTHPIUMl6KRBvmuOlG28xZuxwllqJta9wndFcj
- gHfR+vhC1J4xhYLKPH+ulGyvzOe8N0x7ia9xdeTPtc55k1gImcMTKlqaC3x5cTA1Wx+w=;
+ bh=ck2eCbosb1aiB2vzk6pmCKgNA5Sz7iP5jqbfWS8Y3BE=; b=KsmI2X8nxInlDjkKLqMQssVFSv
+ qYc/10YXJzXhb2ppee6v171BkbqU57Zig57UAK8kwj0jfCD0oq+F96wRhBOfwLKrScGSYqd4ZQQMV
+ OMPJ6XzJPz5MxsimtmZv0Tf+F+80shROn7l/a+NCPI06gCNmRAMhFZyhxUaKkJN6W/xs=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=b8wbPxgdnNZquf2y+On7QShKcwckA6w0qTNLiMLjyYs=; b=LIbWjwFcb3cKFdc4XyPBY9/pim
- K5xkoiJsdspHpwJrLcgJubATwwADH1fSSD9UWjX4wkxrpKD2gJYzV3CSA+DMGxTAoslk8Bz/SnW06
- A+t4OLjj/ULIncwvhiEJ+bSg0NmQ7dV9FbzE1ZRoBSnRuDrew7CcJX2ZMgziDk9QB8qI=;
-Received: from arashi.greysector.net ([51.68.141.79])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-ID:
+ Subject:From:To:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=ck2eCbosb1aiB2vzk6pmCKgNA5Sz7iP5jqbfWS8Y3BE=; b=C
+ I/ESRF41X3wTwq3zfimcWhm9od+Z3XMNCLCThCt2fVNKZQvvcuN/Rv6gvp3hHu6JjuyYM+9U9/TyR
+ 4LemfAznQ8AJz0rB29k2V67m0XgqbTX57jtNq4oWwk95skfaFf0F5WejhqHbk6rwSozAuolJtaYw1
+ bMF0JynwBpmsg7Zs=;
+Received: from lb1-smtp-cloud8.xs4all.net ([194.109.24.21])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jGO04-004dWv-00
- for linux-uvc-devel@lists.sourceforge.net; Mon, 23 Mar 2020 14:24:32 +0000
-Received: from sakura.greysector.net (unknown [212.180.189.198])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by arashi.greysector.net (Postfix) with ESMTPSA id 371192595;
- Mon, 23 Mar 2020 15:24:09 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.11.0 arashi.greysector.net 371192595
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greysector.net;
- s=default; t=1584973449;
- bh=b8wbPxgdnNZquf2y+On7QShKcwckA6w0qTNLiMLjyYs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=m9UrIo05VbW9rTiClbZR4/neW9kqoCHfp3FbvRSI9S+dhJHRe4h402YENmMdnTAZs
- wxlGsJT1TPDE00bPX2HSSbeX5vY0jLWK7z8Qc1GZ6RPvYCnbu1qoXJMuDvYC/YP4YA
- ho4jk5x/7TWi+ooeDVC0a4IuATMqgJdfJ0BTQPGw=
-Date: Mon, 23 Mar 2020 15:24:08 +0100
-From: Dominik 'Rathann' Mierzejewski <dominik@greysector.net>
+ id 1jHwGo-003Mj2-Sd
+ for linux-uvc-devel@lists.sourceforge.net; Fri, 27 Mar 2020 21:12:07 +0000
+Received: from aloy.sphaero.org ([IPv6:2001:984:3b1f:0:a06e:76ff:fe2e:d0f4])
+ by smtp-cloud8.xs4all.net with ESMTP
+ id Hw0Gjxu5TBr2bHw0IjSpZ7; Fri, 27 Mar 2020 21:54:58 +0100
+Received: from [192.168.18.104] (unknown [192.168.18.254])
+ by aloy.sphaero.org (Postfix) with ESMTPSA id D9CDF8600AD
+ for <linux-uvc-devel@lists.sourceforge.net>;
+ Fri, 27 Mar 2020 20:54:56 +0000 (UTC)
 To: linux-uvc-devel@lists.sourceforge.net
-Message-ID: <20200323142408.GB6457@sakura.greysector.net>
-References: <20200319233726.GB14098@sakura.greysector.net>
+From: Arnaud Loonstra <arnaud@sphaero.org>
+Message-ID: <3b558a44-7e34-335e-0db9-8fde14c00729@sphaero.org>
+Date: Fri, 27 Mar 2020 21:54:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200319233726.GB14098@sakura.greysector.net>
-X-Spam-Score: -0.3 (/)
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfC5IvN8qvhGsqgEcry6oPok5cfNW10wxDqHSuFbX0hAKlLhkH2S3Jh9Jd3UZyK3nDAxT+wIO/MVUZKYpG4aFvkfEvrIogoIlvrNufEGm48mnzzz1w32O
+ wNBM+N4qKhmH0vAT8hXZVjtZFccgTm8EJtCUZnUvwWixc5blrfaxwb6AQ2zAqwA3txWnlX9a5Sr8L3gBVK0nTvhSNNoCJRwfOlF0ofXaEO4rsTVBl8JK+19j
+ VodQs6CYCWAWr82m5/BiJg==
+X-Spam-Score: 0.7 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: getfedora.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [194.109.24.21 listed in wl.mailspike.net]
+ 0.7 SPF_NEUTRAL            SPF: sender does not match SPF record (neutral)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- -0.2 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jGO04-004dWv-00
-Subject: Re: [linux-uvc-devel] video corruption when capturing MJPEG from a
- Chicony device
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1jHwGo-003Mj2-Sd
+Subject: [linux-uvc-devel] Chicony 04f2:b35a webcam found but not working
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,1092 +76,169 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-usb@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-Cc'ing the general USB dev list, too, since I see many UVC-related
-messages.
+I'm not sure how to proceed so bare with me.
 
-On Friday, 20 March 2020 at 00:37, Dominik 'Rathann' Mierzejewski wrote:
-> Dear list,
-> I'm experiencing video corruption when capturing in MJPEG format.
-> There are no issues when capturing in YUV format, though. The problem
-> is, one proprietary application I care about (Zoom) captures in MJPEG
-> format with no option to change the format.
-> 
-> I'm attaching kernel log and USB descriptors according to the FAQ.
-> 
-> The device is a webcam made by Chicony built into a Sony Vaio Pro 13:
-> 04f2:b42a Chicony Electronics Co., Ltd Front Camera
-> 
-> I'm running Fedora 31 with kernel-5.5.9-200.fc31.x86_64.
+A internal camera on a BTO notebook isn't working (anymore?)
 
-[...]
+Bus 003 Device 005: ID 04f2:b35a Chicony Electronics Co., Ltd Chicony 
+USB 2.0 Camera
 
-> Mar 18 19:06:59 kernel: uvcvideo: Found UVC 1.00 device Front Camera (04f2:b42a)
-> Mar 18 19:06:59 kernel: uvcvideo 2-5:1.0: Entity type for entity Extension 4 was not initialized!
-> Mar 18 19:06:59 kernel: uvcvideo 2-5:1.0: Entity type for entity Processing 2 was not initialized!
-> Mar 18 19:06:59 kernel: uvcvideo 2-5:1.0: Entity type for entity Camera 1 was not initialized!
-> Mar 18 19:06:59 kernel: usbcore: registered new interface driver uvcvideo
-> Mar 19 18:47:02 kernel: uvcvideo: Failed to resubmit video URB (-1).
-> Mar 20 00:04:28 kernel: uvcvideo: uvc_v4l2_poll
-[...cut repeated lines...]
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: Trying format 0x47504a4d (MJPG): 1280x720.
-> Mar 20 00:05:06 kernel: uvcvideo: Using default frame interval 33333.3 us (30.0 fps).
-> Mar 20 00:05:06 kernel: uvcvideo: Setting frame interval to 1/30 (333333).
-> Mar 20 00:05:06 kernel: uvcvideo: Allocated 5 URB buffers of 32x512 bytes each.
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:06 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:06 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:06 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:06 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:06 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:06 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:06 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:06 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:06 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:06 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 1 stats: 0/7/7 packets, 2/6/3 pts (!early !initial), 3/4 scr, last pts/stc/sof 1080667737/1081109155/1120
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 2 stats: 0/4/4 packets, 2/2/3 pts (!early initial), 1/2 scr, last pts/stc/sof 4254895424/295053435/14593
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 3 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 4 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1081671070/1082112273/1186
-> Mar 20 00:05:07 kernel: uvcvideo: frame 5 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1082674404/1082781651/1231
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 6 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3045564012/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 7 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3045564012/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 8 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1905900649/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 9 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3876851368/3611853841/36164
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 10 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1082674404/1083115394/1253
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 11 stats: 0/3/3 packets, 2/2/3 pts (!early initial), 2/3 scr, last pts/stc/sof 2165387471/3194731920/7324
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 12 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3514540835/2981125202/43420
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-[...cut repeated lines...]
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 13 stats: 0/3/3 packets, 1/2/2 pts (!early !initial), 2/3 scr, last pts/stc/sof 1083677737/1084118522/1320
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 14 stats: 0/3/3 packets, 1/2/2 pts (!early initial), 1/2 scr, last pts/stc/sof 3553530643/3739368529/17508
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 15 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/0 scr, last pts/stc/sof 3298219740/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 16 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1084681071/1085121648/1387
-> Mar 20 00:05:07 kernel: uvcvideo: frame 17 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1085684404/1085792898/1432
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 18 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1117563421/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 19 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1117563421/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 20 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 2036765561/2452031280/53809
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 21 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 450152333/51499414/57140
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 22 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 450152333/51499414/57140
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 23 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 1085684404/1086124766/1454
-> Mar 20 00:05:07 kernel: uvcvideo: frame 24 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1086687737/1086792277/1498
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 25 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2073305673/14007
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 26 stats: 0/3/3 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 2278846954/602916792/57714
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 27 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 28 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1542608331/42640
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 29 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1086687737/1087127896/1521
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 30 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1086687737/1087127896/1521
-> Mar 20 00:05:07 kernel: uvcvideo: frame 31 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1087691070/1087797280/1565
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 32 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3523820119/2393982695/27784
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 33 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3523820119/2393982695/27784
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 34 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3430147492/18861
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 35 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 769796283/969775396/64313
-> Mar 20 00:05:07 kernel: uvcvideo: frame 36 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 37 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 38 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1087691070/1088131024/1588
-> Mar 20 00:05:07 kernel: uvcvideo: frame 39 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 1/2 scr, last pts/stc/sof 1088694404/1335461640/20225
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 40 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 2979525220/1567986974/23246
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 41 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 2979525220/1567986974/23246
-> Mar 20 00:05:07 kernel: uvcvideo: frame 42 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/1 scr, last pts/stc/sof 3867736255/1457685410/63904
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 43 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2331652098/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 44 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2331652098/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 45 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1088694404/1089134151/1655
-> Mar 20 00:05:07 kernel: uvcvideo: frame 46 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1089697737/1089803533/1699
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 47 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 779472569/2724489321/56158
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 48 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 216557142/3194446899/32005
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 49 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2289691821/50798
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 50 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2289691821/50798
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 51 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 824431576/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 52 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1089697737/1090139151/1722
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 53 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1089697737/1090139151/1722
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 54 stats: 0/4/4 packets, 0/0/1 pts (!early initial), 1/2 scr, last pts/stc/sof 1090701071/3066652851/59470
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 55 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/1 scr, last pts/stc/sof 2712114081/555462424/11926
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 56 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1090701071/1091140403/1788
-> Mar 20 00:05:07 kernel: uvcvideo: frame 57 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1091704404/1091809789/1833
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 58 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3102026003/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 59 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3102026003/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 60 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 61 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1249078485/1253103789/56583
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 62 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 63 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1091704404/1092143534/1855
-> Mar 20 00:05:07 kernel: uvcvideo: frame 64 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 3240772983/1615087627/43922
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 65 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/233056466/27798
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 66 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/233056466/27798
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 67 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2612651636/43750
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 68 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1198305580/2612651636/43750
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 69 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2451969851/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 70 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1092707737/1093148539/1922
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 71 stats: 0/3/3 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1513744115/1700274619/20475
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 72 stats: 0/3/3 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1827046145/62971
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 73 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1093711070/1094151669/1989
-> Mar 20 00:05:07 kernel: uvcvideo: frame 74 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 1/2 scr, last pts/stc/sof 1094714404/3558562323/28272
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 75 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 76 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 77 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2423469945/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 78 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1874983000/0/0
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 79 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1094714404/1095154801/8
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 80 stats: 0/3/3 packets, 2/2/3 pts (!early initial), 0/1 scr, last pts/stc/sof 2128664654/1095822314/52
-> Mar 20 00:05:07 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: frame 81 stats: 0/3/3 packets, 1/2/2 pts (!early !initial), 2/3 scr, last pts/stc/sof 2169243177/1161688257/58738
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:07 kernel: uvcvideo: frame 82 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1095717737/1096157932/75
-> Mar 20 00:05:07 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:07 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 83 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1095717737/1096157932/75
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 84 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/1 scr, last pts/stc/sof 3569820305/1096827318/119
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 85 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 701890815/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: frame 86 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 87 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 88 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 89 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 1096721071/1097161061/142
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 90 stats: 0/3/3 packets, 2/2/3 pts (!early initial), 1/2 scr, last pts/stc/sof 2509915153/207000323/41312
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 91 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1087037345/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 92 stats: 0/3/3 packets, 2/2/3 pts (!early initial), 1/2 scr, last pts/stc/sof 3132381983/3371277579/14214
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 93 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1097724404/1098164194/209
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 94 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1097724404/1098164194/209
-> Mar 20 00:05:08 kernel: uvcvideo: frame 95 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1098727737/1098833581/253
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 96 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 124512882/3431466699/50899
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 97 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 124512882/3431466699/50899
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 98 stats: 0/3/3 packets, 0/0/0 pts (!early !initial), 1/2 scr, last pts/stc/sof 0/2881076383/50339
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 99 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3175509382/57910
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 100 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1098727737/1099169200/276
-> Mar 20 00:05:08 kernel: uvcvideo: frame 101 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1099731070/1099836711/320
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 102 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2239961436/48744
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 103 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1456365130/2239961436/48744
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 104 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 105 stats: 0/4/4 packets, 2/3/3 pts (!early !initial), 1/2 scr, last pts/stc/sof 1099731070/1100170453/342
-> Mar 20 00:05:08 kernel: uvcvideo: frame 106 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1100734404/1100839841/387
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 107 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3799617706/1426345149/7996
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 108 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3799617706/1426345149/7996
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 109 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 4181783523/1755205297/41837
-> Mar 20 00:05:08 kernel: uvcvideo: frame 110 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 4181783523/1755205297/41837
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 111 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 112 stats: 0/3/3 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 113 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1100734404/1101173584/409
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 114 stats: 0/3/3 packets, 1/2/2 pts (!early initial), 2/3 scr, last pts/stc/sof 1563122848/2447559954/42764
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 115 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 116 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 1101737737/1102178585/476
-> Mar 20 00:05:08 kernel: uvcvideo: frame 117 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1102741071/1102846090/521
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 118 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/4164310673/15179
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 119 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/4164310673/15179
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 120 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/1 scr, last pts/stc/sof 1599338826/812860298/20686
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 121 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3950466213/2666519112/52682
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 122 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 1102741071/1103179835/543
-> Mar 20 00:05:08 kernel: uvcvideo: frame 123 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1103744404/1103849222/588
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 124 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3401260404/62181
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 125 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3401260404/62181
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 126 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2055705025/8034
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 127 stats: 0/5/5 packets, 2/4/3 pts (!early !initial), 4/5 scr, last pts/stc/sof 1103744404/1104184841/610
-> Mar 20 00:05:08 kernel: uvcvideo: frame 128 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1104747737/1104852352/654
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 129 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 970317305/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 130 stats: 0/5/5 packets, 2/4/3 pts (!early initial), 1/2 scr, last pts/stc/sof 3305558780/1887624192/9002
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 131 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1104747737/1105187973/677
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 132 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 2197887185/2242411934/43625
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 133 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 2115364547/3239080216/6821
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 134 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2957615794/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 135 stats: 0/3/3 packets, 1/2/2 pts (!early initial), 0/1 scr, last pts/stc/sof 1105751070/1106191101/744
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 136 stats: 0/7/7 packets, 3/6/4 pts (!early initial), 4/5 scr, last pts/stc/sof 1106754404/1107194231/811
-> Mar 20 00:05:08 kernel: uvcvideo: frame 137 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1107757737/1107863615/855
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 138 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3950309835/21049
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 139 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3950309835/21049
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 140 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1828285578/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 141 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1828285578/617984761/27859
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 142 stats: 0/0/0 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 143 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3668470870/3375252858/11228
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 144 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1107757737/1108199232/878
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 145 stats: 0/3/3 packets, 1/2/2 pts (!early initial), 2/3 scr, last pts/stc/sof 2876225626/853445806/63314
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 146 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1305192272/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 147 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1305192272/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 148 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3564772231/19772
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 149 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3564772231/19772
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 150 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2985580092/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 151 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1108761071/1109200487/944
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 152 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1108761071/1109200487/944
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 153 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 309449746/917656453/55409
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 154 stats: 0/4/4 packets, 1/2/2 pts (!early !initial), 2/3 scr, last pts/stc/sof 1965761505/2402964041/49242
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 155 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1109764404/1110203616/1011
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:08 kernel: uvcvideo: frame 156 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1109764404/1110203616/1011
-> Mar 20 00:05:08 kernel: uvcvideo: frame 157 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1110767737/1110874877/1056
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 158 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 159 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 160 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 1/2 scr, last pts/stc/sof 0/3661737668/13062
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:08 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:08 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:08 kernel: uvcvideo: frame 161 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1544214573/6054
-> Mar 20 00:05:08 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 162 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1110767737/1111208620/1078
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 163 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/1 scr, last pts/stc/sof 3297109490/1111879882/1123
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 164 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 165 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 166 stats: 0/3/3 packets, 1/2/2 pts (!early !initial), 1/2 scr, last pts/stc/sof 1111771070/1112211750/1145
-> Mar 20 00:05:09 kernel: uvcvideo: frame 167 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1112774404/1112883009/1190
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 168 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3665396306/2446668458/21104
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 169 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3665396306/2446668458/21104
-> Mar 20 00:05:09 kernel: uvcvideo: frame 170 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2665078972/56117
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 171 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 172 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1750820204/46012
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 173 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 1112774404/1113214877/1212
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 174 stats: 0/4/4 packets, 1/2/2 pts (!early initial), 1/2 scr, last pts/stc/sof 3936996058/670340121/44274
-> Mar 20 00:05:09 kernel: uvcvideo: frame 175 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 176 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1113777737/1114218007/1279
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 177 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1113777737/1114218007/1279
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 178 stats: 0/3/3 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1251669477/2329230767/7502
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 179 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/816737346/62159
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 180 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/816737346/62159
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 181 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 182 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1750388103/44745
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 183 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1114781071/1115221135/1346
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 184 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1266211186/650362384/14508
-> Mar 20 00:05:09 kernel: uvcvideo: frame 185 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3809791923/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 186 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 887378220/2046669931/23726
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 187 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 887378220/2046669931/23726
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 188 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/3492263727/17239
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 189 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1115784404/1116224265/1413
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 190 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1115784404/1116224265/1413
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 191 stats: 0/3/3 packets, 1/2/2 pts (!early initial), 1/2 scr, last pts/stc/sof 737335039/4036685169/18081
-> Mar 20 00:05:09 kernel: uvcvideo: frame 192 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1364885077/3541719946/64590
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 193 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 4224784931/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 194 stats: 0/3/3 packets, 1/2/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1116787737/1117227389/1479
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 195 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1117791070/1117896777/1524
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 196 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 4115239475/325228837/48269
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 197 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 0/1 scr, last pts/stc/sof 2973787157/325228837/48269
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 198 stats: 0/3/3 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 1117791070/1118230521/1546
-> Mar 20 00:05:09 kernel: uvcvideo: frame 199 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1118794404/1118901781/1591
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 200 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1428288380/47983
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 201 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1428288380/47983
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 202 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3201179575/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 203 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2942030441/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 204 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 1/2 scr, last pts/stc/sof 1118794404/1119233649/1613
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 205 stats: 0/6/6 packets, 2/5/3 pts (!early initial), 4/5 scr, last pts/stc/sof 1119797737/1120236779/1680
-> Mar 20 00:05:09 kernel: uvcvideo: frame 206 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1120801071/1120906160/1725
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 207 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/2112540925/255
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 208 stats: 0/2/2 packets, 0/0/1 pts (!early !initial), 0/1 scr, last pts/stc/sof 2972569201/2112540925/255
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 209 stats: 0/4/4 packets, 1/3/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1120801071/1121241779/1747
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 210 stats: 0/4/4 packets, 2/3/3 pts (!early initial), 2/3 scr, last pts/stc/sof 1248566804/2240644317/55148
-> Mar 20 00:05:09 kernel: uvcvideo: frame 211 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3394535116/3362929871/37867
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 212 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 3210823653/1303275830/40292
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 213 stats: 0/2/2 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 1121804404/1122244908/1814
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 214 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1122807737/1122912417/1858
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 215 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/137849125/15955
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 216 stats: 0/4/4 packets, 0/0/0 pts (!early !initial), 1/2 scr, last pts/stc/sof 0/2883335747/50481
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 217 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1122807737/1123248034/1881
-> Mar 20 00:05:09 kernel: uvcvideo: frame 218 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1123811070/1123915547/1925
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 219 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 220 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 221 stats: 0/3/3 packets, 1/1/2 pts (!early initial), 1/2 scr, last pts/stc/sof 3061339524/1940076319/46038
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 222 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/0 scr, last pts/stc/sof 0/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 223 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1123811070/1124251166/1948
-> Mar 20 00:05:09 kernel: uvcvideo: frame 224 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1124814404/1124920551/1992
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 225 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3342358046/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 226 stats: 0/3/3 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 3342358046/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 227 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 2039919655/1326449687/63751
-> Mar 20 00:05:09 kernel: uvcvideo: frame 228 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 2039919655/1326449687/63751
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 229 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1327085941/4119636894/13333
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 230 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1327085941/4119636894/13333
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 231 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1124814404/1125254296/2015
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: frame 232 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1124814404/1125254296/2015
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:09 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:09 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 233 stats: 0/3/3 packets, 0/0/1 pts (!early initial), 2/3 scr, last pts/stc/sof 1125817737/1070747337/55039
-> Mar 20 00:05:09 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:09 kernel: uvcvideo: frame 234 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 917239201/0/0
-> Mar 20 00:05:09 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:10 kernel: uvcvideo: Dropping payload (out of sync).
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: frame 235 stats: 0/3/3 packets, 2/2/3 pts (!early initial), 1/2 scr, last pts/stc/sof 1125817737/1126257425/33
-> Mar 20 00:05:10 kernel: uvcvideo: frame 236 stats: 0/2/2 packets, 0/0/1 pts (!early initial), 1/2 scr, last pts/stc/sof 1126821071/1554518250/60470
-> Mar 20 00:05:10 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:10 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:10 kernel: uvcvideo: frame 237 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1486708980/0/0
-> Mar 20 00:05:10 kernel: uvcvideo: Marking buffer as bad (error bit set).
-> Mar 20 00:05:10 kernel: uvcvideo: frame 238 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 1486708980/0/0
-> Mar 20 00:05:10 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:10 kernel: uvcvideo: frame 239 stats: 0/1/1 packets, 0/0/0 pts (!early !initial), 0/1 scr, last pts/stc/sof 0/1983158229/5178
-> Mar 20 00:05:10 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: frame 240 stats: 0/2/2 packets, 0/0/0 pts (!early !initial), 1/2 scr, last pts/stc/sof 0/3485570563/24163
-> Mar 20 00:05:10 kernel: uvcvideo: frame 241 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/0 scr, last pts/stc/sof 2429055958/0/0
-> Mar 20 00:05:10 kernel: uvcvideo: Frame complete (FID bit toggled).
-> Mar 20 00:05:10 kernel: uvcvideo: frame 242 stats: 0/1/1 packets, 0/0/1 pts (!early initial), 0/1 scr, last pts/stc/sof 1126821071/1127260553/100
-> Mar 20 00:05:10 kernel: uvcvideo: Frame complete (EOF found).
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_release
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_open
-> Mar 20 00:05:10 kernel: uvcvideo: uvc_v4l2_poll
-[...cut repeated lines...]
-> Mar 20 00:05:13 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:13 kernel: uvcvideo: uvc_v4l2_poll
-> Mar 20 00:05:13 kernel: uvcvideo: uvc_v4l2_release
-> Mar 20 00:05:16 kernel: uvcvideo: Suspending interface 1
-> Mar 20 00:05:16 kernel: uvcvideo: Suspending interface 0
+The Bus ID is not listed on the uvcvideo page
+
+I've tested this on a Ubunutu 16.04 and 20.04 (current daily) OS.
+
+$ sudo lsusb -d 04f2:b35a -v | grep "14 Video"
+       bFunctionClass         14 Video
+       bInterfaceClass        14 Video
+       bInterfaceClass        14 Video
+       bInterfaceClass        14 Video
+       bInterfaceClass        14 Video
+can't get debug descriptor: Resource temporarily unavailable
+       bInterfaceClass        14 Video
+       bInterfaceClass        14 Video
+
+Kernel report:
+
+[ 1657.799893] usb 3-8: USB disconnect, device number 3
+[ 1666.303308] usb 3-8: new high-speed USB device number 5 using xhci_hcd
+[ 1666.403593] usb 3-8: New USB device found, idVendor=04f2, 
+idProduct=b35a, bcdDevice=91.62
+[ 1666.403599] usb 3-8: New USB device strings: Mfr=1, Product=2, 
+SerialNumber=0
+[ 1666.403603] usb 3-8: Product: Chicony USB 2.0 Camera
+[ 1666.403606] usb 3-8: Manufacturer: Chicony Electronics Co.,Ltd
+[ 1666.408966] uvcvideo: Found UVC 1.00 device Chicony USB 2.0 Camera 
+(04f2:b35a)
+[ 1666.438181] uvcvideo 3-8:1.0: Entity type for entity Processing 2 was 
+not initialized!
+[ 1666.438188] uvcvideo 3-8:1.0: Entity type for entity Extension 6 was 
+not initialized!
+[ 1666.438191] uvcvideo 3-8:1.0: Entity type for entity Camera 1 was not 
+initialized!
+[ 1666.438397] input: Chicony USB 2.0 Camera: Chicony as 
+/devices/pci0000:00/0000:00:14.0/usb3/3-8/3-8:1.0/input/input23
+
+$ sudo uvcdynctrl -l
+Listing available devices:
+   video0   Chicony USB 2.0 Camera: Chicony
+     Media controller device: /dev/media0
+     Entity 1: Chicony USB 2.0 Camera: Chicony. Type: 65537, Revision: 
+0, Flags: 1, Group-id: 0, Pads: 1, Links: 0
+       Device node
+       Entity: 1, Pad 0, Flags: 1
+   video1   Chicony USB 2.0 Camera: Chicony
+     Media controller device /dev/media1 doesn't exist
+ERROR: Unable to list device entities: Invalid device or device cannot 
+be opened. (Code: 5)
+
+Running guvcview:
+GUVCVIEW: version 2.0.6
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
+ALSA lib pcm_dsnoop.c:641:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1089:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
+skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
+skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
+skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
+skipping unlock
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pulse.c:242:(pulse_connect) PulseAudio: Unable to connect: 
+Connection refused
+
+ALSA lib pulse.c:242:(pulse_connect) PulseAudio: Unable to connect: 
+Connection refused
+
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type 
+for card
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type 
+for card
+ALSA lib pcm_dsnoop.c:641:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1089:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_dmix.c:1089:(snd_pcm_dmix_open) unable to open slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
+skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
+skipping unlock
+V4L2_CORE: Could not grab image (select timeout): No such file or directory
+V4L2_CORE: Could not grab image (select timeout): No such file or directory
+^CGUVCVIEW Caught signal 2
+V4L2_CORE: Could not grab image (select timeout): No such file or directory
 
 
-> Bus 002 Device 003: ID 04f2:b42a Chicony Electronics Co., Ltd Front Camera
-> Device Descriptor:
->   bLength                18
->   bDescriptorType         1
->   bcdUSB               2.01
->   bDeviceClass          239 Miscellaneous Device
->   bDeviceSubClass         2 
->   bDeviceProtocol         1 Interface Association
->   bMaxPacketSize0        64
->   idVendor           0x04f2 Chicony Electronics Co., Ltd
->   idProduct          0xb42a 
->   bcdDevice           58.25
->   iManufacturer           3 Chicony Electronics Co.,Ltd.
->   iProduct                1 Front Camera
->   iSerial                 2 0x0001
->   bNumConfigurations      1
->   Configuration Descriptor:
->     bLength                 9
->     bDescriptorType         2
->     wTotalLength       0x043e
->     bNumInterfaces          2
->     bConfigurationValue     1
->     iConfiguration          4 USB Camera
->     bmAttributes         0x80
->       (Bus Powered)
->     MaxPower              500mA
->     Interface Association:
->       bLength                 8
->       bDescriptorType        11
->       bFirstInterface         0
->       bInterfaceCount         2
->       bFunctionClass         14 Video
->       bFunctionSubClass       3 Video Interface Collection
->       bFunctionProtocol       0 
->       iFunction               5 Front Camera
->     Interface Descriptor:
->       bLength                 9
->       bDescriptorType         4
->       bInterfaceNumber        0
->       bAlternateSetting       0
->       bNumEndpoints           1
->       bInterfaceClass        14 Video
->       bInterfaceSubClass      1 Video Control
->       bInterfaceProtocol      0 
->       iInterface              5 Front Camera
->       VideoControl Interface Descriptor:
->         bLength                13
->         bDescriptorType        36
->         bDescriptorSubtype      1 (HEADER)
->         bcdUVC               1.00
->         wTotalLength       0x004e
->         dwClockFrequency       15.000000MHz
->         bInCollection           1
->         baInterfaceNr( 0)       1
->       VideoControl Interface Descriptor:
->         bLength                18
->         bDescriptorType        36
->         bDescriptorSubtype      2 (INPUT_TERMINAL)
->         bTerminalID             1
->         wTerminalType      0x0201 Camera Sensor
->         bAssocTerminal          0
->         iTerminal               0 
->         wObjectiveFocalLengthMin      0
->         wObjectiveFocalLengthMax      0
->         wOcularFocalLength            0
->         bControlSize                  3
->         bmControls           0x00000004
->           Auto-Exposure Priority
->       VideoControl Interface Descriptor:
->         bLength                11
->         bDescriptorType        36
->         bDescriptorSubtype      5 (PROCESSING_UNIT)
->       Warning: Descriptor too short
->         bUnitID                 2
->         bSourceID               1
->         wMaxMultiplier          0
->         bControlSize            2
->         bmControls     0x0000177f
->           Brightness
->           Contrast
->           Hue
->           Saturation
->           Sharpness
->           Gamma
->           White Balance Temperature
->           Backlight Compensation
->           Gain
->           Power Line Frequency
->           White Balance Temperature, Auto
->         iProcessing             0 
->         bmVideoStandards     0x09
->           None
->           SECAM - 625/50
->       VideoControl Interface Descriptor:
->         bLength                 9
->         bDescriptorType        36
->         bDescriptorSubtype      3 (OUTPUT_TERMINAL)
->         bTerminalID             3
->         wTerminalType      0x0101 USB Streaming
->         bAssocTerminal          0
->         bSourceID               4
->         iTerminal               0 
->       VideoControl Interface Descriptor:
->         bLength                27
->         bDescriptorType        36
->         bDescriptorSubtype      6 (EXTENSION_UNIT)
->         bUnitID                 4
->         guidExtensionCode         {1229a78c-47b4-4094-b0ce-db07386fb938}
->         bNumControl             2
->         bNrPins                 1
->         baSourceID( 0)          2
->         bControlSize            2
->         bmControls( 0)       0x00
->         bmControls( 1)       0x06
->         iExtension              0 
->       Endpoint Descriptor:
->         bLength                 7
->         bDescriptorType         5
->         bEndpointAddress     0x83  EP 3 IN
->         bmAttributes            3
->           Transfer Type            Interrupt
->           Synch Type               None
->           Usage Type               Data
->         wMaxPacketSize     0x0010  1x 16 bytes
->         bInterval               6
->     Interface Descriptor:
->       bLength                 9
->       bDescriptorType         4
->       bInterfaceNumber        1
->       bAlternateSetting       0
->       bNumEndpoints           1
->       bInterfaceClass        14 Video
->       bInterfaceSubClass      2 Video Streaming
->       bInterfaceProtocol      0 
->       iInterface              0 
->       Endpoint Descriptor:
->         bLength                 7
->         bDescriptorType         5
->         bEndpointAddress     0x81  EP 1 IN
->         bmAttributes            2
->           Transfer Type            Bulk
->           Synch Type               None
->           Usage Type               Data
->         wMaxPacketSize     0x0200  1x 512 bytes
->         bInterval               1
->         INTERFACE CLASS:  10 24 01 03 ba 03 81 00 03 02 01 00 01 00 00 00
->         INTERFACE CLASS:  1b 24 04 01 08 59 55 59 32 00 00 10 00 80 00 00 aa 00 38 9b 71 10 01 00 00 00 00
->         INTERFACE CLASS:  22 24 05 01 00 80 02 e0 01 00 00 65 04 00 00 ca 08 00 60 09 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 05 02 00 40 01 f0 00 00 40 19 01 00 80 32 02 00 58 02 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 05 03 00 80 02 68 01 00 c0 4b 03 00 80 97 06 00 08 07 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  1e 24 05 04 00 00 05 d0 02 00 00 ca 08 00 00 ca 08 00 20 1c 00 40 42 0f 00 01 40 42 0f 00
->         INTERFACE CLASS:  1e 24 05 05 00 c0 03 1c 02 00 a0 f1 04 00 a0 f1 04 00 d2 0f 00 40 42 0f 00 01 40 42 0f 00
->         INTERFACE CLASS:  1e 24 05 06 00 50 03 e0 01 00 c0 e1 03 00 c0 e1 03 00 6c 0c 00 40 42 0f 00 01 40 42 0f 00
->         INTERFACE CLASS:  22 24 05 07 00 a8 01 f0 00 00 a8 74 01 00 50 e9 02 00 1b 03 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 05 08 00 80 02 e0 01 00 00 65 04 00 00 ca 08 00 60 09 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  0a 24 03 00 01 80 02 e0 01 00
->         INTERFACE CLASS:  06 24 0d 01 01 04
->         INTERFACE CLASS:  0b 24 06 02 08 01 01 00 00 00 00
->         INTERFACE CLASS:  22 24 07 01 00 80 02 e0 01 00 00 65 04 00 00 ca 08 00 60 09 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 02 00 40 01 f0 00 00 40 19 01 00 80 32 02 00 58 02 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 03 00 80 02 68 01 00 c0 4b 03 00 80 97 06 00 08 07 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 04 00 00 05 d0 02 00 00 2f 0d 00 00 5e 1a 00 20 1c 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 05 00 c0 03 1c 02 00 70 6a 07 00 e0 d4 0e 00 d2 0f 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 06 00 50 03 e0 01 00 a0 d2 05 00 40 a5 0b 00 6c 0c 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 07 00 a8 01 f0 00 00 a8 74 01 00 50 e9 02 00 1b 03 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 07 08 00 80 02 e0 01 00 00 65 04 00 00 ca 08 00 60 09 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  0a 24 03 00 01 80 02 e0 01 00
->         INTERFACE CLASS:  06 24 0d 01 01 04
->         INTERFACE CLASS:  38 24 0e 03 08 4d 34 32 30 00 00 10 00 80 00 00 aa 00 38 9b 71 32 56 55 59 00 00 10 00 80 00 00 aa 00 38 9b 71 33 56 55 59 00 00 10 00 80 00 00 aa 00 38 9b 71 00 01 00
->         INTERFACE CLASS:  22 24 0f 01 00 80 02 e0 01 00 00 65 04 00 00 ca 08 00 60 09 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 0f 02 00 40 01 f0 00 00 40 19 01 00 80 32 02 00 58 02 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 0f 03 00 80 02 68 01 00 c0 4b 03 00 80 97 06 00 08 07 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 0f 04 00 00 05 d0 02 00 00 65 04 00 00 ca 08 00 20 1c 00 40 42 0f 00 02 40 42 0f 00 80 84 1e 00
->         INTERFACE CLASS:  1e 24 0f 05 00 c0 03 1c 02 00 a0 f1 04 00 a0 f1 04 00 d2 0f 00 40 42 0f 00 01 40 42 0f 00
->         INTERFACE CLASS:  1e 24 0f 06 00 50 03 e0 01 00 c0 e1 03 00 c0 e1 03 00 6c 0c 00 40 42 0f 00 01 40 42 0f 00
->         INTERFACE CLASS:  22 24 0f 07 00 a8 01 f0 00 00 a8 74 01 00 50 e9 02 00 1b 03 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  22 24 0f 08 00 80 02 e0 01 00 00 65 04 00 00 ca 08 00 60 09 00 15 16 05 00 02 15 16 05 00 2a 2c 0a 00
->         INTERFACE CLASS:  0a 24 03 00 01 80 02 e0 01 00
->         INTERFACE CLASS:  06 24 0d 01 01 04
-> Binary Object Store Descriptor:
->   bLength                 5
->   bDescriptorType        15
->   wTotalLength       0x000c
->   bNumDeviceCaps          1
->   USB 2.0 Extension Device Capability:
->     bLength                 7
->     bDescriptorType        16
->     bDevCapabilityType      2
->     bmAttributes   0x00000002
->       HIRD Link Power Management (LPM) Supported
-> Device Status:     0x0000
->   (Bus Powered)
+kernel uvcvideo traces:
+[ 5491.078923] uvcvideo: uvc_v4l2_open
+[ 5491.193998] uvcvideo: Resuming interface 0
+[ 5491.194001] uvcvideo: Resuming interface 1
+[ 5491.194671] uvcvideo: uvc_v4l2_release
+[ 5491.195856] uvcvideo: uvc_v4l2_open
+[ 5491.233116] uvcvideo: Trying format 0x47504a4d (MJPG): 640x480.
+[ 5491.233118] uvcvideo: Using default frame interval 33333.3 us (30.0 fps).
+[ 5491.238874] uvcvideo: Trying format 0x47504a4d (MJPG): 640x480.
+[ 5491.238876] uvcvideo: Using default frame interval 33333.3 us (30.0 fps).
+[ 5491.245579] uvcvideo: uvc_v4l2_mmap
+[ 5491.245612] uvcvideo: uvc_v4l2_mmap
+[ 5491.245639] uvcvideo: uvc_v4l2_mmap
+[ 5491.245667] uvcvideo: uvc_v4l2_mmap
+[ 5491.245709] uvcvideo: Setting frame interval to 1/25 (400000).
+[ 5491.420832] uvcvideo: Device requested 3072 B/frame bandwidth.
+[ 5491.420834] uvcvideo: Selecting alternate setting 1 (3072 B/frame 
+bandwidth).
+[ 5491.421640] uvcvideo: Allocated 5 URB buffers of 32x3072 bytes each.
+[ 5491.421697] uvcvideo: uvc_v4l2_poll
+[ 5492.422760] uvcvideo: uvc_v4l2_poll
+[ 5492.423706] uvcvideo: Setting frame interval to 1/30 (333333).
+[ 5492.428972] uvcvideo: uvc_v4l2_mmap
+[ 5492.429024] uvcvideo: uvc_v4l2_mmap
+[ 5492.429062] uvcvideo: uvc_v4l2_mmap
+[ 5492.429094] uvcvideo: uvc_v4l2_mmap
+[ 5492.429917] uvcvideo: Device requested 3072 B/frame bandwidth.
+[ 5492.429921] uvcvideo: Selecting alternate setting 1 (3072 B/frame 
+bandwidth).
+[ 5492.431115] uvcvideo: Allocated 5 URB buffers of 32x3072 bytes each.
+[ 5492.431168] uvcvideo: uvc_v4l2_poll
+[ 5493.432252] uvcvideo: uvc_v4l2_poll
+[ 5493.432320] uvcvideo: uvc_v4l2_poll
+[ 5494.433406] uvcvideo: uvc_v4l2_poll
+[ 5494.433467] uvcvideo: uvc_v4l2_poll
+[ 5495.434563] uvcvideo: uvc_v4l2_poll
+[ 5495.445815] uvcvideo: uvc_v4l2_release
+[ 5497.821841] uvcvideo: Suspending interface 1
+[ 5497.821844] uvcvideo: Suspending interface 0
 
-Regards,
-Dominik
--- 
-Fedora   https://getfedora.org  |  RPM Fusion  http://rpmfusion.org
-There should be a science of discontent. People need hard times and
-oppression to develop psychic muscles.
-        -- from "Collected Sayings of Muad'Dib" by the Princess Irulan
+
+Any pointers in what to do to get this fixed?
+
+Rg,
+
+Arnaud Loonstra
 
 
 _______________________________________________
