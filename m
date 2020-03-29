@@ -2,69 +2,94 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64803196040
-	for <lists+linux-uvc-devel@lfdr.de>; Fri, 27 Mar 2020 22:12:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3ACEF196F0A
+	for <lists+linux-uvc-devel@lfdr.de>; Sun, 29 Mar 2020 19:53:05 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jHwGv-00044q-Ov; Fri, 27 Mar 2020 21:12:09 +0000
+	id 1jIc6z-0003xG-CD; Sun, 29 Mar 2020 17:52:41 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <arnaud@sphaero.org>) id 1jHwGu-00044S-IK
- for linux-uvc-devel@lists.sourceforge.net; Fri, 27 Mar 2020 21:12:08 +0000
+ (envelope-from <alessandro.govi@gmail.com>) id 1jIc6x-0003x1-UW
+ for linux-uvc-devel@lists.sourceforge.net; Sun, 29 Mar 2020 17:52:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Date:Message-ID:Subject:From:To:Sender:Reply-To:Cc:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ck2eCbosb1aiB2vzk6pmCKgNA5Sz7iP5jqbfWS8Y3BE=; b=KsmI2X8nxInlDjkKLqMQssVFSv
- qYc/10YXJzXhb2ppee6v171BkbqU57Zig57UAK8kwj0jfCD0oq+F96wRhBOfwLKrScGSYqd4ZQQMV
- OMPJ6XzJPz5MxsimtmZv0Tf+F+80shROn7l/a+NCPI06gCNmRAMhFZyhxUaKkJN6W/xs=;
+ bh=Yufzp+XSMbH+W/EylP+GgzC1hAQoRRKRZiN+JmxN7sU=; b=HcOQ90Wn7ZNAXAAxUfU7u3tHST
+ CapNrG2O8jcMTiS93G0ew56fvRzI8+h7odIWPA+ZdNEAmUciYUT6B4JtyXYJnsZa2pKePNsXHpVSl
+ d4wL4HOn0QUohQSLHTzeQCKnQXNXHFxSRaSy40O5xFs9nyd1p28j4qEq+RZ4GsypIugs=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-ID:
- Subject:From:To:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=ck2eCbosb1aiB2vzk6pmCKgNA5Sz7iP5jqbfWS8Y3BE=; b=C
- I/ESRF41X3wTwq3zfimcWhm9od+Z3XMNCLCThCt2fVNKZQvvcuN/Rv6gvp3hHu6JjuyYM+9U9/TyR
- 4LemfAznQ8AJz0rB29k2V67m0XgqbTX57jtNq4oWwk95skfaFf0F5WejhqHbk6rwSozAuolJtaYw1
- bMF0JynwBpmsg7Zs=;
-Received: from lb1-smtp-cloud8.xs4all.net ([194.109.24.21])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jHwGo-003Mj2-Sd
- for linux-uvc-devel@lists.sourceforge.net; Fri, 27 Mar 2020 21:12:07 +0000
-Received: from aloy.sphaero.org ([IPv6:2001:984:3b1f:0:a06e:76ff:fe2e:d0f4])
- by smtp-cloud8.xs4all.net with ESMTP
- id Hw0Gjxu5TBr2bHw0IjSpZ7; Fri, 27 Mar 2020 21:54:58 +0100
-Received: from [192.168.18.104] (unknown [192.168.18.254])
- by aloy.sphaero.org (Postfix) with ESMTPSA id D9CDF8600AD
+ List-Owner:List-Archive; bh=Yufzp+XSMbH+W/EylP+GgzC1hAQoRRKRZiN+JmxN7sU=; b=K
+ 6As3J2zw79oLubkHwuXu52xhY44pSXE6hKkfp2Rr8Lmg0S+YN4u9Z1eEYHSdMgd7WgKaZkTp5stiO
+ 1iHsB3Es4q8bGDC0L1heUENJleUiS1IMllJI0HwThnSIMWwDcUQ1fF+xcMDF5KcCFuKVmuDb48wGJ
+ tIB92v0dRNmcEgUo=;
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
+ id 1jIc6v-00ELwv-Uz
+ for linux-uvc-devel@lists.sourceforge.net; Sun, 29 Mar 2020 17:52:39 +0000
+Received: by mail-ot1-f43.google.com with SMTP id a49so15512501otc.11
  for <linux-uvc-devel@lists.sourceforge.net>;
- Fri, 27 Mar 2020 20:54:56 +0000 (UTC)
-To: linux-uvc-devel@lists.sourceforge.net
-From: Arnaud Loonstra <arnaud@sphaero.org>
-Message-ID: <3b558a44-7e34-335e-0db9-8fde14c00729@sphaero.org>
-Date: Fri, 27 Mar 2020 21:54:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Sun, 29 Mar 2020 10:52:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=Yufzp+XSMbH+W/EylP+GgzC1hAQoRRKRZiN+JmxN7sU=;
+ b=ph7H/yD7CYzKPPZiGfjpEM3KooGNuGChcSB6HAAOM/aLqUG7X0DfStUMgNA54ebfr+
+ GXiHlwqpOR3IEJw4XKjOOm2c4RpRSkrYVp9TY5b7WL4PvnyI/KtDTDXhcseKiD7zPl1R
+ Ix9g7oj4iQ4Sb53eqUGwcOshRDStaq6mGiUQGkVKK13itrY95trRslNYnbuEqaZe+JXX
+ XbMfselrZ6i1MFbt8ujcccFw6/+3E0YtonxH9NDrCw/cCNK4AXO8xLhG28R2fx6YKHeW
+ 8PUnKWC7scSNrWpGz+GHVf7Y/YuPLkbNLwh7UKEcOoOC3PXqSztRprJeHnzr018eDR/F
+ sy7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=Yufzp+XSMbH+W/EylP+GgzC1hAQoRRKRZiN+JmxN7sU=;
+ b=EGlp50ovno7wJiLs2xD0wZ+ErzRxN3ZFLGnjvUVTSFL0pf8tmN6WWsjERmIjMY6S4C
+ f/wXqX3FTABTqOrWRvsBfaDcpuvWpe88txvL8Cuq3f9+rrCF8Pl1oze3MR1VdPYZcc1W
+ LanZIwtblypcp9BWfLbCqg8kP8kFilZgyGqMXURTLE+XB6094uLBzrxxqv0zzSY3RN0E
+ 3xdmNe9qtB1iRmFOFvE/bMJ28Lh1npgAK5og06cnbYcvj0i+vIbkxqMkX9/ww2GGuayO
+ jZU+y8tAKndUpzt/yGtifpoLwLCskH4mIHh+GRHk/+yz8g1nVxupkBi6WJ41P9VzHodE
+ D18w==
+X-Gm-Message-State: ANhLgQ0YDSsCuWA6OI+AYeYI/oixaHp5Qi9KptWTVvKFcnoWGdaMKXMN
+ 01TW4g+6oBo0cKDxak5ZHAADAkEqiUWYeaEX0e/MYB9Z
+X-Google-Smtp-Source: ADFU+vthVp09epRqBoPQAgNDKq/1MmxNHiqINOn0+W95ZY9XFr7Max4i6IJwCxXPDirn1EaMv2YKOx2N3JEI2w6X6qc=
+X-Received: by 2002:a9d:f05:: with SMTP id 5mr6264905ott.263.1585504351812;
+ Sun, 29 Mar 2020 10:52:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfC5IvN8qvhGsqgEcry6oPok5cfNW10wxDqHSuFbX0hAKlLhkH2S3Jh9Jd3UZyK3nDAxT+wIO/MVUZKYpG4aFvkfEvrIogoIlvrNufEGm48mnzzz1w32O
- wNBM+N4qKhmH0vAT8hXZVjtZFccgTm8EJtCUZnUvwWixc5blrfaxwb6AQ2zAqwA3txWnlX9a5Sr8L3gBVK0nTvhSNNoCJRwfOlF0ofXaEO4rsTVBl8JK+19j
- VodQs6CYCWAWr82m5/BiJg==
-X-Spam-Score: 0.7 (/)
+From: Alessandro Govi <alessandro.govi@gmail.com>
+Date: Sun, 29 Mar 2020 19:52:20 +0200
+Message-ID: <CADPtnGMY9YCifVQMQcCHbzOh7ksKkAaBv50MHVgj5p82Kh7TqQ@mail.gmail.com>
+To: linux-uvc-devel@lists.sourceforge.net
+X-Spam-Score: 0.9 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (alessandro.govi[at]gmail.com)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.210.43 listed in list.dnswl.org]
  0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [194.109.24.21 listed in wl.mailspike.net]
- 0.7 SPF_NEUTRAL            SPF: sender does not match SPF record (neutral)
+ [209.85.210.43 listed in wl.mailspike.net]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1jHwGo-003Mj2-Sd
-Subject: [linux-uvc-devel] Chicony 04f2:b35a webcam found but not working
+ -0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jIc6v-00ELwv-Uz
+Subject: [linux-uvc-devel] integrated camera into netbook Asus F200M
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,172 +101,168 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8345595721298105619=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-I'm not sure how to proceed so bare with me.
+--===============8345595721298105619==
+Content-Type: multipart/alternative; boundary="000000000000ae005905a201ffe2"
 
-A internal camera on a BTO notebook isn't working (anymore?)
+--000000000000ae005905a201ffe2
+Content-Type: text/plain; charset="UTF-8"
 
-Bus 003 Device 005: ID 04f2:b35a Chicony Electronics Co., Ltd Chicony 
-USB 2.0 Camera
+Dear group,
+I wanted to report the lack of my webcam into the list.
+Maybe can you make anything about it?
 
-The Bus ID is not listed on the uvcvideo page
+I use Ubuntu 18.04 and in the past it worked. Now it recognizes the
+hardware but doesn't initialize it. The result is always a black screen,
+even trying with different programs.
 
-I've tested this on a Ubunutu 16.04 and 20.04 (current daily) OS.
+I read around that it could be a kernel problem.
+Maybe could you suggest me a working kernel?
+I already tried different ones but with no luck.
 
-$ sudo lsusb -d 04f2:b35a -v | grep "14 Video"
-       bFunctionClass         14 Video
-       bInterfaceClass        14 Video
-       bInterfaceClass        14 Video
-       bInterfaceClass        14 Video
-       bInterfaceClass        14 Video
-can't get debug descriptor: Resource temporarily unavailable
-       bInterfaceClass        14 Video
-       bInterfaceClass        14 Video
+Following here I paste the partial output of some commands in order to
+identify the hardware and the problem.
 
-Kernel report:
+Thanks in advance for a reply.
 
-[ 1657.799893] usb 3-8: USB disconnect, device number 3
-[ 1666.303308] usb 3-8: new high-speed USB device number 5 using xhci_hcd
-[ 1666.403593] usb 3-8: New USB device found, idVendor=04f2, 
-idProduct=b35a, bcdDevice=91.62
-[ 1666.403599] usb 3-8: New USB device strings: Mfr=1, Product=2, 
-SerialNumber=0
-[ 1666.403603] usb 3-8: Product: Chicony USB 2.0 Camera
-[ 1666.403606] usb 3-8: Manufacturer: Chicony Electronics Co.,Ltd
-[ 1666.408966] uvcvideo: Found UVC 1.00 device Chicony USB 2.0 Camera 
-(04f2:b35a)
-[ 1666.438181] uvcvideo 3-8:1.0: Entity type for entity Processing 2 was 
-not initialized!
-[ 1666.438188] uvcvideo 3-8:1.0: Entity type for entity Extension 6 was 
-not initialized!
-[ 1666.438191] uvcvideo 3-8:1.0: Entity type for entity Camera 1 was not 
+Alessandro
+from Italy
+
+*****************************
+
+
+from lsusb:
+
+Bus 001 Device 003: ID 0bda:5603 Realtek Semiconductor Corp.
+
+
+
+from uname:
+
+5.5.10-050510-generic
+
+
+
+
+from hwinfo:
+
+34: USB 00.0: 0000 Unclassified device
+  [Created at usb.122]
+  Unique ID: 2UT6.bseVf4eKJ39
+  Parent ID: k4bc.2DFUsyrieMD
+  SysFS ID: /devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0
+  SysFS BusID: 1-3:1.0
+  Hardware Class: unknown
+  Model: "Realtek USB2.0 HD UVC WebCam"
+  Hotplug: USB
+  Vendor: usb 0x0bda "Realtek Semiconductor Corp."
+  Device: usb 0x5603 "USB2.0 HD UVC WebCam"
+  Revision: "5.30"
+  Serial ID: "0x0001"
+  Driver: "uvcvideo"
+  Driver Modules: "uvcvideo"
+  Device File: /dev/input/event11
+  Device Files: /dev/input/event11,
+/dev/input/by-id/usb-Generic_USB2.0_HD_UVC_WebCam_0x0001-event-if00,
+/dev/input/by-path/pci-0000:00:14.0-usb-0:3:1.0-event
+  Device Number: char 13:75
+  Speed: 480 Mbps
+  Module Alias: "usb:v0BDAp5603d0530dcEFdsc02dp01ic0Eisc01ip00in00"
+  Driver Info #0:
+    Driver Status: uvcvideo is active
+    Driver Activation Cmd: "modprobe uvcvideo"
+  Config Status: cfg=new, avail=yes, need=no, active=unknown
+  Attached to: #35 (Hub)
+
+
+
+from dsmesg:
+
+[    2.623113] usb 1-3: New USB device found, idVendor=0bda,
+idProduct=5603, bcdDevice= 5.30
+[   23.969806] videodev: Linux video capture interface: v2.00
+[   24.387250] uvcvideo: Found UVC 1.00 device USB2.0 HD UVC WebCam
+(0bda:5603)
+[   24.426610] uvcvideo 1-3:1.0: Entity type for entity Extension 4 was not
 initialized!
-[ 1666.438397] input: Chicony USB 2.0 Camera: Chicony as 
-/devices/pci0000:00/0000:00:14.0/usb3/3-8/3-8:1.0/input/input23
+[   24.426616] uvcvideo 1-3:1.0: Entity type for entity Processing 2 was
+not initialized!
+[   24.426619] uvcvideo 1-3:1.0: Entity type for entity Camera 1 was not
+initialized!
+[   24.428130] usbcore: registered new interface driver uvcvideo
 
-$ sudo uvcdynctrl -l
-Listing available devices:
-   video0   Chicony USB 2.0 Camera: Chicony
-     Media controller device: /dev/media0
-     Entity 1: Chicony USB 2.0 Camera: Chicony. Type: 65537, Revision: 
-0, Flags: 1, Group-id: 0, Pads: 1, Links: 0
-       Device node
-       Entity: 1, Pad 0, Flags: 1
-   video1   Chicony USB 2.0 Camera: Chicony
-     Media controller device /dev/media1 doesn't exist
-ERROR: Unable to list device entities: Invalid device or device cannot 
-be opened. (Code: 5)
+--000000000000ae005905a201ffe2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Running guvcview:
-GUVCVIEW: version 2.0.6
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-V4L2_CORE: (UVCIOC_CTRL_MAP) Error: No such file or directory
-ALSA lib pcm_dsnoop.c:641:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1089:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
-Cannot connect to server socket err = No such file or directory
-Cannot connect to server request channel
-jack server is not running or cannot be started
-JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
-skipping unlock
-JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
-skipping unlock
-Cannot connect to server socket err = No such file or directory
-Cannot connect to server request channel
-jack server is not running or cannot be started
-JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
-skipping unlock
-JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
-skipping unlock
-ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
-ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
-ALSA lib pulse.c:242:(pulse_connect) PulseAudio: Unable to connect: 
-Connection refused
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Dear group,</div><div>I wanted to re=
+port the lack of my webcam into the list.</div><div>Maybe can you make anyt=
+hing about it?</div><div><br></div><div>I use Ubuntu 18.04 and in the past =
+it worked. Now it recognizes the hardware but doesn&#39;t initialize it. Th=
+e result is always a black screen, even trying with different programs.</di=
+v><div><br></div><div>I read around that it could be a kernel problem.</div=
+><div>Maybe could you suggest me a working kernel?</div><div>I already trie=
+d different ones but with no luck.</div><div><br></div><div>Following here =
+I paste the partial output of some commands in order to identify the hardwa=
+re and the problem.</div><div><br></div><div>Thanks in advance for a reply.=
+</div><div><br></div><div>Alessandro</div><div>from Italy</div><div><br></d=
+iv><div>*****************************</div><div><br></div><br><div>from lsu=
+sb:</div><div><br></div><div>Bus 001 Device 003: ID 0bda:5603 Realtek Semic=
+onductor Corp.=C2=A0<br></div><div><br></div><div><br></div><div><br></div>=
+<div>from uname:</div><div><br></div><div>5.5.10-050510-generic<br></div><d=
+iv><br></div><div><br></div><div><br></div><div><br></div><div>from hwinfo:=
+</div><div><br></div><div>34: USB 00.0: 0000 Unclassified device<br>=C2=A0 =
+[Created at usb.122]<br>=C2=A0 Unique ID: 2UT6.bseVf4eKJ39<br>=C2=A0 Parent=
+ ID: k4bc.2DFUsyrieMD<br>=C2=A0 SysFS ID: /devices/pci0000:00/0000:00:14.0/=
+usb1/1-3/1-3:1.0<br>=C2=A0 SysFS BusID: 1-3:1.0<br>=C2=A0 Hardware Class: u=
+nknown<br>=C2=A0 Model: &quot;Realtek USB2.0 HD UVC WebCam&quot;<br>=C2=A0 =
+Hotplug: USB<br>=C2=A0 Vendor: usb 0x0bda &quot;Realtek Semiconductor Corp.=
+&quot;<br>=C2=A0 Device: usb 0x5603 &quot;USB2.0 HD UVC WebCam&quot;<br>=C2=
+=A0 Revision: &quot;5.30&quot;<br>=C2=A0 Serial ID: &quot;0x0001&quot;<br>=
+=C2=A0 Driver: &quot;uvcvideo&quot;<br>=C2=A0 Driver Modules: &quot;uvcvide=
+o&quot;<br>=C2=A0 Device File: /dev/input/event11<br>=C2=A0 Device Files: /=
+dev/input/event11, /dev/input/by-id/usb-Generic_USB2.0_HD_UVC_WebCam_0x0001=
+-event-if00, /dev/input/by-path/pci-0000:00:14.0-usb-0:3:1.0-event<br>=C2=
+=A0 Device Number: char 13:75<br>=C2=A0 Speed: 480 Mbps<br>=C2=A0 Module Al=
+ias: &quot;usb:v0BDAp5603d0530dcEFdsc02dp01ic0Eisc01ip00in00&quot;<br>=C2=
+=A0 Driver Info #0:<br>=C2=A0 =C2=A0 Driver Status: uvcvideo is active<br>=
+=C2=A0 =C2=A0 Driver Activation Cmd: &quot;modprobe uvcvideo&quot;<br>=C2=
+=A0 Config Status: cfg=3Dnew, avail=3Dyes, need=3Dno, active=3Dunknown<br>=
+=C2=A0 Attached to: #35 (Hub)<br></div><div><br></div><div><br></div><div><=
+br></div><div>from dsmesg:</div><div><br></div><div>[ =C2=A0 =C2=A02.623113=
+] usb 1-3: New USB device found, idVendor=3D0bda, idProduct=3D5603, bcdDevi=
+ce=3D 5.30</div><div>[ =C2=A0 23.969806] videodev: Linux video capture inte=
+rface: v2.00<br>[ =C2=A0 24.387250] uvcvideo: Found UVC 1.00 device USB2.0 =
+HD UVC WebCam (0bda:5603)<br></div><div>[ =C2=A0 24.426610] uvcvideo 1-3:1.=
+0: Entity type for entity Extension 4 was not initialized!<br>[ =C2=A0 24.4=
+26616] uvcvideo 1-3:1.0: Entity type for entity Processing 2 was not initia=
+lized!<br>[ =C2=A0 24.426619] uvcvideo 1-3:1.0: Entity type for entity Came=
+ra 1 was not initialized!<br>[ =C2=A0 24.428130] usbcore: registered new in=
+terface driver uvcvideo<div class=3D"gmail-yj6qo"></div><div class=3D"gmail=
+-adL"><br></div></div><div class=3D"gmail-adL"><br></div></div></div>
 
-ALSA lib pulse.c:242:(pulse_connect) PulseAudio: Unable to connect: 
-Connection refused
-
-ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type 
-for card
-ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type 
-for card
-ALSA lib pcm_dsnoop.c:641:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1089:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_dmix.c:1089:(snd_pcm_dmix_open) unable to open slave
-Cannot connect to server socket err = No such file or directory
-Cannot connect to server request channel
-jack server is not running or cannot be started
-JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
-skipping unlock
-JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, 
-skipping unlock
-V4L2_CORE: Could not grab image (select timeout): No such file or directory
-V4L2_CORE: Could not grab image (select timeout): No such file or directory
-^CGUVCVIEW Caught signal 2
-V4L2_CORE: Could not grab image (select timeout): No such file or directory
+--000000000000ae005905a201ffe2--
 
 
-kernel uvcvideo traces:
-[ 5491.078923] uvcvideo: uvc_v4l2_open
-[ 5491.193998] uvcvideo: Resuming interface 0
-[ 5491.194001] uvcvideo: Resuming interface 1
-[ 5491.194671] uvcvideo: uvc_v4l2_release
-[ 5491.195856] uvcvideo: uvc_v4l2_open
-[ 5491.233116] uvcvideo: Trying format 0x47504a4d (MJPG): 640x480.
-[ 5491.233118] uvcvideo: Using default frame interval 33333.3 us (30.0 fps).
-[ 5491.238874] uvcvideo: Trying format 0x47504a4d (MJPG): 640x480.
-[ 5491.238876] uvcvideo: Using default frame interval 33333.3 us (30.0 fps).
-[ 5491.245579] uvcvideo: uvc_v4l2_mmap
-[ 5491.245612] uvcvideo: uvc_v4l2_mmap
-[ 5491.245639] uvcvideo: uvc_v4l2_mmap
-[ 5491.245667] uvcvideo: uvc_v4l2_mmap
-[ 5491.245709] uvcvideo: Setting frame interval to 1/25 (400000).
-[ 5491.420832] uvcvideo: Device requested 3072 B/frame bandwidth.
-[ 5491.420834] uvcvideo: Selecting alternate setting 1 (3072 B/frame 
-bandwidth).
-[ 5491.421640] uvcvideo: Allocated 5 URB buffers of 32x3072 bytes each.
-[ 5491.421697] uvcvideo: uvc_v4l2_poll
-[ 5492.422760] uvcvideo: uvc_v4l2_poll
-[ 5492.423706] uvcvideo: Setting frame interval to 1/30 (333333).
-[ 5492.428972] uvcvideo: uvc_v4l2_mmap
-[ 5492.429024] uvcvideo: uvc_v4l2_mmap
-[ 5492.429062] uvcvideo: uvc_v4l2_mmap
-[ 5492.429094] uvcvideo: uvc_v4l2_mmap
-[ 5492.429917] uvcvideo: Device requested 3072 B/frame bandwidth.
-[ 5492.429921] uvcvideo: Selecting alternate setting 1 (3072 B/frame 
-bandwidth).
-[ 5492.431115] uvcvideo: Allocated 5 URB buffers of 32x3072 bytes each.
-[ 5492.431168] uvcvideo: uvc_v4l2_poll
-[ 5493.432252] uvcvideo: uvc_v4l2_poll
-[ 5493.432320] uvcvideo: uvc_v4l2_poll
-[ 5494.433406] uvcvideo: uvc_v4l2_poll
-[ 5494.433467] uvcvideo: uvc_v4l2_poll
-[ 5495.434563] uvcvideo: uvc_v4l2_poll
-[ 5495.445815] uvcvideo: uvc_v4l2_release
-[ 5497.821841] uvcvideo: Suspending interface 1
-[ 5497.821844] uvcvideo: Suspending interface 0
+--===============8345595721298105619==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 
-Any pointers in what to do to get this fixed?
-
-Rg,
-
-Arnaud Loonstra
-
+--===============8345595721298105619==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+
+--===============8345595721298105619==--
+
