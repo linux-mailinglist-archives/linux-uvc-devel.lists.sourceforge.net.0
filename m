@@ -2,82 +2,103 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 078DB1A074A
-	for <lists+linux-uvc-devel@lfdr.de>; Tue,  7 Apr 2020 08:30:36 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 469C11A08BC
+	for <lists+linux-uvc-devel@lfdr.de>; Tue,  7 Apr 2020 09:55:32 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jLhkG-0003Ja-LK; Tue, 07 Apr 2020 06:30:00 +0000
+	id 1jLj4f-0001B4-0I; Tue, 07 Apr 2020 07:55:09 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <marco.zoc@gmail.com>) id 1jLhkF-0003JS-Ih
- for linux-uvc-devel@lists.sourceforge.net; Tue, 07 Apr 2020 06:29:59 +0000
+ (envelope-from <fercerpav@gmail.com>) id 1jLj4d-0001Ap-MZ
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 07 Apr 2020 07:55:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=H5z0FP8Pv3v0mv16w8W6LFi0pJKbWO5wWQIG0/6vMEU=; b=esI0RdhZ4Fd93AVhaFWRsByKB5
- LGV3wG7/vTEBUMdAizOX+3P+EWrVjvRBUXE7aRVmW0IxmoWM5jqDotAK8sQHml54vrWyiPu3F56Ct
- tEI7ImAdazhcDp/zUY776a6U20bw3MY1rBCQkJoJX8T7tI7OP6KfCr0+vxIOhO7YAXMw=;
+ bh=9tjQNCCL671R6oYmIQoFJbcNBQt6psjzUDZ9c2yJTyg=; b=ewGUKzweRship4z5mzUWYjl7Ou
+ B5ddIoZByAm95zTbkaBhWFZRoMsw4R5t6ZsCz10yHnH7n94gaeu69tNxVNXKinQKh92ri6YzKhODL
+ ZKuJGMrA799M039VYN07sAytKjX2kppPLaVn4L0KePLHAUG4vifwx5s908dZ3U9YR7xE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=H5z0FP8Pv3v0mv16w8W6LFi0pJKbWO5wWQIG0/6vMEU=; b=n
- N2UaLEJrCLXs0T7n6h/h0PFjbVzcGauTZAd04vpQAXvR2bROfEBgWmiyZSl3EgXR8z2Uic/i8cMkR
- OYfiMiI3ZIbXy8i+7BwL/zJ4efaOqSIpBo3ww2lD7qz9CYx99d+jsA5nXmO5g7ScSaJrpIsq6eAOy
- fFPN79tAF17HmL2k=;
-Received: from mail-io1-f49.google.com ([209.85.166.49])
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=9tjQNCCL671R6oYmIQoFJbcNBQt6psjzUDZ9c2yJTyg=; b=b23CBKfUfTqTCdfHOCovG+udHe
+ 4qs5D5cmasOwDnvQl9aF298LS8MaR9H3F7BuG75d38BGxQynB0XM9plNv8d8q/FduXRcMrM3XKW1V
+ /DS1QLxOynAEean99ALc+wmoEsXSDjaM/GZjyPalyRld0+89HB8nZs6bsppDKkLHkNs8=;
+Received: from mail-lj1-f179.google.com ([209.85.208.179])
  by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1jLhkA-006B1n-Qi
- for linux-uvc-devel@lists.sourceforge.net; Tue, 07 Apr 2020 06:29:59 +0000
-Received: by mail-io1-f49.google.com with SMTP id n10so2239279iom.3
+ id 1jLj4b-006DZh-Oj
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 07 Apr 2020 07:55:07 +0000
+Received: by mail-lj1-f179.google.com with SMTP id t17so2554993ljc.12
  for <linux-uvc-devel@lists.sourceforge.net>;
- Mon, 06 Apr 2020 23:29:54 -0700 (PDT)
+ Tue, 07 Apr 2020 00:55:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=H5z0FP8Pv3v0mv16w8W6LFi0pJKbWO5wWQIG0/6vMEU=;
- b=WkiS2Z5smEdnPV7lce04cp5XqZXmlYVEjwhp+X1FmndP7xC/uAZ4nllUin5AlFy7Vh
- hdHKv+hSMsVHYaTp4G7VBgB1pIja0HPDocpmLq5DXTHe4C1EgGVt3VH0Yp4znFHys8xn
- AqYGr6EEn6qQ4WY/wRTa+yJMLBuAzg+puB764E64NE/hVAww8J0HzR85k3PEPDCu6O+Z
- do1K2dhX52x9nVwfwpPYMrK6e0ibPv2eNyoDzev17FFaF8Tm3PRJyvB0m4ao1bn5d1cl
- p8kpnOv0zgfXacQePTOyWHVOIatKVdvQGcJ/36Syl0ZO10Zxrg4NkLYFIVCnTPESooWd
- XYqQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=9tjQNCCL671R6oYmIQoFJbcNBQt6psjzUDZ9c2yJTyg=;
+ b=gYMRaeXREyJ44ruRoYx/b02gvtdckptsc1czV2BDOQxIHSsOK5uEmzaNaVFlVW3FiC
+ dqiC7xdUS2RxXBegxvDq6NG0LhPWD4+LpJjzG+RyIDNQI4Ayqop45zpKmsJQV4Ap+yvD
+ Km/FEKQ18P4NRc8eDeIYa2RJhjOTfDyLeOLShyqtTsLedlFXcM+HXO31f8UAGb9omOU9
+ f7TSP/dSPPxpP70YfR/eb7B2pQ2rx6neGwLK7P6zzJqT7+ezMYFBoIrUGj2IJfsH78KI
+ 83k7OIkYcsUhWFK/W/TT18EAI8FQa+muYzhAv7pIrq8EQKn+SLxce8pvQrBXInGRzF3b
+ GIWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=H5z0FP8Pv3v0mv16w8W6LFi0pJKbWO5wWQIG0/6vMEU=;
- b=J7IqgDlxYH3Z625Py69zxD05VIZ9m8f7MQTQU1pQqXlx+VSoN8X0sU81VCpfo4mc4d
- FYqCNb0NCqtCbBxAaZgK7ZNZMz7d7Ue7CoWAbYbXzL3671gLZqXj42DLA5CRYwU9KZns
- HNCnqptI63SBxj+WGDQZXxB6wZeLzOxwJyYJnsjc7IpVJar+wU4qDbDYAFhLKqcKSBSu
- kU1r8aUCQ5+W7zm3LLxkdqqggsqyBwjiZWlzyOqxUUvSY0CEw8ol3J2TklIxneaWisH5
- m3CC1+qRLfW7RL24SsHF2eSypWGNPy6e85+pAH2uj+ID3lRcYtpd6Nscmb4uyFEiVM7j
- IdZQ==
-X-Gm-Message-State: AGi0PuZkHZigCNRUKpDm69wfFIH6s+/HLN2MR4Ju62HUnCuMmQJHC+NS
- yGQjv93Rt5PCFJA1GZf+zLqmfK3uL9PT8YwxWu/x/G0XCV4=
-X-Google-Smtp-Source: APiQypJSQbSochVFs53Ne/iXBeH9lzsB4Fq6OHukGzbcFNzc/9kPS6AWqjaqlgYZWiRCFrRwUBNFfRp1T9YaecRyUFU=
-X-Received: by 2002:a02:7017:: with SMTP id f23mr526064jac.7.1586240988737;
- Mon, 06 Apr 2020 23:29:48 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=9tjQNCCL671R6oYmIQoFJbcNBQt6psjzUDZ9c2yJTyg=;
+ b=PaN+t2/F9WUBWw6rg6EjrnvbISyqinc3GBcaLyfHg3OpY8Y92VPdWUL6SmXf0Gd9k0
+ LxLeEIYcHOEekVkDuJ2oZ1Ar3//J5OOp+12kDZQHaSlYBl4KUh+YZgaAGXb+InIZ31Cc
+ iPfRPQq03lbgfQ0g0Ii2eCbTSRQicbFjdTn1/giLpj56ZjvpviDY0hFlCp29ynpxOOhl
+ 2AmQeDH0gBVoFHvChXLcESjBuTvP1ewTZc5z9XnvHRo9fp7eWJbw52qZTBiCRM8Fu4Nd
+ cRac1WL1mYn8GNqwKAJsBLqXJPWFIOv2PlzaT59taSIyf9Q9CQEYosH+pyQ2zW0J9QSw
+ Mj+A==
+X-Gm-Message-State: AGi0PuYzlI/vXy7G/9mZvNhy9kTNIUS/4vckCSg5RAR9+ohiowJG5eJi
+ tvBAzlbaPhuiqIm76lV2WeM=
+X-Google-Smtp-Source: APiQypJfYWjNmfJCeCOavA8st87sYYaAY1x/MBXdBebpb3sUrshpoGIyRv3qP288divQjoPbOSMnhg==
+X-Received: by 2002:a2e:8146:: with SMTP id t6mr893215ljg.236.1586246098960;
+ Tue, 07 Apr 2020 00:54:58 -0700 (PDT)
+Received: from home.paul.comp (paulfertser.info.
+ [2001:470:26:54b:226:9eff:fe70:80c2])
+ by smtp.gmail.com with ESMTPSA id v9sm11401673ljj.31.2020.04.07.00.54.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Apr 2020 00:54:58 -0700 (PDT)
+Received: from home.paul.comp (home.paul.comp [IPv6:0:0:0:0:0:0:0:1])
+ by home.paul.comp (8.15.2/8.15.2/Debian-14~deb10u1) with ESMTP id
+ 0377stPB012577; Tue, 7 Apr 2020 10:54:56 +0300
+Received: (from paul@localhost)
+ by home.paul.comp (8.15.2/8.15.2/Submit) id 0377stho012576;
+ Tue, 7 Apr 2020 10:54:55 +0300
+Date: Tue, 7 Apr 2020 10:54:55 +0300
+From: Paul Fertser <fercerpav@gmail.com>
+To: Marco Zoccolan <marco.zoc@gmail.com>
+Message-ID: <20200407075454.GU23797@home.paul.comp>
+References: <CAHaNs=KvCLtGnOBrPieBRaq63NczhRjL5VZQtKoZF7UUso719g@mail.gmail.com>
 MIME-Version: 1.0
-From: Marco Zoccolan <marco.zoc@gmail.com>
-Date: Tue, 7 Apr 2020 08:29:39 +0200
-Message-ID: <CAHaNs=KvCLtGnOBrPieBRaq63NczhRjL5VZQtKoZF7UUso719g@mail.gmail.com>
-To: linux-uvc-devel@lists.sourceforge.net
+Content-Disposition: inline
+In-Reply-To: <CAHaNs=KvCLtGnOBrPieBRaq63NczhRjL5VZQtKoZF7UUso719g@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: gnu.org]
  0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (marco.zoc[at]gmail.com)
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.166.49 listed in list.dnswl.org]
+ (fercerpav[at]gmail.com)
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.166.49 listed in wl.mailspike.net]
+ [209.85.208.179 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.208.179 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
@@ -85,8 +106,8 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1jLhkA-006B1n-Qi
-Subject: [linux-uvc-devel] Webcam USB20 0c45:627b not supported
+X-Headers-End: 1jLj4b-006DZh-Oj
+Subject: Re: [linux-uvc-devel] Webcam USB20 0c45:627b not supported
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,39 +119,29 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: linux-uvc-devel@lists.sourceforge.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-I have a quite old USB 2.0 webcam which worked fine last time I
-checked it (I used it on a windows 32 bit system) but which is not
-listed as a known UVC device.
+On Tue, Apr 07, 2020 at 08:29:39AM +0200, Marco Zoccolan wrote:
+> [dom apr  5 13:11:47 2020] usb 1-1.1: Product: USB20 Camera
+> [dom apr  5 13:11:47 2020] gspca_main: gspca_sn9c20x-2.14.0 probing 0c45:627b
+> [dom apr  5 13:11:47 2020] gspca_sn9c20x: OV7660 sensor detected
 
-When connected the device is recognized:
+So it's actually not a UVC device, but something handled by the gspca
+driver.
 
-[dom apr  5 13:11:47 2020] usb 1-1.1: new high-speed USB device number
-7 using ehci-pci
-[dom apr  5 13:11:47 2020] usb 1-1.1: New USB device found,
-idVendor=0c45, idProduct=627b, bcdDevice= 1.00
-[dom apr  5 13:11:47 2020] usb 1-1.1: New USB device strings: Mfr=0,
-Product=1, SerialNumber=0
-[dom apr  5 13:11:47 2020] usb 1-1.1: Product: USB20 Camera
-[dom apr  5 13:11:47 2020] gspca_main: gspca_sn9c20x-2.14.0 probing 0c45:627b
-[dom apr  5 13:11:47 2020] gspca_sn9c20x: OV7660 sensor detected
-[dom apr  5 13:11:47 2020] input: gspca_sn9c20x as
-/devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.1/input/input37
+> Is there any chance to have it added in the supported device list?
 
-There are other products from idVendor 0c45 supported but not this one.
+Not to the UVC's. Are there any errors in dmesg though, it doesn't
+look like gspca complains about anything from your paste.
 
-I also notice some devices with OV7670 sensor in the supported devices list.
-
-The webcam is stated as capable of VGA (640x480) video with framerate 30 fps.
-
-Is there any chance to have it added in the supported device list?
-
-Thanks in advance.
+-- 
+Be free, use free (http://www.gnu.org/philosophy/free-sw.html) software!
+mailto:fercerpav@gmail.com
 
 
 _______________________________________________
