@@ -2,102 +2,96 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE0341A4BBC
-	for <lists+linux-uvc-devel@lfdr.de>; Sat, 11 Apr 2020 00:07:03 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BE0D1A4F53
+	for <lists+linux-uvc-devel@lfdr.de>; Sat, 11 Apr 2020 12:21:32 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jN1nI-0003JD-4F; Fri, 10 Apr 2020 22:06:36 +0000
+	id 1jNDGE-0006Lp-44; Sat, 11 Apr 2020 10:21:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <maximilian.zraunig@gmail.com>) id 1jN1nG-0003J1-In
- for linux-uvc-devel@lists.sourceforge.net; Fri, 10 Apr 2020 22:06:34 +0000
+ (envelope-from <alessandro.govi@gmail.com>) id 1jNDGD-0006LX-6D
+ for linux-uvc-devel@lists.sourceforge.net; Sat, 11 Apr 2020 10:21:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Mime-Version:Content-Type:Date:To:From:Subject:
- Message-ID:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:Cc:To:Subject:Message-ID:Date:From:
+ In-Reply-To:References:MIME-Version:Sender:Reply-To:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=6QcQ+Y0AVLTCIZWzpbilnoUKRCOJvuBWEWciDPYfDN4=; b=Vkh908gPFqibcbF6dByUI7Yf1F
- uLtldIHtqZLg4los4hVaM2Ecup/XGJVwp7J1VkEGt9gti9iXqZ4cp2iPws0kSB9f5h9sDob8XLjsR
- wMnuJHRwd91DNv6+53iyqkE8QjSZrwiWrEHaZkne5023WW0n0x/EJ3ENOMMk4vni0Js8=;
+ bh=FBBsd8//9okJVNvU5z3RYDr5JelnyxmrIyKLzT19i7A=; b=N1wYaL4tkJVjWKf1R3l367WLND
+ F+hnPCRFmkmVvuw/MXVFi5eWyjFjULVYwrI7s7+sBD0XffdDPc+8tTkXOuAgGNY90TfyW6CQjPZAu
+ 46zGNL8NVqvKhpNX1IIYBsNEnBLKYF2uNdLwDinfEQohnL4diFSTLRdElIfOI4tZAA0k=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Mime-Version:Content-Type:Date:To:From:Subject:Message-ID:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=6QcQ+Y0AVLTCIZWzpbilnoUKRCOJvuBWEWciDPYfDN4=; b=K
- Nkeg05AtYgb9T49/5VlKLwHoZRldwQekYG5fE/Rv6p0LGsXaYyXApmllZFTx8yhCYMMCma9epRc4x
- O9VmzRdKNoKsizF0/3+buAazADtXAZ1SXFK39mMBurF2poExDvwcmjonaNJigAQyYcJZXvqJKaSTU
- ujxMUJJRufi2AMxE=;
-Received: from mail-wr1-f50.google.com ([209.85.221.50])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ h=Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+ MIME-Version:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=FBBsd8//9okJVNvU5z3RYDr5JelnyxmrIyKLzT19i7A=; b=RXEUKbLbCxrCUkerMUJfm/c7lo
+ Ows29zxAocWEfdbWw3RdIRXOQ0M+zIHQ2vy0SSfIjG2mctqPzxLsaCCHr9I+wAwiVQjOyH1FwcZn5
+ 20HM03h0+3Y7J0bvGQtj8OgDRqS9QKxcRI5YrbRVHcFxYnQvmcIrIJUS1e53J1WBlJYQ=;
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1jN1nB-00Eitx-UP
- for linux-uvc-devel@lists.sourceforge.net; Fri, 10 Apr 2020 22:06:34 +0000
-Received: by mail-wr1-f50.google.com with SMTP id p10so3857847wrt.6
+ id 1jNDGB-00BRbC-09
+ for linux-uvc-devel@lists.sourceforge.net; Sat, 11 Apr 2020 10:21:13 +0000
+Received: by mail-ot1-f46.google.com with SMTP id j20so3462055otl.9
  for <linux-uvc-devel@lists.sourceforge.net>;
- Fri, 10 Apr 2020 15:06:29 -0700 (PDT)
+ Sat, 11 Apr 2020 03:21:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:date:mime-version;
- bh=6QcQ+Y0AVLTCIZWzpbilnoUKRCOJvuBWEWciDPYfDN4=;
- b=qvfyg64Gl1nbNZhHRvZwPHi4RWiqtHYcGFAZYKz3J1Abx8pQtQkS3PCz581Zii4jNg
- 4e/nTsXIpHQZ7kjxKvl939zqDnXtqcNvKdMjeQ2CebYFj5EayiEA8u5D74EsxfDNhY33
- JwC04ck3EUuSdImky4tUoAYXp+Jd6Lxg0/mPi/BRie5ttqN2Bt0V/mA6xp4dhv78/0cQ
- V7Ib1ds6mORpEEq+6anCMySjkus5du5dypHwVGtkn85OeqrpWlCrX6Qn7EdH9nvzO16i
- KJJ+rq3TykPasww6JWP65LXpvm5xbhwSR9riVd10FwztFOGicOtkNaPh7Y6B4rpMD3i/
- GpGQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FBBsd8//9okJVNvU5z3RYDr5JelnyxmrIyKLzT19i7A=;
+ b=NOMk+dofWt7hBuq0sJurJqgzH+NEvcwEQjh+TQM2caVoO8ysiQv18kMcDwz4THktaH
+ dGRLacS77rsEq87I0hPLj6nEacAV6MNR9utfhJttM95v+8zyOBKn6ih5dET29/Z6Rpso
+ XCgdeo98tjlDV85q2BaXsAxJKEyNnV8OpT+O4mDeRVM3b/5kQ34T8ODOcMluDJbNqfW2
+ UlB0cBZkjepdRcXglsJ45IsqA7/nP7xIIEu9GAadPBieGll/AxTkr5idvAfuhbzKv6qH
+ yyxwQ+5882ONRjereTGkvwbGsTCtgCVMpMF5FbR9meAqT+Y2JNryhlg+CWPh9Bwywv9+
+ jEZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:date:mime-version;
- bh=6QcQ+Y0AVLTCIZWzpbilnoUKRCOJvuBWEWciDPYfDN4=;
- b=celYV2RXKQdLZsWS4oBYiocemuLvuqwjiCvl9Ak91AUIQjbpLjg2J3/HowBhX3xoup
- 4SQHn1n9ok8ZKl0YfyAPw1h6J4umFfiNAFoBXJjvvGpEwg0vrg+UmF/07frLMovS4Y9J
- 9v4rpHmSVFsyk0gJ4LdFPxWHO5Eep71YpRFz/PkuJebGfqZP9L38y6M9FMp4XgKkblN/
- wEzcqityhoy1/U0WFYez92sAVqFSQ8TEHhpr1yashd1NbShkRVPbaz/p8QzqDQEfAzS7
- grjrIKqj5wvpObdEMK2B0zrwJ+B5QEvgYYDSvr5AzaK6pXERj6rxnW/IgVx0/MHhiVNb
- 1aYg==
-X-Gm-Message-State: AGi0PuYjCurdLVlG8AQ0Qa8pm6FDVJP5yxSSiMuXr1kUIFIQ4lhTzd68
- AeIVQV+gL8O8EkZDR/YmboxnDM17
-X-Google-Smtp-Source: APiQypIrv8WjId1hNMmT5zs+2YviL3yACyBE7qXlJXctlM+xQyi/DLYjbO0JRs8JNzALPzYsQnUdYQ==
-X-Received: by 2002:adf:a11a:: with SMTP id o26mr2655931wro.284.1586556382933; 
- Fri, 10 Apr 2020 15:06:22 -0700 (PDT)
-Received: from
- 2a02-8388-6081-cd00-b107-2e0e-6d12-fc95.cable.dynamic.v6.surfer.at
- (2a02-8388-6081-cd00-b107-2e0e-6d12-fc95.cable.dynamic.v6.surfer.at.
- [2a02:8388:6081:cd00:b107:2e0e:6d12:fc95])
- by smtp.gmail.com with ESMTPSA id c17sm4550434wrp.28.2020.04.10.15.06.21
- for <linux-uvc-devel@lists.sourceforge.net>
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Apr 2020 15:06:21 -0700 (PDT)
-Message-ID: <1586556380.21178.7.camel@gmail.com>
-From: maximilian.zraunig@gmail.com
-To: "linux-uvc-devel@lists.sourceforge.net"
- <linux-uvc-devel@lists.sourceforge.net>
-Date: Sat, 11 Apr 2020 00:06:20 +0200
-Content-Type: multipart/mixed; boundary="=-9uk4eaFjoJ8/g1nesF2Q"
-X-Mailer: Evolution 3.26.6 
-Mime-Version: 1.0
-X-Spam-Score: -0.1 (/)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FBBsd8//9okJVNvU5z3RYDr5JelnyxmrIyKLzT19i7A=;
+ b=XTYlwu6RzSXeP0BNp6770hUiy+NsKKGQdKfmXwEiLJrMIKQEGSsrCTCyX7Qdhi1mPh
+ j4Ldih4GJ8oeZqMqhkW/7txLqmo6aJbALH5UlXInNw/+HrJRwBI/M1ky9Eypp7zVbjdR
+ MbmPgCSm+hh3ahJaw31pSAR/TOiVqnw5VmWQjxW8yJpBdeDT3QZMIMcp89i80SwX7MnJ
+ DJ32YcQ95P/2aGRRtd7gL5hxbJU52Nn3b+6nRGkpj/B5pPqQki8pRaxpAWlFAzr0Etyq
+ g3FNYChjylWCmppM6/BCFuFmFUkD3C65GWzkcaRs6wMyyz5krnNRuY1TS3lsSttqd//u
+ mD6A==
+X-Gm-Message-State: AGi0PuYVsur1JiAknCStzlE3GjAkqAjXOaKAOybcDcDHWOcvrPs/AMDw
+ 9JUw18camaO8olAmXxxa0H/WTa3dZT5oFF9JTz0=
+X-Google-Smtp-Source: APiQypIr4gh31Ux6dMUJK34OGbtbwtSjxJZkhPgkOJtC8KsUKNAR3GAd3e5uEUCf1ltmcxAnklWxkJCQ40hNm+4w++4=
+X-Received: by 2002:a9d:6950:: with SMTP id p16mr7149134oto.199.1586600465213; 
+ Sat, 11 Apr 2020 03:21:05 -0700 (PDT)
+MIME-Version: 1.0
+References: <1586556380.21178.7.camel@gmail.com>
+In-Reply-To: <1586556380.21178.7.camel@gmail.com>
+From: Alessandro Govi <alessandro.govi@gmail.com>
+Date: Sat, 11 Apr 2020 12:20:53 +0200
+Message-ID: <CADPtnGNuWOViR1F-PbYu0fMCqh0p8kXRJQ0L+_kJYB3Wrao=yA@mail.gmail.com>
+To: maximilian.zraunig@gmail.com
+X-Spam-Score: 0.9 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.221.50 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (maximilian.zraunig[at]gmail.com)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.221.50 listed in wl.mailspike.net]
+ (alessandro.govi[at]gmail.com)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.210.46 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.46 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1jN1nB-00Eitx-UP
-Subject: [linux-uvc-devel] Chicony Electronics Notebook Cam not supported
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1jNDGB-00BRbC-09
+Subject: Re: [linux-uvc-devel] Chicony Electronics Notebook Cam not supported
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,425 +103,152 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: "linux-uvc-devel@lists.sourceforge.net"
+ <linux-uvc-devel@lists.sourceforge.net>
+Content-Type: multipart/mixed; boundary="===============7237183897956730788=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
+--===============7237183897956730788==
+Content-Type: multipart/alternative; boundary="000000000000212af805a3013586"
 
---=-9uk4eaFjoJ8/g1nesF2Q
+--000000000000212af805a3013586
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 
-Hi,
+Hi Maximilian,
+I had a similar problem to yours.
+A netbook with internal webcam: it was recognized, also its "on" light was
+on, but always black screen from every program with Ubuntu 18.04.
+I also tried older kernels, different settings, etc. No way.
+At the end I found that it was... a MECHANICAL problem! :-)
+Basically I pushed a bit with my fingers at the left and right of the
+webcam and the image suddenly came while the program was giving only black.
+I pushed a little more and the image became perfect. For this reason I
+don't think it was an electrical issue, but really a mechanical one; maybe
+several open/close, open/close or some impacts made the webcam move a
+little, but enough to give her bad focus and so on.
+I'm curious, let me know if it was your case too.
+A greeting from Italy.
 
-I have a few years old Lenovo Notebook with an internal Chicony
-Electronics webcam which seems to be a UVC Devide but it's not in the
-supported devices list:
+Alessandro
 
-         linux-1r6q:/home/max # lsusb -d 04f2:b2b6 -v | grep "14 Video"
-         bFunctionClass         14 Video
-         bInterfaceClass        14 Video
-         bInterfaceClass        14 Video
-         bInterfaceClass        14 Video
-         bInterfaceClass        14 Video
-   can't get debug descriptor: Resource temporarily unavailable
-         bInterfaceClass        14 Video
-         bInterfaceClass        14 Video
-         bInterfaceClass        14 Video
-         bInterfaceClass        14 Video
+Il giorno sab 11 apr 2020 alle ore 00:08 <maximilian.zraunig@gmail.com> ha
+scritto:
 
-When starting guvcview the camera seems to be recognized - I can choose
-it as "Lenovo EasyCamera" in Video Controls. 
-But I get only a black canvas from it - as well as within luvcview.
+> Hi,
+>
+> I have a few years old Lenovo Notebook with an internal Chicony
+> Electronics webcam which seems to be a UVC Devide but it's not in the
+> supported devices list:
+>
+>          linux-1r6q:/home/max # lsusb -d 04f2:b2b6 -v | grep "14 Video"
+>          bFunctionClass         14 Video
+>          bInterfaceClass        14 Video
+>          bInterfaceClass        14 Video
+>          bInterfaceClass        14 Video
+>          bInterfaceClass        14 Video
+>    can't get debug descriptor: Resource temporarily unavailable
+>          bInterfaceClass        14 Video
+>          bInterfaceClass        14 Video
+>          bInterfaceClass        14 Video
+>          bInterfaceClass        14 Video
+>
+> When starting guvcview the camera seems to be recognized - I can choose
+> it as "Lenovo EasyCamera" in Video Controls.
+> But I get only a black canvas from it - as well as within luvcview.
+>
+> Attached you can find my dmesg.log from trying to get a picture with
+> luvcview as well as my webcam descriptors in lsusb.log.
+>
+> Any hints from anyone to get my cam running?
+>
+> Thanks & regards,
+> Max_______________________________________________
+> Linux-uvc-devel mailing list
+> Linux-uvc-devel@lists.sourceforge.net
+> https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+>
 
-Attached you can find my dmesg.log from trying to get a picture with
-luvcview as well as my webcam descriptors in lsusb.log.
+--000000000000212af805a3013586
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Any hints from anyone to get my cam running?
+<div dir=3D"ltr">Hi Maximilian,<div>I had a similar problem to yours.</div>=
+<div>A netbook with internal webcam: it was recognized, also its &quot;on&q=
+uot; light was on, but always black screen from every program with Ubuntu 1=
+8.04.</div><div>I also tried older kernels, different settings, etc. No way=
+.</div><div>At the end I found that it was... a MECHANICAL problem! :-)</di=
+v><div>Basically I pushed a bit with my fingers at the left and right of th=
+e webcam and the image suddenly came while the program was giving only blac=
+k.</div><div>I pushed a little more and the image became perfect. For this =
+reason I don&#39;t think it was an electrical issue, but really a mechanica=
+l one; maybe several open/close, open/close or some impacts made the webcam=
+ move a little, but enough to give her bad focus and so on.</div><div>I&#39=
+;m curious, let me know if it was your case too.</div><div>A greeting from =
+Italy.</div><div><br></div><div>Alessandro</div></div><br><div class=3D"gma=
+il_quote"><div dir=3D"ltr" class=3D"gmail_attr">Il giorno sab 11 apr 2020 a=
+lle ore 00:08 &lt;<a href=3D"mailto:maximilian.zraunig@gmail.com">maximilia=
+n.zraunig@gmail.com</a>&gt; ha scritto:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">Hi,<br>
+<br>
+I have a few years old Lenovo Notebook with an internal Chicony<br>
+Electronics webcam which seems to be a UVC Devide but it&#39;s not in the<b=
+r>
+supported devices list:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0linux-1r6q:/home/max # lsusb -d 04f2:b2b6=
+ -v | grep &quot;14 Video&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bFunctionClass=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A014 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0can&#39;t get debug descriptor: Resource temporarily unavailab=
+le<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bInterfaceClass=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 14 Video<br>
+<br>
+When starting guvcview the camera seems to be recognized - I can choose<br>
+it as &quot;Lenovo EasyCamera&quot; in Video Controls. <br>
+But I get only a black canvas from it - as well as within luvcview.<br>
+<br>
+Attached you can find my dmesg.log from trying to get a picture with<br>
+luvcview as well as my webcam descriptors in lsusb.log.<br>
+<br>
+Any hints from anyone to get my cam running?<br>
+<br>
+Thanks &amp; regards,<br>
+Max_______________________________________________<br>
+Linux-uvc-devel mailing list<br>
+<a href=3D"mailto:Linux-uvc-devel@lists.sourceforge.net" target=3D"_blank">=
+Linux-uvc-devel@lists.sourceforge.net</a><br>
+<a href=3D"https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel" re=
+l=3D"noreferrer" target=3D"_blank">https://lists.sourceforge.net/lists/list=
+info/linux-uvc-devel</a><br>
+</blockquote></div>
 
-Thanks & regards,
-Max
---=-9uk4eaFjoJ8/g1nesF2Q
-Content-Disposition: attachment; filename="dmesg.log"
-Content-Type: text/x-log; name="dmesg.log"; charset="UTF-8"
-Content-Transfer-Encoding: base64
-
-WzIzNDMyLjU0NjM2NV0gdXZjdmlkZW86IHV2Y192NGwyX29wZW4KWzIzNDMyLjcwMzczN10gdXZj
-dmlkZW86IFJlc3VtaW5nIGludGVyZmFjZSAwClsyMzQzMi43MDM3MzldIHV2Y3ZpZGVvOiBSZXN1
-bWluZyBpbnRlcmZhY2UgMQpbMjM0MzIuNzAzNzgwXSB1dmN2aWRlbzogVHJ5aW5nIGZvcm1hdCAw
-eDQ3NTA0YTRkIChNSlBHKTogMzIweDI0MC4KWzIzNDMyLjcwMzc4Ml0gdXZjdmlkZW86IFVzaW5n
-IGRlZmF1bHQgZnJhbWUgaW50ZXJ2YWwgMzMzMzMuMyB1cyAoMzAuMCBmcHMpLgpbMjM0MzIuNzE4
-NTAxXSB1dmN2aWRlbzogU2V0dGluZyBmcmFtZSBpbnRlcnZhbCB0byAxLzE1ICg2NjY2NjYpLgpb
-MjM0MzIuNzM2MzA2XSB1dmN2aWRlbzogdXZjX3Y0bDJfbW1hcApbMjM0MzIuNzM2MzE4XSB1dmN2
-aWRlbzogdXZjX3Y0bDJfbW1hcApbMjM0MzIuNzM2MzI2XSB1dmN2aWRlbzogdXZjX3Y0bDJfbW1h
-cApbMjM0MzIuNzM2MzMzXSB1dmN2aWRlbzogdXZjX3Y0bDJfbW1hcApbMjM0MzIuNzU4NTU4XSB1
-dmN2aWRlbzogRGV2aWNlIHJlcXVlc3RlZCA4MDAgQi9mcmFtZSBiYW5kd2lkdGguClsyMzQzMi43
-NTg1NjBdIHV2Y3ZpZGVvOiBTZWxlY3RpbmcgYWx0ZXJuYXRlIHNldHRpbmcgMyAoODAwIEIvZnJh
-bWUgYmFuZHdpZHRoKS4KWzIzNDMzLjU3NjA4NV0gdXZjdmlkZW86IEFsbG9jYXRlZCA1IFVSQiBi
-dWZmZXJzIG9mIDMyeDgwMCBieXRlcyBlYWNoLgpbMjM0NTQuMDkyODU3XSB1dmN2aWRlbzogdXZj
-X3Y0bDJfcmVsZWFzZQpbMjM0NTYuMDk3NDQ2XSB1dmN2aWRlbzogU3VzcGVuZGluZyBpbnRlcmZh
-Y2UgMQpbMjM0NTYuMDk3NDUzXSB1dmN2aWRlbzogU3VzcGVuZGluZyBpbnRlcmZhY2UgMAo=
-
-
---=-9uk4eaFjoJ8/g1nesF2Q
-Content-Disposition: attachment; filename="lsusb.log"
-Content-Type: text/x-log; name="lsusb.log"; charset="UTF-8"
-Content-Transfer-Encoding: base64
-
-CkJ1cyAwMDMgRGV2aWNlIDAwNDogSUQgMDRmMjpiMmI2IENoaWNvbnkgRWxlY3Ryb25pY3MgQ28u
-LCBMdGQgCkRldmljZSBEZXNjcmlwdG9yOgogIGJMZW5ndGggICAgICAgICAgICAgICAgMTgKICBi
-RGVzY3JpcHRvclR5cGUgICAgICAgICAxCiAgYmNkVVNCICAgICAgICAgICAgICAgMi4wMAogIGJE
-ZXZpY2VDbGFzcyAgICAgICAgICAyMzkgTWlzY2VsbGFuZW91cyBEZXZpY2UKICBiRGV2aWNlU3Vi
-Q2xhc3MgICAgICAgICAyIAogIGJEZXZpY2VQcm90b2NvbCAgICAgICAgIDEgSW50ZXJmYWNlIEFz
-c29jaWF0aW9uCiAgYk1heFBhY2tldFNpemUwICAgICAgICA2NAogIGlkVmVuZG9yICAgICAgICAg
-ICAweDA0ZjIgQ2hpY29ueSBFbGVjdHJvbmljcyBDby4sIEx0ZAogIGlkUHJvZHVjdCAgICAgICAg
-ICAweGIyYjYgCiAgYmNkRGV2aWNlICAgICAgICAgICA2MC41NgogIGlNYW51ZmFjdHVyZXIgICAg
-ICAgICAgIDIgQ2hpY29ueSBFbGVjdHJvbmljcyBDby4sIEx0ZC4KICBpUHJvZHVjdCAgICAgICAg
-ICAgICAgICAxIExlbm92byBFYXN5Q2FtZXJhCiAgaVNlcmlhbCAgICAgICAgICAgICAgICAgMCAK
-ICBiTnVtQ29uZmlndXJhdGlvbnMgICAgICAxCiAgQ29uZmlndXJhdGlvbiBEZXNjcmlwdG9yOgog
-ICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgOQogICAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAg
-MgogICAgd1RvdGFsTGVuZ3RoICAgICAgICAgIDYyMQogICAgYk51bUludGVyZmFjZXMgICAgICAg
-ICAgMgogICAgYkNvbmZpZ3VyYXRpb25WYWx1ZSAgICAgMQogICAgaUNvbmZpZ3VyYXRpb24gICAg
-ICAgICAgMCAKICAgIGJtQXR0cmlidXRlcyAgICAgICAgIDB4ODAKICAgICAgKEJ1cyBQb3dlcmVk
-KQogICAgTWF4UG93ZXIgICAgICAgICAgICAgIDUwMG1BCiAgICBJbnRlcmZhY2UgQXNzb2NpYXRp
-b246CiAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgIDgKICAgICAgYkRlc2NyaXB0b3JUeXBl
-ICAgICAgICAxMQogICAgICBiRmlyc3RJbnRlcmZhY2UgICAgICAgICAwCiAgICAgIGJJbnRlcmZh
-Y2VDb3VudCAgICAgICAgIDIKICAgICAgYkZ1bmN0aW9uQ2xhc3MgICAgICAgICAxNCBWaWRlbwog
-ICAgICBiRnVuY3Rpb25TdWJDbGFzcyAgICAgICAzIFZpZGVvIEludGVyZmFjZSBDb2xsZWN0aW9u
-CiAgICAgIGJGdW5jdGlvblByb3RvY29sICAgICAgIDAgCiAgICAgIGlGdW5jdGlvbiAgICAgICAg
-ICAgICAgIDUgTGVub3ZvIEVhc3lDYW1lcmEKICAgIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAg
-ICBiTGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAg
-IDQKICAgICAgYkludGVyZmFjZU51bWJlciAgICAgICAgMAogICAgICBiQWx0ZXJuYXRlU2V0dGlu
-ZyAgICAgICAwCiAgICAgIGJOdW1FbmRwb2ludHMgICAgICAgICAgIDEKICAgICAgYkludGVyZmFj
-ZUNsYXNzICAgICAgICAxNCBWaWRlbwogICAgICBiSW50ZXJmYWNlU3ViQ2xhc3MgICAgICAxIFZp
-ZGVvIENvbnRyb2wKICAgICAgYkludGVyZmFjZVByb3RvY29sICAgICAgMCAKICAgICAgaUludGVy
-ZmFjZSAgICAgICAgICAgICAgNSBMZW5vdm8gRWFzeUNhbWVyYQogICAgICBWaWRlb0NvbnRyb2wg
-SW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAxMwog
-ICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgMzYKICAgICAgICBiRGVzY3JpcHRvclN1YnR5
-cGUgICAgICAxIChIRUFERVIpCiAgICAgICAgYmNkVVZDICAgICAgICAgICAgICAgMS4wMAogICAg
-ICAgIHdUb3RhbExlbmd0aCAgICAgICAgICAgNzcKICAgICAgICBkd0Nsb2NrRnJlcXVlbmN5ICAg
-ICAgIDE1LjAwMDAwME1IegogICAgICAgIGJJbkNvbGxlY3Rpb24gICAgICAgICAgIDEKICAgICAg
-ICBiYUludGVyZmFjZU5yKCAwKSAgICAgICAxCiAgICAgIFZpZGVvQ29udHJvbCBJbnRlcmZhY2Ug
-RGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICAgICAgYkRl
-c2NyaXB0b3JUeXBlICAgICAgICAzNgogICAgICAgIGJEZXNjcmlwdG9yU3VidHlwZSAgICAgIDMg
-KE9VVFBVVF9URVJNSU5BTCkKICAgICAgICBiVGVybWluYWxJRCAgICAgICAgICAgICAyCiAgICAg
-ICAgd1Rlcm1pbmFsVHlwZSAgICAgIDB4MDEwMSBVU0IgU3RyZWFtaW5nCiAgICAgICAgYkFzc29j
-VGVybWluYWwgICAgICAgICAgMAogICAgICAgIGJTb3VyY2VJRCAgICAgICAgICAgICAgIDQKICAg
-ICAgICBpVGVybWluYWwgICAgICAgICAgICAgICAwIAogICAgICBWaWRlb0NvbnRyb2wgSW50ZXJm
-YWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAyNgogICAgICAg
-IGJEZXNjcmlwdG9yVHlwZSAgICAgICAgMzYKICAgICAgICBiRGVzY3JpcHRvclN1YnR5cGUgICAg
-ICA2IChFWFRFTlNJT05fVU5JVCkKICAgICAgICBiVW5pdElEICAgICAgICAgICAgICAgICA0CiAg
-ICAgICAgZ3VpZEV4dGVuc2lvbkNvZGUgICAgICAgICB7NzAzM2YwMjgtMTE2My0yZTRhLWJhMmMt
-Njg5MGViMzM0MDE2fQogICAgICAgIGJOdW1Db250cm9sICAgICAgICAgICAgIDgKICAgICAgICBi
-TnJQaW5zICAgICAgICAgICAgICAgICAxCiAgICAgICAgYmFTb3VyY2VJRCggMCkgICAgICAgICAg
-MwogICAgICAgIGJDb250cm9sU2l6ZSAgICAgICAgICAgIDEKICAgICAgICBibUNvbnRyb2xzKCAw
-KSAgICAgICAweDBmCiAgICAgICAgaUV4dGVuc2lvbiAgICAgICAgICAgICAgMCAKICAgICAgVmlk
-ZW9Db250cm9sIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAg
-ICAgICAgMTgKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgIDM2CiAgICAgICAgYkRlc2Ny
-aXB0b3JTdWJ0eXBlICAgICAgMiAoSU5QVVRfVEVSTUlOQUwpCiAgICAgICAgYlRlcm1pbmFsSUQg
-ICAgICAgICAgICAgMQogICAgICAgIHdUZXJtaW5hbFR5cGUgICAgICAweDAyMDEgQ2FtZXJhIFNl
-bnNvcgogICAgICAgIGJBc3NvY1Rlcm1pbmFsICAgICAgICAgIDAKICAgICAgICBpVGVybWluYWwg
-ICAgICAgICAgICAgICAwIAogICAgICAgIHdPYmplY3RpdmVGb2NhbExlbmd0aE1pbiAgICAgIDAK
-ICAgICAgICB3T2JqZWN0aXZlRm9jYWxMZW5ndGhNYXggICAgICAwCiAgICAgICAgd09jdWxhckZv
-Y2FsTGVuZ3RoICAgICAgICAgICAgMAogICAgICAgIGJDb250cm9sU2l6ZSAgICAgICAgICAgICAg
-ICAgIDMKICAgICAgICBibUNvbnRyb2xzICAgICAgICAgICAweDAwMDAwMDA0CiAgICAgICAgICBB
-dXRvLUV4cG9zdXJlIFByaW9yaXR5CiAgICAgIFZpZGVvQ29udHJvbCBJbnRlcmZhY2UgRGVzY3Jp
-cHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgIDExCiAgICAgICAgYkRlc2NyaXB0
-b3JUeXBlICAgICAgICAzNgogICAgICAgIGJEZXNjcmlwdG9yU3VidHlwZSAgICAgIDUgKFBST0NF
-U1NJTkdfVU5JVCkKICAgICAgV2FybmluZzogRGVzY3JpcHRvciB0b28gc2hvcnQKICAgICAgICBi
-VW5pdElEICAgICAgICAgICAgICAgICAzCiAgICAgICAgYlNvdXJjZUlEICAgICAgICAgICAgICAg
-MQogICAgICAgIHdNYXhNdWx0aXBsaWVyICAgICAgICAgIDAKICAgICAgICBiQ29udHJvbFNpemUg
-ICAgICAgICAgICAyCiAgICAgICAgYm1Db250cm9scyAgICAgMHgwMDAwMTQzZgogICAgICAgICAg
-QnJpZ2h0bmVzcwogICAgICAgICAgQ29udHJhc3QKICAgICAgICAgIEh1ZQogICAgICAgICAgU2F0
-dXJhdGlvbgogICAgICAgICAgU2hhcnBuZXNzCiAgICAgICAgICBHYW1tYQogICAgICAgICAgUG93
-ZXIgTGluZSBGcmVxdWVuY3kKICAgICAgICAgIFdoaXRlIEJhbGFuY2UgVGVtcGVyYXR1cmUsIEF1
-dG8KICAgICAgICBpUHJvY2Vzc2luZyAgICAgICAgICAgICAwIAogICAgICAgIGJtVmlkZW9TdGFu
-ZGFyZHMgICAgIDB4IDAKICAgICAgRW5kcG9pbnQgRGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3Ro
-ICAgICAgICAgICAgICAgICA3CiAgICAgICAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAgNQogICAg
-ICAgIGJFbmRwb2ludEFkZHJlc3MgICAgIDB4ODMgIEVQIDMgSU4KICAgICAgICBibUF0dHJpYnV0
-ZXMgICAgICAgICAgICAzCiAgICAgICAgICBUcmFuc2ZlciBUeXBlICAgICAgICAgICAgSW50ZXJy
-dXB0CiAgICAgICAgICBTeW5jaCBUeXBlICAgICAgICAgICAgICAgTm9uZQogICAgICAgICAgVXNh
-Z2UgVHlwZSAgICAgICAgICAgICAgIERhdGEKICAgICAgICB3TWF4UGFja2V0U2l6ZSAgICAgMHgw
-MDEwICAxeCAxNiBieXRlcwogICAgICAgIGJJbnRlcnZhbCAgICAgICAgICAgICAgIDYKICAgIElu
-dGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA5CiAgICAg
-IGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDQKICAgICAgYkludGVyZmFjZU51bWJlciAgICAgICAg
-MQogICAgICBiQWx0ZXJuYXRlU2V0dGluZyAgICAgICAwCiAgICAgIGJOdW1FbmRwb2ludHMgICAg
-ICAgICAgIDAKICAgICAgYkludGVyZmFjZUNsYXNzICAgICAgICAxNCBWaWRlbwogICAgICBiSW50
-ZXJmYWNlU3ViQ2xhc3MgICAgICAyIFZpZGVvIFN0cmVhbWluZwogICAgICBiSW50ZXJmYWNlUHJv
-dG9jb2wgICAgICAwIAogICAgICBpSW50ZXJmYWNlICAgICAgICAgICAgICA1IExlbm92byBFYXN5
-Q2FtZXJhCiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAg
-IGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMTUKICAgICAgICBiRGVzY3JpcHRv
-clR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAg
-ICAgICAgICAgICAgICAgMSAoSU5QVVRfSEVBREVSKQogICAgICAgIGJOdW1Gb3JtYXRzICAgICAg
-ICAgICAgICAgICAgICAgICAgIDIKICAgICAgICB3VG90YWxMZW5ndGggICAgICAgICAgICAgICAg
-ICAgICAgNDAxCiAgICAgICAgYkVuZFBvaW50QWRkcmVzcyAgICAgICAgICAgICAgICAgIDEyOQog
-ICAgICAgIGJtSW5mbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAKICAgICAgICBiVGVy
-bWluYWxMaW5rICAgICAgICAgICAgICAgICAgICAgICAyCiAgICAgICAgYlN0aWxsQ2FwdHVyZU1l
-dGhvZCAgICAgICAgICAgICAgICAgMAogICAgICAgIGJUcmlnZ2VyU3VwcG9ydCAgICAgICAgICAg
-ICAgICAgICAgIDAKICAgICAgICBiVHJpZ2dlclVzYWdlICAgICAgICAgICAgICAgICAgICAgICAw
-CiAgICAgICAgYkNvbnRyb2xTaXplICAgICAgICAgICAgICAgICAgICAgICAgMQogICAgICAgIGJt
-YUNvbnRyb2xzKCAwKSAgICAgICAgICAgICAgICAgICAgMjcKICAgICAgICBibWFDb250cm9scygg
-MSkgICAgICAgICAgICAgICAgICAgIDI3CiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBE
-ZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMjcK
-ICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRl
-c2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAgNCAoRk9STUFUX1VOQ09NUFJFU1NFRCkK
-ICAgICAgICBiRm9ybWF0SW5kZXggICAgICAgICAgICAgICAgICAgICAgICAxCiAgICAgICAgYk51
-bUZyYW1lRGVzY3JpcHRvcnMgICAgICAgICAgICAgICAgNQogICAgICAgIGd1aWRGb3JtYXQgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgezU5NTU1OTMyLTAwMDAtMTAwMC04MDAwLTAwYWEwMDM4
-OWI3MX0KICAgICAgICBiQml0c1BlclBpeGVsICAgICAgICAgICAgICAgICAgICAgIDE2CiAgICAg
-ICAgYkRlZmF1bHRGcmFtZUluZGV4ICAgICAgICAgICAgICAgICAgMQogICAgICAgIGJBc3BlY3RS
-YXRpb1ggICAgICAgICAgICAgICAgICAgICAgIDAKICAgICAgICBiQXNwZWN0UmF0aW9ZICAgICAg
-ICAgICAgICAgICAgICAgICAwCiAgICAgICAgYm1JbnRlcmxhY2VGbGFncyAgICAgICAgICAgICAg
-ICAgMHgwMAogICAgICAgICAgSW50ZXJsYWNlZCBzdHJlYW0gb3IgdmFyaWFibGU6IE5vCiAgICAg
-ICAgICBGaWVsZHMgcGVyIGZyYW1lOiAyIGZpZWxkcwogICAgICAgICAgRmllbGQgMSBmaXJzdDog
-Tm8KICAgICAgICAgIEZpZWxkIHBhdHRlcm46IEZpZWxkIDEgb25seQogICAgICAgICAgYkNvcHlQ
-cm90ZWN0ICAgICAgICAgICAgICAgICAgICAgIDAKICAgICAgVmlkZW9TdHJlYW1pbmcgSW50ZXJm
-YWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAzNAogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgICAgICAgICAgICAgMzYKICAgICAg
-ICBiRGVzY3JpcHRvclN1YnR5cGUgICAgICAgICAgICAgICAgICA1IChGUkFNRV9VTkNPTVBSRVNT
-RUQpCiAgICAgICAgYkZyYW1lSW5kZXggICAgICAgICAgICAgICAgICAgICAgICAgMQogICAgICAg
-IGJtQ2FwYWJpbGl0aWVzICAgICAgICAgICAgICAgICAgIDB4MDAKICAgICAgICAgIFN0aWxsIGlt
-YWdlIHVuc3VwcG9ydGVkCiAgICAgICAgd1dpZHRoICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IDY0MAogICAgICAgIHdIZWlnaHQgICAgICAgICAgICAgICAgICAgICAgICAgICA0ODAKICAgICAg
-ICBkd01pbkJpdFJhdGUgICAgICAgICAgICAgICAgIDczNzI4MDAwCiAgICAgICAgZHdNYXhCaXRS
-YXRlICAgICAgICAgICAgICAgIDE0NzQ1NjAwMAogICAgICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZl
-clNpemUgICAgICA2MTQ0MDAKICAgICAgICBkd0RlZmF1bHRGcmFtZUludGVydmFsICAgICAgICAg
-MzMzMzMzCiAgICAgICAgYkZyYW1lSW50ZXJ2YWxUeXBlICAgICAgICAgICAgICAgICAgMgogICAg
-ICAgIGR3RnJhbWVJbnRlcnZhbCggMCkgICAgICAgICAgICAzMzMzMzMKICAgICAgICBkd0ZyYW1l
-SW50ZXJ2YWwoIDEpICAgICAgICAgICAgNjY2NjY2CiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVy
-ZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgMzQKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAg
-ICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAgNSAoRlJBTUVfVU5DT01QUkVT
-U0VEKQogICAgICAgIGJGcmFtZUluZGV4ICAgICAgICAgICAgICAgICAgICAgICAgIDIKICAgICAg
-ICBibUNhcGFiaWxpdGllcyAgICAgICAgICAgICAgICAgICAweDAwCiAgICAgICAgICBTdGlsbCBp
-bWFnZSB1bnN1cHBvcnRlZAogICAgICAgIHdXaWR0aCAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAzMjAKICAgICAgICB3SGVpZ2h0ICAgICAgICAgICAgICAgICAgICAgICAgICAgMjQwCiAgICAg
-ICAgZHdNaW5CaXRSYXRlICAgICAgICAgICAgICAgICAxODQzMjAwMAogICAgICAgIGR3TWF4Qml0
-UmF0ZSAgICAgICAgICAgICAgICAgMzY4NjQwMDAKICAgICAgICBkd01heFZpZGVvRnJhbWVCdWZm
-ZXJTaXplICAgICAgMTUzNjAwCiAgICAgICAgZHdEZWZhdWx0RnJhbWVJbnRlcnZhbCAgICAgICAg
-IDMzMzMzMwogICAgICAgIGJGcmFtZUludGVydmFsVHlwZSAgICAgICAgICAgICAgICAgIDIKICAg
-ICAgICBkd0ZyYW1lSW50ZXJ2YWwoIDApICAgICAgICAgICAgMzMzMzMzCiAgICAgICAgZHdGcmFt
-ZUludGVydmFsKCAxKSAgICAgICAgICAgIDY2NjY2NgogICAgICBWaWRlb1N0cmVhbWluZyBJbnRl
-cmZhY2UgRGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDM0CiAgICAgICAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAgICAgICAgICAgICAzNgogICAg
-ICAgIGJEZXNjcmlwdG9yU3VidHlwZSAgICAgICAgICAgICAgICAgIDUgKEZSQU1FX1VOQ09NUFJF
-U1NFRCkKICAgICAgICBiRnJhbWVJbmRleCAgICAgICAgICAgICAgICAgICAgICAgICAzCiAgICAg
-ICAgYm1DYXBhYmlsaXRpZXMgICAgICAgICAgICAgICAgICAgMHgwMAogICAgICAgICAgU3RpbGwg
-aW1hZ2UgdW5zdXBwb3J0ZWQKICAgICAgICB3V2lkdGggICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgMTYwCiAgICAgICAgd0hlaWdodCAgICAgICAgICAgICAgICAgICAgICAgICAgIDEyMAogICAg
-ICAgIGR3TWluQml0UmF0ZSAgICAgICAgICAgICAgICAgIDQ2MDgwMDAKICAgICAgICBkd01heEJp
-dFJhdGUgICAgICAgICAgICAgICAgICA5MjE2MDAwCiAgICAgICAgZHdNYXhWaWRlb0ZyYW1lQnVm
-ZmVyU2l6ZSAgICAgICAzODQwMAogICAgICAgIGR3RGVmYXVsdEZyYW1lSW50ZXJ2YWwgICAgICAg
-ICAzMzMzMzMKICAgICAgICBiRnJhbWVJbnRlcnZhbFR5cGUgICAgICAgICAgICAgICAgICAyCiAg
-ICAgICAgZHdGcmFtZUludGVydmFsKCAwKSAgICAgICAgICAgIDMzMzMzMwogICAgICAgIGR3RnJh
-bWVJbnRlcnZhbCggMSkgICAgICAgICAgICA2NjY2NjYKICAgICAgVmlkZW9TdHJlYW1pbmcgSW50
-ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAzNAogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgICAgICAgICAgICAgMzYKICAg
-ICAgICBiRGVzY3JpcHRvclN1YnR5cGUgICAgICAgICAgICAgICAgICA1IChGUkFNRV9VTkNPTVBS
-RVNTRUQpCiAgICAgICAgYkZyYW1lSW5kZXggICAgICAgICAgICAgICAgICAgICAgICAgNAogICAg
-ICAgIGJtQ2FwYWJpbGl0aWVzICAgICAgICAgICAgICAgICAgIDB4MDAKICAgICAgICAgIFN0aWxs
-IGltYWdlIHVuc3VwcG9ydGVkCiAgICAgICAgd1dpZHRoICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDgwMAogICAgICAgIHdIZWlnaHQgICAgICAgICAgICAgICAgICAgICAgICAgICA2MDAKICAg
-ICAgICBkd01pbkJpdFJhdGUgICAgICAgICAgICAgICAgMTE1MjAwMDAwCiAgICAgICAgZHdNYXhC
-aXRSYXRlICAgICAgICAgICAgICAgIDE1MzYwMDAwMAogICAgICAgIGR3TWF4VmlkZW9GcmFtZUJ1
-ZmZlclNpemUgICAgICA5NjAwMDAKICAgICAgICBkd0RlZmF1bHRGcmFtZUludGVydmFsICAgICAg
-ICAgNTAwMDAwCiAgICAgICAgYkZyYW1lSW50ZXJ2YWxUeXBlICAgICAgICAgICAgICAgICAgMgog
-ICAgICAgIGR3RnJhbWVJbnRlcnZhbCggMCkgICAgICAgICAgICA1MDAwMDAKICAgICAgICBkd0Zy
-YW1lSW50ZXJ2YWwoIDEpICAgICAgICAgICAgNjY2NjY2CiAgICAgIFZpZGVvU3RyZWFtaW5nIElu
-dGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgMzAKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAg
-ICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAgNSAoRlJBTUVfVU5DT01Q
-UkVTU0VEKQogICAgICAgIGJGcmFtZUluZGV4ICAgICAgICAgICAgICAgICAgICAgICAgIDUKICAg
-ICAgICBibUNhcGFiaWxpdGllcyAgICAgICAgICAgICAgICAgICAweDAwCiAgICAgICAgICBTdGls
-bCBpbWFnZSB1bnN1cHBvcnRlZAogICAgICAgIHdXaWR0aCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDEyODAKICAgICAgICB3SGVpZ2h0ICAgICAgICAgICAgICAgICAgICAgICAgICAgNzIwCiAg
-ICAgICAgZHdNaW5CaXRSYXRlICAgICAgICAgICAgICAgIDE0NzQ1NjAwMAogICAgICAgIGR3TWF4
-Qml0UmF0ZSAgICAgICAgICAgICAgICAxNDc0NTYwMDAKICAgICAgICBkd01heFZpZGVvRnJhbWVC
-dWZmZXJTaXplICAgICAxODQzMjAwCiAgICAgICAgZHdEZWZhdWx0RnJhbWVJbnRlcnZhbCAgICAg
-ICAgMTAwMDAwMAogICAgICAgIGJGcmFtZUludGVydmFsVHlwZSAgICAgICAgICAgICAgICAgIDEK
-ICAgICAgICBkd0ZyYW1lSW50ZXJ2YWwoIDApICAgICAgICAgICAxMDAwMDAwCiAgICAgIFZpZGVv
-U3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIDYKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAg
-ICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAxMyAo
-Q09MT1JGT1JNQVQpCiAgICAgICAgYkNvbG9yUHJpbWFyaWVzICAgICAgICAgICAgICAgICAgICAg
-MSAoQlQuNzA5LHNSR0IpCiAgICAgICAgYlRyYW5zZmVyQ2hhcmFjdGVyaXN0aWNzICAgICAgICAg
-ICAgMSAoQlQuNzA5KQogICAgICAgIGJNYXRyaXhDb2VmZmljaWVudHMgICAgICAgICAgICAgICAg
-IDQgKFNNUFRFIDE3ME0gKEJULjYwMSkpCiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBE
-ZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMTEK
-ICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRl
-c2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAgNiAoRk9STUFUX01KUEVHKQogICAgICAg
-IGJGb3JtYXRJbmRleCAgICAgICAgICAgICAgICAgICAgICAgIDIKICAgICAgICBiTnVtRnJhbWVE
-ZXNjcmlwdG9ycyAgICAgICAgICAgICAgICA1CiAgICAgICAgYkZsYWdzICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgMAogICAgICAgICAgRml4ZWQtc2l6ZSBzYW1wbGVzOiBObwogICAgICAg
-IGJEZWZhdWx0RnJhbWVJbmRleCAgICAgICAgICAgICAgICAgIDEKICAgICAgICBiQXNwZWN0UmF0
-aW9YICAgICAgICAgICAgICAgICAgICAgICAwCiAgICAgICAgYkFzcGVjdFJhdGlvWSAgICAgICAg
-ICAgICAgICAgICAgICAgMAogICAgICAgIGJtSW50ZXJsYWNlRmxhZ3MgICAgICAgICAgICAgICAg
-IDB4MDAKICAgICAgICAgIEludGVybGFjZWQgc3RyZWFtIG9yIHZhcmlhYmxlOiBObwogICAgICAg
-ICAgRmllbGRzIHBlciBmcmFtZTogMSBmaWVsZHMKICAgICAgICAgIEZpZWxkIDEgZmlyc3Q6IE5v
-CiAgICAgICAgICBGaWVsZCBwYXR0ZXJuOiBGaWVsZCAxIG9ubHkKICAgICAgICAgIGJDb3B5UHJv
-dGVjdCAgICAgICAgICAgICAgICAgICAgICAwCiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFj
-ZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAg
-MzQKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAg
-YkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAgNyAoRlJBTUVfTUpQRUcpCiAgICAg
-ICAgYkZyYW1lSW5kZXggICAgICAgICAgICAgICAgICAgICAgICAgMQogICAgICAgIGJtQ2FwYWJp
-bGl0aWVzICAgICAgICAgICAgICAgICAgIDB4MDAKICAgICAgICAgIFN0aWxsIGltYWdlIHVuc3Vw
-cG9ydGVkCiAgICAgICAgd1dpZHRoICAgICAgICAgICAgICAgICAgICAgICAgICAgIDY0MAogICAg
-ICAgIHdIZWlnaHQgICAgICAgICAgICAgICAgICAgICAgICAgICA0ODAKICAgICAgICBkd01pbkJp
-dFJhdGUgICAgICAgICAgICAgICAgIDczNzk4NjgwCiAgICAgICAgZHdNYXhCaXRSYXRlICAgICAg
-ICAgICAgICAgIDE0NzU5NzM2MAogICAgICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZlclNpemUgICAg
-ICA2MTQ5ODkKICAgICAgICBkd0RlZmF1bHRGcmFtZUludGVydmFsICAgICAgICAgMzMzMzMzCiAg
-ICAgICAgYkZyYW1lSW50ZXJ2YWxUeXBlICAgICAgICAgICAgICAgICAgMgogICAgICAgIGR3RnJh
-bWVJbnRlcnZhbCggMCkgICAgICAgICAgICAzMzMzMzMKICAgICAgICBkd0ZyYW1lSW50ZXJ2YWwo
-IDEpICAgICAgICAgICAgNjY2NjY2CiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNj
-cmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMzQKICAg
-ICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRlc2Ny
-aXB0b3JTdWJ0eXBlICAgICAgICAgICAgICAgICAgNyAoRlJBTUVfTUpQRUcpCiAgICAgICAgYkZy
-YW1lSW5kZXggICAgICAgICAgICAgICAgICAgICAgICAgMgogICAgICAgIGJtQ2FwYWJpbGl0aWVz
-ICAgICAgICAgICAgICAgICAgIDB4MDAKICAgICAgICAgIFN0aWxsIGltYWdlIHVuc3VwcG9ydGVk
-CiAgICAgICAgd1dpZHRoICAgICAgICAgICAgICAgICAgICAgICAgICAgIDMyMAogICAgICAgIHdI
-ZWlnaHQgICAgICAgICAgICAgICAgICAgICAgICAgICAyNDAKICAgICAgICBkd01pbkJpdFJhdGUg
-ICAgICAgICAgICAgICAgIDE4NTAyNjgwCiAgICAgICAgZHdNYXhCaXRSYXRlICAgICAgICAgICAg
-ICAgICAzNzAwNTM2MAogICAgICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZlclNpemUgICAgICAxNTQx
-ODkKICAgICAgICBkd0RlZmF1bHRGcmFtZUludGVydmFsICAgICAgICAgMzMzMzMzCiAgICAgICAg
-YkZyYW1lSW50ZXJ2YWxUeXBlICAgICAgICAgICAgICAgICAgMgogICAgICAgIGR3RnJhbWVJbnRl
-cnZhbCggMCkgICAgICAgICAgICAzMzMzMzMKICAgICAgICBkd0ZyYW1lSW50ZXJ2YWwoIDEpICAg
-ICAgICAgICAgNjY2NjY2CiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9y
-OgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMzQKICAgICAgICBi
-RGVzY3JpcHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JT
-dWJ0eXBlICAgICAgICAgICAgICAgICAgNyAoRlJBTUVfTUpQRUcpCiAgICAgICAgYkZyYW1lSW5k
-ZXggICAgICAgICAgICAgICAgICAgICAgICAgMwogICAgICAgIGJtQ2FwYWJpbGl0aWVzICAgICAg
-ICAgICAgICAgICAgIDB4MDAKICAgICAgICAgIFN0aWxsIGltYWdlIHVuc3VwcG9ydGVkCiAgICAg
-ICAgd1dpZHRoICAgICAgICAgICAgICAgICAgICAgICAgICAgIDE2MAogICAgICAgIHdIZWlnaHQg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAxMjAKICAgICAgICBkd01pbkJpdFJhdGUgICAgICAg
-ICAgICAgICAgICA0Njc4NjgwCiAgICAgICAgZHdNYXhCaXRSYXRlICAgICAgICAgICAgICAgICAg
-OTM1NzM2MAogICAgICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZlclNpemUgICAgICAgMzg5ODkKICAg
-ICAgICBkd0RlZmF1bHRGcmFtZUludGVydmFsICAgICAgICAgMzMzMzMzCiAgICAgICAgYkZyYW1l
-SW50ZXJ2YWxUeXBlICAgICAgICAgICAgICAgICAgMgogICAgICAgIGR3RnJhbWVJbnRlcnZhbCgg
-MCkgICAgICAgICAgICAzMzMzMzMKICAgICAgICBkd0ZyYW1lSW50ZXJ2YWwoIDEpICAgICAgICAg
-ICAgNjY2NjY2CiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAg
-ICAgIGJMZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMzQKICAgICAgICBiRGVzY3Jp
-cHRvclR5cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBl
-ICAgICAgICAgICAgICAgICAgNyAoRlJBTUVfTUpQRUcpCiAgICAgICAgYkZyYW1lSW5kZXggICAg
-ICAgICAgICAgICAgICAgICAgICAgNAogICAgICAgIGJtQ2FwYWJpbGl0aWVzICAgICAgICAgICAg
-ICAgICAgIDB4MDAKICAgICAgICAgIFN0aWxsIGltYWdlIHVuc3VwcG9ydGVkCiAgICAgICAgd1dp
-ZHRoICAgICAgICAgICAgICAgICAgICAgICAgICAgIDgwMAogICAgICAgIHdIZWlnaHQgICAgICAg
-ICAgICAgICAgICAgICAgICAgICA2MDAKICAgICAgICBkd01pbkJpdFJhdGUgICAgICAgICAgICAg
-ICAgMTE1MjcwNjgwCiAgICAgICAgZHdNYXhCaXRSYXRlICAgICAgICAgICAgICAgIDIzMDU0MTM2
-MAogICAgICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZlclNpemUgICAgICA5NjA1ODkKICAgICAgICBk
-d0RlZmF1bHRGcmFtZUludGVydmFsICAgICAgICAgMzMzMzMzCiAgICAgICAgYkZyYW1lSW50ZXJ2
-YWxUeXBlICAgICAgICAgICAgICAgICAgMgogICAgICAgIGR3RnJhbWVJbnRlcnZhbCggMCkgICAg
-ICAgICAgICAzMzMzMzMKICAgICAgICBkd0ZyYW1lSW50ZXJ2YWwoIDEpICAgICAgICAgICAgNjY2
-NjY2CiAgICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJM
-ZW5ndGggICAgICAgICAgICAgICAgICAgICAgICAgICAgMzQKICAgICAgICBiRGVzY3JpcHRvclR5
-cGUgICAgICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAg
-ICAgICAgICAgICAgNyAoRlJBTUVfTUpQRUcpCiAgICAgICAgYkZyYW1lSW5kZXggICAgICAgICAg
-ICAgICAgICAgICAgICAgNQogICAgICAgIGJtQ2FwYWJpbGl0aWVzICAgICAgICAgICAgICAgICAg
-IDB4MDAKICAgICAgICAgIFN0aWxsIGltYWdlIHVuc3VwcG9ydGVkCiAgICAgICAgd1dpZHRoICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgMTI4MAogICAgICAgIHdIZWlnaHQgICAgICAgICAgICAg
-ICAgICAgICAgICAgICA3MjAKICAgICAgICBkd01pbkJpdFJhdGUgICAgICAgICAgICAgICAgMjIx
-MjU0NjgwCiAgICAgICAgZHdNYXhCaXRSYXRlICAgICAgICAgICAgICAgIDQ0MjUwOTM2MAogICAg
-ICAgIGR3TWF4VmlkZW9GcmFtZUJ1ZmZlclNpemUgICAgIDE4NDM3ODkKICAgICAgICBkd0RlZmF1
-bHRGcmFtZUludGVydmFsICAgICAgICAgMzMzMzMzCiAgICAgICAgYkZyYW1lSW50ZXJ2YWxUeXBl
-ICAgICAgICAgICAgICAgICAgMgogICAgICAgIGR3RnJhbWVJbnRlcnZhbCggMCkgICAgICAgICAg
-ICAzMzMzMzMKICAgICAgICBkd0ZyYW1lSW50ZXJ2YWwoIDEpICAgICAgICAgICAgNjY2NjY2CiAg
-ICAgIFZpZGVvU3RyZWFtaW5nIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGgg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDYKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAg
-ICAgICAgICAgICAgICAgIDM2CiAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgICAgICAg
-ICAgICAxMyAoQ09MT1JGT1JNQVQpCiAgICAgICAgYkNvbG9yUHJpbWFyaWVzICAgICAgICAgICAg
-ICAgICAgICAgMSAoQlQuNzA5LHNSR0IpCiAgICAgICAgYlRyYW5zZmVyQ2hhcmFjdGVyaXN0aWNz
-ICAgICAgICAgICAgMSAoQlQuNzA5KQogICAgICAgIGJNYXRyaXhDb2VmZmljaWVudHMgICAgICAg
-ICAgICAgICAgIDQgKFNNUFRFIDE3ME0gKEJULjYwMSkpCiAgICBJbnRlcmZhY2UgRGVzY3JpcHRv
-cjoKICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgOQogICAgICBiRGVzY3JpcHRvclR5cGUg
-ICAgICAgICA0CiAgICAgIGJJbnRlcmZhY2VOdW1iZXIgICAgICAgIDEKICAgICAgYkFsdGVybmF0
-ZVNldHRpbmcgICAgICAgMQogICAgICBiTnVtRW5kcG9pbnRzICAgICAgICAgICAxCiAgICAgIGJJ
-bnRlcmZhY2VDbGFzcyAgICAgICAgMTQgVmlkZW8KICAgICAgYkludGVyZmFjZVN1YkNsYXNzICAg
-ICAgMiBWaWRlbyBTdHJlYW1pbmcKICAgICAgYkludGVyZmFjZVByb3RvY29sICAgICAgMCAKICAg
-ICAgaUludGVyZmFjZSAgICAgICAgICAgICAgMCAKICAgICAgRW5kcG9pbnQgRGVzY3JpcHRvcjoK
-ICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA3CiAgICAgICAgYkRlc2NyaXB0b3JUeXBl
-ICAgICAgICAgNQogICAgICAgIGJFbmRwb2ludEFkZHJlc3MgICAgIDB4ODEgIEVQIDEgSU4KICAg
-ICAgICBibUF0dHJpYnV0ZXMgICAgICAgICAgICA1CiAgICAgICAgICBUcmFuc2ZlciBUeXBlICAg
-ICAgICAgICAgSXNvY2hyb25vdXMKICAgICAgICAgIFN5bmNoIFR5cGUgICAgICAgICAgICAgICBB
-c3luY2hyb25vdXMKICAgICAgICAgIFVzYWdlIFR5cGUgICAgICAgICAgICAgICBEYXRhCiAgICAg
-ICAgd01heFBhY2tldFNpemUgICAgIDB4MDA4MCAgMXggMTI4IGJ5dGVzCiAgICAgICAgYkludGVy
-dmFsICAgICAgICAgICAgICAgMQogICAgSW50ZXJmYWNlIERlc2NyaXB0b3I6CiAgICAgIGJMZW5n
-dGggICAgICAgICAgICAgICAgIDkKICAgICAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAgNAogICAg
-ICBiSW50ZXJmYWNlTnVtYmVyICAgICAgICAxCiAgICAgIGJBbHRlcm5hdGVTZXR0aW5nICAgICAg
-IDIKICAgICAgYk51bUVuZHBvaW50cyAgICAgICAgICAgMQogICAgICBiSW50ZXJmYWNlQ2xhc3Mg
-ICAgICAgIDE0IFZpZGVvCiAgICAgIGJJbnRlcmZhY2VTdWJDbGFzcyAgICAgIDIgVmlkZW8gU3Ry
-ZWFtaW5nCiAgICAgIGJJbnRlcmZhY2VQcm90b2NvbCAgICAgIDAgCiAgICAgIGlJbnRlcmZhY2Ug
-ICAgICAgICAgICAgIDAgCiAgICAgIEVuZHBvaW50IERlc2NyaXB0b3I6CiAgICAgICAgYkxlbmd0
-aCAgICAgICAgICAgICAgICAgNwogICAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDUKICAg
-ICAgICBiRW5kcG9pbnRBZGRyZXNzICAgICAweDgxICBFUCAxIElOCiAgICAgICAgYm1BdHRyaWJ1
-dGVzICAgICAgICAgICAgNQogICAgICAgICAgVHJhbnNmZXIgVHlwZSAgICAgICAgICAgIElzb2No
-cm9ub3VzCiAgICAgICAgICBTeW5jaCBUeXBlICAgICAgICAgICAgICAgQXN5bmNocm9ub3VzCiAg
-ICAgICAgICBVc2FnZSBUeXBlICAgICAgICAgICAgICAgRGF0YQogICAgICAgIHdNYXhQYWNrZXRT
-aXplICAgICAweDAxMDAgIDF4IDI1NiBieXRlcwogICAgICAgIGJJbnRlcnZhbCAgICAgICAgICAg
-ICAgIDEKICAgIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICBiTGVuZ3RoICAgICAgICAgICAg
-ICAgICA5CiAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDQKICAgICAgYkludGVyZmFjZU51
-bWJlciAgICAgICAgMQogICAgICBiQWx0ZXJuYXRlU2V0dGluZyAgICAgICAzCiAgICAgIGJOdW1F
-bmRwb2ludHMgICAgICAgICAgIDEKICAgICAgYkludGVyZmFjZUNsYXNzICAgICAgICAxNCBWaWRl
-bwogICAgICBiSW50ZXJmYWNlU3ViQ2xhc3MgICAgICAyIFZpZGVvIFN0cmVhbWluZwogICAgICBi
-SW50ZXJmYWNlUHJvdG9jb2wgICAgICAwIAogICAgICBpSW50ZXJmYWNlICAgICAgICAgICAgICAw
-IAogICAgICBFbmRwb2ludCBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5ndGggICAgICAgICAgICAg
-ICAgIDcKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICA1CiAgICAgICAgYkVuZHBvaW50
-QWRkcmVzcyAgICAgMHg4MSAgRVAgMSBJTgogICAgICAgIGJtQXR0cmlidXRlcyAgICAgICAgICAg
-IDUKICAgICAgICAgIFRyYW5zZmVyIFR5cGUgICAgICAgICAgICBJc29jaHJvbm91cwogICAgICAg
-ICAgU3luY2ggVHlwZSAgICAgICAgICAgICAgIEFzeW5jaHJvbm91cwogICAgICAgICAgVXNhZ2Ug
-VHlwZSAgICAgICAgICAgICAgIERhdGEKICAgICAgICB3TWF4UGFja2V0U2l6ZSAgICAgMHgwMzIw
-ICAxeCA4MDAgYnl0ZXMKICAgICAgICBiSW50ZXJ2YWwgICAgICAgICAgICAgICAxCiAgICBJbnRl
-cmZhY2UgRGVzY3JpcHRvcjoKICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgOQogICAgICBi
-RGVzY3JpcHRvclR5cGUgICAgICAgICA0CiAgICAgIGJJbnRlcmZhY2VOdW1iZXIgICAgICAgIDEK
-ICAgICAgYkFsdGVybmF0ZVNldHRpbmcgICAgICAgNAogICAgICBiTnVtRW5kcG9pbnRzICAgICAg
-ICAgICAxCiAgICAgIGJJbnRlcmZhY2VDbGFzcyAgICAgICAgMTQgVmlkZW8KICAgICAgYkludGVy
-ZmFjZVN1YkNsYXNzICAgICAgMiBWaWRlbyBTdHJlYW1pbmcKICAgICAgYkludGVyZmFjZVByb3Rv
-Y29sICAgICAgMCAKICAgICAgaUludGVyZmFjZSAgICAgICAgICAgICAgMCAKICAgICAgRW5kcG9p
-bnQgRGVzY3JpcHRvcjoKICAgICAgICBiTGVuZ3RoICAgICAgICAgICAgICAgICA3CiAgICAgICAg
-YkRlc2NyaXB0b3JUeXBlICAgICAgICAgNQogICAgICAgIGJFbmRwb2ludEFkZHJlc3MgICAgIDB4
-ODEgIEVQIDEgSU4KICAgICAgICBibUF0dHJpYnV0ZXMgICAgICAgICAgICA1CiAgICAgICAgICBU
-cmFuc2ZlciBUeXBlICAgICAgICAgICAgSXNvY2hyb25vdXMKICAgICAgICAgIFN5bmNoIFR5cGUg
-ICAgICAgICAgICAgICBBc3luY2hyb25vdXMKICAgICAgICAgIFVzYWdlIFR5cGUgICAgICAgICAg
-ICAgICBEYXRhCiAgICAgICAgd01heFBhY2tldFNpemUgICAgIDB4MGIyMCAgMnggODAwIGJ5dGVz
-CiAgICAgICAgYkludGVydmFsICAgICAgICAgICAgICAgMQogICAgSW50ZXJmYWNlIERlc2NyaXB0
-b3I6CiAgICAgIGJMZW5ndGggICAgICAgICAgICAgICAgIDkKICAgICAgYkRlc2NyaXB0b3JUeXBl
-ICAgICAgICAgNAogICAgICBiSW50ZXJmYWNlTnVtYmVyICAgICAgICAxCiAgICAgIGJBbHRlcm5h
-dGVTZXR0aW5nICAgICAgIDUKICAgICAgYk51bUVuZHBvaW50cyAgICAgICAgICAgMQogICAgICBi
-SW50ZXJmYWNlQ2xhc3MgICAgICAgIDE0IFZpZGVvCiAgICAgIGJJbnRlcmZhY2VTdWJDbGFzcyAg
-ICAgIDIgVmlkZW8gU3RyZWFtaW5nCiAgICAgIGJJbnRlcmZhY2VQcm90b2NvbCAgICAgIDAgCiAg
-ICAgIGlJbnRlcmZhY2UgICAgICAgICAgICAgIDAgCiAgICAgIEVuZHBvaW50IERlc2NyaXB0b3I6
-CiAgICAgICAgYkxlbmd0aCAgICAgICAgICAgICAgICAgNwogICAgICAgIGJEZXNjcmlwdG9yVHlw
-ZSAgICAgICAgIDUKICAgICAgICBiRW5kcG9pbnRBZGRyZXNzICAgICAweDgxICBFUCAxIElOCiAg
-ICAgICAgYm1BdHRyaWJ1dGVzICAgICAgICAgICAgNQogICAgICAgICAgVHJhbnNmZXIgVHlwZSAg
-ICAgICAgICAgIElzb2Nocm9ub3VzCiAgICAgICAgICBTeW5jaCBUeXBlICAgICAgICAgICAgICAg
-QXN5bmNocm9ub3VzCiAgICAgICAgICBVc2FnZSBUeXBlICAgICAgICAgICAgICAgRGF0YQogICAg
-ICAgIHdNYXhQYWNrZXRTaXplICAgICAweDEzMjAgIDN4IDgwMCBieXRlcwogICAgICAgIGJJbnRl
-cnZhbCAgICAgICAgICAgICAgIDEKICAgIEludGVyZmFjZSBEZXNjcmlwdG9yOgogICAgICBiTGVu
-Z3RoICAgICAgICAgICAgICAgICA5CiAgICAgIGJEZXNjcmlwdG9yVHlwZSAgICAgICAgIDQKICAg
-ICAgYkludGVyZmFjZU51bWJlciAgICAgICAgMQogICAgICBiQWx0ZXJuYXRlU2V0dGluZyAgICAg
-ICA2CiAgICAgIGJOdW1FbmRwb2ludHMgICAgICAgICAgIDEKICAgICAgYkludGVyZmFjZUNsYXNz
-ICAgICAgICAxNCBWaWRlbwogICAgICBiSW50ZXJmYWNlU3ViQ2xhc3MgICAgICAyIFZpZGVvIFN0
-cmVhbWluZwogICAgICBiSW50ZXJmYWNlUHJvdG9jb2wgICAgICAwIAogICAgICBpSW50ZXJmYWNl
-ICAgICAgICAgICAgICAwIAogICAgICBFbmRwb2ludCBEZXNjcmlwdG9yOgogICAgICAgIGJMZW5n
-dGggICAgICAgICAgICAgICAgIDcKICAgICAgICBiRGVzY3JpcHRvclR5cGUgICAgICAgICA1CiAg
-ICAgICAgYkVuZHBvaW50QWRkcmVzcyAgICAgMHg4MSAgRVAgMSBJTgogICAgICAgIGJtQXR0cmli
-dXRlcyAgICAgICAgICAgIDUKICAgICAgICAgIFRyYW5zZmVyIFR5cGUgICAgICAgICAgICBJc29j
-aHJvbm91cwogICAgICAgICAgU3luY2ggVHlwZSAgICAgICAgICAgICAgIEFzeW5jaHJvbm91cwog
-ICAgICAgICAgVXNhZ2UgVHlwZSAgICAgICAgICAgICAgIERhdGEKICAgICAgICB3TWF4UGFja2V0
-U2l6ZSAgICAgMHgxNDAwICAzeCAxMDI0IGJ5dGVzCiAgICAgICAgYkludGVydmFsICAgICAgICAg
-ICAgICAgMQpEZXZpY2UgUXVhbGlmaWVyIChmb3Igb3RoZXIgZGV2aWNlIHNwZWVkKToKICBiTGVu
-Z3RoICAgICAgICAgICAgICAgIDEwCiAgYkRlc2NyaXB0b3JUeXBlICAgICAgICAgNgogIGJjZFVT
-QiAgICAgICAgICAgICAgIDIuMDAKICBiRGV2aWNlQ2xhc3MgICAgICAgICAgMjM5IE1pc2NlbGxh
-bmVvdXMgRGV2aWNlCiAgYkRldmljZVN1YkNsYXNzICAgICAgICAgMiAKICBiRGV2aWNlUHJvdG9j
-b2wgICAgICAgICAxIEludGVyZmFjZSBBc3NvY2lhdGlvbgogIGJNYXhQYWNrZXRTaXplMCAgICAg
-ICAgNjQKICBiTnVtQ29uZmlndXJhdGlvbnMgICAgICAxCkRldmljZSBTdGF0dXM6ICAgICAweDAw
-MDIKICAoQnVzIFBvd2VyZWQpCiAgUmVtb3RlIFdha2V1cCBFbmFibGVkCg==
+--000000000000212af805a3013586--
 
 
---=-9uk4eaFjoJ8/g1nesF2Q
+--===============7237183897956730788==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---=-9uk4eaFjoJ8/g1nesF2Q
+--===============7237183897956730788==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -538,6 +259,5 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---=-9uk4eaFjoJ8/g1nesF2Q--
-
+--===============7237183897956730788==--
 
