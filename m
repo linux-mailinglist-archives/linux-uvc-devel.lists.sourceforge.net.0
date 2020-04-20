@@ -2,81 +2,81 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1BD61B1A49
-	for <lists+linux-uvc-devel@lfdr.de>; Tue, 21 Apr 2020 01:49:59 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59A841B1A57
+	for <lists+linux-uvc-devel@lfdr.de>; Tue, 21 Apr 2020 01:56:10 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jQgAI-000568-UB; Mon, 20 Apr 2020 23:49:26 +0000
+	id 1jQgGZ-0004qe-EE; Mon, 20 Apr 2020 23:55:55 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <7heo@mail.com>) id 1jQgAH-00055z-9S
- for linux-uvc-devel@lists.sourceforge.net; Mon, 20 Apr 2020 23:49:25 +0000
+ (envelope-from <7heo@mail.com>) id 1jQgGY-0004qO-2s
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 20 Apr 2020 23:55:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Message-ID:Content-Transfer-Encoding:Content-Type:
  MIME-Version:To:From:Subject:Date:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=MiPEkV+bpCymmv9Z4+tjGQffGRUgzQcPgOPjUcYUfVE=; b=SDygUiOEu+pNsI1g3CYiNICSSi
- Al8T0RC802t8GCNc6lj1HmkFoUKwLTVlSuzp4UqQPgM6ANcw1cq2Z0j8dAh1g+o+0ADw5H6DOtCtK
- DXAL/9rU5Bg9BSlR0aqskju1QXBwAyq1ZR/vbL/jIuVmUIyqfc97x/pytcZd7S20QaSI=;
+ bh=3XHUu2+/EGoJ4UumCf45GTVMNcj8ZAcRdK7/JRE9xeQ=; b=KfxSqb7vdibqj59hCW1Hyaxuqy
+ bPQPKCFVx2yCj3kgDQ5ekwATOujEEGNyOWZ+5Q93GSjrXIwP9OHsT+/uDgRTfbmrskx6yDv3j/ynI
+ 2fHeYq6t3b6qEKydxuqV3U1rXafhwf2G0IYrVOnw6qejAwn48wFPB/6XRLhUAgr5cnfw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Message-ID:Content-Transfer-Encoding:Content-Type:MIME-Version:To:From:
  Subject:Date:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=MiPEkV+bpCymmv9Z4+tjGQffGRUgzQcPgOPjUcYUfVE=; b=m
- vZPPW041u81SV0DhIQvZICmYf6hv5QVbVR4+CnufDLByE2R2axEXD8oP3FHbIeasQY+EEr20zM4kG
- tSg7A3G/5X/MQs32hgipsygM1CllBmQRd+e9j6VziOHjHnGkFbnX7EleRM11cTXiEUjfYspGCSObp
- 2N8FgG565wZLCgck=;
-Received: from mout.gmx.com ([74.208.4.201])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1jQgA9-004sLe-6D
- for linux-uvc-devel@lists.sourceforge.net; Mon, 20 Apr 2020 23:49:25 +0000
+ List-Owner:List-Archive; bh=3XHUu2+/EGoJ4UumCf45GTVMNcj8ZAcRdK7/JRE9xeQ=; b=g
+ FbY9QrF/hKnaO8GXfwXwZyxcOJ+5lrsxBuAh5dRu7JzSLW9Hn3PfVs8AXcQI0vlTM1vZETgn0ps+v
+ sPkFiB1nWkyAULRkVIw843YOQBBhRMdz+oq8x9G59hkP9522L8uxZoySSrhhY+mJK4TG7F+ghoX55
+ HxsmX5LSy77PZMvQ=;
+Received: from mout.gmx.com ([74.208.4.200])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1jQgGR-008XH5-Ju
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 20 Apr 2020 23:55:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.com;
- s=dbd5af2cbaf7; t=1587426551;
- bh=MiPEkV+bpCymmv9Z4+tjGQffGRUgzQcPgOPjUcYUfVE=;
+ s=dbd5af2cbaf7; t=1587426941;
+ bh=3XHUu2+/EGoJ4UumCf45GTVMNcj8ZAcRdK7/JRE9xeQ=;
  h=X-UI-Sender-Class:Date:Subject:From:To;
- b=gFT94pOWNeRo0sqGRPiH1OioPTHH23+fpSXoIbGBe8UHD7gJ2s0domGol1OCx3FBf
- 83OnIE4/VK2NR5cMOt0X/hrFjc613rvz14Bbvk8ONRVim2PsHVU9EgVYxNkRrS9N08
- /5T6poHdP2inGPM744jifHX54+2aHu0387dVVYK8=
+ b=WwcMmkBCukpNftur5Sm2muOf2Dan/oWMVACyxI1qCcuF/5AE7t2NE70l9zrgcD4BX
+ fE1cQrNwSLyPnXK1FbfboEsi/B4rDKU0RIVKSrJX8EMY8lmLh5q7P5iYooso8LHuQ0
+ bEzrzlRY/v52OalFEolXdcu5RHwP9TGb31J/hL+M=
 X-UI-Sender-Class: 214d933f-fd2f-45c7-a636-f5d79ae31a79
 Received: from [192.168.1.146] ([84.164.242.78]) by mail.gmx.com (mrgmxus004
- [74.208.5.15]) with ESMTPSA (Nemesis) id 0MWTs4-1jjxHw36Us-00Xe1c for
- <linux-uvc-devel@lists.sourceforge.net>; Tue, 21 Apr 2020 01:49:11 +0200
-Date: Tue, 21 Apr 2020 01:49:07 +0200
+ [74.208.5.15]) with ESMTPSA (Nemesis) id 0MKH2G-1jP1ZL1CzO-001gj7 for
+ <linux-uvc-devel@lists.sourceforge.net>; Tue, 21 Apr 2020 01:55:41 +0200
+Date: Tue, 21 Apr 2020 01:55:37 +0200
 From: 7heo <7heo@mail.com>
 To: linux-uvc-devel@lists.sourceforge.net
 MIME-Version: 1.0
-Message-ID: <0MRnB9-1jpCDm1OGn-00Sx3f@mail.gmx.com>
-X-Provags-ID: V03:K1:6AQjIH6/b+62u9A4Mh0ktY6GsyBPtni6MObYK4VXVIJsohz7027
- tovnJnX2i6i1OrBHl6ajug4+gfdfFojiW0V0b9qWxNTP0zXFxwTkI8F6lmbwykC/4jHkSQf
- hgzGJIz7hYjWJ09UYSUOKq+/xr+oxIpiaW3aEIxGNGH+mwh7QhmMetRpbkCtzbFcjOBlFAu
- AFKQOjGlOsTk215YU8FuA==
+Message-ID: <0MLe57-1jQP9C3hxb-000rNY@mail.gmx.com>
+X-Provags-ID: V03:K1:f80jYSK/LAzhoqyEvWvAx1KMX0cKbOOHqiowjLFg+S55ZCLEzLc
+ Biue7g698HwpAeZQX9TFvbMwZgblJpfvh7CQOpqolzIYVDvibb1xu3aLfd2oXd+Mbo82P+a
+ AvzV8IK50j9IRS7X8fHIBls9J95yGsBr6PoluHl/N+TjSry3HQLvMTiqScvud3sT6uWwCRS
+ jZWlq/ysFFZBYwUJ8UyMg==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8dHI/yAWpI8=:3XEIqE18O0DrD46MG3PVIu
- G4al12xhqXhPe9ZTCAC7STSh7YMcbCvgEf+/3ReqG6eYHBgy8EB9TqGNQUYXAbz3ChCCs8Y//
- HqZUDWnnz1W3WzsBKzu1Lp6ARF6HFUooFynvfSzFJrgkAdk5ycEDF59s3M+WncWK1mCXFEPnl
- AsW2KV6TrMBg5HJrOG5Wymd2yL62aWdLWvc+V3NAxLTeEz8+fxjigM3cGRx8LSrxwJle6b+d0
- /m5Ss3m4mHTPIZAiZrxTjyL7fGBnos9B0pTuh/vyOU+YaGtHJaByOheyBMe2xSEGv+WpwqbY+
- i7BA9EqumNHB+4WGWFY6pH1bQKvsATyWieLIvvZuHDyxBZ7LqA40u27aM8rOUhpF+eGk2J1ZD
- I74Q9np9rt2sTSoWgdSX2Xqr66+exVoEOHadgf/lJwnBA9mLEvG7OPRpsEhGEqhWoWHlHEi9D
- Y6geHu0qY1gYfsOCgA5x7/iy0XyKzip5WgjzLQnEhZLSMXqPpqiGhQzAhbuIwBgB/CwicHIpZ
- a1Vz8WSKlQvIIQD1GrmikCB49C+rrEijUNZQ1BBYmSiLgscy+vGnD45+Y4OULqWnzNgmrl9gL
- NXXFeOczWVPQfYYJVDMRzC8Uh/lp5Hwhy8SB2OSVNuMZZxX/rpk/m6KqBSt0qEzYtC5eXKWfP
- lWmVdUvWK9m+AAp0fqvwoRq9KgO0uEllbNZlvoFyhyYJzN2lfi1ouG0Dln7B0xPS1rT6saqLJ
- 4b3Ap2jLwxHaRndfLdvnQxtacrQTAJNzItdK0h5C6BGXSmN2/EAVq3iQChuZ2M4rxTvmqBmi/
- 3TcyrO4Mg0GGqvDLDQqZ/U0hV1+FBEZ9G0VCa1z4yw4SXiyy+/0FS6S9+WRaZ0oG9brFCv0gU
- pFurEq4t1SYdifmL89QQ0MSdS1iyka6Pmnq/KePLxf2hUxafI69R7A7mHC11HGFUeB8Pygbuh
- 2bUEseY0kDUCiy81BDxKVTlAH6i/urd3ofcq8O325PBmkjsZL03oIo5xTjvgeafAVIBqoUTBZ
- a3y6/6A8aBWMTRG9ayx+QMmxDdTaioB+tI/zPFLBAKnTZKu0y0ukPZbzRauaHt5zLFGAaUKK/
- R8/sNlJsfeor5HLdTE7yZ9eKp6Wm2fAFJfBZrJyTs5nMVgO8aJfrdgNKkQpvrGMOga+VbfRZL
- yaRn6q4wF5H+wQmLzJvev5lMnKhILioG+jRyOZCzX7D1D9SHQS/9r/LjQFn3XoayqYw7uDXRk
- TLT9ODmbumXEcZgLF
+X-UI-Out-Filterresults: notjunk:1;V03:K0:J2n6UMIdiNc=:/NbeCxpieSepT5CxJqwg7f
+ KV/GpLCDCPDJXHIUHkTfekWvsFVVIuQxWGwZDBHVud9mpno8PBrybrIHFvsP6BhHZLvVxT0wx
+ Oo5d4fNa50tlYeuoQW9MuT7DreEHPVc4xKWIhs4jKtcjbuLPikUQiXvL9+1ym3GZdB9MBm01+
+ OAdAqsKhLNAvx82z1ql3TPs+ISokosPFuhrvrA65nOdIs31TeBss5vIpEBi8vzlF02z4/D7ax
+ La4sBitRlLzyhB4NRt7Uc5eeo3MGYm960hiHh5ILHqkw9i8Z+NGUEQ/Lr3VEbfMJTSZ8qsv6A
+ gB1IdxyU4ZYRuz2T+H6ZCuK5vhqPW8f+3bVXsylsOR0fR8sYc6SMh9dFG9PxgOtZ2hKYlBdRQ
+ W4a/CW0GHfXW5VVi+z5cz8XxYzHE9U30Whn23JCbSOsu1bewWc/iVwPPs34c7/XY3YgwbZMgB
+ QPdY2aax7uMQZWybOvvFRKXLgnF9/O24NqCbxtGS5wmKNk0z9mmGlMu4u9+OxEC6QHCMj+iuF
+ yFImeKkg0H9KJtRAXUtqjuYClPeyqxEnh2XZhbfxj9w5Bun7507tx1nJKSiQoutmmRflxPo/u
+ Ax/hspS9iKVSEzBKqnoLR/nfdS9MHU9DM5SGIXYfAZkltnsdrqufU7y5RRPIcCLj4suf92ZSF
+ WrehZismCepdAi3ursy146JUpQLbr88HUPn2t2rMVcj7Qpfqh1xfPHSSQFV3b/Nwlxst8BSMP
+ QUEpVbB0ozcmjNOeonee6EklRI5LdN6QAT2+a+uWi2h8BkVeDsQwk87yAPVYAI7jG/KYEBdLM
+ TL1BGiuGQ4P2lPsqZRyD7AmgR99C+VbHyp2N8cE4b+VqIePSg9fdlt6nuL4142MTBC+q3MTLU
+ dWzL1qrqbeskGnJR50cv/W4EMGfwI79fKu2VtC8X4QWFJ2b7TaE0pk9klr48c3vHk2/yuqGnL
+ 5qp/RiTyJ+d0oFpJFB/C8u5iL2q93hbJ3Zn3JSWcrBfvg5YKd69GJsJgTxwHM7a8w1szaSQvq
+ G+wF2M9zf3MNrmvufXGGEiErzzHXXmYG/hulrRrVFtQFixrCnsTonkFqYoeKG85GQgoLV0HxG
+ DGOOHRVK6zeuJacGQl2z4FXEyF3ppJYrjSg3DA/w63tiLfG34xcj0s4iWk0RxsI6LCx3W9nh0
+ u4og4qNNlm9n/d7x76kTSsthu359hz+5LFEQGLsL8fT/0oVwL389hYcaPF7yMsB27WltTDeWD
+ ZT8zlSXZTDQAE0Kjr
 X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
@@ -89,8 +89,8 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1jQgA9-004sLe-6D
-Subject: [linux-uvc-devel] Alcor Micro Webcam 058f:a014 doesn't work
+X-Headers-End: 1jQgGR-008XH5-Ju
+Subject: [linux-uvc-devel] Undocumented Device ID entries
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,12 +108,14 @@ Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
 Hello,
 
-Much in the same way as Dominik Notz from the mail "Alcor Micro Webcam 058f:3821 doesn't work", I am trying to get an image out of the webcam of an old laptop, and while the webcam LED turns green, the webcam itself seems inoperant (black video feed in cheese, green video feed in mplayer tv://).
+I am aware of two webcams that are missing from the list at http://www.ideasonboard.org/uvc/#devices : the Alcor Micro 058f:3821 and the Alcor Micro 058f:a014.
 
-I think the webcam is simply not supported by the UVC driver or that it has quirks; but I am writing here in case someone has hints, suggestions, and yo document the case.
+The former can be found in the acer 5750G, and the latter can be found in the Asus k series (k54e, k54f, k73sm, etc).
+
+As far as I know, both devices are bot supported by UVC right out of the box. It is currently unknown to me if either device would work with additional configuration.
 
 Cheers,
-Theo
+Theo.
 _______________________________________________
 Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
