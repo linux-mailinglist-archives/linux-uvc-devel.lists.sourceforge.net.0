@@ -2,83 +2,88 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B55A1C4364
-	for <lists+linux-uvc-devel@lfdr.de>; Mon,  4 May 2020 19:56:25 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AAE91C463E
+	for <lists+linux-uvc-devel@lfdr.de>; Mon,  4 May 2020 20:46:09 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jVfJu-00055N-5v; Mon, 04 May 2020 17:55:58 +0000
+	id 1jVg6C-0003u9-3Y; Mon, 04 May 2020 18:45:52 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <sekistner@gmail.com>) id 1jVfJs-000551-0y
- for linux-uvc-devel@lists.sourceforge.net; Mon, 04 May 2020 17:55:56 +0000
+ (envelope-from <sukram_n@web.de>) id 1jVg6A-0003u1-9h
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 04 May 2020 18:45:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- Reply-To:MIME-Version:Sender:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:To:From:Message-ID:
+ Subject:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=oSFrSG7pjf7sLlGnameknvzLGRb5EuB20nJvMxFGBvE=; b=ZVZ6oGbRJ8PCBjYiarX+Qjku0o
- yT7tIK1puBgN0mnDthz857bfTChS6zSvlNgURuDQb/GuXMcExhrFLj77I1nkPqQqF0sjWFqUllTz9
- Ms6F9cgZtIchbqF9O76WPzOoPKwU0zWBPTj2VPjxS2z31I15oHW3T8qIO+envHEkNfks=;
+ bh=6i8hSUMK37RkOD6HHzkglzzk212eCvtvQFy9OMkoWRo=; b=ediZcqV36SPGvbdwy77KuPvRvf
+ bLVXEeqeOHlsdM0LQvz3SMdLPzLt2PmGjXrmaDnS8u+LI2UuHRfosa6urcqr/P8Ta4oBkm8lH5YYb
+ Wd7P0tDbksCl9knWJZPOw+eBGsoD+u6ufwQcdv2CwEbMar8qavTt7jksByFsW0QdYTL8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Sender
+ h=Content-Type:MIME-Version:To:From:Message-ID:Subject:Date:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=oSFrSG7pjf7sLlGnameknvzLGRb5EuB20nJvMxFGBvE=; b=L
- YFK8cKcdr1ou8mwktmWMShUHSfh9+8RRbYGpNJ/hlnFPeiJsrm2ApMsOPLoZYQOSrjVL9T4WztIQr
- dftQS59fWyDaygNXQcJPDtYxCVCb5IYx/vzmUroUHSdISMTbSxkWs2ok3z6qEzYEftN2Gq2Wn+3v9
- 46XwbwDAvWNxQaGc=;
-Received: from mail-vk1-f196.google.com ([209.85.221.196])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=6i8hSUMK37RkOD6HHzkglzzk212eCvtvQFy9OMkoWRo=; b=U
+ BIgPxZQgW7wCeJ3kCOj4tmAPiAIll6ti1Ma4EEQkJv+mff8wDFS7BUcM0pCR3Zn1UyoevzEY0B9MT
+ rwT1fzLWGhBRZQnAmKiURywcH0ahBAOKgaFPsW7pSuDX+JwpCMnk76rlHgglkQOT9JUnXFMMhoFW7
+ UOj81g76YY9OCexo=;
+Received: from mout.web.de ([217.72.192.78])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1jVfJq-007EP9-Ij
- for linux-uvc-devel@lists.sourceforge.net; Mon, 04 May 2020 17:55:55 +0000
-Received: by mail-vk1-f196.google.com with SMTP id b14so4852343vkk.10
- for <linux-uvc-devel@lists.sourceforge.net>;
- Mon, 04 May 2020 10:55:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=oSFrSG7pjf7sLlGnameknvzLGRb5EuB20nJvMxFGBvE=;
- b=GPLXAJKL7rIwlOhVqtJ4hKSYz11Cw4j17pBFr35+n0b6+wrSUW52r32EEwTcTJl7QT
- rHwB3wU823Pj+jmubZHfTKl22RD/a/YjdBv0GOzdiTy5p9FxpkS+Ccmy+L+GMtfqpYHk
- 4UP2b4ZhiWP6wlzn4F0hKXjkc5Kdv3kjmfYydCQj2n0b3JkmDSxqC6miSliWoFap4vQB
- TDJBEGNNtosP73WmSFu80NYzjX+Fe2blD4ppMnTPSANCBiVHhQAg46pPV/2XGGw8Flbn
- Y99mBt+K6gBhtVggNAwVFR6nqLAtcKMbJxbODs7qK8DgIFKtRVoQ4NXJ4jmC9SZmTfy0
- 4orw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=oSFrSG7pjf7sLlGnameknvzLGRb5EuB20nJvMxFGBvE=;
- b=OJ1zem7shG0g9MRrg1cWRlY5FxBIo6oD9CLN6wCUJoJLMZtxpk1eRFPWI5VZnUq9oV
- f3QLODf+DpXBqiCRgeGymvLH21HyE7PoZ76a7RwX5JtGamwZ6cZT1i9x0Eti6fo1ISRB
- OOWma8M00bdnRAmyxI7AIHHzkhQHZ5LUIk1+vbzuNICX+i2F5FTzg2nrRweX/lT0SwwB
- eBej8jUiwGss824+UHGi0HNrluUUCMQPjGCfUVsWbVUMDk6Q3Ikvmz28Gw1MiC2XLMq0
- uPmB3jcCuJEboNRIDzyLk2cr93v63VioiGF8Fr6fOrMha7BxtV9G9HDiJBOGfCO5oAGc
- fXYA==
-X-Gm-Message-State: AGi0PuZiGyXsAwTS1P3eBvN9OCGKM7GzU9LDQsnsqg5jEQ4Esir2rdkK
- ZFG15Zs4Vjv0woT0tQyYcauG1e34TI/QpjOwdSRFVIxR8I4=
-X-Google-Smtp-Source: APiQypLvpiWkcM5sZhcySDTIu7LNDGUjgzm7KlYi/jRMbL6lX8PVOHpbBVferk3IAGSUPwbpQw0FWbwAgYRRLLl5eIg=
-X-Received: by 2002:a67:b905:: with SMTP id q5mr174621vsn.203.1588613225909;
- Mon, 04 May 2020 10:27:05 -0700 (PDT)
-MIME-Version: 1.0
-From: Severin Kistner <sekistner@gmail.com>
-Date: Mon, 4 May 2020 19:26:55 +0200
-Message-ID: <CANh1nAZu4gtKc3KuFb8Oikvx2AnAB2HMWUGHiG+5tSn_OSX_UA@mail.gmail.com>
+ id 1jVg67-00DBET-S8
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 04 May 2020 18:45:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1588617940;
+ bh=6i8hSUMK37RkOD6HHzkglzzk212eCvtvQFy9OMkoWRo=;
+ h=X-UI-Sender-Class:Date:Subject:From:To;
+ b=EIbypTGtos4c3jf6pWrP6hvZBrKw2YOPQw2uQLGcdjTMuCNnicbzioCkLd5DSSd43
+ 3YTDwxgNUKzHv6kdJ51i2SGoSkfAzp6lOGBWQHuNhGO5jV8W8phAFeg6c9li5R46BX
+ Nn5Rn70CztmBP/cNSR2zI9owWa+/kIPzWY3yXdoI=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.178.23] ([188.110.195.133]) by smtp.web.de (mrweb103
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 0MPYJJ-1jRZUQ3Mif-004j30 for
+ <linux-uvc-devel@lists.sourceforge.net>; Mon, 04 May 2020 20:45:40 +0200
+Date: Mon, 04 May 2020 20:45:38 +0200
+Message-ID: <ra94ra1lg32r8sueo74c55vv.1588617937957@email.android.com>
+From: sukram_n@web.de
 To: linux-uvc-devel@lists.sourceforge.net
+MIME-Version: 1.0
+X-Provags-ID: V03:K1:NVi2Ygy4+UjnBBtQIJFQ3Aln3nBqdM3GdtrpgAUAZ2OeT6lGL2J
+ KlqW/KktM+EWquDLZ5zbJw4l6Tj3tyYd+91TFyDQ+6SLWsEgZWCC0jlr0oQoXGSgkYJqlBo
+ 0iGYIbfGFmVPbfwwDkxEkcXHmfojFD4BqKKUbnOD/4js1NiW9e2AuDBVbABXNI5Ka58TAXz
+ wLsFF7UIwzgKMLG2nSK1A==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Vc5fhOE5o7U=:pjbeXO6LDup9uEHGojGkqA
+ dEube2UAMLXCuQLf8ECfH4afd+wJKCQ+Ir6ixecDhANCs4udrKOwhOCv9PQERwSCa2OG3bDmO
+ CUQAdK8gRdLODqzNhXFucBYRERl+dhjN/758YSKxr9Yfo6bhdqPRhaYNQrm29p00VoomYjUGe
+ eibnekygCZmXJ/uKfVdr2Nq+C12DVZkj9TFnR/NYtkNK25RGHaazYQE2Pd46oM/tQAMfqxVzl
+ fN9LXeQtLoE9TaL6HsStN9t0CNVDclts7MAGRX2yb+qbasW9Ng3smyPKkphG2yxN5rWScv8Gz
+ OG4R6njuzQeEf+2PDqJET4k8WU6+RReaOc7Et5K8u8q/HtANzhHxz707Xnw8JFyb3gVdg+ufS
+ j3ir2F10uES77R9+vgj0aIhAIdkuCHRdSDEHqiCzEX/NDbVLjLGvjdxCdL1B20D0JCbIU5i5F
+ xHB2I45hIXFDgDCvMXZHaMfF0ETe6gookHT3IEQzJ7Gmt683YMkIRt2uU/bBMICR+1iFgxvg6
+ sDiIjYmZrMoYI1rDuLlR+GQEuBygOJNI4tctwk8LF6MTYdxLm4GlkT7CwNEkyLrzJRleuwLnb
+ xFJUsGchQd+CCXWW3/vWLivTgJDH5bQLsDpXjItChkBW98KvO6Pk2BGHgyu3BLruogLZ8usWL
+ Mk4NZxPEXzbshuJ8I3up0RZ9q+WQ3O81jbvCDxImKt7AyO4x4xV+GxmThgjVWWH+gobfl1TYO
+ QOlzEYduyXyzaJJUpnwA75CgChV95KJNSte1o7s01ISpapTrR/Sy6Oh++e9whVXOjjDnwf4x+
+ oG3WCludd1hYpe7l83HsQjcG+FvHoDgkrW0f0fmREa8UhAZEDZ4tSs+ZZ3fdRZuiyasWA/AMW
+ w8vFDWebmqdzTAl6iurtDuC50yTyddOsjx0tr1Tp3zCczN1exw8RlmRQK5oVRqNyhIK57gDZJ
+ dUesmSAE1KLfg2IWuASQJ1otg5mrJbGkRCBov75ejAf9WudouVg2JezVnBjpnRBVL47/3cfVc
+ 6e9kuqHNR7M7o4y49M7ka37Yy0SO/WqSszuz6UAaWk/1zvxXaNl0ODKlzWRmGzHgQEDCSBe3C
+ 4SaYmNJi8L9Cmm56RNo9i8jaMYVgjWdYmcZTB/YlSSYShUTaMSKtDK5UusfpzhLggN/NMg/jK
+ RzyGaGoeDDS3fI88kVnhPjWvJmhLBMO2E2+RdtBVpHEnvgPhmXlGXsbBoTB219A1fz4i0cigJ
+ N8VG7ikjCBjpRSnM4
 X-Spam-Score: 0.9 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (sekistner[at]gmail.com)
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.221.196 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.221.196 listed in wl.mailspike.net]
+ (sukram_n[at]web.de)
+ -0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [217.72.192.78 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  1.0 HTML_MESSAGE           BODY: HTML included in message
@@ -87,8 +92,9 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1jVfJq-007EP9-Ij
-Subject: [linux-uvc-devel] Support for Logitech StreamCam
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1jVg67-00DBET-S8
+Subject: [linux-uvc-devel] SuYin camera not listed and stopped working
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,238 +106,72 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: sekistner@gmail.com
-Content-Type: multipart/mixed; boundary="===============8234472330186296473=="
+Content-Type: multipart/mixed; boundary="===============4249958348866724969=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
---===============8234472330186296473==
-Content-Type: multipart/alternative; boundary="00000000000004135605a4d5d7cf"
+--===============4249958348866724969==
+Content-Type: multipart/alternative; boundary=--_com.ninefolders.hd3.email_161506888375593_alt
 
---00000000000004135605a4d5d7cf
-Content-Type: text/plain; charset="UTF-8"
+----_com.ninefolders.hd3.email_161506888375593_alt
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
 
-Hello uvc developers,
+RGVhciBMaXN0LAoKdXNiIDEtNTogTmV3IFVTQiBkZXZpY2UgZm91bmQsIGlkVmVuZG9yPTA2NGUs
+IGlkUHJvZHVjdD05NzAwLCBiY2REZXZpY2U9IDEuMDEKdXNiIDEtNTogTmV3IFVTQiBkZXZpY2Ug
+c3RyaW5nczogTWZyPTMsIFByb2R1Y3Q9MSwgU2VyaWFsTnVtYmVyPTIKdXNiIDEtNTogUHJvZHVj
+dDogVVNCMi4wIFVWQyBIRCBXZWJjYW0KdXNiIDEtNTogTWFudWZhY3R1cmVyOiBTdVlpbgp1c2Ig
+MS01OiBTZXJpYWxOdW1iZXI6IEhGMTAxOS1UODM4LVNOMDMtUmV2MDEwMQoKVGhpcyBjYW1lcmEg
+dXNlZCB0byB3b3JrIGluIG15IEFTVVMgVVgzMDVGIG5vdGVib29rLiBOb3cgaXQgd29ya3Mgb25s
+eSBvY2Nhc2lvbmFseSBidXQgSSBzZWUgbm90IHNwZWNpZmljIHBhdHRlcm4gZm9yIHdvcmtpbmcv
+bm90IHdvcmtpbmcuIEkgcmVja29uIHRoZSBwcm9ibGVtIGFmdGVyIHNvbWUgdXBkYXRlLiBJIGFt
+IHVzaW5nIERlYmlhbiAxMC4zLgoKVGhhbmtzIGEgbG90IGluIGFkdmFuY2UgZm9yIGFueSBoZWxw
+IQpCZXN0IHdpc2hlcwpNYXJrdXMKCgo=
+----_com.ninefolders.hd3.email_161506888375593_alt
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
 
-I hope I am doing this right.
-Because of the pandemic, this was the only decent device I got.
-I even got a USB type C PCI device for it.
-
-I am not sure that the USB device could be a factor too, with bandwidth
-
-the lshw for it
-
-       description: USB controller
-                      product: ASM2142 USB 3.1 Host Controller
-                      vendor: ASMedia Technology Inc.
-                      physical id: 0
-                      bus info: pci@0000:05:00.0
-                      version: 00
-                      width: 64 bits
-                      clock: 33MHz
-                      capabilities: msi msix pm pciexpress xhci bus_master
-cap_list
-                      configuration: driver=xhci_hcd latency=0
-                      resources: irq:25 memory:f7500000-f7507fff
-                    *-usbhost:0
-                         product: xHCI Host Controller
-                         vendor: Linux 5.4.0-28-generic xhci-hcd
-                         physical id: 0
-                         bus info: usb@3
-                         logical name: usb3
-                         version: 5.04
-                         capabilities: usb-2.00
-                         configuration: driver=hub slots=2 speed=480Mbit/s
-                    *-usbhost:1
-                         product: xHCI Host Controller
-                         vendor: Linux 5.4.0-28-generic xhci-hcd
-                         physical id: 1
-                         bus info: usb@4
-                         logical name: usb4
-                         version: 5.04
-                         capabilities: usb-3.10
-                         configuration: driver=hub slots=2 speed=10000Mbit/s
-
-It basically works for a few minutes and then it crashes:
-
-lsusb:
-
-046d:0893 Logitech, Inc. Logitech StreamCam
-
-lshw:
-
- description: Video
-                            product: Logitech StreamCam
-                            vendor: Logitech, Inc.
-                            physical id: 2
-                            bus info: usb@4:2
-                            version: 3.17
-                            serial: A870AA05
-                            capabilities: usb-3.20
-                            configuration: driver=usbhid maxpower=896mA
-speed=5000Mbit/s
-
-it works for a few seconds then crashes:
-
-dmseg:
-
-[    2.745831] uvcvideo: Found UVC 1.00 device Logitech StreamCam
-(046d:0893)
-[    2.762190] uvcvideo 4-2:1.0: Entity type for entity Processing 3 was
-not initialized!
-[    2.762192] uvcvideo 4-2:1.0: Entity type for entity Extension 14 was
-not initialized!
-[    2.762193] uvcvideo 4-2:1.0: Entity type for entity Extension 6 was not
-initialized!
-[    2.762194] uvcvideo 4-2:1.0: Entity type for entity Extension 8 was not
-initialized!
-[    2.762195] uvcvideo 4-2:1.0: Entity type for entity Extension 9 was not
-initialized!
-[    2.762196] uvcvideo 4-2:1.0: Entity type for entity Extension 10 was
-not initialized!
-[    2.762196] uvcvideo 4-2:1.0: Entity type for entity Extension 11 was
-not initialized!
-[    2.762197] uvcvideo 4-2:1.0: Entity type for entity Camera 1 was not
-initialized!
-[    2.762303] usbcore: registered new interface driver uvcvideo
-[  445.629384] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit
-3: -110 (exp. 1).
-[  446.145539] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit
-3: -110 (exp. 1).
-[  446.653403] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit
-3: -110 (exp. 1).
-[  447.165406] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit
-3: -110 (exp. 1).
-[  447.677412] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit
-3: -110 (exp. 1).
-[  448.189409] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit
-3: -110 (exp. 1).
-[  453.309443] uvcvideo: Failed to set UVC probe control : -110 (exp. 26).
-
-I would really like to use this device, if I can help in any way let me
-know.
-
-Cheers Severin
-
---00000000000004135605a4d5d7cf
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,he=
-lvetica,sans-serif">Hello uvc developers,</div><div class=3D"gmail_default"=
- style=3D"font-family:arial,helvetica,sans-serif"><br></div><div class=3D"g=
-mail_default" style=3D"font-family:arial,helvetica,sans-serif">I hope I am =
-doing this right.</div><div class=3D"gmail_default" style=3D"font-family:ar=
-ial,helvetica,sans-serif">Because of the pandemic, this was the only decent=
- device I got.<br>I even got a USB type C PCI device for it.<br><br>I am no=
-t sure that the USB device could be a factor too, with bandwidth<br><br>the=
- lshw for it</div><div class=3D"gmail_default" style=3D"font-family:arial,h=
-elvetica,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-f=
-amily:arial,helvetica,sans-serif">=C2=A0 =C2=A0 =C2=A0 =C2=A0description: U=
-SB controller<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 product: ASM2142 USB 3.1 Host Controller<br>=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 vendor: =
-ASMedia Technology Inc.<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 physical id: 0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bus info: pci@0000:05:00.0=
-<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 version: 00<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 width: 64 bits<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 clock: 33MHz<br>=C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 capabilitie=
-s: msi msix pm pciexpress xhci bus_master cap_list<br>=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 configuration: driv=
-er=3Dxhci_hcd latency=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 resources: irq:25 memory:f7500000-f7507fff<=
-br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 *-=
-usbhost:0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0product: xHCI Host Controller<br>=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0vendor: Linux 5.4.0-28-generic xhci-hcd<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0physical id: =
-0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0bus info: usb@3<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0logical name: usb3<b=
-r>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0version: 5.04<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0capabilities: usb-2.00<br>=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0configuration: driver=3Dhub slots=3D2 speed=3D480Mbit/s<br=
->=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 *-us=
-bhost:1<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0product: xHCI Host Controller<br>=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0vendor: Linux 5.4.0-28-generic xhci-hcd<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0physical id: =
-1<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0bus info: usb@4<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0logical name: usb4<b=
-r>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0version: 5.04<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0capabilities: usb-3.10<br>=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0configuration: driver=3Dhub slots=3D2 speed=3D10000Mbit/s<=
-br><br>It basically works for a few minutes and then it crashes:</div><div =
-class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif"><b=
-r></div><div class=3D"gmail_default" style=3D"font-family:arial,helvetica,s=
-ans-serif">lsusb:=C2=A0</div><div class=3D"gmail_default" style=3D"font-fam=
-ily:arial,helvetica,sans-serif"><br>046d:0893 Logitech, Inc. Logitech Strea=
-mCam<br></div><div class=3D"gmail_default" style=3D"font-family:arial,helve=
-tica,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-famil=
-y:arial,helvetica,sans-serif">lshw:</div><div class=3D"gmail_default" style=
-=3D"font-family:arial,helvetica,sans-serif"><br></div><div class=3D"gmail_d=
-efault" style=3D"font-family:arial,helvetica,sans-serif">=C2=A0description:=
- Video<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 product: Logitech StreamCam<br>=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 vendor: Logitech, Inc.<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 physical=
- id: 2<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bus info: usb@4:2<br>=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 version: 3.17<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 serial: A870AA05<br>=C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 capabilities: usb-3.20<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 configur=
-ation: driver=3Dusbhid maxpower=3D896mA speed=3D5000Mbit/s<br><br>it works =
-for a few seconds then crashes:<br><br>dmseg:<br><br>[ =C2=A0 =C2=A02.74583=
-1] uvcvideo: Found UVC 1.00 device Logitech StreamCam (046d:0893)<br>[ =C2=
-=A0 =C2=A02.762190] uvcvideo 4-2:1.0: Entity type for entity Processing 3 w=
-as not initialized!<br>[ =C2=A0 =C2=A02.762192] uvcvideo 4-2:1.0: Entity ty=
-pe for entity Extension 14 was not initialized!<br>[ =C2=A0 =C2=A02.762193]=
- uvcvideo 4-2:1.0: Entity type for entity Extension 6 was not initialized!<=
-br>[ =C2=A0 =C2=A02.762194] uvcvideo 4-2:1.0: Entity type for entity Extens=
-ion 8 was not initialized!<br>[ =C2=A0 =C2=A02.762195] uvcvideo 4-2:1.0: En=
-tity type for entity Extension 9 was not initialized!<br>[ =C2=A0 =C2=A02.7=
-62196] uvcvideo 4-2:1.0: Entity type for entity Extension 10 was not initia=
-lized!<br>[ =C2=A0 =C2=A02.762196] uvcvideo 4-2:1.0: Entity type for entity=
- Extension 11 was not initialized!<br>[ =C2=A0 =C2=A02.762197] uvcvideo 4-2=
-:1.0: Entity type for entity Camera 1 was not initialized!<br>[ =C2=A0 =C2=
-=A02.762303] usbcore: registered new interface driver uvcvideo<br>[ =C2=A04=
-45.629384] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit 3: -1=
-10 (exp. 1).<br>[ =C2=A0446.145539] uvcvideo: Failed to query (SET_CUR) UVC=
- control 11 on unit 3: -110 (exp. 1).<br>[ =C2=A0446.653403] uvcvideo: Fail=
-ed to query (SET_CUR) UVC control 11 on unit 3: -110 (exp. 1).<br>[ =C2=A04=
-47.165406] uvcvideo: Failed to query (SET_CUR) UVC control 11 on unit 3: -1=
-10 (exp. 1).<br>[ =C2=A0447.677412] uvcvideo: Failed to query (SET_CUR) UVC=
- control 11 on unit 3: -110 (exp. 1).<br>[ =C2=A0448.189409] uvcvideo: Fail=
-ed to query (SET_CUR) UVC control 11 on unit 3: -110 (exp. 1).<br>[ =C2=A04=
-53.309443] uvcvideo: Failed to set UVC probe control : -110 (exp. 26).<br><=
-br>I would really like to use this device, if I can help in any way let me =
-know.<br><br>Cheers Severin</div><div dir=3D"ltr" data-smartmail=3D"gmail_s=
-ignature"></div></div>
-
---00000000000004135605a4d5d7cf--
+PGh0bWw+PGJvZHk+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6Q2FsaWJyaSwgQXJpYWwsIEhlbHZl
+dGljYSwgc2Fucy1zZXJpZjsgZm9udC1zaXplOjEyLjBwdDsgbGluZS1oZWlnaHQ6MS4zOyBjb2xv
+cjojMDAwMDAwIj48IS0tICMjIyMjIE5JTkUgQk9EWSBCRUdJTiAjIyMjIyAtLT5EZWFyIExpc3Qs
+PGJyPjxicj48ZGl2IGRhdGEtZXZvLXBhcmFncmFwaD0iIiBjbGFzcz0iIiBzdHlsZT0id2lkdGg6
+IDcxY2g7Ij51c2IgMS01OiBOZXcgVVNCIGRldmljZSBmb3VuZCwgaWRWZW5kb3I9MDY0ZSwgaWRQ
+cm9kdWN0PTk3MDAsIGJjZERldmljZT0gMS4wMTxicj48L2Rpdj48ZGl2IGRhdGEtZXZvLXBhcmFn
+cmFwaD0iIiBjbGFzcz0iIiBzdHlsZT0id2lkdGg6IDcxY2g7Ij51c2IgMS01OiBOZXcgVVNCIGRl
+dmljZSBzdHJpbmdzOiBNZnI9MywgUHJvZHVjdD0xLCBTZXJpYWxOdW1iZXI9Mjxicj48L2Rpdj48
+ZGl2IGRhdGEtZXZvLXBhcmFncmFwaD0iIiBjbGFzcz0iIiBzdHlsZT0id2lkdGg6IDcxY2g7Ij51
+c2IgMS01OiBQcm9kdWN0OiBVU0IyLjAgVVZDIEhEIFdlYmNhbTxicj48L2Rpdj48ZGl2IGRhdGEt
+ZXZvLXBhcmFncmFwaD0iIiBjbGFzcz0iIiBzdHlsZT0id2lkdGg6IDcxY2g7Ij51c2IgMS01OiBN
+YW51ZmFjdHVyZXI6IFN1WWluPGJyPjwvZGl2PjxkaXYgZGF0YS1ldm8tcGFyYWdyYXBoPSIiIGNs
+YXNzPSIiIHN0eWxlPSJ3aWR0aDogNzFjaDsiPnVzYiAxLTU6IFNlcmlhbE51bWJlcjogSEYxMDE5
+LVQ4MzgtU04wMy1SZXYwMTAxPGJyPjwvZGl2PjxkaXYgZGF0YS1ldm8tcGFyYWdyYXBoPSIiIGNs
+YXNzPSIiIHN0eWxlPSJ3aWR0aDogNzFjaDsiPjxicj48L2Rpdj48ZGl2IGRhdGEtZXZvLXBhcmFn
+cmFwaD0iIiBjbGFzcz0iIiBzdHlsZT0id2lkdGg6IDcxY2g7Ij5UaGlzIGNhbWVyYSB1c2VkIHRv
+IHdvcmsgaW4gbXkgQVNVUyBVWDMwNUYgbm90ZWJvb2suIE5vdyBpdCB3b3JrcyBvbmx5IG9jY2Fz
+aW9uYWx5IGJ1dCBJIHNlZSBub3Qgc3BlY2lmaWMgcGF0dGVybiBmb3Igd29ya2luZy9ub3Qgd29y
+a2luZy4gSSByZWNrb24gdGhlIHByb2JsZW0gYWZ0ZXIgc29tZSB1cGRhdGUuIEkgYW0gdXNpbmcg
+RGViaWFuIDEwLjMuPGJyPjwvZGl2PjxkaXYgZGF0YS1ldm8tcGFyYWdyYXBoPSIiIGNsYXNzPSIi
+IHN0eWxlPSJ3aWR0aDogNzFjaDsiPjxicj5UaGFua3MgYSBsb3QgaW4gYWR2YW5jZSBmb3IgYW55
+IGhlbHAhPGJyPjwvZGl2PjxkaXYgZGF0YS1ldm8tcGFyYWdyYXBoPSIiIGNsYXNzPSIiIHN0eWxl
+PSJ3aWR0aDogNzFjaDsiPkJlc3Qgd2lzaGVzPGJyPjwvZGl2PjxkaXYgZGF0YS1ldm8tcGFyYWdy
+YXBoPSIiIGNsYXNzPSIiIHN0eWxlPSJ3aWR0aDogNzFjaDsiPk1hcmt1czxzcGFuIGRhdGEtYW5j
+aG9yPSIiPjwvc3Bhbj48c3Bhbj48L3NwYW4+PGJyPjwvZGl2Pjxicj48IS0tICMjIyMjIE5JTkUg
+Qk9EWSBFTkQgIyMjIyMgLS0+PC9kaXY+PGRpdiBjbGFzcz0icXVvdGVkX291dHB1dF9ib2R5Ij48
+ZGl2IGlkPSJxdW90ZWRfaGVhZGVyIiBjbGFzcz0icXVvdGVkX2hlYWRlcl9lZGl0b3IiIHN0eWxl
+PSJjbGVhcjpib3RoOyI+IDwvZGl2PjxiciB0eXBlPSdhdHRyaWJ1dGlvbic+PGRpdiBpZD0icXVv
+dGVkX2JvZHkiIGNsYXNzPSJxdW90ZWRfYm9keV9lZGl0b3IiPjwvZGl2PjwvZGl2PjwvYm9keT48
+L2h0bWw+
+----_com.ninefolders.hd3.email_161506888375593_alt--
 
 
---===============8234472330186296473==
+
+--===============4249958348866724969==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============8234472330186296473==
+--===============4249958348866724969==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -342,5 +182,6 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---===============8234472330186296473==--
+--===============4249958348866724969==--
+
 
