@@ -2,66 +2,70 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCB221CA55E
-	for <lists+linux-uvc-devel@lfdr.de>; Fri,  8 May 2020 09:43:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98D491D35CA
+	for <lists+linux-uvc-devel@lfdr.de>; Thu, 14 May 2020 18:01:54 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jWxfD-0007VS-Aw; Fri, 08 May 2020 07:43:19 +0000
+	id 1jZGIh-0008Mk-U2; Thu, 14 May 2020 16:01:35 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <aleksandar.dakic@rt-rk.com>) id 1jWxfC-0007VM-EC
- for linux-uvc-devel@lists.sourceforge.net; Fri, 08 May 2020 07:43:18 +0000
+ (envelope-from <xavier.bestel@free.fr>) id 1jZGIh-0008Mb-1T
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 14 May 2020 16:01:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Date:Message-ID:Subject:
- From:To:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
+ :Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=D/xCCBxDl1IN12z3CN9ow9qnK1v4t499BYYe1RZB+Ho=; b=G816C+em1zY3/uCbnMnMf/Qi15
- epDOY2B4p1Kr+UB2h74yTR2YgtQuG/17a5j6Gm5Yd7jg9oeCHKglQegUmGFoJPgePansKFD9jdOdH
- 4ZksyX1X16KZwZ8l7TVnF4cAqoY5shnS49ScHex4BkqpXWH57z6LzZKS5K3f8RRmAaHc=;
+ bh=oJ+3Q8v6NhqVtKsJusqZHBzC402azZT94uU0MEFRzsM=; b=JD2+1k2Hzye8jMVIbzjrmcKi7L
+ oYm9H18cSvjJRGv7gDMl146UUJM/wQvHuR+yGy3YvV+rB3VoOR/iIqXVl4Mulln56U2ifMMP5n0kz
+ W7dxfZidja0iLXQcf7mHqvEncy1mmN1rfMNYTMQiENEsxkgbfYBQXEVeEhIjV/X2WsNI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:Date:Message-ID:Subject:From:To:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:To:From:Subject:
+ Message-ID:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=D/xCCBxDl1IN12z3CN9ow9qnK1v4t499BYYe1RZB+Ho=; b=h
- jEz8tTxGjR9kMJRqjWj9R16ySATSQ5Q0Pjg5qnAwo5JlZAs13vx6ydTQO1ISp8Vjf6fUK/AniwmEa
- SUtf2dObylu6yx0NbQAp7C1VmMMQc0PMUCZrOg/Fen+cCtrr2jt4p8/D9wj2Dc1p8Do2UPdbWp5pQ
- 7GHRw1l+6+MM1Lpc=;
-Received: from mx2.rt-rk.com ([89.216.37.149] helo=mail.rt-rk.com)
+ List-Owner:List-Archive; bh=oJ+3Q8v6NhqVtKsJusqZHBzC402azZT94uU0MEFRzsM=; b=Y
+ 6Z9+64k/BnBnl0pZQXjsXr2ZF6zMZb8QFCm6mJzYtGK8BJlHhABE4sNUnx3URMu7ffzzMdA02l++s
+ an5JqPctPcM6EaTQKaNqoPMKQdFCTs0d2pqTvhj6OQCSnzVU3ARYMpP7iGvrJerWA0yza/gLpqXnX
+ 43pvayaSo7RMDfMA=;
+Received: from smtp5-g21.free.fr ([212.27.42.5])
  by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jWxfA-00CCVr-0t
- for linux-uvc-devel@lists.sourceforge.net; Fri, 08 May 2020 07:43:18 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.rt-rk.com (Postfix) with ESMTP id C44341A1E4B
+ id 1jZGId-0076E6-BS
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 14 May 2020 16:01:34 +0000
+Received: from awak.mobi (unknown [78.207.29.31])
+ by smtp5-g21.free.fr (Postfix) with ESMTP id E83325FFD6
  for <linux-uvc-devel@lists.sourceforge.net>;
- Fri,  8 May 2020 09:24:41 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at rt-rk.com
-Received: from [192.168.1.101] (unknown [87.116.178.251])
- by mail.rt-rk.com (Postfix) with ESMTPSA id A48F81A1E09
+ Thu, 14 May 2020 18:01:17 +0200 (CEST)
+Received: from xav13.bestouff.prv (xav13.bestouff.prv [10.2.228.109])
+ by awak.mobi (Postfix) with ESMTPSA id AE82F3600DF
  for <linux-uvc-devel@lists.sourceforge.net>;
- Fri,  8 May 2020 09:24:41 +0200 (CEST)
+ Thu, 14 May 2020 18:01:17 +0200 (CEST)
+Message-ID: <4d25b857d4c5392d25214adcf4f540a38f5c4475.camel@free.fr>
+From: Xavier Bestel <xavier.bestel@free.fr>
 To: linux-uvc-devel@lists.sourceforge.net
-From: adakic <aleksandar.dakic@rt-rk.com>
-Message-ID: <0f558850-1883-b35d-50a1-0ef3a6cfb6ee@rt-rk.com>
-Date: Fri, 8 May 2020 09:24:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Date: Thu, 14 May 2020 18:01:17 +0200
+User-Agent: Evolution 3.36.2-1 
 MIME-Version: 1.0
-Content-Language: en-US
-X-Spam-Score: 1.0 (+)
+X-Spam-Score: 2.0 (++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (xavier.bestel[at]free.fr)
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [212.27.42.5 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [212.27.42.5 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 HTML_MESSAGE           BODY: HTML included in message
-X-Headers-End: 1jWxfA-00CCVr-0t
-Subject: [linux-uvc-devel]  Switch to bulk interface
+ 2.0 SPOOFED_FREEMAIL       No description available.
+X-Headers-End: 1jZGId-0076E6-BS
+Subject: [linux-uvc-devel] gspca_z3cxx: Failed to query (GET_CUR) UVC
+ control 11 on unit 2
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,185 +77,38 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6759256265342486478=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-This is a multi-part message in MIME format.
---===============6759256265342486478==
-Content-Type: multipart/alternative;
- boundary="------------DD6DBA38B85E0B8BD9F3F273"
-Content-Language: en-US
+Hi,
 
-This is a multi-part message in MIME format.
---------------DD6DBA38B85E0B8BD9F3F273
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+I have a webcam identified by:
+Bus 001 Device 005: ID 046d:0825 Logitech, Inc. Webcam C270
 
-Hello,
+My kernel (Debian sid 5.6.0-1-amd64) loads the gspca_zc3xx driver:
 
-The device is recognized as:
+[jeu. mai 14 01:46:40 2020] usb 5-3.3: new full-speed USB device number 13 using xhci_hcd
+[jeu. mai 14 01:46:40 2020] usb 5-3.3: New USB device found, idVendor=046d, idProduct=08d7, bcdDevice= 1.00
+[jeu. mai 14 01:46:40 2020] usb 5-3.3: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[jeu. mai 14 01:46:40 2020] gspca_main: gspca_zc3xx-2.14.0 probing 046d:08d7
+[jeu. mai 14 01:46:41 2020] input: gspca_zc3xx as /devices/pci0000:00/0000:00:1c.0/0000:01:00.0/0000:02:01.0/0000:04:00.0/0000:05:01.0/0000:07:00.0/usb5/5-3/5-3.3/input/input52
 
-/[33569.792403] usb 2-5: new SuperSpeed USB device number 2 using xhci_hc=
-d//
-//[33569.812921] usb 2-5: LPM exit latency is zeroed, disabling LPM.//
-//[33569.813123] usb 2-5: config 1 has an invalid interface number: 9=20
-but max is 4//
-//[33569.813127] usb 2-5: config 1 has no interface number 4//
-//[33569.813384] usb 2-5: New USB device found, idVendor=3D2935,=20
-idProduct=3D0006//
-//[33569.813388] usb 2-5: New USB device strings: Mfr=3D1, Product=3D2,=20
-SerialNumber=3D3//
-//[33569.813391] usb 2-5: Product: USB Capture HDMI//
-//[33569.813394] usb 2-5: Manufacturer: Magewell//
-//[33569.813396] usb 2-5: SerialNumber: D206191227261//
-//[33569.814694] uvcvideo: Found UVC 1.10 device USB Capture HDMI=20
-(2935:0006)//
-//[33569.815446] uvcvideo 2-5:1.0: Entity type for entity Extension 3=20
-was not initialized!//
-//[33569.815451] uvcvideo 2-5:1.0: Entity type for entity Processing 2=20
-was not initialized!//
-//[33569.815455] uvcvideo 2-5:1.0: Entity type for entity Camera 1 was=20
-not initialized!/
+but when I try to open it with "cheese" (the GNOME webcam app) it's not
+selectable, and I see these errors:
+
+[jeu. mai 14 01:46:51 2020] uvcvideo: Failed to query (GET_CUR) UVC control 11 on unit 2: -110 (exp. 1).
+[jeu. mai 14 01:46:51 2020] uvcvideo: Failed to query (GET_CUR) UVC control 11 on unit 2: -32 (exp. 1).
+
+Does anyone know what goes wrong, and what can I do to help/debug ?
+
+Cheers,
+
+	Xav
 
 
-Type and max packet size of///2-5:1.0/ interface are
-
-/cat /sys/bus/usb/devices/2-5:1.0/ep_82/type
-Interrupt
-
-cat /sys/bus/usb/devices/2-5:1.0/ep_82/wMaxPacketSize
-0040
-/
-
-This//device also has /2-5:1.1 /interface where type and max packet size =
-are
-
-cat /sys/bus/usb/devices/2-5:1.1/ep_83/wMaxPacketSize
-0400
-cat /sys/bus/usb/devices/2-5:1.1/ep_83/type
-Bulk
-
-
-Is it possible to register /2-5:1.1 /interface as v4l2 device?
-//
-
-/
-/
-
-Best regards,/
-/
-
---=20
-Aleksandar Daki=C4=87, MSc.
-Software Engineer.
-
-Phone: +381-(0)21 483 1475
-E-mail: aleksandar.dakic@rt-rk.com
-
-RT-RK Automotive
-Narodnog Fronta 23 D-E
-21000 Novi Sad Serbia
-http://www.rt-rk.com
-
-
---------------DD6DBA38B85E0B8BD9F3F273
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-  <head>
-
-    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF=
--8">
-  </head>
-  <body>
-    <p>Hello,</p>
-    <p>The device is recognized as:</p>
-    <p><i>[33569.792403] usb 2-5: new SuperSpeed USB device number 2
-        using xhci_hcd</i><i><br>
-      </i><i>[33569.812921] usb 2-5: LPM exit latency is zeroed,
-        disabling LPM.</i><i><br>
-      </i><i>[33569.813123] usb 2-5: config 1 has an invalid interface
-        number: 9 but max is 4</i><i><br>
-      </i><i>[33569.813127] usb 2-5: config 1 has no interface number 4</=
-i><i><br>
-      </i><i>[33569.813384] usb 2-5: New USB device found,
-        idVendor=3D2935, idProduct=3D0006</i><i><br>
-      </i><i>[33569.813388] usb 2-5: New USB device strings: Mfr=3D1,
-        Product=3D2, SerialNumber=3D3</i><i><br>
-      </i><i>[33569.813391] usb 2-5: Product: USB Capture HDMI</i><i><br>
-      </i><i>[33569.813394] usb 2-5: Manufacturer: Magewell</i><i><br>
-      </i><i>[33569.813396] usb 2-5: SerialNumber: D206191227261</i><i><b=
-r>
-      </i><i>[33569.814694] uvcvideo: Found UVC 1.10 device USB Capture
-        HDMI (2935:0006)</i><i><br>
-      </i><i>[33569.815446] uvcvideo 2-5:1.0: Entity type for entity
-        Extension 3 was not initialized!</i><i><br>
-      </i><i>[33569.815451] uvcvideo 2-5:1.0: Entity type for entity
-        Processing 2 was not initialized!</i><i><br>
-      </i><i>[33569.815455] uvcvideo 2-5:1.0: Entity type for entity
-        Camera 1 was not initialized!</i></p>
-    <p><br>
-    </p>
-    <p>Type and max packet size of<i> </i><i>2-5:1.0</i> interface are</p=
->
-    <p><i>cat /sys/bus/usb/devices/2-5:1.0/ep_82/type<br>
-        Interrupt<br>
-        <br>
-        cat /sys/bus/usb/devices/2-5:1.0/ep_82/wMaxPacketSize<br>
-        0040<br>
-      </i></p>
-    <p>This<i> </i>device also has <i>2-5:1.1 </i>interface where
-      type and max packet size are</p>
-    <p>cat /sys/bus/usb/devices/2-5:1.1/ep_83/wMaxPacketSize<br>
-      0400<br>
-      cat /sys/bus/usb/devices/2-5:1.1/ep_83/type<br>
-      Bulk</p>
-    <p><br>
-    </p>
-    <p>Is it possible to register <i>2-5:1.1 </i>interface as v4l2
-      device?<br>
-      <i></i></p>
-    <p><i><br>
-      </i></p>
-    <p>Best regards,<i><br>
-      </i></p>
-    <pre class=3D"moz-signature" cols=3D"72">--=20
-Aleksandar Daki=C4=87, MSc.=20
-Software Engineer.=20
-
-Phone: +381-(0)21 483 1475=20
-E-mail: <a class=3D"moz-txt-link-abbreviated" href=3D"mailto:aleksandar.d=
-akic@rt-rk.com">aleksandar.dakic@rt-rk.com</a>=20
-
-RT-RK Automotive=20
-Narodnog Fronta 23 D-E=20
-21000 Novi Sad Serbia=20
-<a class=3D"moz-txt-link-freetext" href=3D"http://www.rt-rk.com">http://w=
-ww.rt-rk.com</a></pre>
-  </body>
-</html>
-
---------------DD6DBA38B85E0B8BD9F3F273--
-
-
---===============6759256265342486478==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============6759256265342486478==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
-
---===============6759256265342486478==--
-
