@@ -2,104 +2,96 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCE8B218639
-	for <lists+linux-uvc-devel@lfdr.de>; Wed,  8 Jul 2020 13:34:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A81FE21F883
+	for <lists+linux-uvc-devel@lfdr.de>; Tue, 14 Jul 2020 19:49:50 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1jt8Kh-0004le-Ga; Wed, 08 Jul 2020 11:33:47 +0000
+	id 1jvP3X-0006MC-VA; Tue, 14 Jul 2020 17:49:27 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <massimo.b@gmx.net>) id 1jt8Kf-0004lT-Hj
- for linux-uvc-devel@lists.sourceforge.net; Wed, 08 Jul 2020 11:33:45 +0000
+ (envelope-from <maurice194@gmail.com>) id 1jvP3T-0006Lp-Hg
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 14 Jul 2020 17:49:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Date:
- Content-Type:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=doW52NVWpchUGEsJeZvZPaoZLW0sOm3l/ABnzKvCP/g=; b=bGOyJNSpbtnLQIzLBuQokNl43H
- SgCAKaI1qekYsWE4QTKjVHZYqtaG0Ak16yKI1fIvbWpOgAz4xCAO7EWgt7UZOFfoq6wtw6GGasKuz
- wq6aZvA4WAlqf1XgGefhqcqDO6t38JtlA8j/h+Uzg0G9bnKbP5jheeUciratWQ0+22Ec=;
+ bh=wxlqFVKldBq+HHyMzRaPmkdfvKFi+VPVE4fSmXPw5VQ=; b=OVwrejr6OaVrp/ZX9Rap+/LkBW
+ cVmtBPWYb1i0PNWd4gtlKvePD36fzRKvaMQ18BrLmlAhnVaX+nidPkIl3EW6BV6B/+zwkdAWbdZ/o
+ gj9QVD0tXDz0r1NPFGf+yqSL5pFONMtykjtbjL3K9n+BtXLF++qiQsCyXyRlHGf1t7EA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Date:Content-Type:To:From:Subject:
- Message-ID:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=doW52NVWpchUGEsJeZvZPaoZLW0sOm3l/ABnzKvCP/g=; b=K
- jMKyhyjKn2+TgxxvtCf6CYN8SY6nJkmao5UyHKPzNGVCy2uZRH0vIDY1EvQOGULGzoYFPvs0CNDCv
- ZtXaGsRWENY0GCOmMWp5mlMX0i5pxzGJ7YkCwPv4YiBeRWeufCvJQJKzUhSKSafxheK4Q4PAe1aXj
- z6Gl6kGKxyVIoOBw=;
-Received: from mout.gmx.net ([212.227.15.19])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jt8Kb-00E6yU-Ub
- for linux-uvc-devel@lists.sourceforge.net; Wed, 08 Jul 2020 11:33:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1594208011;
- bh=Rk7WOeAsNAhNg4T+WLfziurnnNPYL9x+XDtvDmP6bog=;
- h=X-UI-Sender-Class:Subject:From:To:Date;
- b=MX4LpuMfHW4GdU15l03yFd/htFikJnDOoVT5CoRUIL3wS8VRRzXOzGhTullJBSnDo
- GAz5j0miGHFrdMFR0+5nVu9Raf8GQnMVhs9dEsfOHeoDwu06C8VJI1Woh9qtOXrFF0
- 8O4wYuNk0nEOYsfdfJC/GqCygKn2h3tHqTWSkxyU=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from mobalindesk.lan.lan ([77.10.170.165]) by mail.gmx.com (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MpDJd-1kgjdU29F9-00ql1s; Wed, 08
- Jul 2020 13:33:31 +0200
-Message-ID: <6b5bb1913060f3582b57d6ea1311ade80ef2bb3f.camel@gmx.net>
-From: "Massimo B." <massimo.b@gmx.net>
-To: linux-uvc-devel@lists.sourceforge.net
-Face: iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAQMAAABtzGvEAAAAA3NCSVQICAjb4U/gAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGUlEQVQYlUWQsUoDQRCGv71LjB7KSSBwwZCTgFhY2EYIHmJnZRMLo5AXUMRCBMHcE6iPoGBlINpoZXGVeQTFKqSxMgYtTBFcZw7EKfZn2Z2Z7//hr2ysZ+5tqFLmWKVaKKs0vWd9TJx2AibmoQcupj6CCZirqTgzA5hmsdtQWe5/xAREX7uJ3MLP9x4lyieNO5mcOxyM8HH79y/4Cdn9R3JDsts/uGO82yOMJf/ah1Y8tfQEIQt7Z7rCawtNiUpHFgYUdgTxgI1NAW6SvxoqWabbw0Bd5jpQibTNBC1F4nIMk2TWhTqIs+fSVpzfCsVR9eaiJf5W6mtWXK7O+vKR4nWkSYSuFbP4No3Ht6dpSN9pSMYmaXI1/usXT0FM3SoTKAAAAAAASUVORK5CYII=
-Date: Wed, 08 Jul 2020 13:28:30 +0200
+ List-Owner:List-Archive; bh=wxlqFVKldBq+HHyMzRaPmkdfvKFi+VPVE4fSmXPw5VQ=; b=I
+ PaQkdRqMNIT7/+JfSgXUcSAber2+e8HYGLamP5edGrq6NNWqoJ7kRk1Us9Fo7n2F1WU8fzyhrFw6Q
+ ZqsqEpi5F1CmeNU6BVwHKUzji4YIUVgAhTWBytGLlWi0/7GxRH3WGrTc7YpktRbTdcToltNgm5RIH
+ 4JHRit/C2OBiA1CQ=;
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
+ id 1jvP3N-007Fkw-QT
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 14 Jul 2020 17:49:22 +0000
+Received: by mail-ot1-f52.google.com with SMTP id 18so13655345otv.6
+ for <linux-uvc-devel@lists.sourceforge.net>;
+ Tue, 14 Jul 2020 10:49:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=wxlqFVKldBq+HHyMzRaPmkdfvKFi+VPVE4fSmXPw5VQ=;
+ b=nqJwdjv0yszHf5DOdrxbs7sPFHbScoOQ4AG46r44dBQGakIJN1IOBH8iGIlVRS5hWz
+ ZCgGhlskEXvhtIkD4oNfwOQzpbNypZdj61Hm9J/vi0uW7OtEXbmu2f7X7yN1rIuYjcoi
+ JnBbjX3RiW4W0sdFEIwLkklImhn3htdmCepM6vu+DDEcQHuyHQWgXcn2A/55YWWxWZKG
+ YAkmRfHJcmh3oD6T4q/educgRGI4X55pSJZD1TCaBwd7ggBjGvtc8RCID8nhXkP0sRU9
+ S6tFiJoaPfKWbtII2oVI+Xd+pgYZt5Y47nMFTzsw9fSHyGw7vDG6W0g4BHRF5CFevLru
+ jhbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=wxlqFVKldBq+HHyMzRaPmkdfvKFi+VPVE4fSmXPw5VQ=;
+ b=sNoxm8M6yu6BybpoxCXWFNsMHEIkoIsqVzfRvTUTzsWCws4B1vdXTF8CGjQx+Rl3mu
+ skZKSsJrwDppVesgbnh//7DVrrU47VgLasV1rooeVu9Skirbww0Um0FWMCQcbl9J/48L
+ q0h/E0FIVgKVTxrfBnBkt2Cu9CA1sPu/rrUN0AyTK/naXCcvovzI5iYC6Bd1jO/RUpsp
+ Y1askUTW3TXTmOhhQseYAA2yDe1aguJdfQb0TEmP8ah4AqARS/zC6fv6fpk49woPMGC8
+ xntDpNVeXwvNuZoldiHqBXoCCSIKzCBU8mqFIS9mrblXrXSLBRb0p+Xp436Yr4vrFqMA
+ 802w==
+X-Gm-Message-State: AOAM532L9viJUJR0zImN1cPXjDQG8XsYTFEVELcSP4n6C11AjHTo1lGW
+ nZcJKS+L0ChAwaByOT6k1GLlXtX68Z3iWm5l496FPfn3bBw=
+X-Google-Smtp-Source: ABdhPJwaV1sR0gGLzae6+79emS9XbGCIHTjD0Wc1dlAFOKdQts+PZA9DBv38dC7TkHHCV0E5SjvcckhAErW2LjHsDyU=
+X-Received: by 2002:a05:6830:60a:: with SMTP id
+ w10mr5108560oti.241.1594748944732; 
+ Tue, 14 Jul 2020 10:49:04 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Evolution 3.36.2 
-X-Provags-ID: V03:K1:nxg3Gf9NKcY4WAkqzLX9zwGPR+ur2FQqcp7zmwdO8FT2zVwymxq
- W7XPfsMHv5y/a2uu2g0FzQPgdbjqaiF/9Iqbtt+jciZ7G61V6vLi3r82MDTzpOhhDtouVrG
- uBVXutIXTUIirYCkKkYKvAwS0LsPuz+zIoDzr99h7+DlmttNB1grfpGP9sj8F2YVJUvEutw
- 2GooWquRFBDS0zJ60VfBg==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:w4yms/gOA6o=:iFYXxwCp6qK0UOAisxirne
- Ry9hFXfOHYVlLEEJlqgokIwi5nUMLFGxa0NjELn0284GsoiJ4RYvqEQfvDT1pnpWOeS2M1QWx
- 2P++mMImBRmMUkFfholqRnpnBhehNRqMkN+jbktGsO3A5rA1vawYTCLtE1zovfLEeP0aWdX3D
- QBgTjVhapvcqGHWK2IBIAzcS8+KCrWRFnEUJZL+2Dp5BRXlSP3OJIFK/Coj+Rtw74j7WGo336
- ufo/dPiKmTFhQwapwtoqKCgaKfGYmqimXIaP7l6YE8ZQikqnvFvZF2Cvqqk4zkFj7aYWBzMA7
- j36H8FEavJVgpUWyuO02KFhN4dQ2HtwmPpumt7iT7lG8+nx9OdwNGVCRW+37tlDt1i1orRASN
- VEIrApu5t7gw0Ygoo2k50MXOazmisAk53gPiiXkgB8kxPoezPeMqs6Zy3J22DtwN1VXzF4JVv
- umz4+9fmBhxQYDKM/J5vUnpI7Ea5F+1gd9IXhQ7EjL00XVL0niwmHVv3A0Lxmew101R6Nr8eD
- hahgjxoNzHjgz51qjsWaB5dvSlxh8i8VlJ7JDbkNK9XwbEU8iNtV80+TLgf+utYkG8/Y9eOpN
- QFRBGS9v3jJaxah5PpeNWOHbqOozs2cy8CQNXLb+/ZBJfoi3KBM1SIA71Q/hoNKmpL6XyEI4x
- hdu0VT0OlIz7U9oQ96e0CBHfCXRZy7hZQxQZ81SaO9xb8IPKS3Ns+npljRX55vWZi/s+F60ua
- LFSOQIsLvvcZA2lVHvKVudGBoDsImmdaB8N+L1SkLCQzHM6c2G3Vw0fXyM71WWdIykAPLEyty
- dX2r20Oqz6xOFEFf+eHLFGhtjMa2QFafsJXtxkn5/91jdQqovhLYUCPG7hWPeTGHtpTC403wl
- ZLviZc4ybjqEVP+7SQkAoG0J7QEi9kEc+UywC68W7I9yK+5uq41Puzw9M/jVs5CjeDuuSeUr0
- zUT7eNV3wuMs1Cx0455QcyJsrQYUpKEezMdJYPNJb4gF/MH/QhCqcPP9Y7/8K4v6Z6FXjTgzJ
- SKJ4RSSoGsu5EaeeXT7V2LtMZ+PUN7VR4AmqGh67+JMaqoLyCxQxznRcb5tHoBDrKwXCdNN/Z
- tT8JpPGliqqHE0zDhbP5LZjJU+a3+9FgaSbuAczsubs2PGtNjkZMNwxjiwac6Lz/8DYgV+89p
- s/6bYUpirUlS6V+NXHRNyemd+yQx8UupInHBQezqHd7sdN2z6INh3qGyRdUFtE9poInK3y8n7
- YBhXFAEn+ZHr52ATR
-X-Spam-Score: -0.1 (/)
+From: Maurice Haeseleer <maurice194@gmail.com>
+Date: Tue, 14 Jul 2020 19:49:37 +0200
+Message-ID: <CANseDokdGPZYGVn7M3Ux-APoBCsvfY1Ou5vki=mwe+wc9FjShw@mail.gmail.com>
+To: linux-uvc-devel@lists.sourceforge.net
+X-Spam-Score: 1.2 (+)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: product.name]
  0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (massimo.b[at]gmx.net)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [212.227.15.19 listed in wl.mailspike.net]
+ (maurice194[at]gmail.com)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.210.52 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.52 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends in
+ digit (maurice194[at]gmail.com)
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1jt8Kb-00E6yU-Ub
-Subject: [linux-uvc-devel] Quanta Computer Inc. Astro HD Cam,
- not initializing at boot
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1jvP3N-007Fkw-QT
+Subject: [linux-uvc-devel] Cant't change exposure_absolute
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,331 +103,200 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5410703074511314514=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-Hello everybody,
+--===============5410703074511314514==
+Content-Type: multipart/alternative; boundary="0000000000005b552d05aa6a6c05"
 
-I previously posted to linux-uvc-devel@lists.berlios.de which seems to be dead.
+--0000000000005b552d05aa6a6c05
+Content-Type: text/plain; charset="UTF-8"
 
-This chinese camera does not initialize correctly at boot:
+Hello,
 
-Bus 003 Device 004: ID 0408:2090 Quanta Computer, Inc. Astro HD Camera
+I try to get fluid (let's say > 10fps) with SQ11 (cheap chinese webcam) on
+a Raspberry Pi 4 running on Raspbian. The cool thing is that the uvc driver
+works fine and I can recompile it from sources (e.g to solve this problem;
+if needed).
 
-After replugging it works fine.
+The other cool thing is that I get fluid display with Logitech C920 cam
+with Python + Opencv, or qv4l2 or ffmpeg, whatever (30fps) using the uvc
+driver too.
 
-I'd like to forward you a copy of my report on Gentoo:
-https://forums.gentoo.org/viewtopic-t-1114442.html
+The bad thing is that with the SQ11 I only get 2-3 fps when the cam move
+rapidly, but I get high fps (10fps) when the cam is steady (no joke !)
 
+I can reproduce this slow FPS on the C920 with setting exposure_absolute to
+extra high value (e.g > 2000), so my idea was to set exposure_absolute=300
+for the SQ11 but this parameter seems to be locked or not accessible (see
+below).
 
-When booting with this device plugged, it is not usable and blocking other audio
-devices:
+So is there any possibility to make the picture fluid ?
+Btw, the thing comes from the driver or Rpi, not the cam, because I can
+get fluid image on Windows7.
 
-$ pacmd list-sources
-Daemon not responding.
+Thanks in advance,
 
-The syslog has continuously repeating this line:
+Maurice, BELGIUM
 
-[kernel] usb 3-7: 4:1: cannot set freq 44100 to ep 0x84
-[kernel] usb 3-7: 4:1: cannot set freq 44100 to ep 0x84
+v4l2-ctl --list-ctrls
+                     brightness 0x00980900 (int)    : min=0 max=255 step=1
+default=128 value=128
+                       contrast 0x00980901 (int)    : min=0 max=255 step=1
+default=128 value=128
+                     saturation 0x00980902 (int)    : min=0 max=255 step=1
+default=128 value=128
+                            hue 0x00980903 (int)    : min=-256 max=-32513
+step=1 default=-32640 value=128
+ white_balance_temperature_auto 0x0098090c (bool)   : default=0 value=0
+    white_balance_red_component 0x0098090e (int)    : min=0 max=255 step=0
+default=128 value=128
+   white_balance_blue_component 0x0098090f (int)    : min=0 max=255 step=1
+default=128 value=128
+                          gamma 0x00980910 (int)    : min=0 max=255 step=10
+default=128 value=128
+                           gain 0x00980913 (int)    : min=0 max=255 step=1
+default=128 value=128
+           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=0
+value=0
+                       hue_auto 0x00980919 (bool)   : default=0 value=0
+      white_balance_temperature 0x0098091a (int)    : min=0 max=255 step=1
+default=128 value=128
+                      sharpness 0x0098091b (int)    : min=0 max=255 step=1
+default=128 value=128
+         backlight_compensation 0x0098091c (int)    : min=0 max=255 step=1
+default=128 value=128
+                  exposure_auto 0x009a0901 (menu)   : min=0 max=3 default=0
+value=0
+              exposure_absolute 0x009a0902 (int)    : min=0 max=0 step=0
+default=0 value=0 flags=inactive
+         exposure_auto_priority 0x009a0903 (bool)   : default=0 value=0
+                   pan_absolute 0x009a0908 (int)    : min=0 max=0 step=0
+default=0 value=0
+                  tilt_absolute 0x009a0909 (int)    : min=0 max=0 step=0
+default=0 value=0
+                 focus_absolute 0x009a090a (int)    : min=0 max=0 step=0
+default=0 value=0
+                     focus_auto 0x009a090c (bool)   : default=0 value=0
+                  zoom_absolute 0x009a090d (int)    : min=0 max=0 step=0
+default=0 value=0
+                zoom_continuous 0x009a090f (int)    : min=0 max=0 step=0
+default=0 value=0 flags=write-only
+                        privacy 0x009a0910 (bool)   : default=0 value=0
+                  iris_absolute 0x009a0911 (int)    : min=0 max=0 step=0
+default=0 value=0
+                  iris_relative 0x009a0912 (int)    : min=0 max=0 step=0
+default=0 value=0 flags=write-only
+                      pan_speed 0x009a0920 (int)    : min=0 max=0 step=0
+default=0 value=0
+                     tilt_speed 0x009a0921 (int)    : min=0 max=0 step=0
+default=0 value=0
 
-rmmod and modprob'ing uvcvideo again shows:
+--0000000000005b552d05aa6a6c05
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-[pulseaudio] [pulseaudio] module-alsa-card.c: Failed to find a working profile.
-[pulseaudio] [pulseaudio] module.c: Failed to load module "module-alsa-card" (argument: "device_id="0" name="usb-QCM_Astro_HD_Camera-03" card_name="alsa_card.usb-QCM_Astro_HD_Camera-03" namereg_fail=false tsched=yes fixed_latency_range=no ignore_dB=no deferred_volume=yes use_ucm=yes avoid_resampling=no card_properties="module-udev-detect.discovered=1""): initialization failed.
-[pulseaudio] [pulseaudio] module-udev-detect.c: Failed to open /proc/asound/card0: No such file or directory
-[kernel] uvcvideo: Failed to query (129) UVC probe control : -110 (exp. 26).
-[kernel] usb 3-7: 4:1: cannot set freq 44100 to ep 0x84
-[kernel] uvcvideo: Failed to initialize the device (-5).
-[kernel] usbcore: registered new interface driver uvcvideo
-[kernel] USB Video Class driver (1.1.1)
+<div dir=3D"ltr">Hello,<div><br></div><div>I try to get fluid (let&#39;s sa=
+y &gt; 10fps) with SQ11 (cheap chinese webcam) on a Raspberry Pi 4 running=
+=C2=A0on Raspbian. The cool thing is that the uvc driver works fine and I c=
+an recompile it from sources (e.g to solve this problem; if needed).</div><=
+div><br></div><div>The other cool thing is that I get fluid display with Lo=
+gitech C920 cam with Python=C2=A0+ Opencv, or qv4l2 or ffmpeg, whatever (30=
+fps) using the uvc driver too.</div><div><br></div><div>The bad thing is th=
+at with the SQ11 I only get 2-3 fps when the cam move rapidly, but I get hi=
+gh fps (10fps) when the cam is steady=C2=A0(no joke !)</div><div><br></div>=
+<div>I can reproduce this slow FPS=20
 
-Unplugging the usb cam, restarting pulseaudio and replugging the cam again makes
-it work:
+ on the C920
 
-[kernel] usb 3-7: new high-speed USB device number 11 using xhci_hcd
-[kernel] usb 3-7: New USB device found, idVendor=0408, idProduct=2090, bcdDevice=21.17
-[kernel] usb 3-7: New USB device strings: Mfr=1, Product=2, SerialNumber=0
-[kernel] usb 3-7: Product: Astro HD Camera
-[kernel] usb 3-7: Manufacturer: QCM
-[kernel] uvcvideo: Found UVC 1.00 device Astro HD Camera (0408:2090)
-[kernel] uvcvideo: Unable to create debugfs 3-11-1 directory.
-[kernel] uvcvideo: No streaming interface found for terminal 9.
-[kernel] input: Astro HD Camera: Astro HD Camer as /devices/pci0000:00/0000:00:14.0/usb3/3-7/3-7:1.0/input/input21
-[mtp-probe] checking bus 3, device 11: "/sys/devices/pci0000:00/0000:00:14.0/usb3/3-7"_
-[mtp-probe] bus: 3, device: 11 was not an MTP device_
-[laptop-mode] Laptop Mode Tools disabled in config file\n
-[laptop-mode] Laptop Mode Tools disabled in config file\n
-[laptop-mode] Laptop Mode Tools disabled in config file\n
-[mtp-probe] checking bus 3, device 11: "/sys/devices/pci0000:00/0000:00:14.0/usb3/3-7"_
-[mtp-probe] bus: 3, device: 11 was not an MTP device_
-[pulseaudio] [pulseaudio] module-udev-detect.c: Failed to open /proc/asound/card0: No such file or directory
-[pulseaudio] [pulseaudio] utils.c: could not open configuration file /usr/share/alsa/ucm2/Astro HD Camera/Astro HD Camera.conf
-[pulseaudio] [pulseaudio] parser.c: error: could not parse configuration for card Astro HD Camera
-[pulseaudio] [pulseaudio] main.c: error: failed to import Astro HD Camera use case configuration -2
-[pulseaudio] [pulseaudio] alsa-ucm.c: UCM not available for card Astro HD Camera
-[pulseaudio] [pulseaudio] control.c: Invalid CTL front:0
-[pulseaudio] [pulseaudio] alsa-util.c: Unable to attach to mixer front:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Successfully attached to mixer 'hw:0'
-[pulseaudio] [pulseaudio] control.c: Invalid CTL iec958:0
-[pulseaudio] [pulseaudio] alsa-util.c: Unable to attach to mixer iec958:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Successfully attached to mixer 'hw:0'
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device front:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device surround21:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device surround40:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device surround41:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device surround50:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device surround51:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device surround71:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device iec958:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device a52:0: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dca:0
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dca:0: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.1:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,1
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,1: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.1:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,1
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,1: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.1:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,1
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,1: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,1
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,1: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.2:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,2
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,2: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.2:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,2
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,2: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.2:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,2
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,2: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,2
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,2: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.3:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,3
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,3: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.3:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,3
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,3: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.3:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,3
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,3: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,3
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,3: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.4:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,4
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,4: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.4:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,4
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,4: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.4:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,4
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,4: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,4
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,4: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.5:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,5
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,5: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.5:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,5
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,5: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.5:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,5
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,5: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,5
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,5: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.6:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,6
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,6: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.6:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,6
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,6: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.6:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,6
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,6: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,6
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,6: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.7:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,7
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,7: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.7:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,7
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,7: No such file or directory
-[pulseaudio] [pulseaudio] confmisc.c: Unable to find definition 'cards.USB-Audio.pcm.hdmi.7:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
-[pulseaudio] [pulseaudio] conf.c: function snd_func_refer returned error: No such file or directory
-[pulseaudio] [pulseaudio] conf.c: Evaluate error: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM hdmi:0,7
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hdmi:0,7: No such file or directory
-[pulseaudio] [pulseaudio] pcm.c: Unknown PCM dcahdmi:0,7
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device dcahdmi:0,7: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Error opening PCM device hw:0: No such file or directory
-[pulseaudio] [pulseaudio] module-card-restore.c: Restoring port latency offsets for card alsa_card.usb-QCM_Astro_HD_Camera-03.
-[pulseaudio] [pulseaudio] card.c: alsa_card.usb-QCM_Astro_HD_Camera-03: active_profile: input:analog-stereo
-[pulseaudio] [pulseaudio] card.c: Created 3 "alsa_card.usb-QCM_Astro_HD_Camera-03"
-[pulseaudio] [pulseaudio] alsa-util.c: Cannot disable ALSA period wakeups
-[pulseaudio] [pulseaudio] alsa-util.c: ALSA period wakeups were not disabled
-[pulseaudio] [pulseaudio] alsa-source.c: Successfully opened device front:0.
-[pulseaudio] [pulseaudio] alsa-source.c: Selected mapping 'Analog Stereo' (analog-stereo).
-[pulseaudio] [pulseaudio] alsa-source.c: Successfully enabled mmap() mode.
-[pulseaudio] [pulseaudio] alsa-source.c: Successfully enabled timer-based scheduling mode.
-[pulseaudio] [pulseaudio] control.c: Invalid CTL front:0
-[pulseaudio] [pulseaudio] alsa-util.c: Unable to attach to mixer front:0: No such file or directory
-[pulseaudio] [pulseaudio] alsa-util.c: Successfully attached to mixer 'hw:0'
-[pulseaudio] [pulseaudio] module-device-restore.c: Restoring port for source source:alsa_input.usb-QCM_Astro_HD_Camera-03.analog-stereo.
-[pulseaudio] [pulseaudio] module-device-restore.c: Restoring volume for source alsa_input.usb-QCM_Astro_HD_Camera-03.analog-stereo: front-left: 41481 /  63%,   front-right: 41481 /  63%
-[pulseaudio] [pulseaudio] module-device-restore.c: Restoring mute state for source alsa_input.usb-QCM_Astro_HD_Camera-03.analog-stereo: muted
-[pulseaudio] [pulseaudio] source.c: Created source 3 "alsa_input.usb-QCM_Astro_HD_Camera-03.analog-stereo" with sample spec s16le 2ch 44100Hz and channel map front-left,front-right
-[pulseaudio] [pulseaudio] source.c:     alsa.resolution_bits = "16"
-[pulseaudio] [pulseaudio] source.c:     device.api = "alsa"
-[pulseaudio] [pulseaudio] source.c:     device.class = "sound"
-[pulseaudio] [pulseaudio] source.c:     alsa.class = "generic"
-[pulseaudio] [pulseaudio] source.c:     alsa.subclass = "generic-mix"
-[pulseaudio] [pulseaudio] source.c:     alsa.name = "USB Audio"
-[pulseaudio] [pulseaudio] source.c:     alsa.id = "USB Audio"
-[pulseaudio] [pulseaudio] source.c:     alsa.subdevice = "0"
-[pulseaudio] [pulseaudio] source.c:     alsa.subdevice_name = "subdevice #0"
-[pulseaudio] [pulseaudio] source.c:     alsa.device = "0"
-[pulseaudio] [pulseaudio] source.c:     alsa.card = "0"
-[pulseaudio] [pulseaudio] source.c:     alsa.card_name = "Astro HD Camera"
-[pulseaudio] [pulseaudio] source.c:     alsa.long_card_name = "QCM Astro HD Camera at usb-0000:00:14.0-7, high speed"
-[pulseaudio] [pulseaudio] source.c:     alsa.driver_name = "snd_usb_audio"
-[pulseaudio] [pulseaudio] source.c:     device.bus_path = "pci-0000:00:14.0-usb-0:7:1.3"
-[pulseaudio] [pulseaudio] source.c:     sysfs.path = "/devices/pci0000:00/0000:00:14.0/usb3/3-7/3-7:1.3/sound/card0"
-[pulseaudio] [pulseaudio] source.c:     udev.id = "usb-QCM_Astro_HD_Camera-03"
-[pulseaudio] [pulseaudio] source.c:     device.bus = "usb"
-[pulseaudio] [pulseaudio] source.c:     device.vendor.id = "0408"
-[pulseaudio] [pulseaudio] source.c:     device.vendor.name = "Quanta Computer, Inc."
-[pulseaudio] [pulseaudio] source.c:     device.product.id = "2090"
-[pulseaudio] [pulseaudio] source.c:     device.product.name = "Astro HD Camera"
-[pulseaudio] [pulseaudio] source.c:     device.serial = "QCM_Astro_HD_Camera"
-[pulseaudio] [pulseaudio] source.c:     device.form_factor = "webcam"
-[pulseaudio] [pulseaudio] source.c:     device.string = "front:0"
-[pulseaudio] [pulseaudio] source.c:     device.buffering.buffer_size = "352800"
-[pulseaudio] [pulseaudio] source.c:     device.buffering.fragment_size = "176400"
-[pulseaudio] [pulseaudio] source.c:     device.access_mode = "mmap+timer"
-[pulseaudio] [pulseaudio] source.c:     device.profile.name = "analog-stereo"
-[pulseaudio] [pulseaudio] source.c:     device.profile.description = "Analog Stereo"
-[pulseaudio] [pulseaudio] source.c:     device.description = "Astro HD Camera Analog Stereo"
-[pulseaudio] [pulseaudio] source.c:     alsa.mixer_name = "USB Mixer"
-[pulseaudio] [pulseaudio] source.c:     alsa.components = "USB0408:2090"
-[pulseaudio] [pulseaudio] source.c:     module-udev-detect.discovered = "1"
-[pulseaudio] [pulseaudio] source.c:     device.icon_name = "camera-web-usb"
-[pulseaudio] [pulseaudio] alsa-source.c: Using 2,0 fragments of size 176400 bytes (1000,00ms), buffer size is 352800 bytes (2000,00ms)
-[pulseaudio] [pulseaudio] alsa-source.c: Time scheduling watermark is 20,00ms
-[pulseaudio] [pulseaudio] alsa-source.c: Successfully enabled deferred volume.
-[pulseaudio] [pulseaudio] alsa-source.c: Hardware volume ranges from -8,00 dB to 22,50 dB.
-[pulseaudio] [pulseaudio] alsa-source.c: Fixing base volume to -22,50 dB
-[pulseaudio] [pulseaudio] alsa-source.c: Using hardware volume control. Hardware dB scale supported.
-[pulseaudio] [pulseaudio] alsa-source.c: Using hardware mute control.
-[rtkit-daemon] Successfully made thread 27026 of process 26844 owned by '4728' RT at priority 5._
-[pulseaudio] [alsa-source-USB Audio] util.c: Successfully enabled SCHED_RR scheduling for thread, with priority 5.
-[pulseaudio] [alsa-source-USB Audio] alsa-source.c: Starting capture.
-[pulseaudio] [pulseaudio] module.c: Loaded "module-alsa-card" (index: #25; argument: "device_id="0" name="usb-QCM_Astro_HD_Camera-03" card_name="alsa_card.usb-QCM_Astro_HD_Camera-03" namereg_fail=false tsched=yes fixed_latency_range=no ignore_dB=no deferred_volume=yes use_ucm=yes avoid_resampling=no card_properties="module-udev-detect.discovered=1"").
-[pulseaudio] [pulseaudio] module-udev-detect.c: Card /devices/pci0000:00/0000:00:14.0/usb3/3-7/3-7:1.3/sound/card0 (alsa_card.usb-QCM_Astro_HD_Camera-03) module loaded.
-[pulseaudio] [pulseaudio] module-suspend-on-idle.c: Source alsa_input.usb-QCM_Astro_HD_Camera-03.analog-stereo idle for too long, suspending ...
-[pulseaudio] [alsa-source-USB Audio] alsa-source.c: Device suspended...
+with setting exposure_absolute to extra high value (e.g &gt; 2000), so my i=
+dea was to set exposure_absolute=3D300 for the SQ11 but this parameter seem=
+s to be locked or not accessible (see below).</div><div><br></div><div>So i=
+s there any possibility=C2=A0to make the picture fluid ?</div><div>Btw, the=
+ thing comes from the driver or Rpi, not the cam, because I can get=C2=A0fl=
+uid image on Windows7.</div><div><br></div><div>Thanks=C2=A0in advance,</di=
+v><div><br></div><div>Maurice, BELGIUM</div><div><br></div><div>v4l2-ctl --=
+list-ctrls<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0brightness 0x00980900 (int) =C2=A0 =C2=A0: min=3D0 max=3D2=
+55 step=3D1 default=3D128 value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0contrast 0x00980901 (int) =
+=C2=A0 =C2=A0: min=3D0 max=3D255 step=3D1 default=3D128 value=3D128<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sa=
+turation 0x00980902 (int) =C2=A0 =C2=A0: min=3D0 max=3D255 step=3D1 default=
+=3D128 value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 hue 0x00980903 (int) =C2=A0 =
+=C2=A0: min=3D-256 max=3D-32513 step=3D1 default=3D-32640 value=3D128<br>=
+=C2=A0white_balance_temperature_auto 0x0098090c (bool) =C2=A0 : default=3D0=
+ value=3D0<br>=C2=A0 =C2=A0 white_balance_red_component 0x0098090e (int) =
+=C2=A0 =C2=A0: min=3D0 max=3D255 step=3D0 default=3D128 value=3D128<br>=C2=
+=A0 =C2=A0white_balance_blue_component 0x0098090f (int) =C2=A0 =C2=A0: min=
+=3D0 max=3D255 step=3D1 default=3D128 value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 gamma=
+ 0x00980910 (int) =C2=A0 =C2=A0: min=3D0 max=3D255 step=3D10 default=3D128 =
+value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0gain 0x00980913 (int) =C2=A0 =C2=A0: =
+min=3D0 max=3D255 step=3D1 default=3D128 value=3D128<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0power_line_frequency 0x00980918 (menu) =C2=A0 : min=
+=3D0 max=3D2 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hue_auto 0x00980919 (bool) =
+=C2=A0 : default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 white_balance_temper=
+ature 0x0098091a (int) =C2=A0 =C2=A0: min=3D0 max=3D255 step=3D1 default=3D=
+128 value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 sharpness 0x0098091b (int) =C2=A0 =C2=A0: min=3D0 max=
+=3D255 step=3D1 default=3D128 value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0backlight_compensation 0x0098091c (int) =C2=A0 =C2=A0: min=3D0 max=3D=
+255 step=3D1 default=3D128 value=3D128<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 exposure_auto 0x009a0901 (menu) =C2=A0 : mi=
+n=3D0 max=3D3 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 exposure_absolute 0x009a0902 (int) =C2=A0 =C2=A0: min=3D0 max=
+=3D0 step=3D0 default=3D0 value=3D0 flags=3Dinactive<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0exposure_auto_priority 0x009a0903 (bool) =C2=A0 : default=
+=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0pan_absolute 0x009a0908 (int) =C2=A0 =C2=A0: min=3D0 max=3D0 s=
+tep=3D0 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 tilt_absolute 0x009a0909 (int) =C2=A0 =C2=A0: min=3D0 =
+max=3D0 step=3D0 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0focus_absolute 0x009a090a (int) =C2=A0 =C2=
+=A0: min=3D0 max=3D0 step=3D0 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0focus_auto 0x009a09=
+0c (bool) =C2=A0 : default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 zoom_absolute 0x009a090d (int) =C2=A0 =C2=
+=A0: min=3D0 max=3D0 step=3D0 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 zoom_continuous 0x009a090f (int) =C2=A0=
+ =C2=A0: min=3D0 max=3D0 step=3D0 default=3D0 value=3D0 flags=3Dwrite-only<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 privacy 0x009a0910 (bool) =C2=A0 : default=3D0 value=3D0<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 iris_absolut=
+e 0x009a0911 (int) =C2=A0 =C2=A0: min=3D0 max=3D0 step=3D0 default=3D0 valu=
+e=3D0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 iri=
+s_relative 0x009a0912 (int) =C2=A0 =C2=A0: min=3D0 max=3D0 step=3D0 default=
+=3D0 value=3D0 flags=3Dwrite-only<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pan_speed 0x009a0920 (int) =C2=A0 =
+=C2=A0: min=3D0 max=3D0 step=3D0 default=3D0 value=3D0<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tilt_speed 0x009=
+a0921 (int) =C2=A0 =C2=A0: min=3D0 max=3D0 step=3D0 default=3D0 value=3D0<b=
+r></div></div>
 
-# uname -r
-5.6.12-gentoo
-
-Same on 5.7.4-gentoo.
-
-What can I do to solve it at boot without re-plugging the hardware?
-
-Just trying to rmmod and modrobe again does not solve the issue if not re-
-plugging the hardware:
-
-[kernel] uvcvideo: Found UVC 1.00 device Astro HD Camera (0408:2090)
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 2 on unit 1: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 3 on unit 1: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 4 on unit 1: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 6 on unit 1: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 11 on unit 1: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 13 on unit 1: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 8 on unit 1: -110 (exp. 1).
-[pulseaudio] [pulseaudio] alsa-util.c: snd_pcm_hw_params failed: Connection timed out
-[kernel] usb 3-7: 4:1: cannot set freq 44100 to ep 0x84
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 2 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 3 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 6 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 7 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 8 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 9 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 10 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 1 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 5 on unit 2: -110 (exp. 1).
-[kernel] uvcvideo: Failed to query (GET_INFO) UVC control 11 on unit 2: -110 (exp. 1).
-[kernel] usb 3-7: 4:1: cannot set freq 44100 to ep 0x84
-[kernel] uvcvideo: UVC non compliance - GET_DEF(PROBE) not supported. Enabling workaround.
-[kernel] usb 3-7: 4:1: cannot set freq 44100 to ep 0x84
+--0000000000005b552d05aa6a6c05--
 
 
-Best regards,
-Massimo
+--===============5410703074511314514==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 
+--===============5410703074511314514==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+
+--===============5410703074511314514==--
+
