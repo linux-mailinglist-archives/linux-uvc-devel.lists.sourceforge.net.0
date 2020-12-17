@@ -2,95 +2,69 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 800222A0F3C
-	for <lists+linux-uvc-devel@lfdr.de>; Fri, 30 Oct 2020 21:10:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 485C72DD88D
+	for <lists+linux-uvc-devel@lfdr.de>; Thu, 17 Dec 2020 19:42:19 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1kYajA-0001xA-EO; Fri, 30 Oct 2020 20:10:24 +0000
+	id 1kpyDs-0007Kr-37; Thu, 17 Dec 2020 18:41:56 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <246tnt@gmail.com>) id 1kYaj8-0001x3-M0
- for linux-uvc-devel@lists.sourceforge.net; Fri, 30 Oct 2020 20:10:22 +0000
+ (envelope-from <doerges@pre-sense.de>) id 1kpyDq-0007Kg-EA
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 17 Dec 2020 18:41:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- In-Reply-To:References:MIME-Version:Sender:Reply-To:Cc:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=in0xRHPBcbYYOD1VGDQcDkLHcag4tCXpBxnXNTx/kRM=; b=CoJUKjlssdNzimWHyTMsFTEwX
- vdF9r0ivIZN9KyVfpZusUJue1zBYc8rSZsoYcZ63PIgXSZrgsB9XtEsVbX8v+tjIjZIp1Dpfw5gbb
- w4F5sGaVaqUHsc0twFvg4u7unZiP778abTvemmvx+pFEO8Psqt0S6JBT9H1BdwFV0aP1k=;
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Date:Message-ID:To:Subject:From:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=DWjGCIidjOo471owCeQZQS/1W+sYCCCsL9Jk6P3QowA=; b=HyWUMllQc8Yzhpk4a8QXEB10LD
+ cpqsJg1oxxoQzXiroaZHiB3DxgKnOIdFSk40/JT5yBYgE9HGgtAMySN1C9wjMtHeYvjusg761rPLf
+ OAZauRIIjfLjyhl/BEarMRDJcvfnKv3GJmxbOwxUzhbBy7tZvz3ypKSC1LgjnoRJvxIU=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=in0xRHPBcbYYOD1VGDQcDkLHcag4tCXpBxnXNTx/kRM=; b=QgqZSYI2RV2dZsjQMkTJIMS7Ee
- R4IMA2Aj++Zln0pZgleNx2w/FxwyDP6mnE1MnQpDoKZvR7if/q1NTMHhH7vYXlSRDIIke9b4zTAdb
- tnQtToZBsjc5EA2Opbf+QwG7v5DL1J796uf6mBLSE1740cb0vU/BNLUvjuf/kpLFs+ts=;
-Received: from mail-qv1-f44.google.com ([209.85.219.44])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1kYaj6-00DONF-NS
- for linux-uvc-devel@lists.sourceforge.net; Fri, 30 Oct 2020 20:10:22 +0000
-Received: by mail-qv1-f44.google.com with SMTP id cv1so3354178qvb.2
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-ID:To:
+ Subject:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=DWjGCIidjOo471owCeQZQS/1W+sYCCCsL9Jk6P3QowA=; b=k
+ n4VhtnoZcZIUHrUi1Nq/+gEd/xuonEoW6G4PH1rxg53DnEz6zYUIw04ASp1UKciHjWK0RiCKF+hIb
+ nybDozaqSH2VbfXktnvkjcvWFKFV3pBTuS//ooQWcpFBf08x5tHT1w2oFxdmIuTNBuBKkRabCMSFe
+ 55BAeVurROGuLr50=;
+Received: from blockout.pre-sense.de ([213.238.39.74] helo=mail.pre-sense.de)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1kpyDm-000ILV-O1
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 17 Dec 2020 18:41:54 +0000
+Received: from smtp.pre-sense.de (tetris_b.pre-sense.de [10.9.0.76])
+ by mail.pre-sense.de (Postfix) with ESMTP id 503545E2EC
  for <linux-uvc-devel@lists.sourceforge.net>;
- Fri, 30 Oct 2020 13:10:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=in0xRHPBcbYYOD1VGDQcDkLHcag4tCXpBxnXNTx/kRM=;
- b=uy1RkqWTaxX4Na1dNYtEq5wVj5z3m3ZU5ToGKR/x0ZO5lBERbJVcn0qnJwKYsvDnw4
- pBW1A858K/fzWpugoqaAyD2N2vw0XPrwNA+5LUZkzUTU/h/Wl1HEsQIQzLlsbzpMiShn
- nHwlT3N5V+P/LdUId0St8MWrJN5DuVtAPFuiIZ6VJvkunKEzCbedby2NRKjaU4ZvzItG
- lpSbWuN1F865nGA93iSxqR1Lcdupbq0xxPnspJGFVaIG6sf6fdldojtmZqyFP9ZGECZq
- 2ix3Dfa+OuMEqznKmdVXbS6xStr40uKUF9s/MeuvFgBgrq5YOrgCYRHKrry8h0HDwsYz
- 86Aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=in0xRHPBcbYYOD1VGDQcDkLHcag4tCXpBxnXNTx/kRM=;
- b=TYV4A7nQEVSjbaM/QXbwAdOLbaJp0ZFOevYJBRJnmcmDG8rDAQPqNTlBOh12oWbY4E
- 1WtEBrDBDrzAcL6B5ORL14Nsd7NiWPKMOxbtZ+ZBMsYK3rgNBD54l5/l6ZW3TDAhcBDR
- 0m4MaJPm9Bticp1nCInZYCKThLmEQw8K436BDa/22ZEVRsd+bpL/ME3pdxBO8Nih6xhr
- LEzfV/rOo2Y1+TnF7OMwO+HljaErVbruH0rKrqUcMZBrdIbtv/XmfFMfFSNsR2VcelBw
- prFjgMQu6WE7YkwUO4GwDwv978gFO58OpeC3Xl6OYChfgIr4EVyIftUTob/yE1wIzF5o
- 9WpQ==
-X-Gm-Message-State: AOAM53238SmgCTN1G1Y3FuXn+OMHrBnKXqT/RRtu9tPV3BfJZr909GBx
- hN1tWyhyKCijejraz5LUMYNUJeqSOHN0RttVYyhgTAgSIgA=
-X-Google-Smtp-Source: ABdhPJxAS9YKCpgZoEpH+SbIqXcqf5el5QC5e4YNZR2q5fNsbdUnBtVI2bodENxiO+zF3kTP37T1cZyKV0CytsscDHQ=
-X-Received: by 2002:a0c:c2ce:: with SMTP id c14mr11349866qvi.20.1604088613996; 
- Fri, 30 Oct 2020 13:10:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAHL+j0_AUpNb2u3k8XBDeV+-hrGmdx+L8hCr3U509Z6QDoKO_A@mail.gmail.com>
-In-Reply-To: <CAHL+j0_AUpNb2u3k8XBDeV+-hrGmdx+L8hCr3U509Z6QDoKO_A@mail.gmail.com>
-From: Sylvain Munaut <246tnt@gmail.com>
-Date: Fri, 30 Oct 2020 21:10:00 +0100
-Message-ID: <CAHL+j08pwhh3PRaSdxLVB2oSOizHuO7BtDsFn8WSpjEmeK4VNw@mail.gmail.com>
+ Thu, 17 Dec 2020 19:41:44 +0100 (CET)
+Received: from atlan.none (dynamic-077-008-048-153.77.8.pool.telefonica.de
+ [77.8.48.153]) by smtp.pre-sense.de (Postfix) with ESMTPS id 81B92D40
+ for <linux-uvc-devel@lists.sourceforge.net>;
+ Thu, 17 Dec 2020 19:41:27 +0100 (CET)
+From: =?UTF-8?Q?Till_D=c3=b6rges?= <doerges@pre-sense.de>
 To: linux-uvc-devel@lists.sourceforge.net
-X-Spam-Score: 0.5 (/)
+Organization: PRESENSE Technologies GmbH
+Message-ID: <c77c13f5-a05e-6d69-c65b-58004dbd7712@pre-sense.de>
+Date: Thu, 17 Dec 2020 19:41:43 +0100
+User-Agent: Thunderbird
+MIME-Version: 1.0
+Content-Language: de-DE
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.6 FROM_STARTS_WITH_NUMS  From: starts with several numbers
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (246tnt[at]gmail.com)
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: pre-sense.de]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.219.44 listed in wl.mailspike.net]
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.219.44 listed in list.dnswl.org]
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
-X-Headers-End: 1kYaj6-00DONF-NS
-Subject: [linux-uvc-devel] Fwd: UVC output device with isochronous end point
+X-Headers-End: 1kpyDm-000ILV-O1
+Subject: [linux-uvc-devel] Webcam mode only working with globally disabled
+ USB autosuspend (1f3a:100e)
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,24 +76,34 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-Hi,
-
-I was trying to build a UVC output device but got hit by :
-
-"uvcvideo: Isochronous endpoints are not supported for video output devices."
-
-Any reason for that limitation ? AFAICT the spec perfectly allows this.
-
-Cheers,
-
-    Sylvain
-
-
-_______________________________________________
-Linux-uvc-devel mailing list
-Linux-uvc-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+SGkgYWxsLAoKdGhlIGRldmljZSBpbiBxdWVzdGlvbiBpcwoKICAgUmVua2ZvcmNlIFJGIEFDNEsg
+MzAwIEFjdGlvbiBDYW0gNEsKCmh0dHBzOi8vd3d3LmNvbnJhZC5kZS9kZS9wL2FjdGlvbi1jYW0t
+cmVua2ZvcmNlLXJmLWFjLTRrLXdlYmNhbS00ay13bGFuLXdhc3NlcmZlc3Qtc3RhdWJnZXNjaHVl
+dHp0LTE1NzcwNDMuaHRtbAoKCldoZW4gY29ubmVjdGVkIHZpYSBVU0IgdG8gYSBQQywgaXQgb2Zm
+ZXJzIHR3byBtb2RlczoKICAtIG1hc3Mgc3RvcmFnZQogIC0gY2FtZXJhCgoKV2hlbiBzZXQgdG8g
+d2ViY2FtIG1vZGUgaXQgaWRlbnRpZmllcyBhczoKICAgWzM0MzY3LjU0NTUxMF0gdXZjdmlkZW86
+IEZvdW5kIFVWQyAxLjAwIGRldmljZSBBbmRyb2lkICgxZjNhOjEwMGUpCgoKQnV0IGluIG9yZGVy
+IGZvciB0aGUgd2ViY2FtIHBhcnQgdG8gd29yayByZWxpYWJseSBJIGhhdmUgdG8gZGlzYWJsZSBV
+U0IgYXV0b3N1c3BlbmQgCihhcyBzdWdnZXN0ZWQgdW5kZXIgaHR0cHM6Ly93d3cuaWRlYXNvbmJv
+YXJkLm9yZy91dmMvZmFxLyk6CgotLS0gc25pcCAtLS0KZWNobyAtMSA+IC9zeXMvbW9kdWxlL3Vz
+YmNvcmUvcGFyYW1ldGVycy9hdXRvc3VzcGVuZAotLS0gc25hcCAtLS0KCgpXaXRoIHRoZSBkZWZh
+dWx0IHZhbHVlIGluIC9zeXMvbW9kdWxlL3VzYmNvcmUvcGFyYW1ldGVycy9hdXRvc3VzcGVuZCB0
+aGUgZGV2aWNlIApsZWF2ZXMgd2ViY2FtIG1vZGUgYWZ0ZXIgYSBmZXcgc2Vjb25kcy4KCgpTbyBJ
+IHdhcyB3b25kZXJpbmcgd2hldGhlciBvbmUgY2FuIGRlZmluZSBhdXRvc3VzcGVuZCBleGNlcHRp
+b25zIGZvciBjZXJ0YWluIFVWQyBkZXZpY2VzLgoKTG9va2luZyB0aHJvdWdoIHRoZSBkcml2ZXIg
+c291cmNlIEkgZGlkbid0IGRpc2NvdmVyIGFuIG9idmlvdXMgd2F5IHRvIGRvIHNvLgoKSXMgdGhp
+cyBzb21ldGhpbmcgdGhlIFVWQyBkcml2ZXIgc3VwcG9ydHM/CgpPciBkb2VzIG9uZSBoYXZlIHRv
+IGNvbmZpZ3VyZSB0aGlzIGUuZy4gdmlhIGEgdWRldiBydWxlIHdoZW4gdGhlIGRldmljZSBpcyBj
+b25uZWN0ZWQ/CgoKQW55IGhpbnRzIGFyZSBhcHByZWNpYXRlZC4KCgpUaGFua3MgYW5kIHJlZ2Fy
+ZHMgLS0gVGlsbAotLSAKRGlwbC4tSW5mb3JtLiBUaWxsIETDtnJnZXMgICAgICAgICAgICAgICAg
+ICBkb2VyZ2VzQHByZS1zZW5zZS5kZQpQUkVTRU5TRSBUZWNobm9sb2dpZXMgR21iSCAgICAgICAg
+ICAgICBOYWdlbHN3ZWcgNDEsIEQtMjAwOTcgSEgKR2VzY2jDpGZ0c2bDvGhyZXIvTWFuYWdpbmcg
+RGlyZWN0b3JzICAgICAgIEFHIEhhbWJ1cmcsIEhSQiAxMDc4NDQKVGlsbCBEw7ZyZ2VzLCBKw7xy
+Z2VuIFNhbmRlciAgICAgICAgICAgICAgIFVTdC1JZE5yLjogREUyNjM3NjUwMjQKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC11dmMtZGV2ZWwg
+bWFpbGluZyBsaXN0CkxpbnV4LXV2Yy1kZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6
+Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbGludXgtdXZjLWRldmVsCg==
