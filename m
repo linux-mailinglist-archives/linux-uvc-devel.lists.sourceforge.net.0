@@ -2,64 +2,97 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 862D7373045
-	for <lists+linux-uvc-devel@lfdr.de>; Tue,  4 May 2021 21:04:17 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08E663A0B4D
+	for <lists+linux-uvc-devel@lfdr.de>; Wed,  9 Jun 2021 06:30:08 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1le0Kl-0007Pm-GG; Tue, 04 May 2021 19:03:51 +0000
+	id 1lqpqW-0007PB-7X; Wed, 09 Jun 2021 04:29:40 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <logans@cottsay.net>) id 1le0Kf-0007Pa-K4
- for linux-uvc-devel@lists.sourceforge.net; Tue, 04 May 2021 19:03:45 +0000
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <dominique.martinet@atmark-techno.com>)
+ id 1lqpqU-0007Ov-En
+ for linux-uvc-devel@lists.sourceforge.net; Wed, 09 Jun 2021 04:29:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jSvkQZ7rCRsqh1TBkHD7WYZQrZTxHhQtzOhJjKEqC7A=; b=Z0G4KoxIVrX+vvD4sdmuBW+yru
- wHuihmAy8HmbzEjDCOYRQbUCunO+qm65RO9ZFK2gMHsgqw3iWPgVxjyxfn2xa/bTElqT1GPPqocVw
- 7Oetej2zUtT4HuWU6lB3pmYe0wPVXIpjvRyzxM79JiYM9NsXnUQWDB7o+I3J8HqWDN9s=;
+ bh=9QfyL1AUne5+PBkZwxn6iFg7I6n6SWl6hKQ4WQ41Sdw=; b=ME2IZIYCh6gIVlgVhG++T2mUsu
+ 2EMpnqH8oUE+um0tPuMuRHPecN9DawrS0wz4Ld0gn8Xc4miPWqWkNzkDO9M6oG7NXzS59r+zADo5B
+ Qba7Vog/a16dil5Ig539qSsRq9OmH/Pq7VL852FNkhNqzYPDCga34quH4ozsBUCs7v4U=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=jSvkQZ7rCRsqh1TBkHD7WYZQrZTxHhQtzOhJjKEqC7A=; b=boNe25aNsMZGYM8GNOMzXOHZ3X
- Ob8hunKZRabLLGy+G2Xrz6tztYXVqSiNP1BgzjrlDAbOUJ7lRbBrueK4IYPyO6u49tyRlbGyFVbUV
- d1UasCcx1wN7Udi8+G6qvYvneJPyHWiBmk3HW8PEQ++s/nmMBmxYoVDuxUHCkNg0Iscw=;
-Received: from azure2.cottsay.net ([104.41.151.152])
+ bh=9QfyL1AUne5+PBkZwxn6iFg7I6n6SWl6hKQ4WQ41Sdw=; b=Ew7ZtfLzwPDA7MiVtewBVU6fbL
+ YSNAgengmaVTs43kf2D9M8ZvHLc5h8DD5AzIW1SJ7P/3e7LQyNGzhwZdvIjvRfnsfhMRFY7W/1Glq
+ SfNwkGrE6kH27bj3P5BADKVNnc57kJn7YaXIsFko+A9veHXpu2UIlP6dbSjlT9xKty8c=;
+Received: from gw.atmark-techno.com ([13.115.124.170])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
- id 1le0Ke-0001lV-3e
- for linux-uvc-devel@lists.sourceforge.net; Tue, 04 May 2021 19:03:45 +0000
-Received: from cottsay-server.delphi.cottsay.net (unknown [24.19.54.182])
- by azure2.cottsay.net (Postfix) with ESMTPS id BC42619F7FF
+ id 1lqpqP-0008TY-EP
+ for linux-uvc-devel@lists.sourceforge.net; Wed, 09 Jun 2021 04:29:38 +0000
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199])
+ by gw.atmark-techno.com (Postfix) with ESMTPS id B2B6480260
  for <linux-uvc-devel@lists.sourceforge.net>;
- Tue,  4 May 2021 19:03:31 +0000 (UTC)
-Received: from cottsay-lenovo.delphi.cottsay.net (unknown [172.16.8.33])
- by cottsay-server.delphi.cottsay.net (Postfix) with ESMTPSA id CA9A33C007D
+ Wed,  9 Jun 2021 13:13:12 +0900 (JST)
+Received: by mail-pl1-f199.google.com with SMTP id
+ a6-20020a1709027d86b02901019f88b046so10813793plm.21
  for <linux-uvc-devel@lists.sourceforge.net>;
- Tue,  4 May 2021 12:03:30 -0700 (PDT)
-Message-ID: <4e009fb4129acee7228f2c896c01191b6bee7aa9.camel@cottsay.net>
-From: Scott K Logan <logans@cottsay.net>
-To: linux-uvc-devel@lists.sourceforge.net
-Date: Tue, 04 May 2021 12:03:29 -0700
-In-Reply-To: <1b124e46eb7524f26bec11e6d3545fda61143802.camel@cottsay.net>
-References: <1b124e46eb7524f26bec11e6d3545fda61143802.camel@cottsay.net>
-User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
+ Tue, 08 Jun 2021 21:13:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=9QfyL1AUne5+PBkZwxn6iFg7I6n6SWl6hKQ4WQ41Sdw=;
+ b=gm7+dUof6Y52e+Q2CelwkZvzSX/jhpo642p25wPIShfAklggXS6oTY1dnOd+s7mPf0
+ ILVfnFJZS05e9w4F5xr/wXvtIy/SyIJ1dZrxzgMcSbI27QJWVT1Ii4zj1yNwjWCUDUc6
+ SmV1PE9HCRGVWM3GcARGWxG7OWASloVvLuzIHcY8HLGt/ra/CpCi8furzv9WPyOoAbtb
+ bTAXyjFWO4/bCW/3Fgna1eFflLNLosunrzAAyojoz45lSYOj2e08fH/TPYrKbPmkd0JT
+ FjTFp6MGRq+VrUUyUmS8cJsa6MQFMdfDSmVRKqtx2ibB+7UCJuvJUPDPtb9l+yy1G+8Y
+ JDZA==
+X-Gm-Message-State: AOAM531hvDUIZdSX1xEHj00Hs9rhEFELzMKSIxMqWl2GFh4wBGs6YcjF
+ vcMHZHshk869irq75LoW2mAeIKW/s8HxdjAoCZq7rqc/sq7G7BzAqoXeAlDiah9WFQvwtensVr2
+ KLNYXjlLrXXkuNokb/MH/KrgpOLBTX/qnbr2CyJSV
+X-Received: by 2002:a63:e453:: with SMTP id i19mr1792188pgk.134.1623211991860; 
+ Tue, 08 Jun 2021 21:13:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9HC5Bv6qB3T/yEtdheshM0zEACgeTRb+kFv+9S95dtq6BS65/TpUlvArfNquzDDeJmTnupQ==
+X-Received: by 2002:a63:e453:: with SMTP id i19mr1792172pgk.134.1623211991610; 
+ Tue, 08 Jun 2021 21:13:11 -0700 (PDT)
+Received: from pc-0115 (178.101.200.35.bc.googleusercontent.com.
+ [35.200.101.178])
+ by smtp.gmail.com with ESMTPSA id nn6sm15509433pjb.57.2021.06.08.21.13.10
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 08 Jun 2021 21:13:11 -0700 (PDT)
+Received: from martinet by pc-0115 with local (Exim 4.94.2)
+ (envelope-from <martinet@pc-0115>)
+ id 1lqpaX-009K8i-MQ; Wed, 09 Jun 2021 13:13:09 +0900
+Date: Wed, 9 Jun 2021 13:12:59 +0900
+From: Dominique MARTINET <dominique.martinet@atmark-techno.com>
+To: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <YMA/y9RZZmumuXVd@atmark-techno.com>
+References: <20200917022547.198090-1-linux@roeck-us.net>
+ <20200917124714.GD3969@pendragon.ideasonboard.com>
+ <990652f1-b6e4-211c-7a96-8c3fc3ea6efd@roeck-us.net>
+ <YEsZ7qnSRv0EkJGG@atmark-techno.com>
+ <74c0c32a-ebb5-34e0-d3a2-6b417ce328a1@roeck-us.net>
 MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+Content-Disposition: inline
+In-Reply-To: <74c0c32a-ebb5-34e0-d3a2-6b417ce328a1@roeck-us.net>
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1le0Ke-0001lV-3e
-Subject: [linux-uvc-devel] [PATCH 1/1] media: uvcvideo: Add quirk for
- exponential exposure
+X-Headers-End: 1lqpqP-0008TY-EP
+Subject: Re: [linux-uvc-devel] [PATCH RESEND v3 0/5] media: uvcvideo: Fix
+ race conditions
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,142 +104,42 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: linux-uvc-devel@lists.sourceforge.net, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@iki.fi>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-At least some of the Microsoft LifeCam series of webcams exhibit a
-behavior which requires a 'quirk' to be handled properly. When
-configuring he absolute exposure value of the image, there are only a
-handful of values which will result in a consistent change to the image
-exposure, while all other values appear to result in a maximum
-exposure.
-The valid values appear to follow an exponential pattern from the
-maximum value (10000) down to the minimum, yielding less than 15
-possible values depending on the device's reported minimum.
+Guenter Roeck wrote on Fri, Mar 12, 2021 at 06:54:52AM -0800:
+> On 3/11/21 11:36 PM, Dominique MARTINET wrote:
+> > Guenter Roeck wrote on Thu, Sep 17, 2020 at 07:16:17PM -0700:
+> >> On 9/17/20 5:47 AM, Laurent Pinchart wrote:
+> >>> I haven't checked the mailing list, but I've found it in my inbox :-)
+> >>> I'm not forgetting about you, just been fairly busy recently. I still
+> >>> plan to try and provide an alternative implementation in the V4L2 core
+> >>> (in a form that I think should even be moved to the cdev core) that
+> >>> would fix this for all drivers.
+> >>>
+> >> Thanks for letting me know. As it turns out, this problem is responsible
+> >> for about 2% of all Chromebook crashes, so I'll probably not wait for
+> >> the series to be accepted upstream but apply it as-is to the various
+> >> ChromeOS kernel branches.
+> > 
+> > We have a customer who reported the same issue recently, has there been
+> > any development?
+> > 
+> 
+> Not that I know of. We applied the series to all Chrome OS kernel branches,
+> and it reliably fixes the problem for us. We'd like to have the problem
+> fixed upstream; until that happens we'll have to carry the series forward.
 
-Signed-off-by: Scott K Logan <logans@cottsay.net>
----
- drivers/media/usb/uvc/uvc_ctrl.c   | 42 ++++++++++++++++++++++++++++++
- drivers/media/usb/uvc/uvc_driver.c | 18 +++++++++++++
- drivers/media/usb/uvc/uvcvideo.h   |  1 +
- 3 files changed, 61 insertions(+)
+Thanks for confirming.
+Laurent, would it make sense to take the patches as they are until a
+better fix is ready?
 
-diff --git a/drivers/media/usb/uvc/uvc_ctrl.c
-b/drivers/media/usb/uvc/uvc_ctrl.c
-index 011e69427b7c..767c4032c35a 100644
---- a/drivers/media/usb/uvc/uvc_ctrl.c
-+++ b/drivers/media/usb/uvc/uvc_ctrl.c
-@@ -2010,6 +2010,40 @@ int uvc_ctrl_restore_values(struct uvc_device
-*dev)
- 	return 0;
- }
- 
-+/* -------------------------------------------------------------------
--------
-+ * Quirks
-+ */
-+
-+static s32 uvc_ctrl_get_abs_exposure_exponential(
-+	struct uvc_control_mapping *mapping, u8 query, const u8 *data)
-+{
-+	s32 i;
-+	s32 value = uvc_get_le_value(mapping, query, data);
-+
-+	switch (query) {
-+	case UVC_GET_CUR:
-+	case UVC_GET_MIN:
-+	case UVC_GET_MAX:
-+	case UVC_GET_DEF:
-+		for (i = 0; i < 14; ++i) {
-+			if (10000 >> i <= value)
-+				break;
-+		}
-+		return 14 - i;
-+	case UVC_GET_RES:
-+		return 1;
-+	default:
-+		return value;
-+	}
-+}
-+
-+static void uvc_ctrl_set_abs_exposure_exponential(
-+	struct uvc_control_mapping *mapping, s32 value, u8 *data)
-+{
-+	value = 10000 >> (14 - value);
-+	uvc_set_le_value(mapping, value, data);
-+}
-+
- /* -------------------------------------------------------------------
--------
-  * Control and mapping handling
-  */
-@@ -2069,6 +2103,14 @@ static int __uvc_ctrl_add_mapping(struct
-uvc_device *dev,
- 	if (map->set == NULL)
- 		map->set = uvc_set_le_value;
- 
-+	if ((dev->quirks & UVC_QUIRK_EXPONENTIAL_EXPOSURE) &&
-+	    ctrl->info.selector ==
-UVC_CT_EXPOSURE_TIME_ABSOLUTE_CONTROL) {
-+		uvc_trace(UVC_TRACE_CONTROL,
-+			"Applying exponential exposure quirk\n");
-+		map->get = uvc_ctrl_get_abs_exposure_exponential;
-+		map->set = uvc_ctrl_set_abs_exposure_exponential;
-+	}
-+
- 	list_add_tail(&map->list, &ctrl->info.mappings);
- 	uvc_trace(UVC_TRACE_CONTROL,
- 		"Adding mapping '%s' to control %pUl/%u.\n",
-diff --git a/drivers/media/usb/uvc/uvc_driver.c
-b/drivers/media/usb/uvc/uvc_driver.c
-index ddb9eaa11be7..f823b201395a 100644
---- a/drivers/media/usb/uvc/uvc_driver.c
-+++ b/drivers/media/usb/uvc/uvc_driver.c
-@@ -2530,6 +2530,24 @@ static const struct usb_device_id uvc_ids[] = {
- 	  .bInterfaceSubClass	= 1,
- 	  .bInterfaceProtocol	= 0,
- 	  .driver_info		=
-(kernel_ulong_t)&uvc_quirk_probe_minmax },
-+	/* Microsoft Lifecam HD-5000 */
-+	{ .match_flags		= USB_DEVICE_ID_MATCH_DEVICE
-+				| USB_DEVICE_ID_MATCH_INT_INFO,
-+	  .idVendor		= 0x045e,
-+	  .idProduct		= 0x076d,
-+	  .bInterfaceClass	= USB_CLASS_VIDEO,
-+	  .bInterfaceSubClass	= 1,
-+	  .bInterfaceProtocol	= 0,
-+	  .driver_info		=
-UVC_INFO_QUIRK(UVC_QUIRK_EXPONENTIAL_EXPOSURE) },
-+	/* Microsoft Lifecam Studio */
-+	{ .match_flags		= USB_DEVICE_ID_MATCH_DEVICE
-+				| USB_DEVICE_ID_MATCH_INT_INFO,
-+	  .idVendor		= 0x045e,
-+	  .idProduct		= 0x0772,
-+	  .bInterfaceClass	= USB_CLASS_VIDEO,
-+	  .bInterfaceSubClass	= 1,
-+	  .bInterfaceProtocol	= 0,
-+	  .driver_info		=
-UVC_INFO_QUIRK(UVC_QUIRK_EXPONENTIAL_EXPOSURE) },
- 	/* Logitech Quickcam Fusion */
- 	{ .match_flags		= USB_DEVICE_ID_MATCH_DEVICE
- 				| USB_DEVICE_ID_MATCH_INT_INFO,
-diff --git a/drivers/media/usb/uvc/uvcvideo.h
-b/drivers/media/usb/uvc/uvcvideo.h
-index a3dfacf069c4..16e9ecbb2946 100644
---- a/drivers/media/usb/uvc/uvcvideo.h
-+++ b/drivers/media/usb/uvc/uvcvideo.h
-@@ -203,6 +203,7 @@
- #define UVC_QUIRK_RESTORE_CTRLS_ON_INIT	0x00000400
- #define UVC_QUIRK_FORCE_Y8		0x00000800
- #define UVC_QUIRK_FORCE_BPP		0x00001000
-+#define UVC_QUIRK_EXPONENTIAL_EXPOSURE	0x00002000
- 
- /* Format flags */
- #define UVC_FMT_FLAG_COMPRESSED		0x00000001
 -- 
-2.30.2
-
+Dominique
 
 
 _______________________________________________
