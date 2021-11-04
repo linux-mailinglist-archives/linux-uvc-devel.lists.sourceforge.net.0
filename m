@@ -2,26 +2,26 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74EA1445190
-	for <lists+linux-uvc-devel@lfdr.de>; Thu,  4 Nov 2021 11:25:27 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD880445193
+	for <lists+linux-uvc-devel@lfdr.de>; Thu,  4 Nov 2021 11:30:36 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1miZvj-0001q8-Lw; Thu, 04 Nov 2021 10:25:10 +0000
+	id 1mia0f-0006eY-NA; Thu, 04 Nov 2021 10:30:17 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <paul@teulu.org>) id 1miZvh-0001nP-P7
- for linux-uvc-devel@lists.sourceforge.net; Thu, 04 Nov 2021 10:25:08 +0000
+ (envelope-from <paul@teulu.org>) id 1mia0e-0006eS-N5
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 04 Nov 2021 10:30:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
  MIME-Version:Date:Message-ID:From:To:References:Subject:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Ij55tFshDz264oPS3yq+eqfiuLdkokYO/WQPh57rcmc=; b=GViKp3CByobWd0BzevhaX1fY9s
- BbFepJZYv3GwbmGbw6WMyw+dhc3z/fbDb+mKlKSRRH5X0OfsMviQKqiMoJY7PuWOuJy/euXUO5LH8
- 2qsO+tJIBHoaqcoeeVh2fEzfs/1OrwlIR8rjl8xMh2xC5lo5ZMk5MuP0J1+sBc/Q+cr4=;
+ bh=UeoFu2+yAcoTx4gJsz/GRmdE7Dt2SVf9xIhHIjaqqIM=; b=U3+ru6izv/VT7cjjz7nbLRoR8O
+ spjz7sjZPDm/QHhkLOwSpdLN/Oy4cI0CZ6DR8nw+T/nRpR6MnB0kbA6JImXd4IOxz/GGSyli8p7Q4
+ dR1xrrUMpKSmP0I2/Skq3Gw7Fnijy4pirN23skHe82yU/zqVVs5b3ND7V6w8TLidkE4k=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
@@ -29,35 +29,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=Ij55tFshDz264oPS3yq+eqfiuLdkokYO/WQPh57rcmc=; b=WaT8Ndv4ohhkEr+W7avp0ytT3/
- NN1Ni1ppmygUksxhFQoMoo+NVrK9M23MWHoHXsVBhd1roU2ZBVFPN6xwwhq8e9Bt9LBKDJxz/DKfL
- qtIaiaG+oh+M4TllAnGRwjTik0U8cuGDLYmMNFBB0s5g2/p/znO//+35XZplmJgKLy5c=;
-Received: from bee.birch.relay.mailchannels.net ([23.83.209.14])
+ bh=UeoFu2+yAcoTx4gJsz/GRmdE7Dt2SVf9xIhHIjaqqIM=; b=mGAnx4WR0MNrmCmXCKBj/5GZO2
+ VXkDox5hXA771jUIboKnOZKUXl32D9jPeEiDCCKE6BW1dk4y4Zz+cPLJo/0nb0QvalxfiR+jT9C+h
+ eJ+Ww6bBL3/6SWNE1z5/5vYevjgY7mIRiIM/5lKWIz8P1LYFkYzm3dfLoXQPAQhi6nSA=;
+Received: from donkey.elm.relay.mailchannels.net ([23.83.212.49])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1miZvf-001HSv-Io
- for linux-uvc-devel@lists.sourceforge.net; Thu, 04 Nov 2021 10:25:08 +0000
+ id 1mia0b-001HqX-0g
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 04 Nov 2021 10:30:16 +0000
 X-Sender-Id: instrampxe0y3a|x-authuser|paul@teulu.org
 Received: from relay.mailchannels.net (localhost [127.0.0.1])
- by relay.mailchannels.net (Postfix) with ESMTP id 4BFB38C0929
+ by relay.mailchannels.net (Postfix) with ESMTP id 7CE1F8C0A8C
  for <linux-uvc-devel@lists.sourceforge.net>;
- Thu,  4 Nov 2021 10:16:09 +0000 (UTC)
+ Thu,  4 Nov 2021 10:20:13 +0000 (UTC)
 Received: from cpanel-008-lon.hostingww.com (unknown [127.0.0.6])
  (Authenticated sender: instrampxe0y3a)
- by relay.mailchannels.net (Postfix) with ESMTPA id 25D328C0574
+ by relay.mailchannels.net (Postfix) with ESMTPA id 9AB1A8C0AC0
  for <linux-uvc-devel@lists.sourceforge.net>;
- Thu,  4 Nov 2021 10:16:07 +0000 (UTC)
+ Thu,  4 Nov 2021 10:19:59 +0000 (UTC)
 X-Sender-Id: instrampxe0y3a|x-authuser|paul@teulu.org
 Received: from cpanel-008-lon.hostingww.com (cpanel-008-lon.hostingww.com
  [35.177.91.163])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384)
- by 100.114.196.210 (trex/6.4.3); Thu, 04 Nov 2021 10:16:09 +0000
+ by 100.114.196.210 (trex/6.4.3); Thu, 04 Nov 2021 10:20:13 +0000
 X-MC-Relay: Neutral
 X-MailChannels-SenderId: instrampxe0y3a|x-authuser|paul@teulu.org
 X-MailChannels-Auth-Id: instrampxe0y3a
-X-Illegal-Shelf: 63b712d27368a056_1636020969139_2655145684
-X-MC-Loop-Signature: 1636020969139:2573911069
-X-MC-Ingress-Time: 1636020969139
+X-Little-Troubled: 051414002ddbd480_1636021200767_2866077923
+X-MC-Loop-Signature: 1636021200767:2860909893
+X-MC-Ingress-Time: 1636021200766
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=teulu.org; 
  s=default;
  h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:
@@ -65,29 +65,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=teulu.org;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=Ij55tFshDz264oPS3yq+eqfiuLdkokYO/WQPh57rcmc=; b=khZdKK2ahYHMGvNtdmshGHZmxJ
- aDo3gnFJ3z77YX2iKBeB75fYeVDdnlNlLpOfCsRwXPKS2LkWexFmtciTZaTczFgtmuDevA6XfWHJ3
- 4q3rS6rcTqcExsaPRJ0yijVr1ne8drIQjUM1L2UpsthF1+MSbAQzCA2QUzs40wryQYum5WLVP/a7O
- qMV4bzz/nGoFUmx+9ohXfU1zE/AXN/MHogTG+y/0aU4RcJEDifzb+Bh9KafdHWcgfusc5VlbPCEaP
- PDFLVKKDGYK5CHpiNijSPmf2J8CsNGkH1tpJEQpvfz86myYDOo4mjT/uLWVL5j3MuGVgpGl3CMjqu
- 7sti45Pw==;
-Received: from 67.26.169.217.in-addr.arpa ([217.169.26.67]:33882
+ bh=UeoFu2+yAcoTx4gJsz/GRmdE7Dt2SVf9xIhHIjaqqIM=; b=Ev9oO1/xQFARcEWA5WYVqPUXou
+ 1XBdyLkTOWcZLq1eKETiM4NNXOFdD/j3o8ejqD++IghInDOWdTxudLapsEI3ZQc2DC3E5HPoo4DhX
+ 8GTiKbuZ5UhSixZJUzb27cF9p2UclW+X5cY44Glk38J7/qeIsxqU9uCl4CwHrj/AtHxQLLMsJYjtO
+ Y0mIUA/aGIZnnVzY9TFuS8zF0M8WSXaUE2dMkC41C1eiAt56fciUuatQiWWtqrIH7546Sr713NQ1j
+ KGukzeQgj6lTaWffJO7mQzXmDVF9N/cVpbjnMTZwxxTtG/XYnJTYCB0oJ+vwkWT/PgZEt9WScm8le
+ C00WSt4w==;
+Received: from 67.26.169.217.in-addr.arpa ([217.169.26.67]:33884
  helo=[192.168.1.161])
  by cpanel-008-lon.hostingww.com with esmtpsa (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <paul@teulu.org>) id 1miZmu-0007iX-BQ
- for linux-uvc-devel@lists.sourceforge.net; Thu, 04 Nov 2021 21:16:06 +1100
-References: <5686edef-5f8d-d01c-5057-86c6f071becf@teulu.org>
+ (envelope-from <paul@teulu.org>) id 1miZqe-0008SK-9M
+ for linux-uvc-devel@lists.sourceforge.net; Thu, 04 Nov 2021 21:19:58 +1100
+References: <f247b2a1-3ce5-c04a-37ca-14f007af5688@teulu.org>
 To: "linux-uvc-devel@lists.sourceforge.net"
  <linux-uvc-devel@lists.sourceforge.net>
 From: Paul Jewell <paul@teulu.org>
-X-Forwarded-Message-Id: <5686edef-5f8d-d01c-5057-86c6f071becf@teulu.org>
-Message-ID: <f247b2a1-3ce5-c04a-37ca-14f007af5688@teulu.org>
-Date: Thu, 4 Nov 2021 10:16:01 +0000
+X-Forwarded-Message-Id: <f247b2a1-3ce5-c04a-37ca-14f007af5688@teulu.org>
+Message-ID: <c11e8185-5a68-aac2-6410-993df9b81fb2@teulu.org>
+Date: Thu, 4 Nov 2021 10:19:53 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <5686edef-5f8d-d01c-5057-86c6f071becf@teulu.org>
+In-Reply-To: <f247b2a1-3ce5-c04a-37ca-14f007af5688@teulu.org>
 Content-Language: en-GB
 X-OutGoing-Spam-Status: No, score=-0.2
 X-AuthUser: paul@teulu.org
@@ -98,10 +98,9 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: Further to my last message: I have a gentoo based laptop
- which
- is running 5.13.8 still. When I plug the camera into it, I get the same error
- message about "Failed to query...", but there is a picture [...] 
+ Content preview: Sorry - I am now feeling a little foolish. I decided to check
+ with a different program in case zoom is the problem. Using vlc media player
+ I am getting a picture, so the problem is zoom, not anything [...] 
  Content analysis details:   (0.8 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -112,9 +111,9 @@ X-Spam-Report: Spam detection software,
  1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [23.83.209.14 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [23.83.209.14 listed in wl.mailspike.net]
+ no trust [23.83.212.49 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [23.83.212.49 listed in wl.mailspike.net]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -122,9 +121,8 @@ X-Spam-Report: Spam detection software,
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1miZvf-001HSv-Io
-Subject: [linux-uvc-devel] Fwd: Larmtek camera issue
+X-Headers-End: 1mia0b-001HqX-0g
+Subject: [linux-uvc-devel] Fwd: Fwd: Larmtek camera issue
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,6 +137,22 @@ List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>,
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
+
+Sorry - I am now feeling a little foolish. I decided to check with a 
+different program in case zoom is the problem. Using vlc media player I 
+am getting a picture, so the problem is zoom, not anything you have 
+developed. I'm off to debug that now - please accept my apologies for 
+the noise on the list.
+
+Rgds.,
+Paul
+
+-------- Forwarded Message --------
+Subject: Fwd: Larmtek camera issue
+Date: Thu, 4 Nov 2021 10:16:01 +0000
+From: Paul Jewell <paul@teulu.org>
+To: linux-uvc-devel@lists.sourceforge.net 
+<linux-uvc-devel@lists.sourceforge.net>
 
 Further to my last message: I have a gentoo based laptop which is 
 running 5.13.8 still. When I plug the camera into it, I get the same 
