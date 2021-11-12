@@ -2,102 +2,117 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF61544DDD7
-	for <lists+linux-uvc-devel@lfdr.de>; Thu, 11 Nov 2021 23:23:52 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id D99F644E568
+	for <lists+linux-uvc-devel@lfdr.de>; Fri, 12 Nov 2021 12:11:06 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1mlITc-0003MG-UC; Thu, 11 Nov 2021 22:23:26 +0000
+	id 1mlUS2-0008UT-Hy; Fri, 12 Nov 2021 11:10:34 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ostroffjh@aya.yale.edu>) id 1mlITa-0003MA-Ti
- for linux-uvc-devel@lists.sourceforge.net; Thu, 11 Nov 2021 22:23:24 +0000
+ (envelope-from <michal2992@gmail.com>) id 1mlUS1-0008UL-TJ
+ for linux-uvc-devel@lists.sourceforge.net; Fri, 12 Nov 2021 11:10:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:Message-Id:
- In-Reply-To:References:MIME-Version:To:Subject:From:Date:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:Cc:To:
+ Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=4IOxnbrgCHOAH2KWD9SKDMxsNnDXBpCba4V3BEc6jlg=; b=aIdGakvU7Gic8EHTVOWTjTJiiP
- MXz17P9baNbjnDH59HEF1158d9b8QQq40x9R7JuLn9XUuCSx9XGUc85uJKW8waFxi+DRNhYswo/fn
- 1CadHLAGakIVaw9Qq5ewkAJ8BF3Ah2nNgY9IZ2lD+xAQavwCBf5u9MZrLngq80UQP4vk=;
+ bh=HX4X3ww65nX9KK7mco0xjvDdGQf0FIc5mWgjzL+4q5Y=; b=JJ5+1V3SnzQOUMzkcwEnhuamSx
+ xkH11BJS8euWB4b4eM9+x/0GEz4+8Sy8uesHSovEpRKhyVQFsqHa1gTwotBzkCxWKa2xi6pLcYp0A
+ R0Y9qL/OnT6HIajvAdSIjqcFMs+T2sL4HEjIf6MGIZFzS+n3XNREtFel0NNwQhuxK6gg=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:Message-Id:In-Reply-To:References:
- MIME-Version:To:Subject:From:Date:Sender:Reply-To:Cc:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From
+ :In-Reply-To:References:MIME-Version:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=4IOxnbrgCHOAH2KWD9SKDMxsNnDXBpCba4V3BEc6jlg=; b=NtLDsDFPbJL5IcUDP9sEfb5wa/
- HYshQ3ggx/Kt0LTYl0q+3wE8OP2JkpL9pPPbRiK3kfeN2dfZwluOqommx8sm1+GZXzTLIMv6jUhWd
- IsUZZ3OdbQ619vZdeLMdeKQ5+2g/nx1wCS/Jl8rX1LJ8oFXdmYKQBL4RPEf9LPQFXrNM=;
-Received: from mail-qk1-f172.google.com ([209.85.222.172])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ bh=HX4X3ww65nX9KK7mco0xjvDdGQf0FIc5mWgjzL+4q5Y=; b=mvRP0I/0lgxmWmhXQfLWbj6HNr
+ 0kzY0by9TN7pjSPVA2szq4mIAKUnPEb+fdexF630N/GBxHX3Nlrcp+E2RZ+ej1jghW+BaFK23VoYc
+ KI3bBp1oxjvlv3eQSIM/ppynkx/6ND/6GqxhYmzH/wSxzsPvs/MlH6aS0RxSCT0cGf30=;
+Received: from mail-yb1-f170.google.com ([209.85.219.170])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.3)
- id 1mlITb-000623-Fy
- for linux-uvc-devel@lists.sourceforge.net; Thu, 11 Nov 2021 22:23:23 +0000
-Received: by mail-qk1-f172.google.com with SMTP id bk22so7295493qkb.6
+ id 1mlURy-00Ahh0-Ja
+ for linux-uvc-devel@lists.sourceforge.net; Fri, 12 Nov 2021 11:10:33 +0000
+Received: by mail-yb1-f170.google.com with SMTP id d10so22725273ybe.3
  for <linux-uvc-devel@lists.sourceforge.net>;
- Thu, 11 Nov 2021 14:23:23 -0800 (PST)
+ Fri, 12 Nov 2021 03:10:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=HX4X3ww65nX9KK7mco0xjvDdGQf0FIc5mWgjzL+4q5Y=;
+ b=lHtUAB5OpXLG64L2kUPWjFyGZ7osap+OLkE4SrU2iZUrP1Ifk5ELZhJzBPRiniMvTe
+ UNO2Qf6SlmIix2sySfD8pD7M/WuxXGjEB3K4c81J9uZ3hCGk6O9yURbFEEqVgEZu5F+d
+ y6AjSSLrisz8dQR6sszx9qNRX1auM55X4QVeU4CJDA3qP0Zuo8CIIK7VHuWjQjZGg3+p
+ OGMwnbvMmCtKyICIPVXWnbvQvG7fjN9XBZ9yYjDCYfeCU2oSg+BIYUmT1Mfp5c66ljau
+ 74iFP2HijaibVJulgbHcV2Tg9CIwqleAe2WPzl2fLhAWbnv1BK5G/nwDhz3jwE8Od0HP
+ XhUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:subject:to:mime-version:references
- :in-reply-to:message-id:content-disposition
- :content-transfer-encoding;
- bh=4IOxnbrgCHOAH2KWD9SKDMxsNnDXBpCba4V3BEc6jlg=;
- b=xgqChI6TmkL7Bbr0xAhch90KHEJrzKrsMz45OY5JwaNBAl1emS1uYEIQMIpSGHYRVN
- 4IAL1AW+KogzwLuhbqhKG32p+e0+QMN0zOsZZOPvXwEwr3DDInFlymLCFfSuTgxfPR9b
- E9m7jF+3xFArbUVU7WMb5P/nibKxnbLbGBKyg2dPhsMNGN0wwm0THNfyqCopyMona8KZ
- VsBCXvTH8SiZCp8rytUiKIh6pRjgkaTl5yPShVjOAghf3RbwOBB+ubdkqXsUEWYJrx4f
- ekLzCjf1ad2fAmT7Hb0gbQddtWEMM2HmO4ey09tL4ks1+qnsTFAr6LbrtEt8fU2lDm2H
- Pv6g==
-X-Gm-Message-State: AOAM530tG8msMern/IsQb9GWe5DBlcALEysAnfkN3mjYdIZhVMxKDI6K
- 6PUkIjMzoKF28BGm38hMKBRj/ub7nx2/nmg4
-X-Google-Smtp-Source: ABdhPJxwlTW6e1NYEAQ6DsmV9av4UXwzNyJL9wij5UorzcvlZlS/7XTj5+bGvGvP+mjgjfW+8TL6GA==
-X-Received: by 2002:a05:622a:1449:: with SMTP id
- v9mr11146189qtx.122.1636667534984; 
- Thu, 11 Nov 2021 13:52:14 -0800 (PST)
-Received: from ffortso9 (c-76-23-130-96.hsd1.ct.comcast.net. [76.23.130.96])
- by smtp.gmail.com with ESMTPSA id v4sm1949364qkp.118.2021.11.11.13.52.13
- for <linux-uvc-devel@lists.sourceforge.net>
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Nov 2021 13:52:14 -0800 (PST)
-Date: Thu, 11 Nov 2021 16:52:12 -0500
-To: linux-uvc-devel@lists.sourceforge.net
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=HX4X3ww65nX9KK7mco0xjvDdGQf0FIc5mWgjzL+4q5Y=;
+ b=4US+b5ERBCcFsLzjkeg3X2Drt4zyu6QP5MBmCzbCD8A/wUBM29l5Tn6uUDI2U5eCkH
+ V86fJSaEWxfeWVeAK69UEh586/QDYFbjCEZhrJdsufosNZFtzBNuqqM78RWRyhF2VZtJ
+ m/BvwHwqhT7zARhY4bM0GjdVA7/N/GL9SlZLkIY08l6qV1Q+Z+ezBXaNjcDUxkzk73U5
+ f6KVTPxaFLtJbAibDiZOWZs2q4M9KU0y9LGiSMyckWtE88yU41Qvmxaa/Ljz3NlkDc/m
+ s7B72wWLCiKxiNqZh/ivlaOXSKdUmIj4ZnX6Od7laW7j6XaO9BA8zW6RepqWvCSi3GbO
+ d6ng==
+X-Gm-Message-State: AOAM53379tmk9iTUTcpGYFf2bvtjynkFYEakxyXKpi6nJbkhI8A0qhzY
+ h/ftyWODkK9UnaiOXjguIpnSIJC3XmYoDyRtkHc=
+X-Google-Smtp-Source: ABdhPJzy18j1ogsY5qp/tFo/2XOnyXZUr9I1/KroFrhW4jZ82vCsqDGl0s7aHJ9qy+tw6fbH9wZHz3A152C8PEdv43Y=
+X-Received: by 2002:a25:3b11:: with SMTP id i17mr15824034yba.259.1636715424846; 
+ Fri, 12 Nov 2021 03:10:24 -0800 (PST)
 MIME-Version: 1.0
 References: <CAByPayF_GasCtQapLOMQrwsNwtYiW5TgB1JBy+CPhLrggVANiA@mail.gmail.com>
-In-Reply-To: <CAByPayF_GasCtQapLOMQrwsNwtYiW5TgB1JBy+CPhLrggVANiA@mail.gmail.com>
-X-Mailer: Balsa 2.6.3-real-16-g1a34f0517
-Message-Id: <3JESBC32.LEBKYPQ7.DAFBDPVE@NTDBKNLL.KNYE6GDF.MN2H7JJD>
-Content-Disposition: inline
-X-Spam-Score: -1.7 (-)
+ <3JESBC32.LEBKYPQ7.DAFBDPVE@NTDBKNLL.KNYE6GDF.MN2H7JJD>
+In-Reply-To: <3JESBC32.LEBKYPQ7.DAFBDPVE@NTDBKNLL.KNYE6GDF.MN2H7JJD>
+From: =?UTF-8?Q?Micha=C5=82_Bojanowski?= <michal2992@gmail.com>
+Date: Fri, 12 Nov 2021 12:10:12 +0100
+Message-ID: <CAByPayG+M35mi8Y_hkY87Vh_a5TDua76o4=1knbkvTuOF7kwGA@mail.gmail.com>
+To: Jack <ostroffjh@users.sourceforge.net>
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.lw.sourceforge.com",
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
  
- Content preview:  On 2021.11.11 16:40, Michał Bojanowski wrote: > Hi! > > I
-    have a HP ProBook 6450b laptop running xubuntu 20.04.3 LTS and > cannot >
-    get the built-in camera (0bda:5801) to work. When I run `cheese` or [...]
-    
+ Content preview:  For me the guvcview output window shows nothing (essentially
+    whatever was underneath it, the desktop or other window). Changing the option
+    you mention doesn't do anything. Thanks. On Thu, Nov 11, 2021 at 11:24 PM
+    Jack via Linux-uvc-devel wrote: > > On 2021.11.11 16:40, Michał Bojanowski
+    wrote: > > Hi! > > > > I have a HP ProBook 6450b laptop running xubuntu 20.04.3
+    LTS and > [...] 
  
- Content analysis details:   (-1.7 points, 6.0 required)
+ Content analysis details:   (0.1 points, 6.0 required)
  
   pts rule name              description
  ---- ---------------------- --------------------------------------------------
-  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
-  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
-                             mail domains are different
+  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+                             provider
+                             [michal2992[at]gmail.com]
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
-                             [209.85.222.172 listed in wl.mailspike.net]
+                             [209.85.219.170 listed in wl.mailspike.net]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
                               no trust
-                             [209.85.222.172 listed in list.dnswl.org]
- -2.0 NICE_REPLY_A           Looks like a legit reply (A)
-X-Headers-End: 1mlITb-000623-Fy
+                             [209.85.219.170 listed in list.dnswl.org]
+  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+                             in digit
+                             [michal2992[at]gmail.com]
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+                             valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+                             author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+                             envelope-from domain
+X-Headers-End: 1mlURy-00Ahh0-Ja
 Subject: Re: [linux-uvc-devel] Trouble with 0bda:5801 - blank screen
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -110,27 +125,35 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-From: Jack via Linux-uvc-devel <linux-uvc-devel@lists.sourceforge.net>
-Reply-To: Jack <ostroffjh@users.sourceforge.net>
+Cc: linux-uvc-devel@lists.sourceforge.net
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="Flowed"; DelSp="Yes"
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-T24gMjAyMS4xMS4xMSAxNjo0MCwgTWljaGHFgiBCb2phbm93c2tpIHdyb3RlOgo+IEhpIQo+IAo+
-IEkgaGF2ZSBhIEhQIFByb0Jvb2sgNjQ1MGIgbGFwdG9wIHJ1bm5pbmcgeHVidW50dSAyMC4wNC4z
-IExUUyBhbmQgIAo+IGNhbm5vdAo+IGdldCB0aGUgYnVpbHQtaW4gY2FtZXJhICgwYmRhOjU4MDEp
-IHRvIHdvcmsuIFdoZW4gSSBydW4gYGNoZWVzZWAgb3IKPiBgZ3V2Y3ZpZXdgIHRoZSBMRUQgb3Zl
-ciB0aGUgc2NyZWVuIGxpZ2h0cy11cCBidXQgYm90aCBwcm9ncmFtcyBzaG93IGEKPiBibGFuayBz
-Y3JlZW4uCj4gCj4gSSBoYXZlIHN1cmZlZCB0aGUgaW50ZXJuZXQgbG9va2luZyBmb3Igc29sdXRp
-b24gYW5kIHRyaWVkIGZldyB0aGluZ3MKPiB3aXRob3V0IHN1Y2Nlc3MuCj4gCj4gSSdtIHdyaXRp
-bmcgeW91IHRvIHJ1bGUtb3V0IHRoYXQgdGhlIGRyaXZlciBpcyB0aGUgcHJvYmxlbSBhbmQgcGVy
-aGFwcwo+IGFsc28gdG8gZ2V0IHNvbWUgaGVscCBob3cgdG8gZnVydGhlciBkZWJ1ZyB0aGlzIHBy
-b2JsZW0uIFBsZWFzZSBzZWUKPiBiZWxvdyBmb3IgdmFyaW91cyBkaWFnbm9zdGljIG91dHB1dC4g
-QW55IGhlbHAgd2lsbCBiZSBncmVhdGx5Cj4gYXBwcmVjaWF0ZWQhIFRoYW5rIHlvdSBpbiBhZHZh
-bmNlLgoKSW4gZ3V2Y3ZpZXcsIG9uIHRoZSAiVmlkZW8gQ29udHJvbHMiIHRhYiwgaGF2ZSB5b3Ug
-dHJpZWQgYWxsIHRoZSAgCm9wdGlvbnMgZm9yIENhbWVyYSBPdXRwdXQ/ICBJIGhhdmVuJ3QgaGFk
-IGEgY29tcGxldGVseSBibGFjayBvdXRwdXQsICAKYnV0IEkgaGF2ZSBmb3VuZCB0aGF0IHNldHRp
-bmcgY2FuIG1ha2UgYSBodWdlIGRpZmZlcmVuY2UuCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtdXZjLWRldmVsIG1haWxpbmcgbGlzdApMaW51
-eC11dmMtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0dHBzOi8vbGlzdHMuc291cmNlZm9y
-Z2UubmV0L2xpc3RzL2xpc3RpbmZvL2xpbnV4LXV2Yy1kZXZlbAo=
+Rm9yIG1lIHRoZSBndXZjdmlldyBvdXRwdXQgd2luZG93IHNob3dzIG5vdGhpbmcgKGVzc2VudGlh
+bGx5IHdoYXRldmVyCndhcyB1bmRlcm5lYXRoIGl0LCB0aGUgZGVza3RvcCBvciBvdGhlciB3aW5k
+b3cpLiBDaGFuZ2luZyB0aGUgb3B0aW9uCnlvdSBtZW50aW9uIGRvZXNuJ3QgZG8gYW55dGhpbmcu
+IFRoYW5rcy4KCk9uIFRodSwgTm92IDExLCAyMDIxIGF0IDExOjI0IFBNIEphY2sgdmlhIExpbnV4
+LXV2Yy1kZXZlbAo8bGludXgtdXZjLWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldD4gd3JvdGU6
+Cj4KPiBPbiAyMDIxLjExLjExIDE2OjQwLCBNaWNoYcWCIEJvamFub3dza2kgd3JvdGU6Cj4gPiBI
+aSEKPiA+Cj4gPiBJIGhhdmUgYSBIUCBQcm9Cb29rIDY0NTBiIGxhcHRvcCBydW5uaW5nIHh1YnVu
+dHUgMjAuMDQuMyBMVFMgYW5kCj4gPiBjYW5ub3QKPiA+IGdldCB0aGUgYnVpbHQtaW4gY2FtZXJh
+ICgwYmRhOjU4MDEpIHRvIHdvcmsuIFdoZW4gSSBydW4gYGNoZWVzZWAgb3IKPiA+IGBndXZjdmll
+d2AgdGhlIExFRCBvdmVyIHRoZSBzY3JlZW4gbGlnaHRzLXVwIGJ1dCBib3RoIHByb2dyYW1zIHNo
+b3cgYQo+ID4gYmxhbmsgc2NyZWVuLgo+ID4KPiA+IEkgaGF2ZSBzdXJmZWQgdGhlIGludGVybmV0
+IGxvb2tpbmcgZm9yIHNvbHV0aW9uIGFuZCB0cmllZCBmZXcgdGhpbmdzCj4gPiB3aXRob3V0IHN1
+Y2Nlc3MuCj4gPgo+ID4gSSdtIHdyaXRpbmcgeW91IHRvIHJ1bGUtb3V0IHRoYXQgdGhlIGRyaXZl
+ciBpcyB0aGUgcHJvYmxlbSBhbmQgcGVyaGFwcwo+ID4gYWxzbyB0byBnZXQgc29tZSBoZWxwIGhv
+dyB0byBmdXJ0aGVyIGRlYnVnIHRoaXMgcHJvYmxlbS4gUGxlYXNlIHNlZQo+ID4gYmVsb3cgZm9y
+IHZhcmlvdXMgZGlhZ25vc3RpYyBvdXRwdXQuIEFueSBoZWxwIHdpbGwgYmUgZ3JlYXRseQo+ID4g
+YXBwcmVjaWF0ZWQhIFRoYW5rIHlvdSBpbiBhZHZhbmNlLgo+Cj4gSW4gZ3V2Y3ZpZXcsIG9uIHRo
+ZSAiVmlkZW8gQ29udHJvbHMiIHRhYiwgaGF2ZSB5b3UgdHJpZWQgYWxsIHRoZQo+IG9wdGlvbnMg
+Zm9yIENhbWVyYSBPdXRwdXQ/ICBJIGhhdmVuJ3QgaGFkIGEgY29tcGxldGVseSBibGFjayBvdXRw
+dXQsCj4gYnV0IEkgaGF2ZSBmb3VuZCB0aGF0IHNldHRpbmcgY2FuIG1ha2UgYSBodWdlIGRpZmZl
+cmVuY2UuCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCj4gTGludXgtdXZjLWRldmVsIG1haWxpbmcgbGlzdAo+IExpbnV4LXV2Yy1kZXZlbEBsaXN0
+cy5zb3VyY2Vmb3JnZS5uZXQKPiBodHRwczovL2xpc3RzLnNvdXJjZWZvcmdlLm5ldC9saXN0cy9s
+aXN0aW5mby9saW51eC11dmMtZGV2ZWwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC11dmMtZGV2ZWwgbWFpbGluZyBsaXN0CkxpbnV4LXV2Yy1k
+ZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQv
+bGlzdHMvbGlzdGluZm8vbGludXgtdXZjLWRldmVsCg==
