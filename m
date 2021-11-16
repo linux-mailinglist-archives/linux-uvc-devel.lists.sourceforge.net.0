@@ -2,75 +2,76 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5596C453B69
-	for <lists+linux-uvc-devel@lfdr.de>; Tue, 16 Nov 2021 22:05:35 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FEF0453B6C
+	for <lists+linux-uvc-devel@lfdr.de>; Tue, 16 Nov 2021 22:06:28 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1mn5dS-0002mj-0d; Tue, 16 Nov 2021 21:04:58 +0000
+	id 1mn5eU-0004uh-FE; Tue, 16 Nov 2021 21:06:03 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <kyshtymov@integrit.ru>) id 1mn5dP-0002mZ-Fq
- for linux-uvc-devel@lists.sourceforge.net; Tue, 16 Nov 2021 21:04:55 +0000
+ (envelope-from <kyshtymov@integrit.ru>) id 1mn5eS-0004uE-Ic
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 16 Nov 2021 21:06:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
  MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=VG1Acj2+gbxdbfJDZJzLLZp0tSIA86OHLDTrtMXiNFo=; b=fkfG5pLSi/ku+0HmCCRp9DA8Mi
- Td2lWilGNYaD2MFGOf5tx/7q6xKp/c40IFp+s3pnzYE7/L3zY/CCNsraRA0iLnozvrlec7BSusns9
- bgtGUVLCE6EhOkGCA8zoow6ed4uSvghFyED2eoy5XbRm4DA9C+1SZL5QSHvgQierBRXY=;
+ bh=Eyo0j185bbdQOSdx8wbf0wlDtgXaJcooRnwz6uO74wA=; b=GCKH1Ch08T4tvHTrcwETFw0IkI
+ P1PcoSZXVo1VeoD23DYM7bD5E+oOuO08jknjxczipoWJeH9g6RdC9eVht8Cr9ZdZy0A+rBfFJSmIQ
+ fvCzkvk79lr+VwDYYwajCSlPLLUQ204iQ0M1Wl+U8tNgURDTM+8j/R/E01NS9lbBkaQA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=VG1Acj2+gbxdbfJDZJzLLZp0tSIA86OHLDTrtMXiNFo=; b=C
- KHyNNErt4Ogymspzcos6bPKXRAUXbd2isYVO7stPIAB6xoi/gefoMzv4sRdAqy/WB5AU/5Aw2oKBN
- zsqUGxg3Pj/wtgjCNLFydJKydu6u/PQHO8QpUqXuGfb7G+kXkGbXOWWJfUg6W9FWDjDf3WJJ5LlGz
- dZCq2xISy4eNH/WM=;
-Received: from mail-yb1-f179.google.com ([209.85.219.179])
+ List-Owner:List-Archive; bh=Eyo0j185bbdQOSdx8wbf0wlDtgXaJcooRnwz6uO74wA=; b=g
+ pNxw8+Ek/D+w4ETyVPNPKe+ipkfPl5d5x9AtdhqNJ5ALg5RUEfOhqCrzJoNhR5Rl2eMOaqJZToM1C
+ AyV3zPCNBxhnphgddWdCOtoS2QPABUzlnvCU0jsLfESgbGK6LlkMBfoE3LC/G7D99ioBWt6053Fkc
+ MC7L904LgCg9cPOs=;
+Received: from mail-yb1-f170.google.com ([209.85.219.170])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.3)
- id 1mn5dL-00FJyr-NJ
- for linux-uvc-devel@lists.sourceforge.net; Tue, 16 Nov 2021 21:04:55 +0000
-Received: by mail-yb1-f179.google.com with SMTP id e136so679847ybc.4
+ id 1mn5eO-00FK1Q-HJ
+ for linux-uvc-devel@lists.sourceforge.net; Tue, 16 Nov 2021 21:06:01 +0000
+Received: by mail-yb1-f170.google.com with SMTP id e71so591642ybh.10
  for <linux-uvc-devel@lists.sourceforge.net>;
- Tue, 16 Nov 2021 13:04:51 -0800 (PST)
+ Tue, 16 Nov 2021 13:05:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=integrit-ru.20210112.gappssmtp.com; s=20210112;
  h=mime-version:from:date:message-id:subject:to;
- bh=VG1Acj2+gbxdbfJDZJzLLZp0tSIA86OHLDTrtMXiNFo=;
- b=fOlqxD4b4S9BWPoMFuS6s/jKNwU0ZLd8tcHBwKDnhOnnvHuHguFBz+7fxuWDzV66BL
- LxM9CEyc2uf1U8Sn3A1HR9bJLtdP5K4MnB/+KYkZ5MNk4RCMXieNWv0mha5SaWxTpYUo
- PUtvae7NsdKxdshBGFQGvsXvqJS2x3UC2Ehd7S1nTG8qTQ1poLFs/rD/v6IYrW2SAywk
- BZuegpyuhCJNufeFySFHHiQLGc4GQDJiTpDdUQQhJfr0gQMFwWIgWU0kwdCeurLIfwSc
- iPF6nLze5B8vHFJssvFzzus06AslA29yxfV/n3PFnZMq/oj9Npl5rUTjcBbBOr0WVcBD
- qP0Q==
+ bh=Eyo0j185bbdQOSdx8wbf0wlDtgXaJcooRnwz6uO74wA=;
+ b=F+NdEea0HHwcMxVIBy5tujuS4y5XjTVWhPS+R3FBRM/xficDz8Csz4A18WGvnxGdbC
+ +u4lS9bHKt+TJUnstNrVwqnLadLtARpttVjAY/j/fbaNEhZTz29C5UNSSPe+QW+I59dI
+ 2tpI72OAlnP7ke2TabXDfojAhxGuroiWGq44Fp7dAb9hJsmxvuhA2sG5JtSol6X5IfEM
+ dTpgw5o/vw8hDs0qEzuoMWnUaVmqbqNCUaoNW/cspLmdrCM+QV4pDJmhr/W64mKmBUqh
+ 4enOKb11fy9z/Kh2JZcQEDVhsjRVFmnJQV/vzQmlNRdImiz6kzFTRaS/t9HnjBaGYG5I
+ l90A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=VG1Acj2+gbxdbfJDZJzLLZp0tSIA86OHLDTrtMXiNFo=;
- b=hhaSs7NWoyr9VICUMbPhMKKGdrPPB9wjFHcm9S1QS1KbsoOzcfiIy9OqyaNSlA4Rgw
- JWnBfOIa+UH0ueTin2rNhZp2HBVNxHq2oNPu06fuCSCy5rx3SEhnXGR23dJiXpDNkf6k
- g4PQS2X7yI/LDwbnkDa0uz4qGHoP/ZrBG1bahFG9knFAYtm3yYYu7niGO57duTqGjtix
- qClj5s6OcA3FGiPplLyo7Ep+JVtXbi0y7pvZeeXDYGRkQVPUahBh7FQ+NoFj/14Bsz2+
- 74GilHizomiEM64ziRENw/ELiqIwBC5fGNCgRpM0DY/4sDngZXOOKHGlyNl3SIUr5fx7
- rHMQ==
-X-Gm-Message-State: AOAM533PoQAunCfwfh7z+yPKoR/G4aUAsRah8alMy1awAliTjese710+
- GdJ5ZuU2R7FLh6wbg/a7RL9iRf7TmQ64uX+hQfPbtibVJ2O88g==
-X-Google-Smtp-Source: ABdhPJwdIKd8MPOnPcEbU6Q8SoZ39lZys48hUJJebWfwJvx9UYhxrmoe57ptDU4jlf+Ffm21uNSIXunajR2ovef9XJk=
-X-Received: by 2002:a25:f205:: with SMTP id i5mr11727586ybe.61.1637095329922; 
- Tue, 16 Nov 2021 12:42:09 -0800 (PST)
+ bh=Eyo0j185bbdQOSdx8wbf0wlDtgXaJcooRnwz6uO74wA=;
+ b=575yKLCjMBY+v8LUuYGM/wbKWPA4PoAOqQdgKNAf57o2HxydGAI+76PRm0Cwm+SA8f
+ nAIroFQSY2LESKf/8CrNC398z9igfaA1OUtdFJPVHdOJqF8pGeP9/e96XAafOt6kFdX0
+ 2N0IWtKGvfrSn5LfHZiDs4cMYP9SRRVBc4ImMhmnMTEjxmDOgXpDblYHX3xVc9fT3b1g
+ HTE832cxpwGsvVQugDseKPsep8hzEld0PsDRHidmz4K/+Wnrv9VyTt1gJAtmw2xevzxQ
+ cnUHobn6tvzkPmG733J1Ko5Ubn49pz/N46n/8lNra3pczUWNlpwMuJXWAK89ZO0miVmN
+ 9gzA==
+X-Gm-Message-State: AOAM531FUzKQ3e8p27OUc3NYlIw7p91RcV9VQJmXMMi5Rq4sLPxk6WZe
+ irH9rrUnZnLkbCqrlCRy8kmTiG63rzMoJBvOWYGow1xLu10Gxw==
+X-Google-Smtp-Source: ABdhPJwuIx/Ta1VDfihIFPP7pBDS2g7qAsJBIWF5I53ix7M+eIeUas4igckIDJUi7xL1Ksn2Sx0oTiXt0/oHcCOOxGY=
+X-Received: by 2002:a05:6902:1103:: with SMTP id
+ o3mr13270451ybu.303.1637096750522; 
+ Tue, 16 Nov 2021 13:05:50 -0800 (PST)
 MIME-Version: 1.0
 From: Pavel Kyshtymov <kyshtymov@integrit.ru>
-Date: Tue, 16 Nov 2021 23:41:57 +0300
-Message-ID: <CAMQseWR3UCFHvvoefLayXHxvw4uewLw2X+zE3ZeFyyHB+2Vqwg@mail.gmail.com>
+Date: Wed, 17 Nov 2021 00:05:39 +0300
+Message-ID: <CAMQseWShXi=9guFCzMQ2QtqNY4bVYPNakOYPT7aP33F67GkZag@mail.gmail.com>
 To: linux-uvc-devel@lists.sourceforge.net
-Content-Type: multipart/mixed; boundary="0000000000009b1a5005d0edf581"
+Content-Type: multipart/mixed; boundary="00000000000047749d05d0ee4a4b"
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -85,16 +86,16 @@ X-Spam-Report: Spam detection software,
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.219.179 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.219.179 listed in wl.mailspike.net]
+ no trust [209.85.219.170 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.219.170 listed in wl.mailspike.net]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1mn5dL-00FJyr-NJ
-Subject: [linux-uvc-devel] Fwd: Bad capture timestamp conversion
+X-Headers-End: 1mn5eO-00FK1Q-HJ
+Subject: [linux-uvc-devel] Bad capture timestamp conversion
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,7 +109,7 @@ List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>,
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
---0000000000009b1a5005d0edf581
+--00000000000047749d05d0ee4a4b
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -120,7 +121,7 @@ application, instead of system clock samples quantized at the URB
 boundary (~4 ms). Enabling the hwtimestamps parameter puts into
 service the sophisticated clock conversion code that resides in the
 uvc_video_clock_update function, but resulting timestamps look
-somewhat wierd. To say the least, timestamps for successive frames are
+somewhat weird. To say the least, timestamps for successive frames are
 not monotonic.
 
 uname -a
@@ -187,12 +188,94 @@ Thank you so much for your great work!
 P.S. I'm sorry for my fault with cluttering the mailing list with HTML
 in the previous message.
 
---0000000000009b1a5005d0edf581
+--00000000000047749d05d0ee4a4b
+Content-Type: text/plain; charset="US-ASCII"; name="modinfo.txt"
+Content-Disposition: attachment; filename="modinfo.txt"
+Content-Transfer-Encoding: base64
+Content-ID: <f_kw2l4col2>
+X-Attachment-Id: f_kw2l4col2
+
+ZmlsZW5hbWU6ICAgICAgIC9saWIvbW9kdWxlcy81LjEwLjYzLXY3bCsva2VybmVsL2RyaXZlcnMv
+bWVkaWEvdXNiL3V2Yy91dmN2aWRlby5rbwp2ZXJzaW9uOiAgICAgICAgMS4xLjEKbGljZW5zZTog
+ICAgICAgIEdQTApkZXNjcmlwdGlvbjogICAgVVNCIFZpZGVvIENsYXNzIGRyaXZlcgphdXRob3I6
+ICAgICAgICAgTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQu
+Y29tPgpzcmN2ZXJzaW9uOiAgICAgQkQ4RkUxQkQyN0JBMjY3RkE1NkMyNjAKYWxpYXM6ICAgICAg
+ICAgIHVzYjp2KnAqZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMWluKgphbGlhczogICAgICAgICAg
+dXNiOnYqcCpkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6
+djgwODZwMEIwM2QqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVz
+Yjp2MjlGRXA0RDUzZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAg
+dXNiOnYyODMzcDAyMTFkKmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAg
+ICB1c2I6djI4MzNwMDIwMWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAg
+ICAgIHVzYjp2MUM0RnAzMDAwZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAg
+ICAgICAgdXNiOnYxQjNGcDIwMDJkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAg
+ICAgICAgICB1c2I6djFCM0JwMjk1MWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6
+ICAgICAgICAgIHVzYjp2MTlBQnAxMDAwZDAwKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFs
+aWFzOiAgICAgICAgICB1c2I6djE5QUJwMTAwMGQwMVswLTFdKmRjKmRzYypkcCppYzBFaXNjMDFp
+cDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE5QUJwMTAwMGQwMTJbMC02XWRjKmRzYypkcCpp
+YzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE5OUVwODEwMmQqZGMqZHNjKmRw
+KmljRkZpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MThFQ3AzMjkwZCpkYypkc2Mq
+ZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYxOEVDcDMyODhkKmRjKmRz
+YypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE4RUNwMzE4OGQqZGMq
+ZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MThDRHBDQUZFZCpk
+Yypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYxODcxcDA1MTZk
+KmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE4NzFwMDMw
+NmQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MTdFRnA0
+ODBCZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYxN0RD
+cDAyMDJkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE3
+NEZwOEEzNGQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2
+MTc0RnA4QTMzZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNi
+OnYxNzRGcDhBMzFkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1
+c2I6djE3NEZwOEExMmQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAg
+IHVzYjp2MTc0RnA1OTMxZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAg
+ICAgdXNiOnYxNzRGcDUyMTJkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAg
+ICAgICB1c2I6djE1MkRwMDMxMGQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAg
+ICAgICAgIHVzYjp2MTNEM3A1MTAzZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczog
+ICAgICAgICAgdXNiOnYwRThEcDAwMDRkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFz
+OiAgICAgICAgICB1c2I6djBCRDNwMDU1NWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxp
+YXM6ICAgICAgICAgIHVzYjp2MEFDOHAzNDIwZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgph
+bGlhczogICAgICAgICAgdXNiOnYwQUM4cDM0MTBkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4q
+CmFsaWFzOiAgICAgICAgICB1c2I6djBBQzhwMzMyRGQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBp
+bioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDZGOHAzMDBDZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAw
+MGluKgphbGlhczogICAgICAgICAgdXNiOnYwNUUzcDA1MDVkKmRjKmRzYypkcCppYzBFaXNjMDFp
+cDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA1QzhwMDQwM2QqZGMqZHNjKmRwKmljMEVpc2Mw
+MWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDVBQ3A4NjAwZCpkYypkc2MqZHAqaWMwRWlz
+YzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNUFDcDg1MDFkKmRjKmRzYypkcCppYzBF
+aXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA1QTlwNzY3MGQqZGMqZHNjKmRwKmlj
+MEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDVBOXAyNjRBZCpkYypkc2MqZHAq
+aWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNUE5cDI2NDNkKmRjKmRzYypk
+cCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA1QTlwMjY0MWQqZGMqZHNj
+KmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDVBOXAyNjQwZCpkYypk
+c2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNThGcDM4MjBkKmRj
+KmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA0RjJwQjA3MWQq
+ZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDQ2RHAwODJE
+ZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNDZEcDA4
+QzdkKmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA0NkRw
+MDhDNmQqZGMqZHNjKmRwKmljRkZpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDQ2
+RHAwOEM1ZCpkYypkc2MqZHAqaWNGRmlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYw
+NDZEcDA4QzNkKmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6
+djA0NkRwMDhDMmQqZGMqZHNjKmRwKmljRkZpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVz
+Yjp2MDQ2RHAwOEMxZCpkYypkc2MqZHAqaWNGRmlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAg
+dXNiOnYwNDVFcDA3MjNkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAg
+ICB1c2I6djA0NUVwMDcyMWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAg
+ICAgIHVzYjp2MDQ1RXAwMEY4ZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAg
+ICAgICAgdXNiOnYwNDU4cDcwNkVkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAg
+ICAgICAgICB1c2I6djA0MTZwQTkxQWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKZGVwZW5k
+czogICAgICAgIHZpZGVvYnVmMi12NGwyLHZpZGVvZGV2LHZpZGVvYnVmMi1jb21tb24sdmlkZW9i
+dWYyLXZtYWxsb2MsbWMKaW50cmVlOiAgICAgICAgIFkKbmFtZTogICAgICAgICAgIHV2Y3ZpZGVv
+CnZlcm1hZ2ljOiAgICAgICA1LjEwLjYzLXY3bCsgU01QIG1vZF91bmxvYWQgbW9kdmVyc2lvbnMg
+QVJNdjcgcDJ2OCAKcGFybTogICAgICAgICAgIGNsb2NrOlZpZGVvIGJ1ZmZlcnMgdGltZXN0YW1w
+IGNsb2NrCnBhcm06ICAgICAgICAgICBod3RpbWVzdGFtcHM6VXNlIGhhcmR3YXJlIHRpbWVzdGFt
+cHMgKHVpbnQpCnBhcm06ICAgICAgICAgICBub2Ryb3A6RG9uJ3QgZHJvcCBpbmNvbXBsZXRlIGZy
+YW1lcyAodWludCkKcGFybTogICAgICAgICAgIHF1aXJrczpGb3JjZWQgZGV2aWNlIHF1aXJrcyAo
+dWludCkKcGFybTogICAgICAgICAgIHRyYWNlOlRyYWNlIGxldmVsIGJpdG1hc2sgKHVpbnQpCnBh
+cm06ICAgICAgICAgICB0aW1lb3V0OlN0cmVhbWluZyBjb250cm9sIHJlcXVlc3RzIHRpbWVvdXQg
+KHVpbnQpCg==
+--00000000000047749d05d0ee4a4b
 Content-Type: text/plain; charset="US-ASCII"; name="lsusb.txt"
 Content-Disposition: attachment; filename="lsusb.txt"
 Content-Transfer-Encoding: base64
-Content-ID: <f_kw2k77g11>
-X-Attachment-Id: f_kw2k77g11
+Content-ID: <f_kw2l4cod1>
+X-Attachment-Id: f_kw2l4cod1
 
 CkJ1cyAwMDEgRGV2aWNlIDAwMzogSUQgMDQ1ZTowNzVkIE1pY3Jvc29mdCBDb3JwLiBMaWZlQ2Ft
 IENpbmVtYQpEZXZpY2UgRGVzY3JpcHRvcjoKICBiTGVuZ3RoICAgICAgICAgICAgICAgIDE4CiAg
@@ -834,12 +917,12 @@ ICAzNwogICAgICAgICAgYkRlc2NyaXB0b3JTdWJ0eXBlICAgICAgMSAoRVBfR0VORVJBTCkKICAg
 ICAgICAgIGJtQXR0cmlidXRlcyAgICAgICAgIDB4MDEKICAgICAgICAgICAgU2FtcGxpbmcgRnJl
 cXVlbmN5CiAgICAgICAgICBiTG9ja0RlbGF5VW5pdHMgICAgICAgICAwIFVuZGVmaW5lZAogICAg
 ICAgICAgd0xvY2tEZWxheSAgICAgICAgIDB4MDAwMAo=
---0000000000009b1a5005d0edf581
+--00000000000047749d05d0ee4a4b
 Content-Type: text/plain; charset="UTF-8"; name="dmesg.txt"
 Content-Disposition: attachment; filename="dmesg.txt"
 Content-Transfer-Encoding: base64
-Content-ID: <f_kw2k77ew0>
-X-Attachment-Id: f_kw2k77ew0
+Content-ID: <f_kw2l4cnt0>
+X-Attachment-Id: f_kw2l4cnt0
 
 WyAxNDg3LjMwOTY5NF0gdXZjdmlkZW86IHV2Y192NGwyX29wZW4KWyAxNDg3LjU0MjUzMV0gdXZj
 dmlkZW86IFJlc3VtaW5nIGludGVyZmFjZSAwClsgMTQ4Ny41NDI1MzldIHV2Y3ZpZGVvOiBSZXN1
@@ -3163,96 +3246,14 @@ NzIxICh4MSAxNTMyMjMxNjgvMjkwLzI4NyB4MiAxNTUwNTgxNzYvMzE4LzMxOCB5MSAxMDAwMDAw
 MDAwIHkyIDEwMjgwODYzMDQpClsgMTQ5NS43MjE1NzFdIHV2Y3ZpZGVvOiB1dmNfdjRsMl9yZWxl
 YXNlClsgMTQ5OC4yNTEzMzBdIHV2Y3ZpZGVvOiBTdXNwZW5kaW5nIGludGVyZmFjZSAxClsgMTQ5
 OC4yNTEzNDldIHV2Y3ZpZGVvOiBTdXNwZW5kaW5nIGludGVyZmFjZSAwCg==
---0000000000009b1a5005d0edf581
-Content-Type: text/plain; charset="US-ASCII"; name="modinfo.txt"
-Content-Disposition: attachment; filename="modinfo.txt"
-Content-Transfer-Encoding: base64
-Content-ID: <f_kw2k77g62>
-X-Attachment-Id: f_kw2k77g62
-
-ZmlsZW5hbWU6ICAgICAgIC9saWIvbW9kdWxlcy81LjEwLjYzLXY3bCsva2VybmVsL2RyaXZlcnMv
-bWVkaWEvdXNiL3V2Yy91dmN2aWRlby5rbwp2ZXJzaW9uOiAgICAgICAgMS4xLjEKbGljZW5zZTog
-ICAgICAgIEdQTApkZXNjcmlwdGlvbjogICAgVVNCIFZpZGVvIENsYXNzIGRyaXZlcgphdXRob3I6
-ICAgICAgICAgTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQu
-Y29tPgpzcmN2ZXJzaW9uOiAgICAgQkQ4RkUxQkQyN0JBMjY3RkE1NkMyNjAKYWxpYXM6ICAgICAg
-ICAgIHVzYjp2KnAqZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMWluKgphbGlhczogICAgICAgICAg
-dXNiOnYqcCpkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6
-djgwODZwMEIwM2QqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVz
-Yjp2MjlGRXA0RDUzZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAg
-dXNiOnYyODMzcDAyMTFkKmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAg
-ICB1c2I6djI4MzNwMDIwMWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAg
-ICAgIHVzYjp2MUM0RnAzMDAwZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAg
-ICAgICAgdXNiOnYxQjNGcDIwMDJkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAg
-ICAgICAgICB1c2I6djFCM0JwMjk1MWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6
-ICAgICAgICAgIHVzYjp2MTlBQnAxMDAwZDAwKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFs
-aWFzOiAgICAgICAgICB1c2I6djE5QUJwMTAwMGQwMVswLTFdKmRjKmRzYypkcCppYzBFaXNjMDFp
-cDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE5QUJwMTAwMGQwMTJbMC02XWRjKmRzYypkcCpp
-YzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE5OUVwODEwMmQqZGMqZHNjKmRw
-KmljRkZpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MThFQ3AzMjkwZCpkYypkc2Mq
-ZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYxOEVDcDMyODhkKmRjKmRz
-YypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE4RUNwMzE4OGQqZGMq
-ZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MThDRHBDQUZFZCpk
-Yypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYxODcxcDA1MTZk
-KmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE4NzFwMDMw
-NmQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MTdFRnA0
-ODBCZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYxN0RD
-cDAyMDJkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djE3
-NEZwOEEzNGQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2
-MTc0RnA4QTMzZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNi
-OnYxNzRGcDhBMzFkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1
-c2I6djE3NEZwOEExMmQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAg
-IHVzYjp2MTc0RnA1OTMxZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAg
-ICAgdXNiOnYxNzRGcDUyMTJkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAg
-ICAgICB1c2I6djE1MkRwMDMxMGQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAg
-ICAgICAgIHVzYjp2MTNEM3A1MTAzZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczog
-ICAgICAgICAgdXNiOnYwRThEcDAwMDRkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFz
-OiAgICAgICAgICB1c2I6djBCRDNwMDU1NWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxp
-YXM6ICAgICAgICAgIHVzYjp2MEFDOHAzNDIwZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgph
-bGlhczogICAgICAgICAgdXNiOnYwQUM4cDM0MTBkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4q
-CmFsaWFzOiAgICAgICAgICB1c2I6djBBQzhwMzMyRGQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBp
-bioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDZGOHAzMDBDZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAw
-MGluKgphbGlhczogICAgICAgICAgdXNiOnYwNUUzcDA1MDVkKmRjKmRzYypkcCppYzBFaXNjMDFp
-cDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA1QzhwMDQwM2QqZGMqZHNjKmRwKmljMEVpc2Mw
-MWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDVBQ3A4NjAwZCpkYypkc2MqZHAqaWMwRWlz
-YzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNUFDcDg1MDFkKmRjKmRzYypkcCppYzBF
-aXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA1QTlwNzY3MGQqZGMqZHNjKmRwKmlj
-MEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDVBOXAyNjRBZCpkYypkc2MqZHAq
-aWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNUE5cDI2NDNkKmRjKmRzYypk
-cCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA1QTlwMjY0MWQqZGMqZHNj
-KmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDVBOXAyNjQwZCpkYypk
-c2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNThGcDM4MjBkKmRj
-KmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA0RjJwQjA3MWQq
-ZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDQ2RHAwODJE
-ZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYwNDZEcDA4
-QzdkKmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6djA0NkRw
-MDhDNmQqZGMqZHNjKmRwKmljRkZpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVzYjp2MDQ2
-RHAwOEM1ZCpkYypkc2MqZHAqaWNGRmlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAgdXNiOnYw
-NDZEcDA4QzNkKmRjKmRzYypkcCppY0ZGaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAgICB1c2I6
-djA0NkRwMDhDMmQqZGMqZHNjKmRwKmljRkZpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAgICAgIHVz
-Yjp2MDQ2RHAwOEMxZCpkYypkc2MqZHAqaWNGRmlzYzAxaXAwMGluKgphbGlhczogICAgICAgICAg
-dXNiOnYwNDVFcDA3MjNkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAgICAgICAg
-ICB1c2I6djA0NUVwMDcyMWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKYWxpYXM6ICAgICAg
-ICAgIHVzYjp2MDQ1RXAwMEY4ZCpkYypkc2MqZHAqaWMwRWlzYzAxaXAwMGluKgphbGlhczogICAg
-ICAgICAgdXNiOnYwNDU4cDcwNkVkKmRjKmRzYypkcCppYzBFaXNjMDFpcDAwaW4qCmFsaWFzOiAg
-ICAgICAgICB1c2I6djA0MTZwQTkxQWQqZGMqZHNjKmRwKmljMEVpc2MwMWlwMDBpbioKZGVwZW5k
-czogICAgICAgIHZpZGVvYnVmMi12NGwyLHZpZGVvZGV2LHZpZGVvYnVmMi1jb21tb24sdmlkZW9i
-dWYyLXZtYWxsb2MsbWMKaW50cmVlOiAgICAgICAgIFkKbmFtZTogICAgICAgICAgIHV2Y3ZpZGVv
-CnZlcm1hZ2ljOiAgICAgICA1LjEwLjYzLXY3bCsgU01QIG1vZF91bmxvYWQgbW9kdmVyc2lvbnMg
-QVJNdjcgcDJ2OCAKcGFybTogICAgICAgICAgIGNsb2NrOlZpZGVvIGJ1ZmZlcnMgdGltZXN0YW1w
-IGNsb2NrCnBhcm06ICAgICAgICAgICBod3RpbWVzdGFtcHM6VXNlIGhhcmR3YXJlIHRpbWVzdGFt
-cHMgKHVpbnQpCnBhcm06ICAgICAgICAgICBub2Ryb3A6RG9uJ3QgZHJvcCBpbmNvbXBsZXRlIGZy
-YW1lcyAodWludCkKcGFybTogICAgICAgICAgIHF1aXJrczpGb3JjZWQgZGV2aWNlIHF1aXJrcyAo
-dWludCkKcGFybTogICAgICAgICAgIHRyYWNlOlRyYWNlIGxldmVsIGJpdG1hc2sgKHVpbnQpCnBh
-cm06ICAgICAgICAgICB0aW1lb3V0OlN0cmVhbWluZyBjb250cm9sIHJlcXVlc3RzIHRpbWVvdXQg
-KHVpbnQpCg==
---0000000000009b1a5005d0edf581
+--00000000000047749d05d0ee4a4b
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---0000000000009b1a5005d0edf581
+--00000000000047749d05d0ee4a4b
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -3263,5 +3264,5 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---0000000000009b1a5005d0edf581--
+--00000000000047749d05d0ee4a4b--
 
