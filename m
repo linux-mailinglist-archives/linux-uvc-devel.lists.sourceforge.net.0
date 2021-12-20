@@ -2,80 +2,104 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5FAC45CE54
-	for <lists+linux-uvc-devel@lfdr.de>; Wed, 24 Nov 2021 21:45:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EFE5247B4A6
+	for <lists+linux-uvc-devel@lfdr.de>; Mon, 20 Dec 2021 22:04:19 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1mpz8D-0004jX-6O; Wed, 24 Nov 2021 20:44:42 +0000
+	id 1mzPoy-0001x0-8p; Mon, 20 Dec 2021 21:03:49 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <logans@cottsay.net>) id 1mpz8B-0004jR-9u
- for linux-uvc-devel@lists.sourceforge.net; Wed, 24 Nov 2021 20:44:40 +0000
+ (envelope-from <damiano.albani@gmail.com>) id 1mzPow-0001ws-Tn
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 20 Dec 2021 21:03:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=OpuhZ2huGbX4Q3+rhVkUpfI5UQyQg1olGqYUUvZMK78=; b=LbEnp9SXuE17ViE59z4KSbOaZ0
- fEeeSXCKjEvlyiCJJvGoQeMK+sFreV+vPQUZpNiDKZAYILiqMHCULG0S/3HX8ovhZQxPl0q+Oek2q
- pdxE9y+Ena+HgPROC9M9dpCsYml0o8T9pVA6hNRXKia24plstHVLnGuOLLLrfp+T0RiA=;
+ bh=oA7Obut6yoYR+epGVeFmfW4PpHi4Ex2rp8C+1FQmHmY=; b=SEtcZi9ja8xKcwV19/9DSUyUSy
+ kjrCD6sY39Tik/ZrzcLHK87C8M3VSxuxYGFrbd4U/eknmjdk/s4+ast0O4xDpWyfyHDjlPjOzsJef
+ KG7G4bTsYZ/g/zR6wXy0SaZZ3YVY9EbGAggaEK9TML0LBVfBTk6us3qE995BKKKLAXgo=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=OpuhZ2huGbX4Q3+rhVkUpfI5UQyQg1olGqYUUvZMK78=; b=fs5sMWB7uSZpx2uP2W8987p/8h
- 4vL6tCeR0BoDfGowMJRXxt9Gme8qdTyBwN0w3LcDFInqoS9RcXmgoOTJMlf0T5z2Dq9OaFPK12TOe
- jxLyCaoBoMUFSBcLe5T8IwTlrhL0ZXZNLJzoj47kEsWxv9qrmz1+ZU+MT2kwv3HdufYQ=;
-Received: from azure2.cottsay.net ([104.41.151.152])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
- id 1mpz8B-007whv-EU
- for linux-uvc-devel@lists.sourceforge.net; Wed, 24 Nov 2021 20:44:40 +0000
-Received: from cottsay-server.delphi.cottsay.net (unknown [24.19.54.182])
- by azure2.cottsay.net (Postfix) with ESMTPS id 8B21A1A06F8
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=oA7Obut6yoYR+epGVeFmfW4PpHi4Ex2rp8C+1FQmHmY=; b=Q
+ c/DCn2PcbbvujCSXqcFdhJFQ9bBu2uZ9N+d+5Bael1GMPdHIHkHv28neMb5yOzNrJrbaYTTVZ+0sF
+ nDItTt01VqhwIvekW4nwd5j5R0f5qGKOqj44QF7Mn5X7sOF98yTtzur4TpGrliRMnORbu/lTAvYXw
+ 7+zgCSfHopDuRvk8=;
+Received: from mail-lj1-f175.google.com ([209.85.208.175])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.3)
+ id 1mzPox-0003Ke-8r
+ for linux-uvc-devel@lists.sourceforge.net; Mon, 20 Dec 2021 21:03:47 +0000
+Received: by mail-lj1-f175.google.com with SMTP id i63so17987040lji.3
  for <linux-uvc-devel@lists.sourceforge.net>;
- Wed, 24 Nov 2021 20:44:30 +0000 (UTC)
-Received: from cottsay-lenovo.delphi.cottsay.net
- (cottsay-lenovo.delphi.cottsay.net [172.16.8.31])
- by cottsay-server.delphi.cottsay.net (Postfix) with ESMTPSA id 028F81E014D;
- Wed, 24 Nov 2021 12:44:28 -0800 (PST)
-Message-ID: <0a050c12eb7cc62e3328aad139f447234e9d4b31.camel@cottsay.net>
-From: Scott K Logan <logans@cottsay.net>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Date: Wed, 24 Nov 2021 12:44:27 -0800
-In-Reply-To: <YZ3b6ObAhJnz9OSF@pendragon.ideasonboard.com>
-References: <20211003023554.885815-2-logans@cottsay.net>
- <20211124005834.556428-1-logans@cottsay.net>
- <YZ3b6ObAhJnz9OSF@pendragon.ideasonboard.com>
-User-Agent: Evolution 3.42.1 (3.42.1-1.fc35) 
+ Mon, 20 Dec 2021 13:03:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=oA7Obut6yoYR+epGVeFmfW4PpHi4Ex2rp8C+1FQmHmY=;
+ b=hDuIjaJM9j7tV4IfiX2PpcnCEH9HfOsZQSej6MNfoTmqFxqBWleTTG28GTm3xlLQsF
+ I70sGeHVc3xBQLbstn2c8cDpS7X4ZvlyCSe4qTivB9bqRg591J7mcHPJ8rTw0vtSNSFp
+ tf18G3Ud4OQwM/Qr1lJSmGB4n3RQELp7fDOYIxWy6m/ODVvs1+vLpZRxFz+Rk7QKhKYL
+ lP4I2LFqHtQ6lK7kohIBC9JZzBOAmHT84upnQqt0LTnr1eNIpbgNpsfcN7lTx8M7wPV7
+ MfBE4ZITQ+p9sMgQarzDytEpOeVoOf+k1moy+0MJaEib3OkFIalzOmS4kphExFydzBmf
+ aa7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=oA7Obut6yoYR+epGVeFmfW4PpHi4Ex2rp8C+1FQmHmY=;
+ b=azivTUJAMC64FRxo6llwGDXpTtqufPvP1ewNo7E7N+3ukGF1EaD05t4D2vnDQxDc1U
+ /UM1/6Ezd6kKmVnWfYAASQnhTFqFJaKFwW8IZWbL3JWy8a0AhciWqyqlJSgWuUrMTKqP
+ asmcJCT7HD4+qXT5o0OvC+7F+ShEbgCpVPqi/AYqwKcDXhK0SrhUhy5TyjWQDSZJm8Ld
+ kw395DmiJgnZNw8H6/I1tDTh3o3PMqEwxTV5ojoljByvC/8KCdXblen35/2GqG3CnTRO
+ beED343o2OUwX2GxKdFUbMDx3SggeTC4j/ntiqWAHOJ7ATNrKlKhx5YZMjqm4ksARn8N
+ 7GEg==
+X-Gm-Message-State: AOAM533Za0mafivZGWrJQCTVJLrF63w1ZWzSnYSw77asqSPOUOrLQGfr
+ NYOtSVP3yHsU5Yk7hTKmO7SiiwuWiSvsx0B61VxJaXY8Uag=
+X-Google-Smtp-Source: ABdhPJw3xoPGoTgVN6gEuqiDdJGTQy1NtOA8qi1eSSJTLWo8EwxrBPLxGdo5DqtG/3Pu5lrF65T0Z9VxHUIXehWbDrk=
+X-Received: by 2002:a2e:720b:: with SMTP id n11mr16285047ljc.351.1640034219650; 
+ Mon, 20 Dec 2021 13:03:39 -0800 (PST)
 MIME-Version: 1.0
-X-Spam-Score: -2.3 (--)
+From: Damiano Albani <damiano.albani@gmail.com>
+Date: Mon, 20 Dec 2021 22:03:13 +0100
+Message-ID: <CAKys953Tx1g8W=uzE_j+DkjMx4AKF+bo1r+rdKJCKjVA8tVO4A@mail.gmail.com>
+To: linux-uvc-devel@lists.sourceforge.net
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Thanks very much for taking a look, Laurent. On Wed,
- 2021-11-24
- at 08:30 +0200, Laurent Pinchart wrote: > Hi Scott, > > Thank you for the
- patch. > > On Wed, Nov 24, 2021 at 12:59:05AM +0000, Scott K Logan wrote:
- > > At least some of the Microsof [...] 
- Content analysis details:   (-2.3 points, 6.0 required)
+ Content preview:  Hello, I've been the owner of a Logitech C930e for many years
+ now, and it does work well on Linux in terms of "basic" webcam functionality.
+ But I've always found it a bit of a shame that I can't use the feat [...]
+ Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [104.41.151.152 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.208.175 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
-X-Headers-End: 1mpz8B-007whv-EU
-Subject: Re: [linux-uvc-devel] [PATCH v2 1/1] media: uvcvideo: Add quirk for
- exponential exposure
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [damiano.albani[at]gmail.com]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.208.175 listed in wl.mailspike.net]
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+X-Headers-End: 1mzPox-0003Ke-8r
+Subject: [linux-uvc-devel] Logitech C930e UVC 1.5 / H264 webcam
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,132 +111,158 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-uvc-devel@lists.sourceforge.net, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3675433292757416724=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-VGhhbmtzIHZlcnkgbXVjaCBmb3IgdGFraW5nIGEgbG9vaywgTGF1cmVudC4KCgpPbiBXZWQsIDIw
-MjEtMTEtMjQgYXQgMDg6MzAgKzAyMDAsIExhdXJlbnQgUGluY2hhcnQgd3JvdGU6Cj4gSGkgU2Nv
-dHQsCj4gCj4gVGhhbmsgeW91IGZvciB0aGUgcGF0Y2guCj4gCj4gT24gV2VkLCBOb3YgMjQsIDIw
-MjEgYXQgMTI6NTk6MDVBTSArMDAwMCwgU2NvdHQgSyBMb2dhbiB3cm90ZToKPiA+IEF0IGxlYXN0
-IHNvbWUgb2YgdGhlIE1pY3Jvc29mdCBMaWZlQ2FtIHNlcmllcyBvZiB3ZWJjYW1zIGV4aGliaXQg
-YQo+ID4gYmVoYXZpb3Igd2hpY2ggcmVxdWlyZXMgYSAncXVpcmsnIHRvIGJlIGhhbmRsZWQgcHJv
-cGVybHkuIFdoZW4KPiA+IGNvbmZpZ3VyaW5nIHRoZSBhYnNvbHV0ZSBleHBvc3VyZSB2YWx1ZSBv
-ZiB0aGUgaW1hZ2UsIHRoZXJlIGFyZSBvbmx5IGEKPiA+IGhhbmRmdWwgb2YgdmFsdWVzIHdoaWNo
-IHdpbGwgcmVzdWx0IGluIGEgY29uc2lzdGVudCBjaGFuZ2UgdG8gdGhlIGltYWdlCj4gPiBleHBv
-c3VyZSwgd2hpbGUgYWxsIG90aGVyIHZhbHVlcyBhcHBlYXIgdG8gcmVzdWx0IGluIGEgbWF4aW11
-bQo+ID4gZXhwb3N1cmUuCj4gPiBUaGUgdmFsaWQgdmFsdWVzIGFwcGVhciB0byBmb2xsb3cgYW4g
-ZXhwb25lbnRpYWwgcGF0dGVybiBmcm9tIHRoZQo+ID4gbWF4aW11bSB2YWx1ZSAoMTAwMDApIGRv
-d24gdG8gdGhlIG1pbmltdW0sIHlpZWxkaW5nIGxlc3MgdGhhbiAxNQo+ID4gcG9zc2libGUgdmFs
-dWVzIGRlcGVuZGluZyBvbiB0aGUgZGV2aWNlJ3MgcmVwb3J0ZWQgbWluaW11bS4KPiA+IAo+ID4g
-U2lnbmVkLW9mZi1ieTogU2NvdHQgSyBMb2dhbiA8bG9nYW5zQGNvdHRzYXkubmV0Pgo+ID4gLS0t
-Cj4gPiAgZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y19jdHJsLmMgICB8IDQxICsrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKwo+ID4gIGRyaXZlcnMvbWVkaWEvdXNiL3V2Yy91dmNfZHJpdmVy
-LmMgfCAyNyArKysrKysrKysrKysrKysrKysrKwo+ID4gIGRyaXZlcnMvbWVkaWEvdXNiL3V2Yy91
-dmN2aWRlby5oICAgfCAgMSArCj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCA2OSBpbnNlcnRpb25zKCsp
-Cj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3VzYi91dmMvdXZjX2N0cmwuYyBi
-L2RyaXZlcnMvbWVkaWEvdXNiL3V2Yy91dmNfY3RybC5jCj4gPiBpbmRleCAzMGJmZTkwNjlhMWYu
-LjJkZmM3MDU5Nzg1OCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvdXNiL3V2Yy91dmNf
-Y3RybC5jCj4gPiArKysgYi9kcml2ZXJzL21lZGlhL3VzYi91dmMvdXZjX2N0cmwuYwo+ID4gQEAg
-LTIxNDIsNiArMjE0Miw0MCBAQCBpbnQgdXZjX2N0cmxfcmVzdG9yZV92YWx1ZXMoc3RydWN0IHV2
-Y19kZXZpY2UgKmRldikKPiA+ICAJcmV0dXJuIDA7Cj4gPiAgfQo+ID4gIAo+ID4gKy8qIC0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tCj4gPiArICogUXVpcmtzCj4gPiArICovCj4gPiArCj4gPiArc3RhdGljIHMz
-MiB1dmNfY3RybF9nZXRfYWJzX2V4cG9zdXJlX2V4cG9uZW50aWFsKAo+ID4gKwlzdHJ1Y3QgdXZj
-X2NvbnRyb2xfbWFwcGluZyAqbWFwcGluZywgdTggcXVlcnksIGNvbnN0IHU4ICpkYXRhKQo+ID4g
-K3sKPiA+ICsJczMyIGk7Cj4gPiArCXMzMiB2YWx1ZSA9IHV2Y19nZXRfbGVfdmFsdWUobWFwcGlu
-ZywgcXVlcnksIGRhdGEpOwo+ID4gKwo+ID4gKwlzd2l0Y2ggKHF1ZXJ5KSB7Cj4gPiArCWNhc2Ug
-VVZDX0dFVF9DVVI6Cj4gPiArCWNhc2UgVVZDX0dFVF9NSU46Cj4gPiArCWNhc2UgVVZDX0dFVF9N
-QVg6Cj4gPiArCWNhc2UgVVZDX0dFVF9ERUY6Cj4gPiArCQlmb3IgKGkgPSAwOyBpIDwgMTQ7ICsr
-aSkgewo+ID4gKwkJCWlmICgxMDAwMCA+PiBpIDw9IHZhbHVlKQo+ID4gKwkJCQlicmVhazsKPiA+
-ICsJCX0KPiA+ICsJCXJldHVybiAxNCAtIGk7Cj4gPiArCWNhc2UgVVZDX0dFVF9SRVM6Cj4gPiAr
-CQlyZXR1cm4gMTsKPiA+ICsJZGVmYXVsdDoKPiA+ICsJCXJldHVybiB2YWx1ZTsKPiA+ICsJfQo+
-ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgdm9pZCB1dmNfY3RybF9zZXRfYWJzX2V4cG9zdXJlX2V4
-cG9uZW50aWFsKAo+ID4gKwlzdHJ1Y3QgdXZjX2NvbnRyb2xfbWFwcGluZyAqbWFwcGluZywgczMy
-IHZhbHVlLCB1OCAqZGF0YSkKPiA+ICt7Cj4gPiArCXZhbHVlID0gMTAwMDAgPj4gKDE0IC0gdmFs
-dWUpOwo+IAo+IEluIGFkZGl0aW9uIHRvIHJlc3RyaWN0aW5nIHRoZSB2YWx1ZXMgdG8gdGhlIG9u
-ZXMgY29ycmVjdGx5IHN1cHBvcnRlZCBieQo+IHRoZSBkZXZpY2UsIHRoaXMgbWFwcyBhIGxpbmVh
-ciBzY2FsZSAoMSB0byAxMDAwMCkgdG8gYW4gZXhwb25lbnRpYWwKPiBzY2FsZSAoMSB0byAxNCku
-IFRoZSBWNEwyIGNvbnRyb2wgVjRMMl9DSURfRVhQT1NVUkVfQUJTT0xVVEUgaXMgc3VwcG9zZWQK
-PiB0byBiZSBsaW5lYXIsIGFuZCBkb2N1bWVudGVkIGFzIGV4cHJlc3NlZCBpbiAxMDAgwrVzIHVu
-aXRzLgo+IAo+IFdvdWxkbid0IGl0IGJlIGJldHRlciB0byBrZWVwIHRoZSBvcmlnaW5hbCBzY2Fs
-ZSAoMSB0byAxMDAwMCkgYW5kIHJvdW5kCj4gdGhlIHJlcXVlc3RlZCB2YWx1ZSB0byB0aGUgY2xv
-c2VzdCBzdXBwb3J0ZWQgdmFsdWUgPwoKVGhpcyBpcyBhIHZlcnkgdmFsaWQgcG9pbnQuIEknbSBu
-b3QgaW4gYSBwb3NpdGlvbiB0byBtZWFzdXJlIHRoZQpleHBvc3VyZSBhY2N1cmF0ZWx5LCBidXQg
-dGhpcyBtb3JuaW5nIEkgdG9vayB0aGUgdGltZSB0byBwbG90IHRoZQphdmVyYWdlIHBpeGVsIGlu
-dGVuc2l0eSBhY3Jvc3MgYSBzZXJpZXMgb2Ygc3RpbGxzIGF0IHZhcnlpbmcgZXhwb3N1cmUKc2V0
-dGluZ3MuIFdoaWxlIHRoZSBkYXRhIGRpZG4ndCBsb29rIHF1aXRlIGFzIGxpbmVhciBhcyBteSBs
-YXB0b3AncwpidWlsdC1pbiBjYW1lcmEsIGl0IHdhcyBzdWJzdGFudGlhbGx5IGNsb3NlciB0aGFu
-IHRoZSBkYXRhIHdpdGhvdXQgdGhlCnNjYWxpbmcuIElmIHRoZSBzY2FsZSBpcyBzdXBwb3NlZCB0
-byBiZSBsaW5lYXIsIHRoaXMgcGF0Y2ggd2lsbApjZXJ0YWlubHkgbWFrZSBpdCBtb3JlIHNvLgoK
-QXMgYSBndXQgY2hlY2ssIEkndmUgYmVlbiBvcGVyYXRpbmcgbXkgTGlmZUNhbSBjYW1lcmEgaW4g
-bWVldGluZ3MgYXQKdGhlIG1hbnVhbCBleHBvc3VyZSBsZXZlbCBvZiAxNTYgb3V0IG9mIDEwMDAw
-LiBUaGUgZXhwb25lbnRpYWxseSBzY2FsZWQKdmFsdWUgd291bGQgYmUgOCwgd2hpY2ggaXMgcm91
-Z2hseSBoYWxmIHdheSB0aHJvdWdoIHRoZSBhZHZlcnRpc2VkCnNjYWxlICgxLTE0KS4KCj4gQWRk
-aXRpb25hbGx5LCBkbyB3ZSBoYXZlIGEgZ3VhcmFudGVlIHRoYXQgYWxsIHRoZSBkZXZpY2VzIHRo
-YXQgbmVlZCB0aGlzCj4gcXVpcmsgd2lsbCBoYXZlIHRoZSBzYW1lIGV4cG9zdXJlIHJhbmdlICgx
-IHRvIDEwMDAwKSwgb3IgY291bGQgdGhlCj4gbWF4aW11bSB2YWx1ZSBiZSBkaWZmZXJlbnQgPwoK
-SSBhY3R1YWxseSBkaWRuJ3QgdGhpbmsgYWJvdXQgdGhhdC4gSXQgYXBwZWFycyB0byBiZSB0aGUg
-Y2FzZSBmb3IgYm90aApvZiB0aGUgbW9kZWxzIEkgb3duIGFzIHdlbGwgYXMgdGhlIG9uZSBZdXJp
-eSBoYXMgKGJ5IHRoZSB3YXksIHRoYW5rcwpmb3IgeW91ciByZXBseSEpLgoKSSBjb3VsZCBjaGFu
-Z2UgdGhlIHBhdGNoIHRvIHF1ZXJ5IFVWQ19HRVRfTUFYIGZvciBlYWNoIGdldC9zZXQKb3BlcmF0
-aW9uIGlmIHlvdSB0aGluayB0aGF0IG1pZ2h0IGJlIHdvcnRoIGl0LiBJdCB3b3VsZCBvYnZpb3Vz
-bHkgYmUKYmV0dGVyIHRvIHN0YXNoIHRoZSB2YWx1ZSBmb3IgbGF0ZXIgdXNlLCBidXQgSSdtIG5v
-dCBzdXJlIHRoZXJlJ3MgYQpjb252ZW5pZW50IHNwb3QuCgo+ID4gKwl1dmNfc2V0X2xlX3ZhbHVl
-KG1hcHBpbmcsIHZhbHVlLCBkYXRhKTsKPiA+ICt9Cj4gPiArCj4gPiAgLyogLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0KPiA+ICAgKiBDb250cm9sIGFuZCBtYXBwaW5nIGhhbmRsaW5nCj4gPiAgICovCj4gPiBA
-QCAtMjIxMCw2ICsyMjQ0LDEzIEBAIHN0YXRpYyBpbnQgX191dmNfY3RybF9hZGRfbWFwcGluZyhz
-dHJ1Y3QgdXZjX3ZpZGVvX2NoYWluICpjaGFpbiwKPiA+ICAJCX0KPiA+ICAJfQo+ID4gIAo+ID4g
-KwlpZiAoKGNoYWluLT5kZXYtPnF1aXJrcyAmIFVWQ19RVUlSS19FWFBPTkVOVElBTF9FWFBPU1VS
-RSkgJiYKPiA+ICsJICAgIGN0cmwtPmluZm8uc2VsZWN0b3IgPT0gVVZDX0NUX0VYUE9TVVJFX1RJ
-TUVfQUJTT0xVVEVfQ09OVFJPTCkgewo+ID4gKwkJdXZjX2RiZyhjaGFpbi0+ZGV2LCBDT05UUk9M
-LCAiQXBwbHlpbmcgZXhwb25lbnRpYWwgZXhwb3N1cmUgcXVpcmtcbiIpOwo+ID4gKwkJbWFwLT5n
-ZXQgPSB1dmNfY3RybF9nZXRfYWJzX2V4cG9zdXJlX2V4cG9uZW50aWFsOwo+ID4gKwkJbWFwLT5z
-ZXQgPSB1dmNfY3RybF9zZXRfYWJzX2V4cG9zdXJlX2V4cG9uZW50aWFsOwo+ID4gKwl9Cj4gPiAr
-Cj4gPiAgCWxpc3RfYWRkX3RhaWwoJm1hcC0+bGlzdCwgJmN0cmwtPmluZm8ubWFwcGluZ3MpOwo+
-ID4gIAl1dmNfZGJnKGNoYWluLT5kZXYsIENPTlRST0wsICJBZGRpbmcgbWFwcGluZyAnJXMnIHRv
-IGNvbnRyb2wgJXBVbC8ldVxuIiwKPiA+ICAJCXV2Y19tYXBfZ2V0X25hbWUobWFwKSwgY3RybC0+
-aW5mby5lbnRpdHksCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y19k
-cml2ZXIuYyBiL2RyaXZlcnMvbWVkaWEvdXNiL3V2Yy91dmNfZHJpdmVyLmMKPiA+IGluZGV4IDdj
-MDA3NDI2ZTA4Mi4uOWVkZjc3ZWUzMGU2IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS91
-c2IvdXZjL3V2Y19kcml2ZXIuYwo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y19k
-cml2ZXIuYwo+ID4gQEAgLTI3MTgsNiArMjcxOCwzMyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHVz
-Yl9kZXZpY2VfaWQgdXZjX2lkc1tdID0gewo+ID4gIAkgIC5iSW50ZXJmYWNlU3ViQ2xhc3MJPSAx
-LAo+ID4gIAkgIC5iSW50ZXJmYWNlUHJvdG9jb2wJPSAwLAo+ID4gIAkgIC5kcml2ZXJfaW5mbwkJ
-PSAoa2VybmVsX3Vsb25nX3QpJnV2Y19xdWlya19wcm9iZV9taW5tYXggfSwKPiA+ICsJLyogTWlj
-cm9zb2Z0IExpZmVjYW0gSEQtNTAwMCAqLwo+ID4gKwl7IC5tYXRjaF9mbGFncwkJPSBVU0JfREVW
-SUNFX0lEX01BVENIX0RFVklDRQo+ID4gKwkJCQl8IFVTQl9ERVZJQ0VfSURfTUFUQ0hfSU5UX0lO
-Rk8sCj4gPiArCSAgLmlkVmVuZG9yCQk9IDB4MDQ1ZSwKPiA+ICsJICAuaWRQcm9kdWN0CQk9IDB4
-MDc2ZCwKPiA+ICsJICAuYkludGVyZmFjZUNsYXNzCT0gVVNCX0NMQVNTX1ZJREVPLAo+ID4gKwkg
-IC5iSW50ZXJmYWNlU3ViQ2xhc3MJPSAxLAo+ID4gKwkgIC5iSW50ZXJmYWNlUHJvdG9jb2wJPSAw
-LAo+ID4gKwkgIC5kcml2ZXJfaW5mbwkJPSBVVkNfSU5GT19RVUlSSyhVVkNfUVVJUktfRVhQT05F
-TlRJQUxfRVhQT1NVUkUpIH0sCj4gPiArCS8qIE1pY3Jvc29mdCBMaWZlY2FtIFN0dWRpbyAqLwo+
-ID4gKwl7IC5tYXRjaF9mbGFncwkJPSBVU0JfREVWSUNFX0lEX01BVENIX0RFVklDRQo+ID4gKwkJ
-CQl8IFVTQl9ERVZJQ0VfSURfTUFUQ0hfSU5UX0lORk8sCj4gPiArCSAgLmlkVmVuZG9yCQk9IDB4
-MDQ1ZSwKPiA+ICsJICAuaWRQcm9kdWN0CQk9IDB4MDc3MiwKPiA+ICsJICAuYkludGVyZmFjZUNs
-YXNzCT0gVVNCX0NMQVNTX1ZJREVPLAo+ID4gKwkgIC5iSW50ZXJmYWNlU3ViQ2xhc3MJPSAxLAo+
-ID4gKwkgIC5iSW50ZXJmYWNlUHJvdG9jb2wJPSAwLAo+ID4gKwkgIC5kcml2ZXJfaW5mbwkJPSBV
-VkNfSU5GT19RVUlSSyhVVkNfUVVJUktfRVhQT05FTlRJQUxfRVhQT1NVUkUpIH0sCj4gPiArCS8q
-IE1pY3Jvc29mdCBMaWZlY2FtIEhELTMwMDAgKi8KPiA+ICsJeyAubWF0Y2hfZmxhZ3MJCT0gVVNC
-X0RFVklDRV9JRF9NQVRDSF9ERVZJQ0UKPiA+ICsJCQkJfCBVU0JfREVWSUNFX0lEX01BVENIX0lO
-VF9JTkZPLAo+ID4gKwkgIC5pZFZlbmRvcgkJPSAweDA0NWUsCj4gPiArCSAgLmlkUHJvZHVjdAkJ
-PSAweDA4MTAsCj4gPiArCSAgLmJJbnRlcmZhY2VDbGFzcwk9IFVTQl9DTEFTU19WSURFTywKPiA+
-ICsJICAuYkludGVyZmFjZVN1YkNsYXNzCT0gMSwKPiA+ICsJICAuYkludGVyZmFjZVByb3RvY29s
-CT0gMCwKPiA+ICsJICAuZHJpdmVyX2luZm8JCT0gVVZDX0lORk9fUVVJUksoVVZDX1FVSVJLX0VY
-UE9ORU5USUFMX0VYUE9TVVJFKSB9LAo+ID4gIAkvKiBMb2dpdGVjaCBRdWlja2NhbSBGdXNpb24g
-Ki8KPiA+ICAJeyAubWF0Y2hfZmxhZ3MJCT0gVVNCX0RFVklDRV9JRF9NQVRDSF9ERVZJQ0UKPiA+
-ICAJCQkJfCBVU0JfREVWSUNFX0lEX01BVENIX0lOVF9JTkZPLAo+ID4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvbWVkaWEvdXNiL3V2Yy91dmN2aWRlby5oIGIvZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2
-Y3ZpZGVvLmgKPiA+IGluZGV4IDJlNTM2NjE0M2I4MS4uYjZkNWFlMGIxYzkwIDEwMDY0NAo+ID4g
-LS0tIGEvZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y3ZpZGVvLmgKPiA+ICsrKyBiL2RyaXZlcnMv
-bWVkaWEvdXNiL3V2Yy91dmN2aWRlby5oCj4gPiBAQCAtMjA5LDYgKzIwOSw3IEBACj4gPiAgI2Rl
-ZmluZSBVVkNfUVVJUktfUkVTVE9SRV9DVFJMU19PTl9JTklUCTB4MDAwMDA0MDAKPiA+ICAjZGVm
-aW5lIFVWQ19RVUlSS19GT1JDRV9ZOAkJMHgwMDAwMDgwMAo+ID4gICNkZWZpbmUgVVZDX1FVSVJL
-X0ZPUkNFX0JQUAkJMHgwMDAwMTAwMAo+ID4gKyNkZWZpbmUgVVZDX1FVSVJLX0VYUE9ORU5USUFM
-X0VYUE9TVVJFCTB4MDAwMDIwMDAKPiA+ICAKPiA+ICAvKiBGb3JtYXQgZmxhZ3MgKi8KPiA+ICAj
-ZGVmaW5lIFVWQ19GTVRfRkxBR19DT01QUkVTU0VECQkweDAwMDAwMDAxCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtdXZjLWRldmVsIG1haWxp
-bmcgbGlzdApMaW51eC11dmMtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0dHBzOi8vbGlz
-dHMuc291cmNlZm9yZ2UubmV0L2xpc3RzL2xpc3RpbmZvL2xpbnV4LXV2Yy1kZXZlbAo=
+--===============3675433292757416724==
+Content-Type: multipart/alternative; boundary="00000000000014f3e905d39a3970"
+
+--00000000000014f3e905d39a3970
+Content-Type: text/plain; charset="UTF-8"
+
+Hello,
+
+I've been the owner of a Logitech C930e for many years now, and it does
+work well on Linux in terms of "basic" webcam functionality.
+But I've always found it a bit of a shame that I can't use the features I
+originally bought it for: namely UVC 1.5 and H264. And not mentioning SVC
+either...
+To be honest, this particular model is a tricky one as far as I can see.
+This is for example what *lsusb* reports out the box:
+
+> Bus 002 Device 011: ID 046d:0843 Logitech, Inc. Webcam C930e
+> Device Descriptor:
+>   bLength                18
+>   bDescriptorType         1
+>   bcdUSB               2.00
+>   bDeviceClass          239 Miscellaneous Device
+>   bDeviceSubClass         2
+>   bDeviceProtocol         1 Interface Association
+>   bMaxPacketSize0        64
+>   idVendor           0x046d Logitech, Inc.
+>   idProduct          0x0843 Webcam C930e
+>   bcdDevice            0.13
+>   iManufacturer           0
+>   iProduct                2
+>   iSerial                 1
+>   *bNumConfigurations      1*
+>   Configuration Descriptor:
+>     ...
+
+Actually, that's not quite true: this webcam supports 2 configurations!
+That's what I found when I sniffed USB traffic on a Windows 10 machine.
+The first configuration mentions UVC 1.0 and uncompressed / MJPEG streams.
+But the second configuration reveals the "treasure": UVC 1.5 and
+uncompressed / MJPEG / H264 streams.
+I couldn't find an official way to override bNumConfigurations in the Linux
+USB stack, so I hacked the *usb_get_configuration()* function in
+*drivers/usb/core/config.c* to falsely report 2 configurations. (Any other
+suggestions on how to properly implement that?)
+Quite ugly but it did the job: *lsusb* revealed the second descriptor.
+
+For the technical details, see the difference between:
+
+   - Descriptor 0 on Linux
+      - https://gist.github.com/dalbani/7266379ed93b7b693bb8dd899d18e92b
+   - Descriptor 1 on Windows 10
+      - https://gist.github.com/dalbani/05432f7ce20b41f2c68ee07ff5f1c7ee
+
+Now the question is: where to go from there?
+The Linux UVC driver doesn't seem to pickup the second descriptor. Probably
+because probing stops when the first UVC descriptor is found?
+The logs mention that it is detected as a "UVC 1.00 device" in any case.
+Let's say we could make the UVC driver use the second descriptor, what
+functionalities would still be missing to be able to use H264/SVC streams?
+Thanks for your help!
+
+Regards,
+
+-- 
+Damiano Albani
+
+--00000000000014f3e905d39a3970
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<div><br></div><div>I&#39;ve been the owner of a Log=
+itech C930e for many years now, and it does work well on Linux in terms of =
+&quot;basic&quot; webcam functionality.</div><div>But I&#39;ve always found=
+ it a bit of a shame that I can&#39;t use the features I originally bought =
+it=C2=A0for: namely UVC 1.5 and H264. And not mentioning SVC either...</div=
+><div>To be honest, this particular=C2=A0model is a tricky one as far as I=
+=C2=A0can see.</div><div>This is for example what <i>lsusb</i> reports out =
+the box:</div><div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><font =
+face=3D"monospace">Bus 002 Device 011: ID 046d:0843 Logitech, Inc. Webcam C=
+930e<br></font><font face=3D"monospace">Device Descriptor:<br></font><font =
+face=3D"monospace">=C2=A0 bLength =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A018<br></font><font face=3D"monospace">=C2=A0 bDescriptorType =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 1<br></font><font face=3D"monospace">=C2=A0 bcd=
+USB =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2.00<br></font><font f=
+ace=3D"monospace">=C2=A0 bDeviceClass =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0239=
+ Miscellaneous Device<br></font><font face=3D"monospace">=C2=A0 bDeviceSubC=
+lass =C2=A0 =C2=A0 =C2=A0 =C2=A0 2<br> </font><font face=3D"monospace">=C2=
+=A0 bDeviceProtocol =C2=A0 =C2=A0 =C2=A0 =C2=A0 1 Interface Association<br>=
+</font><font face=3D"monospace">=C2=A0 bMaxPacketSize0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A064<br></font><font face=3D"monospace">=C2=A0 idVendor =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 0x046d Logitech, Inc.<br></font><font face=3D"monospac=
+e">=C2=A0 idProduct =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x0843 Webcam C930e<b=
+r></font><font face=3D"monospace">=C2=A0 bcdDevice =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A00.13<br></font><font face=3D"monospace">=C2=A0 iManufactur=
+er =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0<br> </font><font face=3D"monospace"=
+>=C2=A0 iProduct =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A02<b=
+r> </font><font face=3D"monospace">=C2=A0 iSerial =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1<br> </font><font face=3D"monospace">=C2=
+=A0 <b>bNumConfigurations =C2=A0 =C2=A0 =C2=A01</b><br></font><font face=3D=
+"monospace">=C2=A0 Configuration Descriptor:<br></font><font face=3D"monosp=
+ace">=C2=A0 =C2=A0 ...</font></blockquote><div>Actually, that&#39;s not qui=
+te true: this webcam supports 2 configurations!</div><div>That&#39;s what I=
+ found when I sniffed USB traffic on a Windows 10 machine.</div><div>The fi=
+rst configuration mentions UVC 1.0 and uncompressed / MJPEG streams.</div><=
+div>But the second configuration reveals the &quot;treasure&quot;: UVC 1.5 =
+and uncompressed / MJPEG / H264 streams.</div><div>I couldn&#39;t find an o=
+fficial way to override bNumConfigurations in the Linux USB stack, so I hac=
+ked the <i>usb_get_configuration()</i> function in <i>drivers/usb/core/conf=
+ig.c</i> to falsely report 2 configurations. (Any other suggestions on how =
+to properly implement that?)</div><div>Quite ugly but it did the job: <i>ls=
+usb</i> revealed the second descriptor.</div><div><br></div><div>For the te=
+chnical details, see the difference between:</div><div><ul><li>Descriptor 0=
+ on Linux</li><ul><li><a href=3D"https://gist.github.com/dalbani/7266379ed9=
+3b7b693bb8dd899d18e92b">https://gist.github.com/dalbani/7266379ed93b7b693bb=
+8dd899d18e92b</a></li></ul><li>Descriptor 1 on Windows 10</li><ul><li><a hr=
+ef=3D"https://gist.github.com/dalbani/05432f7ce20b41f2c68ee07ff5f1c7ee">htt=
+ps://gist.github.com/dalbani/05432f7ce20b41f2c68ee07ff5f1c7ee</a><br></li><=
+/ul></ul></div><div>Now the question is: where to go from there?</div><div>=
+The Linux UVC driver doesn&#39;t seem to pickup the second descriptor. Prob=
+ably because probing stops when the first UVC descriptor is found?</div><di=
+v>The logs mention that it is detected as=C2=A0a &quot;UVC 1.00 device&quot=
+; in any case.</div><div>Let&#39;s say we could make the UVC driver use the=
+ second descriptor, what functionalities would still be missing to be able =
+to use H264/SVC streams?</div><div>Thanks for your help!</div><div><br></di=
+v><div>Regards,</div><div><br></div>-- <br><div dir=3D"ltr" class=3D"gmail_=
+signature" data-smartmail=3D"gmail_signature">Damiano Albani</div></div></d=
+iv>
+
+--00000000000014f3e905d39a3970--
+
+
+--===============3675433292757416724==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============3675433292757416724==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-uvc-devel mailing list
+Linux-uvc-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
+
+--===============3675433292757416724==--
+
