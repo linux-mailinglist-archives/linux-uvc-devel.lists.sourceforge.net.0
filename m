@@ -2,77 +2,78 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 827D4482CB7
-	for <lists+linux-uvc-devel@lfdr.de>; Sun,  2 Jan 2022 21:39:54 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD453493842
+	for <lists+linux-uvc-devel@lfdr.de>; Wed, 19 Jan 2022 11:20:08 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1n47dS-0000TT-JL; Sun, 02 Jan 2022 20:39:22 +0000
+	id 1nA841-0005nw-8q; Wed, 19 Jan 2022 10:19:36 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <felix.schwarz@oss.schwarz.eu>) id 1n47dR-0000TJ-KG
- for linux-uvc-devel@lists.sourceforge.net; Sun, 02 Jan 2022 20:39:21 +0000
+ (envelope-from <felix.schwarz@oss.schwarz.eu>) id 1nA83x-0005nq-Ld
+ for linux-uvc-devel@lists.sourceforge.net; Wed, 19 Jan 2022 10:19:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:Subject:From
- :To:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ References:To:From:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=q2AgS0qLbOkkrmROY61BuHjnmJGIW+NpZlOrL634pbM=; b=MMVC27PP20nQTPXv5zwhzLaAx8
- JjWo53oKKjBHPoA0PX8BSPuyOJtX8RTdCLuRo95z/OlfpLny7foTk1qsod8LMSnjqmlVQDkpqvCxy
- Dws7ldbMb+yzdrHSMr/jD/gx1GW+WljS8Zkabs4bIrPkv5YNefPlDfoniDcusJADBcys=;
+ bh=0EWjrHyMk+52KQqQ+9RwJEdRqu+SRtZP9ySAhOZn5c8=; b=VRmfsnc8ZXJ5aKD417Jz3lMLDo
+ 4gg9vW6xqEPwR/pzpMJWdjankVQBfTnd6ltt+igxtWhnlMeuB1VI1m4y+KvgcuRIAFjH1HROmZ1k5
+ 262ZQ7uWI6B4sfB1Jb56cFi0KrCLvXPAtI1oEbox0dPrCQczSYxt+93rwAD/sMmCIqoc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:Subject:From:To:MIME-Version:Date:
- Message-ID:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=q2AgS0qLbOkkrmROY61BuHjnmJGIW+NpZlOrL634pbM=; b=n
- V/kRqjJngrvxUNsbzatgqBPOJr9xpGtbd4yac6PfQDNuBwp7fwMBi6MbrqTrvJ/q+HsxSuDWIDdZu
- AKVTaXaw/2ltuouWw0Nxz4/1iLuwaxoJLzlUkFRZUi5HjtweldbGu41jlkmbwz9ODX7pGc9Xh4a6W
- PjinZIZtnNsUIpyY=;
-Received: from mail.schwarz.eu ([78.47.220.31])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1n47dJ-0006ar-5g
- for linux-uvc-devel@lists.sourceforge.net; Sun, 02 Jan 2022 20:39:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=oss.schwarz.eu; s=x; h=Content-Transfer-Encoding:Content-Type:Subject:From:
- To:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:From:
+ Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=0EWjrHyMk+52KQqQ+9RwJEdRqu+SRtZP9ySAhOZn5c8=; b=b3Ai/gAUwbgyi9zXqeoywSE/MB
+ QhPnt0l5WbKq/Q43W3+3jwtQNNq2zYO0anGOfI3JHlosgSnod4NbffYfCXsc/ivKzcL8ttVWfFJCn
+ Hqb/72Z6rZ1LVE6vfGY1uK++Iw1DRkJFyljfpD3YXjZ5R28f61uC+I2OGEgpPRwc+ebM=;
+Received: from mail.schwarz.eu ([78.47.220.31])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
+ id 1nA83u-003P0K-W7
+ for linux-uvc-devel@lists.sourceforge.net; Wed, 19 Jan 2022 10:19:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=oss.schwarz.eu; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ References:To:From:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=q2AgS0qLbOkkrmROY61BuHjnmJGIW+NpZlOrL634pbM=; b=Oqc670MMTPBd+GPBugbe/ZgUA8
- 6F+2R5LAOMpkjltMqM+Jc5g+3qTYyj4iIEZ8q6FJg2FQnbqk5wwoUDyrmSwSjTrbEFxS6Jl2v7qnJ
- teKlFU/S2B4DBcSIBpeOAfiyfpocgnDAJnfReiCo44OkeAzOEP8slDLNrNRreJFEdWKfW1BRDzT+y
- L6zx0kk1et7P6IW1dpcbaByZxtmfyiuLHoNDYKRF1j/0sGp3w4MLNS/OBeIEUfG0P5DMW2EPKLp1y
- 6Q44wjQ0rBhr3JtVQCNRjPcqfncBnMWbFYWX/we8N8eO+6py6kI1PYY9InhE87in+OALpTvC6XMvv
- UfnkmHdw==;
-Message-ID: <c0f59240-e1f5-83e9-d423-ae9b2e6b6fef@oss.schwarz.eu>
-Date: Sun, 2 Jan 2022 20:32:21 +0100
+ bh=0EWjrHyMk+52KQqQ+9RwJEdRqu+SRtZP9ySAhOZn5c8=; b=gtfYV9Wj7A3yycx5ecAinP7cAS
+ +r6aXHdmYviZCdIAPzMBCXn4NfW30vNracqQanW6aAjm0NkxhlZAJWXfty05W751uaWVRen7FGJbG
+ Ooh1B3TGAzLmWgZb/4IUPmn4mvG/uvCQn6MLtzXhrE7uQ0YJRlXoIXbrv+dd4mUg4idzouxXQBRXT
+ cg8EcAQQHQDka4itQ2Jy5y2C5vSGBhhU9DlJeNQDPIwQXl/q0bAuX/RmBqSFuzGNyOFYj6vgBcnuI
+ 6K8NwxuIsNMfaUoYiPybdV/VhGFYGgY+PqmO7nYl0aKoljzK9jxgJRegse0+6EYOWwKlC6htu6HwJ
+ uURhZdTQ==;
+Message-ID: <07a3094b-98c9-787e-c15d-89ad3fef55dd@oss.schwarz.eu>
+Date: Wed, 19 Jan 2022 11:19:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.4.0
-To: linux-uvc-devel@lists.sourceforge.net
 Content-Language: en-US
 From: Felix Schwarz <felix.schwarz@oss.schwarz.eu>
+To: linux-uvc-devel@lists.sourceforge.net
+References: <c0f59240-e1f5-83e9-d423-ae9b2e6b6fef@oss.schwarz.eu>
+In-Reply-To: <c0f59240-e1f5-83e9-d423-ae9b2e6b6fef@oss.schwarz.eu>
 X-Received: by mail.schwarz.eu with esmtpsa
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
  (envelope-from <felix.schwarz@oss.schwarz.eu>)
- id 1n46ab-0004JY-PR; Sun, 02 Jan 2022 21:39:04 +0100
-X-Spam-Score: -0.7 (/)
+ id 1nA83j-0000cp-CY; Wed, 19 Jan 2022 11:19:19 +0100
+X-Spam-Score: -2.7 (--)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi,
- I have a Creative Live! Cam Chat HD VF0790 (USB id 041e:4097).
- This webcam used to work fine with Linux but for some weeks the microphone
- does not record the sound correctly (right now I'm using kerne [...] 
- Content analysis details:   (-0.7 points, 6.0 required)
+ Content preview: In the mean time I noticed that "UVC" stands for "USB Video
+ Class" so this driver does not have anything to do with audio. The right
+ place is likely alsa and the kernel code in usb/sound which also co [...] 
+ Content analysis details:   (-2.7 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
@@ -85,9 +86,10 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 PLING_QUERY            Subject has exclamation mark and question mark
-X-Headers-End: 1n47dJ-0006ar-5g
-Subject: [linux-uvc-devel] quirk necessary for Creative Live! Cam Chat HD
- VF0790 ?
+ -2.0 NICE_REPLY_A           Looks like a legit reply (A)
+X-Headers-End: 1nA83u-003P0K-W7
+Subject: Re: [linux-uvc-devel] quirk necessary for Creative Live! Cam Chat
+ HD VF0790 ?
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,42 +105,13 @@ Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-Hi,
 
-I have a Creative Live! Cam Chat HD VF0790 (USB id 041e:4097). This webcam used 
-to work fine with Linux but for some weeks the microphone does not record the 
-sound correctly (right now I'm using kernel 5.15.12). [1]
-
-As far as I know the uvc driver is handling this device in Linux. Is that 
-correct? If not do you know which driver is the handling the device?
-
-One interesting thing is that Windows 10 has the exact same issue as Linux. For 
-Windows the fix is to change the mic settings from
-
-2 channel, 24 bit, 48000 Hz (Studio Quality)
-->
-2 channel, 16 bit, 48000 Hz (DVD Quality)
-
-I guess the problem is that the device advertises wrong capabilities so both 
-Linux+Windows use the wrong bit rate. Based on other drivers I guess the best 
-solution is to add some kind of quirk for this specific device so only 16 bit 
-are advertised.
-
-I did not find the USB ID in the Linux source code so I guess the kernel is 
-using a generic driver based on the USB profile but I noticed uvc_driver.c 
-contains some quirks already.
-
-
-Thank you for reading until here:
-
-1. Is this the right mailing list for my question?
-2. Am I right that this device is handled by uvc?
-3. Is there an easy way to restrict Linux to use only 16 bits?
-
+In the mean time I noticed that "UVC" stands for "USB Video Class" so this 
+driver does not have anything to do with audio. The right place is likely alsa 
+and the kernel code in usb/sound which also contains a similar quirk for an 
+earlier version of my webcam.
 Felix
 
-[1] I'm not sure why it does not work anymore but it might be connected with my 
-upgrade from F34 -> F35 (pulseaudio -> pipewire?).
 
 
 _______________________________________________
