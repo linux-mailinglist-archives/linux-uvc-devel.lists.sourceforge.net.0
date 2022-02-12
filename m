@@ -2,73 +2,65 @@ Return-Path: <linux-uvc-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux-uvc-devel@lfdr.de
 Delivered-To: lists+linux-uvc-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C54754B35AA
-	for <lists+linux-uvc-devel@lfdr.de>; Sat, 12 Feb 2022 15:37:02 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45FDF4B35A8
+	for <lists+linux-uvc-devel@lfdr.de>; Sat, 12 Feb 2022 15:37:00 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux-uvc-devel-bounces@lists.sourceforge.net>)
-	id 1nItVV-0000vh-EK; Sat, 12 Feb 2022 14:36:12 +0000
+	id 1nItVU-0001f6-Dj; Sat, 12 Feb 2022 14:36:11 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <f.schmid@netzkonzept.ch>) id 1nItVS-0000vW-Cj
+ (envelope-from <f.schmid@netzkonzept.ch>) id 1nItVS-0001eo-G8
  for linux-uvc-devel@lists.sourceforge.net; Sat, 12 Feb 2022 14:36:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:Subject:From:To:MIME-Version:Date:
- Message-ID:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=To:Subject:From:MIME-Version:Date:Message-ID:
+ Content-Type:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=1RN0CUuAjQXU+M6Atp7UZooXWjDSXhmu/E/sbpDcRHU=; b=H4pCmT880u5cLCP/ux7okd/knm
- hy4P7O0R/jadB7zlDfX69W+wGpKOeCb5jMMUL5B+ba3cTQJctRYe242HdmvvizXhDavbs0EfRJPOg
- yQhK2ITJpUvoZjKrBDK/mUSlSxiI6CPlKgKrYGfz4uUw5Tx5YLJTyIe5RnVBYUH33v6s=;
+ bh=ICtkaln7sbF2uujlhwtPC2m66My8pJkV7mFJGrGc1AM=; b=gO4KQveK1ZhmhwIJ6gF3AO7Qhd
+ bHKb6I8A7GVDI28rXM7CTwEBepT0r1ru9wTPKjJLVgfr0pT3ykYjBSq4XmFuIc0gzN+4UQaI03Znc
+ ySwxWvkHvL8nNxaCe5Utb/1L9CzlNqiCluC/lGhZ2mzhWbmymZ+g1Jek86XDlMqEU1BU=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:Subject:From:To:MIME-Version:Date:Message-ID:Sender:Reply-To
+ h=To:Subject:From:MIME-Version:Date:Message-ID:Content-Type:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=1RN0CUuAjQXU+M6Atp7UZooXWjDSXhmu/E/sbpDcRHU=; b=T
- C6BylOophnQjPmXK4pXMY4ZhuFnXXOv9jaXRqNb6hBgFQISKfXgMeIliHLKaDiuGFK+K3yFYW2WAu
- fOmvY1LxvBRKLICJovH6J8yXfAvVR4ESgrbMUYKH0dJy22vGfOtYl3jhW/br7J5EfQCibzLhB0Sfb
- 9wlzdqokNd7LeCQM=;
+ List-Owner:List-Archive; bh=ICtkaln7sbF2uujlhwtPC2m66My8pJkV7mFJGrGc1AM=; b=T
+ HnJDvi4JHiS0ZP8Nfll879ffKJkwqZbj0BS3OVQKd0uGOgImnjkGTkjQySvlNjKMBh4kiud4r/I70
+ ++cWz5e2znqyR+hjM7zDjG9/1jQc8kjtUx74AhwbT2AuFSXKDJSW/5i0p7td0bcZuTIVstMsXFW0y
+ MZI7QE77V6/HWYXI=;
 Received: from nkz01.netzkonzept.ch ([23.88.102.250])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.94.2)
- id 1nItVK-00Gqe9-Ay
+ id 1nItVK-0000lv-An
  for linux-uvc-devel@lists.sourceforge.net; Sat, 12 Feb 2022 14:36:08 +0000
 Received: from [192.168.100.162] (212-41-106-102.adsl.solnet.ch
  [212.41.106.102]) (Authenticated sender: f.schmid@netzkonzept.ch)
- by nkz01.netzkonzept.ch (Postfix) with ESMTPSA id DBA425E9D1
+ by nkz01.netzkonzept.ch (Postfix) with ESMTPSA id 8C58B5E89B
  for <linux-uvc-devel@lists.sourceforge.net>;
- Sat, 12 Feb 2022 14:17:28 +0000 (UTC)
+ Sat, 12 Feb 2022 14:20:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netzkonzept.ch;
- s=default; t=1644675449;
+ s=default; t=1644675648;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:autocrypt:autocrypt;
- bh=1RN0CUuAjQXU+M6Atp7UZooXWjDSXhmu/E/sbpDcRHU=;
- b=glFputA+jtpEy5t35M0F/Wf/KFa8e+EtlWyzHjCyf3gkuWlF0RUg9xYcowNa7T1OEQCSnT
- kxpq1yFEjQAwzZR6ejLpr+JgRfvzUQSUmH+8I9um5scDqgjHVDwX6Xs2uT0aQuz1dushSJ
- o4Km6RGdXb+O5/sesbvnVSnIhl7tUMtekwecC7K6pVd04R5A8OfYuXSvlqpM4Iyr8ydWXy
- RX25Oe2m1d7amqFA83cIExWqHZa9kHrjqQs+Ny3la0JVLeSBWMLUi+G/vHHhP6p0VUyYXV
- QW3tGOrGhn++hNf5Rfi8S5HzigX2Vf3m+dv6LyTVwTPXHglXAgqPm4rfB3U2LA==
-Message-ID: <6a0148fc-466a-fc09-ff44-f9636f8bf551@netzkonzept.ch>
-Date: Sat, 12 Feb 2022 15:17:28 +0100
+ to:to:cc:mime-version:mime-version:content-type:content-type;
+ bh=ICtkaln7sbF2uujlhwtPC2m66My8pJkV7mFJGrGc1AM=;
+ b=bDLoLHX3as7vo0bewgmedWSuGWJfgfIYdWxQRoYxCwuYwG4j4P4DqtA+5TP8fS+2Lmekge
+ 2Dbcu+5GdNmVGJuIZSx3K87ZnZp4Zwf/RGZkRXX5aFXpLaE2kRj/iEcSBUP5G3j76wH83i
+ IEBS3y9P8H9f0rWQl9tymyPuw31UFukCuBiv+ehDIAofrRBelrEjrD7W77dE0dEYF3tzaO
+ m+SQW6PcuehZlz1lz7uwjEgrLy8j44AbjEoTle0+U6pc15frcojAtVK+SqM38pdZ8/yQ+j
+ zu8zISCXAl/2nwVdXmZMPGu9m8EuYFmWxa4zLxxphRDE5IaGCtGE5qONZZPQqA==
+Content-Type: multipart/mixed; boundary="------------0e7gdG5Z90vrx5W0WKmJhUu6"
+Message-ID: <8fbcea74-4434-50a2-4b13-2c460aec0419@netzkonzept.ch>
+Date: Sat, 12 Feb 2022 15:20:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
+From: Fabian Schmid <f.schmid@netzkonzept.ch>
 To: linux-uvc-devel@lists.sourceforge.net
 Content-Language: en-GB
-From: Fabian Schmid <f.schmid@netzkonzept.ch>
-Autocrypt: addr=f.schmid@netzkonzept.ch; keydata=
- xjMEX+oLyBYJKwYBBAHaRw8BAQdArh3sgy3Jbh44vU6jqJ3Uy7mGu6ZqhUfHLBeyl6sUY2XN
- J0ZhYmlhbiBTY2htaWQgPGYuc2NobWlkQG5ldHprb256ZXB0LmNoPsKWBBMWCAA+FiEEvLW5
- Hgk+NzA5m7hQOIYLkMks/CoFAl/qC8gCGwMFCQlmAYAFCwkIBwIGFQoJCAsCBBYCAwECHgEC
- F4AACgkQOIYLkMks/CoTaQEA7kWIMu/eXJYFJibO0HSJmJu+t/PqAJvAj1nmyczZi0cA/jOm
- fobvPS5PwAyN5ljc9a4UyvjVA/ksJCuQB4YddDwGzjgEX+oLyBIKKwYBBAGXVQEFAQEHQFlk
- ZMc7fgvuV45Vmi1iHjVO9YrXVvdYkD+Z9ttix7szAwEIB8J+BBgWCAAmFiEEvLW5Hgk+NzA5
- m7hQOIYLkMks/CoFAl/qC8gCGwwFCQlmAYAACgkQOIYLkMks/CrlZwEA1A+lXBCekGopBFUn
- POQnwCz7vuxeZ+iv6CBSgiOygI0A/ifSdnJbC1I51ksMv7ewiLreSH8ESmEnGZszxumu5p8G
 Authentication-Results: nkz01.netzkonzept.ch;
  auth=pass smtp.auth=f.schmid@netzkonzept.ch
  smtp.mailfrom=f.schmid@netzkonzept.ch
@@ -94,7 +86,7 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.
   0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
                              valid
   0.1 DKIM_INVALID           DKIM or DK signature exists, but is not valid
-X-Headers-End: 1nItVK-00Gqe9-Ay
+X-Headers-End: 1nItVK-0000lv-An
 Subject: [linux-uvc-devel] Welch Allyn Digital Otoscope playback not working
 X-BeenThere: linux-uvc-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -107,74 +99,61 @@ List-Post: <mailto:linux-uvc-devel@lists.sourceforge.net>
 List-Help: <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel>, 
  <mailto:linux-uvc-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8814564204874657720=="
 Errors-To: linux-uvc-devel-bounces@lists.sourceforge.net
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============8814564204874657720==
-Content-Language: en-GB
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------KkZzWuT8enOQ1LI4qtFcZkgI"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------KkZzWuT8enOQ1LI4qtFcZkgI
-Content-Type: multipart/mixed; boundary="------------034uFxJKp4fV0G2sf8hjNyea";
- protected-headers="v1"
-From: Fabian Schmid <f.schmid@netzkonzept.ch>
-To: linux-uvc-devel@lists.sourceforge.net
-Message-ID: <6a0148fc-466a-fc09-ff44-f9636f8bf551@netzkonzept.ch>
-Subject: Welch Allyn Digital Otoscope playback not working
-
---------------034uFxJKp4fV0G2sf8hjNyea
-Content-Type: multipart/mixed; boundary="------------f5tnML6nczm9HRMk2c8y4lR9"
-
---------------f5tnML6nczm9HRMk2c8y4lR9
+This is a multi-part message in MIME format.
+--------------0e7gdG5Z90vrx5W0WKmJhUu6
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 8bit
 
-SGkNCg0KT3VyIFdlbGNoIEFsbHluIERpZ2l0YWwgT3Rvc2NvcGUgZ2V0cyByZWNvZ25pemVk
-IGJ5IHRoZSB1dmMgZHJpdmVyIGJ1dCANCnBsYXliYWNrIG9uIGRldmljZSAvZGV2L3ZpZGVv
-MCBvciAvZGV2L3ZpZGVvMSBmYWlscw0KDQpmZnBsYXkgL2Rldi92aWRlbzANCmZmcGxheSB2
-ZXJzaW9uIDQuMi40LTF1YnVudHUwLjEgQ29weXJpZ2h0IChjKSAyMDAzLTIwMjAgdGhlIEZG
-bXBlZyANCmRldmVsb3BlcnMNCiDCoCBidWlsdCB3aXRoIGdjYyA5IChVYnVudHUgOS4zLjAt
-MTB1YnVudHUyKQ0KIMKgIGNvbmZpZ3VyYXRpb246IC0tcHJlZml4PS91c3IgLS1leHRyYS12
-ZXJzaW9uPTF1YnVudHUwLjEgDQotLXRvb2xjaGFpbj1oYXJkZW5lZCAtLWxpYmRpcj0vdXNy
-L2xpYi94ODZfNjQtbGludXgtZ251IA0KLS1pbmNkaXI9L3Vzci9pbmNsdWRlL3g4Nl82NC1s
-aW51eC1nbnUgLS1hcmNoPWFtZDY0IC0tZW5hYmxlLWdwbCANCi0tZGlzYWJsZS1zdHJpcHBp
-bmcgLS1lbmFibGUtYXZyZXNhbXBsZSAtLWRpc2FibGUtZmlsdGVyPXJlc2FtcGxlIA0KLS1l
-bmFibGUtYXZpc3ludGggLS1lbmFibGUtZ251dGxzIC0tZW5hYmxlLWxhZHNwYSAtLWVuYWJs
-ZS1saWJhb20gDQotLWVuYWJsZS1saWJhc3MgLS1lbmFibGUtbGliYmx1cmF5IC0tZW5hYmxl
-LWxpYmJzMmIgLS1lbmFibGUtbGliY2FjYSANCi0tZW5hYmxlLWxpYmNkaW8gLS1lbmFibGUt
-bGliY29kZWMyIC0tZW5hYmxlLWxpYmZsaXRlIA0KLS1lbmFibGUtbGliZm9udGNvbmZpZyAt
-LWVuYWJsZS1saWJmcmVldHlwZSAtLWVuYWJsZS1saWJmcmliaWRpIA0KLS1lbmFibGUtbGli
-Z21lIC0tZW5hYmxlLWxpYmdzbSAtLWVuYWJsZS1saWJqYWNrIC0tZW5hYmxlLWxpYm1wM2xh
-bWUgDQotLWVuYWJsZS1saWJteXNvZmEgLS1lbmFibGUtbGlib3BlbmpwZWcgLS1lbmFibGUt
-bGlib3Blbm1wdCANCi0tZW5hYmxlLWxpYm9wdXMgLS1lbmFibGUtbGlicHVsc2UgLS1lbmFi
-bGUtbGlicnN2ZyANCi0tZW5hYmxlLWxpYnJ1YmJlcmJhbmQgLS1lbmFibGUtbGlic2hpbmUg
-LS1lbmFibGUtbGlic25hcHB5IA0KLS1lbmFibGUtbGlic294ciAtLWVuYWJsZS1saWJzcGVl
-eCAtLWVuYWJsZS1saWJzc2ggLS1lbmFibGUtbGlidGhlb3JhIA0KLS1lbmFibGUtbGlidHdv
-bGFtZSAtLWVuYWJsZS1saWJ2aWRzdGFiIC0tZW5hYmxlLWxpYnZvcmJpcyANCi0tZW5hYmxl
-LWxpYnZweCAtLWVuYWJsZS1saWJ3YXZwYWNrIC0tZW5hYmxlLWxpYndlYnAgLS1lbmFibGUt
-bGlieDI2NSANCi0tZW5hYmxlLWxpYnhtbDIgLS1lbmFibGUtbGlieHZpZCAtLWVuYWJsZS1s
-aWJ6bXEgLS1lbmFibGUtbGlienZiaSANCi0tZW5hYmxlLWx2MiAtLWVuYWJsZS1vbXggLS1l
-bmFibGUtb3BlbmFsIC0tZW5hYmxlLW9wZW5jbCANCi0tZW5hYmxlLW9wZW5nbCAtLWVuYWJs
-ZS1zZGwyIC0tZW5hYmxlLWxpYmRjMTM5NCAtLWVuYWJsZS1saWJkcm0gDQotLWVuYWJsZS1s
-aWJpZWM2MTg4MyAtLWVuYWJsZS1udmVuYyAtLWVuYWJsZS1jaHJvbWFwcmludCAtLWVuYWJs
-ZS1mcmVpMHIgDQotLWVuYWJsZS1saWJ4MjY0IC0tZW5hYmxlLXNoYXJlZA0KIMKgIGxpYmF2
-dXRpbMKgwqDCoMKgwqAgNTYuIDMxLjEwMCAvIDU2LiAzMS4xMDANCiDCoCBsaWJhdmNvZGVj
-wqDCoMKgwqAgNTguIDU0LjEwMCAvIDU4LiA1NC4xMDANCiDCoCBsaWJhdmZvcm1hdMKgwqDC
-oCA1OC4gMjkuMTAwIC8gNTguIDI5LjEwMA0KIMKgIGxpYmF2ZGV2aWNlwqDCoMKgIDU4LsKg
-IDguMTAwIC8gNTguwqAgOC4xMDANCiDCoCBsaWJhdmZpbHRlcsKgwqDCoMKgIDcuIDU3LjEw
-MCAvwqAgNy4gNTcuMTAwDQogwqAgbGliYXZyZXNhbXBsZcKgwqAgNC7CoCAwLsKgIDAgL8Kg
-IDQuwqAgMC7CoCAwDQogwqAgbGlic3dzY2FsZcKgwqDCoMKgwqAgNS7CoCA1LjEwMCAvwqAg
-NS7CoCA1LjEwMA0KIMKgIGxpYnN3cmVzYW1wbGXCoMKgIDMuwqAgNS4xMDAgL8KgIDMuwqAg
-NS4xMDANCiDCoCBsaWJwb3N0cHJvY8KgwqDCoCA1NS7CoCA1LjEwMCAvIDU1LsKgIDUuMTAw
-DQpbdmlkZW80bGludXgyLHY0bDIgQCAweDdmODgwYzAwMGJjMF0gaW9jdGwoVklESU9DX1NU
-UkVBTU9OKTogDQpJbnB1dC9vdXRwdXQgZXJyb3INCi9kZXYvdmlkZW8wOiBJbnB1dC9vdXRw
-dXQgZXJyb3INCg0KRG8gSSBuZWVkIHRvIGNvbmZpZ3VyZSBhbnkgcXVpcmtzIHRvIGdldCBp
-dCB3b3JraW5nID8NCg0KRmFiaWFuDQoNCg==
---------------f5tnML6nczm9HRMk2c8y4lR9
+Hi
+
+Our Welch Allyn Digital Otoscope gets recognized by the uvc driver but 
+playback on device /dev/video0 or /dev/video1 fails
+
+ffplay /dev/video0
+ffplay version 4.2.4-1ubuntu0.1 Copyright (c) 2003-2020 the FFmpeg 
+developers
+   built with gcc 9 (Ubuntu 9.3.0-10ubuntu2)
+   configuration: --prefix=/usr --extra-version=1ubuntu0.1 
+--toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu 
+--incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl 
+--disable-stripping --enable-avresample --disable-filter=resample 
+--enable-avisynth --enable-gnutls --enable-ladspa --enable-libaom 
+--enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca 
+--enable-libcdio --enable-libcodec2 --enable-libflite 
+--enable-libfontconfig --enable-libfreetype --enable-libfribidi 
+--enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame 
+--enable-libmysofa --enable-libopenjpeg --enable-libopenmpt 
+--enable-libopus --enable-libpulse --enable-librsvg 
+--enable-librubberband --enable-libshine --enable-libsnappy 
+--enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora 
+--enable-libtwolame --enable-libvidstab --enable-libvorbis 
+--enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 
+--enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi 
+--enable-lv2 --enable-omx --enable-openal --enable-opencl 
+--enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm 
+--enable-libiec61883 --enable-nvenc --enable-chromaprint --enable-frei0r 
+--enable-libx264 --enable-shared
+   libavutil      56. 31.100 / 56. 31.100
+   libavcodec     58. 54.100 / 58. 54.100
+   libavformat    58. 29.100 / 58. 29.100
+   libavdevice    58.  8.100 / 58.  8.100
+   libavfilter     7. 57.100 /  7. 57.100
+   libavresample   4.  0.  0 /  4.  0.  0
+   libswscale      5.  5.100 /  5.  5.100
+   libswresample   3.  5.100 /  3.  5.100
+   libpostproc    55.  5.100 / 55.  5.100
+[video4linux2,v4l2 @ 0x7f880c000bc0] ioctl(VIDIOC_STREAMON): 
+Input/output error
+/dev/video0: Input/output error
+
+Do I need to configure any quirks to get it working ?
+
+Fabian
+
+
+--------------0e7gdG5Z90vrx5W0WKmJhUu6
 Content-Type: text/plain; charset=UTF-8; name="dmesg_playback.txt"
 Content-Disposition: attachment; filename="dmesg_playback.txt"
 Content-Transfer-Encoding: base64
@@ -3393,7 +3372,7 @@ MV0gdXNiIDMtMjogdXZjX3Y0bDJfcG9sbApbIDIxODEuMjE0MjEwXSB1c2IgMy0yOiB1dmNf
 djRsMl9wb2xsClsgMjE4MS4yMTQyMTZdIHVzYiAzLTI6IHV2Y192NGwyX3BvbGwKWyAyMTgx
 LjI4MTU5OV0gdXNiIDMtMjogdXZjX3Y0bDJfcG9sbApbIDIxODEuMjgxNjMyXSB1c2IgMy0y
 OiB1dmNfdjRsMl9wb2xsCg==
---------------f5tnML6nczm9HRMk2c8y4lR9
+--------------0e7gdG5Z90vrx5W0WKmJhUu6
 Content-Type: text/plain; charset=UTF-8; name="dmesg_plugin_device.txt"
 Content-Disposition: attachment; filename="dmesg_plugin_device.txt"
 Content-Transfer-Encoding: base64
@@ -5908,7 +5887,7 @@ IDMtMjogQ29udHJvbCAweDA4MDAwMDAwIG5vdCBmb3VuZApbIDIwNzAuMzY3MjQxXSB1c2Ig
 My0yOiB1dmNfdjRsMl9yZWxlYXNlClsgMjA3Mi42NzE0MTRdIHVzYiAzLTI6IFN1c3BlbmRp
 bmcgaW50ZXJmYWNlIDEKWyAyMDcyLjY3MTQxOV0gdXNiIDMtMjogU3VzcGVuZGluZyBpbnRl
 cmZhY2UgMAo=
---------------f5tnML6nczm9HRMk2c8y4lR9
+--------------0e7gdG5Z90vrx5W0WKmJhUu6
 Content-Type: text/plain; charset=UTF-8; name="lsusb.txt"
 Content-Disposition: attachment; filename="lsusb.txt"
 Content-Transfer-Encoding: base64
@@ -6063,68 +6042,15 @@ MzkgTWlzY2VsbGFuZW91cyBEZXZpY2UKICBiRGV2aWNlU3ViQ2xhc3MgICAgICAgICAyIAog
 IGJEZXZpY2VQcm90b2NvbCAgICAgICAgIDEgSW50ZXJmYWNlIEFzc29jaWF0aW9uCiAgYk1h
 eFBhY2tldFNpemUwICAgICAgICA2NAogIGJOdW1Db25maWd1cmF0aW9ucyAgICAgIDEKRGV2
 aWNlIFN0YXR1czogICAgIDB4MDAwMAogIChCdXMgUG93ZXJlZCkK
---------------f5tnML6nczm9HRMk2c8y4lR9
-Content-Type: application/pgp-keys;
- name="OpenPGP_0x38860B90C92CFC2A_and_old_rev.asc"
-Content-Disposition: attachment;
- filename="OpenPGP_0x38860B90C92CFC2A_and_old_rev.asc"
-Content-Description: OpenPGP public key
-Content-Transfer-Encoding: quoted-printable
 
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-xjMEX+oLyBYJKwYBBAHaRw8BAQdArh3sgy3Jbh44vU6jqJ3Uy7mGu6ZqhUfHLBey
-l6sUY2XNJ0ZhYmlhbiBTY2htaWQgPGYuc2NobWlkQG5ldHprb256ZXB0LmNoPsKW
-BBMWCAA+FiEEvLW5Hgk+NzA5m7hQOIYLkMks/CoFAl/qC8gCGwMFCQlmAYAFCwkI
-BwIGFQoJCAsCBBYCAwECHgECF4AACgkQOIYLkMks/CoTaQEA7kWIMu/eXJYFJibO
-0HSJmJu+t/PqAJvAj1nmyczZi0cA/jOmfobvPS5PwAyN5ljc9a4UyvjVA/ksJCuQ
-B4YddDwGzjgEX+oLyBIKKwYBBAGXVQEFAQEHQFlkZMc7fgvuV45Vmi1iHjVO9YrX
-VvdYkD+Z9ttix7szAwEIB8J+BBgWCAAmFiEEvLW5Hgk+NzA5m7hQOIYLkMks/CoF
-Al/qC8gCGwwFCQlmAYAACgkQOIYLkMks/CrlZwEA1A+lXBCekGopBFUnPOQnwCz7
-vuxeZ+iv6CBSgiOygI0A/ifSdnJbC1I51ksMv7ewiLreSH8ESmEnGZszxumu5p8G
-xjMEX+oLyRYJKwYBBAHaRw8BAQdAAC6MnJiVB9QoYyqntnAhFcRYqfS45AguT7Hz
-lKImeATCeAQgFggAIBYhBJYR+vY+LQBPQxcWLDl/NBulzE6ABQJh4+ksAh0AAAoJ
-EDl/NBulzE6A2BMA/05J1fREwmWimCYaexGMDu9Mon35O8AquEKNcDWRQ4wOAQCR
-psF7Rz5++sSW69KaWDLBB4ykzpstBfmDpD8BRbumD80nRmFiaWFuIFNjaG1pZCA8
-Zi5zY2htaWRAbmV0emtvbnplcHQuY2g+wpYEExYIAD4WIQSWEfr2Pi0AT0MXFiw5
-fzQbpcxOgAUCX+oLyQIbAwUJCWYBgAULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK
-CRA5fzQbpcxOgP4jAP9QuUY1CeoIvtMCsQ0WgirOeEUE0ZMWp/M20M3/glKM9AD/
-Z80CFI2G+FwdF0xS4w/8XZ+CN4TMnmsQ9F0eOo96wg/OOARf6gvJEgorBgEEAZdV
-AQUBAQdAZgI2izuqr9uIhoi/xiOC4OH0SGfEsHeCZ0PKcWhyeUcDAQgHwn4EGBYI
-ACYWIQSWEfr2Pi0AT0MXFiw5fzQbpcxOgAUCX+oLyQIbDAUJCWYBgAAKCRA5fzQb
-pcxOgEPdAQDJ3u4drd0xcwJjg7kf3qZ3vIjmVTMseExbI4fDpXkchgD/Wq0k2OBD
-hUc6YK8DgXJR2o4G3H63NemWgejzuw3M4g4=3D
-=3DIpPP
------END PGP PUBLIC KEY BLOCK-----
-
---------------f5tnML6nczm9HRMk2c8y4lR9--
-
---------------034uFxJKp4fV0G2sf8hjNyea--
-
---------------KkZzWuT8enOQ1LI4qtFcZkgI
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wnsEABYIACMWIQS8tbkeCT43MDmbuFA4hguQySz8KgUCYgfBeAUDAAAAAAAKCRA4hguQySz8Kjjc
-AP0QppbMVTCQ8pBpJaap9x5xkR9Bytc0pr9/T7uQMnKdugEA45ihq0yzdbCTq2chx1yZFkdL36y/
-sjudRZUn+zRrygw=
-=lmhy
------END PGP SIGNATURE-----
-
---------------KkZzWuT8enOQ1LI4qtFcZkgI--
-
-
---===============8814564204874657720==
+--------------0e7gdG5Z90vrx5W0WKmJhUu6
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============8814564204874657720==
+--------------0e7gdG5Z90vrx5W0WKmJhUu6
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -6135,5 +6061,5 @@ Linux-uvc-devel mailing list
 Linux-uvc-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux-uvc-devel
 
---===============8814564204874657720==--
+--------------0e7gdG5Z90vrx5W0WKmJhUu6--
 
